@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import "../../Slider.scss";
+import "../../Components/Slider/Slider.scss";
 import Images from "./Img";
 import pic1 from "../../Pics/pic1.jpg";
 import pic2 from "../../Pics/pic2.jpg";
@@ -11,7 +11,6 @@ function MoviesSlider() {
 
   const goLeft = () => {
   x === 0 ? setX(-100 * (sliderArr.length - 1)) : setX(x + 100);
-  // if 
 };
   const goRight = () => {
     x === -100 * (sliderArr.length - 1) ? setX(0) : setX(x - 100);
