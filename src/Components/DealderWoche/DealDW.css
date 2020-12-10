@@ -1,0 +1,52 @@
+.DealDWÜberschrift{
+    color: red;
+    display: flex;
+    margin-top: 2vw;
+    font-weight: bold;
+    font-size: 4.5vw;
+  margin-left:18%;
+    text-align: center!important;
+    align-items: center; 
+    cursor: pointer;
+  
+    text-decoration: none;
+
+}.DealDWÜberschrift:hover{
+    color: darkred;
+    
+    border-radius: 10px;
+}
+.DealDWSchrift{
+    margin-right: 2%;
+    margin-left: 2%;
+    text-align: center;
+}
+
+.DealDWText{
+    background-color: grey;
+    font-family: Arial, Helvetica, sans-serif;
+    border: black;
+    border-style: solid;
+    font-size: 1.8vw;
+    align-items: center;
+    text-align: center;
+   
+    
+
+}
+@media screen and (max-width: 820px){
+    .DealDWÜberschrift{
+        font-size: 9vw;
+       margin-left: 1%;
+    }
+    .DealDWText{
+        font-size: 4vw;
+    }
+}
+
+.DealDWKomplett{
+    width: 80%;
+    margin-left: 10%;
+    text-align: center;
+    
+}
