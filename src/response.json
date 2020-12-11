@@ -1,0 +1,44 @@
+{
+  "1": {
+    "name": "Star Wars",
+    "id": 1,
+    "bild": "the picture is here",
+    "beschreibung": "Its cool",
+    "bewertung": 9,
+    "laenge": 140,
+    "mindestAlter": 12,
+    "aktiv": true,
+    "vorstellung": null
+  },
+  "2": {
+    "name": "Star Wars 2",
+    "id": 2,
+    "bild": "the picture is here",
+    "beschreibung": "Its cool",
+    "bewertung": 8,
+    "laenge": 140,
+    "mindestAlter": 12,
+    "aktiv": true,
+    "vorstellung": [
+      {
+        "id": 2,
+        "startZeit": "2020-12-12T19:00:00.000+00:00",
+        "grundpreis": 8,
+        "aktiv": true,
+        "saal": null,
+        "filmId": 2
+      }
+    ]
+  },
+  "4": {
+    "name": "Star Wars 3",
+    "id": 4,
+    "bild": "the picture is here",
+    "beschreibung": "Its cool",
+    "bewertung": 10,
+    "laenge": 140,
+    "mindestAlter": 12,
+    "aktiv": true,
+    "vorstellung": null
+  }
+}

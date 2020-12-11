@@ -1,34 +1,82 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "../../Components/Slider/Slider.scss";
 import Images from "./Img";
 import pic1 from "../../Pics/pic1.jpg";
 import pic2 from "../../Pics/pic2.jpg";
 import pic3 from "../../Pics/pic3.jpg";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
-function MoviesSlider() {
-  const [x, setX] = useState(0);
-  let sliderArr = [<Images src={pic1} />, <Images src={pic2} />, <Images src={pic3} />];
+function MoviesSlider({ images }) {
+  // const [index, setIndex] = useState(0);
+
+  // const slideLeft = () => {
+  //   const nextIndex = index - 1;
+  //   if (nextIndex < 0) {
+  //     setIndex(images.length - 1);
+  //   } else {
+  //     setIndex(nextIndex);
+  //   }
+  // };
+
+  // const slideRight = () => {
+  //   setIndex((index + 1) % images.length);
+  // };
+  // return (
+  //   images.length > 0 && (
+  //     <div className="image-slider">
+  //       <button onClick={slideLeft}>{"<"}</button>
+  //       <img alt="" src={images[index]} />
+  //       <button onClick={slideRight}>{">"}</button>
+  //     </div>
+  //   )
+  //   );
+
+  const [index, setIndex] = useState(0);
 
   const goLeft = () => {
-  x === 0 ? setX(-100 * (sliderArr.length - 1)) : setX(x + 100);
-};
+    const nextIndex = index - 1;
+    if (nextIndex < 0) {
+      setIndex(images.length - 1);
+    } else {
+      setIndex(nextIndex);
+    }
+  };
   const goRight = () => {
-    x === -100 * (sliderArr.length - 1) ? setX(0) : setX(x - 100);
-};
+    setIndex((index + 1) % images.length);
+  };
 
   return (
-    <div className="slider">
-      {sliderArr.map((item, index) => {
-        return (
-          <div key={index} className="slide" style={{transform:`translateX(${x}%)`}} >
-            {item}
-          </div>
-        );
-      })}
-      <button id="goLeft" onClick={goLeft}>left</button>
-      <button id="goRight" onClick={goRight}>right</button>
-    </div>
+    images.length > 0 && (
+      <div className="slider">
+        <button id="goLeft" onClick={goLeft}>
+          {"<"}
+        </button>
+
+        <img className = "image" alt="" src={images[index]} />
+        <button id="goRight" onClick={goRight}>
+          {">"}
+        </button>
+      </div>
+    )
   );
+
+  // Works with local pics
+  //   const [index, setIndex] = useState(0);
+  //   let sliderArr = [<Images src={pic1} />, <Images src={pic2} />, <Images src={pic3} />];
+
+  //   const goLeft = () => {
+  //     index === 0 ? setIndex(-100 * (sliderArr.length - 1)) : setIndex(index + 100);
+  // };
+  //   const goRight = () => {
+  //     index === -100 * (sliderArr.length - 1) ? setIndex(0) : setIndex(index - 100);
+  // };
+
+  //   return (
+  //     <div className="slider">
+  //       <button id="goLeft" onClick={goLeft}>{"<"}</button>
+  //       <button id="goRight" onClick={goRight}>{">"}</button>
+  //     </div>
+  //   );
 }
 
 export default MoviesSlider;

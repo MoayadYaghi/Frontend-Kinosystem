@@ -10,9 +10,7 @@
     display: flex;
     overflow: hidden;
     background: black;
-    i {
-        font-size: 2vw;
-    };
+    font-size: 4vw;
 }
 
 .slide {
@@ -33,6 +31,7 @@
     border: none;
     outline: none;
     transition: 0.5s;
+    color: white;
     &:hover { 
         background: rgba(0, 0, 0, 0.438);
         cursor: pointer;
@@ -48,4 +47,8 @@
 #goRight {
     right: 0;
     @extend %btn-styles;
+}
+
+.image {
+    height: inherit;
 }
