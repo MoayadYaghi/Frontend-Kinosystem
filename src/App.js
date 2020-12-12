@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./App.css";
-import MoviesSlider from "./components/Slider/Slider";
-import Navbar from "./components/Navbar/Navbar";
-//import Navbar1 from "./components/Footer/Navbar";
-import Footer from "./components/Footer/Footer";
+import MoviesSlider from "./Components/Slider/Slider";
+import Navbar from "./Components/Navbar/Navbar";
+//import Navbar1 from "./Components/Footer/Navbar";
+import Footer from "./Components/Footer/Footer";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 

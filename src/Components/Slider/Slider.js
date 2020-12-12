@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../components/Slider/Slider.scss";
+import "../../Components/Slider/Slider.scss";
 /* import Images from "./Img";
 import pic1 from "../../Pics/pic1.jpg";
 import pic2 from "../../Pics/pic2.jpg";

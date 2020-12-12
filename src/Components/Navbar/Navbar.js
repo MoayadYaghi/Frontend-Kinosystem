@@ -18,8 +18,7 @@ state = { clicked: false}
             <div className = "Headline1">
             <a className = "Link" alt = "logo" href="#">
                     <img border = "0" src={logo} className="Logo"></img></a>
-                         <div className = "Kreativ">
-                             Kreative Gruppe 42 </div>
+                    
                      </div>
                          
             <nav className="NavbarItems">
@@ -47,7 +46,7 @@ state = { clicked: false}
                         )
                     })}
                 </ul>
-                <Button> Sign Up </Button>
+                <Button className="sign-up-button"> Sign Up </Button>
                 
                 
             </nav>
