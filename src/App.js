@@ -33,10 +33,7 @@ function App() {
     <div className="App">
       <Navbar/>
       <MoviesSlider images={images} text = {id}/>
-      
-      <button onClick ={runQuery}>Test Button 1</button>
-      <button onClick={(e) => setQuery(e.target.value)}>Test Button 2</button>
-      
+      <button onClick ={runQuery}>Call API</button>
       <Footer />
     </div>
   );
