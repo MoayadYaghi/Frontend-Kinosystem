@@ -20,55 +20,51 @@ function Footer() {
             </div>
             {/* Column 2 */}
             <div className="col-md-3 col-sm-6">
-              <h4>Lorem ipsum</h4>
+              <h4>Programm</h4>
               <ul className="list-unstyled">
                 <li>
-                  <a href="/">dolor set amet</a>
+                  <a href="/">Aktuelles</a>
                 </li>
                 <li>
-                  <a href="/">consetetur sadipscing</a>
+                  <a href="/">Demnächst</a>
                 </li>
                 <li>
-                  <a href="/">sed diam</a>
+                  <a href="/">Wunschliste</a>
                 </li>
-                <li>
-                  <a href="/">nonumy eirmod</a>
-                </li>
+                
               </ul>
             </div>
             {/* Column 3 */}
             <div className="col-md-3 col-sm-6">
-              <h4>tempor invidunt</h4>
+              <h4>Shop</h4>
               <ul className="list-unstyled">
                 <li>
-                  <a href="/">ut labore</a>
+                  <a href="/">Klamotten</a>
                 </li>
                 <li>
-                  <a href="/">et dolore</a>
+                  <a href="/">Snacks</a>
                 </li>
                 <li>
-                  <a href="/">magna aliquyam</a>
+                  <a href="/">Gutscheine</a>
                 </li>
-                <li>
-                  <a href="/">erat sed</a>
-                </li>
+                
               </ul>
             </div>
             {/* Column 4 */}
             <div className="col-md-3 col-sm-6">
-              <h4>diam voluptua</h4>
+              <h4>Informationen</h4>
               <ul className="list-unstyled">
                 <li>
-                  <a href="/">At vero</a>
+                  <a href="/">Offene Stellen</a>
                 </li>
                 <li>
-                  <a href="/">eos et accusam</a>
+                  <a href="/">Kontakt</a>
                 </li>
                 <li>
-                  <a href="/">et justo duo</a>
+                  <a href="/">Online Ticketkauf</a>
                 </li>
                 <li>
-                  <a href="/">dolores et ea </a>
+                  <a href="/">Impressum </a>
                 </li>
               </ul>
             </div>
