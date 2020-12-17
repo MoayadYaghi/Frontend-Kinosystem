@@ -17,7 +17,7 @@ state = { clicked: false}
                 
             <div className = "Headline1">
             <a className = "Link" alt = "logo" href="#">
-                    <img border = "0" src={logo} className="Logo"></img></a>
+                    <img alt="Logo" border = "0" src={logo} className="Logo"></img></a>
                     
                      </div>
                          

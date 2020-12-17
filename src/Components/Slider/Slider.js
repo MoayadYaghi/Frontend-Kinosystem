@@ -7,7 +7,9 @@ import pic3 from "../../Pics/pic3.jpg";
 import { TransitionGroup, CSSTransition } from "react-transition-group"; */
 
 var ReactCSSTransitionGroup = require("react-transition-group");
+
 function MoviesSlider({ images, text }) {
+  
   const [index, setIndex] = useState(0);
 
   const goLeft = () => {
