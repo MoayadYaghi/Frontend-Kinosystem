@@ -3,7 +3,7 @@ import "./App.css";
 import MoviesSlider from "./Components/Slider/Slider";
 import FilmInfoComponent from "./Components/APIStartseite/FilmInfoComponent"
 import Navbar from "./Components/Navbar/Navbar";
-import SliderInfoComponent from "./Components/Slider/SliderInfoComponent"
+
 //import Navbar1 from "./Components/Footer/Navbar";
 import Footer from "./Components/Footer/Footer";
 import "bootstrap/dist/css/bootstrap.min.css";
