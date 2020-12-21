@@ -1,6 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 // import "./Footer.css";
+import { Link } from "react-router-dom";
+
+
+const ProgrammAktuellLink = "/Programm/Aktuell";
+const ProgrammDemnächstLink = "/Programm/Demnächst";
+const InformationsLink = "/Information";
+const KontaktLink = "/Kontakt";
+const SnacksLink = "/Shop/Snacks";
+const BekleidungLink = "/Shop/Bekleidung";
+const GutscheineLink = "/Shop/Geschenke";
+const ImpressumLink = "/Impressum";
+const WunschlisteLink = "/Wunschliste"
+
+
 
 function Footer() {
   return (
@@ -14,7 +28,7 @@ function Footer() {
               <ul className="list-unstyled">
                 <li>68159 Mannheim</li>
                 <li>Coblitzallee 1-9</li>
-                <li>Mail: theaterhaus-mannheim@kinoreservierung99.com</li>
+                <li>Mail: info@KG42</li>
                 <li>Telefon: +49 157 45854321</li>
               </ul>
             </div>
@@ -23,29 +37,29 @@ function Footer() {
               <h4>Programm</h4>
               <ul className="list-unstyled">
                 <li>
-                  <a href="/">Aktuelles</a>
+                  <Link to = {ProgrammAktuellLink}>Aktuelles</Link>
                 </li>
                 <li>
-                  <a href="/">Demnächst</a>
+                  <Link to = {ProgrammDemnächstLink}>Demnächst</Link>
                 </li>
                 <li>
-                  <a href="/">Wunschliste</a>
+                <Link to = {WunschlisteLink}>Wunschliste</Link>
                 </li>
                 
               </ul>
             </div>
             {/* Column 3 */}
             <div className="col-md-3 col-sm-6">
-              <h4>Shop</h4>
+              <h4 key = "1" href="/Shop">Shop</h4>
               <ul className="list-unstyled">
                 <li>
-                  <a href="/">Klamotten</a>
+                <Link to = {BekleidungLink}>Bekleidung</Link>
                 </li>
                 <li>
-                  <a href="/">Snacks</a>
+                <Link to = {SnacksLink}>Snacks</Link>
                 </li>
                 <li>
-                  <a href="/">Gutscheine</a>
+                <Link to = {GutscheineLink}>Gutscheine</Link>
                 </li>
                 
               </ul>
@@ -55,16 +69,16 @@ function Footer() {
               <h4>Informationen</h4>
               <ul className="list-unstyled">
                 <li>
-                  <a href="/">Offene Stellen</a>
+                <Link to = {InformationsLink}>Offene Stellen</Link>
                 </li>
                 <li>
-                  <a href="/">Kontakt</a>
+                <Link to = {KontaktLink}>Kontakt</Link>
                 </li>
                 <li>
-                  <a href="/">Online Ticketkauf</a>
+                <Link to = {InformationsLink}>Online Ticketverkauf</Link>
                 </li>
                 <li>
-                  <a href="/">Impressum </a>
+                <Link to = {ImpressumLink}>Impressum</Link>
                 </li>
               </ul>
             </div>

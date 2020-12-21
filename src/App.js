@@ -1,62 +1,101 @@
-import React, { useState } from "react";
+//Allgemeines
+import React, { Component } from "react";
 import "./App.css";
-import MoviesSlider from "./Components/Slider/Slider";
-import FilmInfoComponent from "./Components/APIStartseite/FilmInfoComponent"
-import Navbar from "./Components/Navbar/Navbar";
+import {BrowserRouter as Router, Route, Switch, Link, Redirect } from "react-router-dom";
+import Verlinkungen from "./Pages/verlinkungen" 
 
-//import Navbar1 from "./Components/Footer/Navbar";
-import Footer from "./Components/Footer/Footer";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
-import SliderAufruf from "./Components/Slider/SliderAufruf";
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous"></link>
 
-function App() {
+//Pages
+import StartSeite	 from "./Pages/startSeite";
+import Fehler from"./Pages/fehler";
+import Programm from "./Pages/programm";
+import ProgrammAktuell from "./Pages/aktuell";
+import ProgrammDemnächst from "./Pages/demnächst";
+import Informationen from "./Pages/informationen";
+import Shop from "./Pages/shop";
+import Kontakt from "./Pages/kontakt";
+import SignIn from "./Pages/signIn";
+import Profil from "./Pages/profil";
+import Snacks from "./Pages/snacks";
+import Getraenk from "./Pages/getraenke";
+import Bekleidung from "./Pages/bekleidung";
+import Gutscheine from "./Pages/gutscheine";
+import Warenkorb from "./Pages/warenkorb";
+import Impressum from "./Pages/impressum";
+import Wunschliste from "./Pages/wunschliste";
 
-  /* const [query, setQuery] = useState("");
-  const [images, setImages] = useState([]);
-  const [id, setid] = useState([]);
- */
-  //const runQuery = 
+
+
+
+
+
+
+
+class App extends Component {
+
+render(){
+  // Links
+  const HomeLink = "/";
+  const ProgrammLink = "/Programm";
+  const ProgrammAktuellLink = "/Programm/Aktuell";
+  const ProgrammDemnächstLink = "/Programm/Demnächst";
+  const InformationsLink = "/Information";
+  const ShopLink = "/Shop";
+  const KontaktLink = "/Kontakt";
+  const SignInLink = "/SignIn";
+  const ProfilLink = "/Profil";
+  const SnacksLink = "/Shop/Snacks";
+  const GetraenkeLink = "/Shop/Getraenk";
+  const BekleidungLink = "/Shop/Bekleidung";
+  const GutscheineLink = "/Shop/Geschenke";
+  const WarenkorbLink = "/Warenkorb";
+  const ImpressumLink = "/Impressum";
+  const Fehler = "/404";
+  const WunschlisteLink = "/Wunschliste"
+
   
-      /* const runQuery = () => {
-     
-     
-      fetch(
-      `https://pixabay.com/api/?key=17555646-e40df9968035314583cab5eca&q=${query}`
-    )
-    .then((response) => response.json())
-    .then(({ hits }) => hits.map(({ webformatURL }) => webformatURL))
-    .then(setImages);
-        
-    
-            
-            
-    fetch(
-      `https://pixabay.com/api/?key=17555646-e40df9968035314583cab5eca&q=${query}`
-    )
-    .then((response) => response.json())
-    .then(({ hits }) => hits.map(({ id }) => id))
-    .then(setid); 
-  }  
- */
+  
 
-  return (
-    <div className="App">
-      <Navbar/>
 
-      {/*  <SliderInfoComponent/> */}
+  return<Router>
+    <Switch>
+       <Route exact path= {HomeLink} component={StartSeite}/>
+       <Route exact path= {ProgrammLink} component={Programm}/>
+       <Route exact path= {ProgrammAktuellLink} component={ProgrammAktuell}/>
+       <Route exact path= {ProgrammDemnächstLink} component={ProgrammDemnächst}/>
+       <Route exact path= {InformationsLink} component={Informationen}/>
+       <Route exact path= {ShopLink} component={Shop}/>
+       <Route exact path= {KontaktLink} component={Kontakt}/>
+       <Route exact path= {SignInLink} component={SignIn}/>
+       <Route exact path= {ProfilLink} component={Profil}/>
+       <Route exact path= {SnacksLink} component={Snacks}/>
+       <Route exact path= {GetraenkeLink} component={Getraenk}/>
+       <Route exact path= {BekleidungLink} component={Bekleidung}/>
+       <Route exact path= {GutscheineLink} component={Gutscheine}/>
+       <Route exact path= {WarenkorbLink} component={Warenkorb}/>
+       <Route exact path= {ImpressumLink} component={Impressum}/>
+       <Route exact path= {WunschlisteLink} component={Wunschliste}/>
 
-       <SliderAufruf/> 
+
+
+
+
+
+
+
+       <Route exact path="/404" component={Fehler}/>
+       {/*Fehlerseite*/}
+       <Redirect to="/404"/>
       
-      
-         {/* <MoviesSlider images = {images} text = {id} />  */}
+       </Switch>
+     </Router>
 
-       {/*  <button onClick ={runQuery}>Call API</button>   */}
 
-      {/* <FilmInfoComponent/> 
-      <Footer /> */}
-    </div>
-  );
+
+  
+  
+}
 }
 
 export default App;

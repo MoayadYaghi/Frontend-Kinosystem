@@ -16,3 +16,8 @@
   ul li a:hover {
     color: var(--mainLightGrey);
   }
+
+  .ÜberschriftFooter{
+    font-size: 5vw;
+    font-weight: bold;
+  }

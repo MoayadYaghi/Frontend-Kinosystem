@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./DealDW.css";
+import Snacks from "../.././Pages/snacks";
 
 class DealDW extends Component {
   constructor(props) {
@@ -15,11 +16,14 @@ class DealDW extends Component {
   render() {
     return (
       <div className="DealDWKomplett">
-        <a className="DealDWÜberschrift" href="https://react.school/ui/button">
-          <i class="fas fa-arrow-right"> </i>
-          <div className="DealDWSchrift">Der Deal der Woche </div>
-          <i class="fas fa-arrow-left"> </i>
-        </a>
+        <div className="DealDWÜberschrift" href={Snacks}>
+          
+        <i class="fas fa-arrow-right">    </i>
+
+        <div className="DealDWSchrift"> &#160; Der Deal der Woche &#160;</div>
+
+          <i class="fas fa-arrow-left">    </i>
+        </div>
         <div className="DealDWText">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
           nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
