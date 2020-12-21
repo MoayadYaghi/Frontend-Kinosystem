@@ -4,7 +4,7 @@ import "./App.css";
 import {BrowserRouter as Router, Route, Switch, Link, Redirect } from "react-router-dom";
 import Verlinkungen from "./Pages/verlinkungen" 
 
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous"></link>
+
 
 //Pages
 import StartSeite	 from "./Pages/startSeite";
@@ -24,6 +24,9 @@ import Gutscheine from "./Pages/gutscheine";
 import Warenkorb from "./Pages/warenkorb";
 import Impressum from "./Pages/impressum";
 import Wunschliste from "./Pages/wunschliste";
+import Sitzplatzreservierung from "./Pages/sitzplatzres";
+
+
 
 
 
@@ -53,6 +56,8 @@ render(){
   const ImpressumLink = "/Impressum";
   const Fehler = "/404";
   const WunschlisteLink = "/Wunschliste"
+  const SitzplatzresLink = "/Sitzplatz"
+
 
   
   
@@ -76,6 +81,7 @@ render(){
        <Route exact path= {WarenkorbLink} component={Warenkorb}/>
        <Route exact path= {ImpressumLink} component={Impressum}/>
        <Route exact path= {WunschlisteLink} component={Wunschliste}/>
+       <Route exact path= {SitzplatzresLink} component={Sitzplatzreservierung}/>
 
 
 
