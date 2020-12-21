@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const Slider_Rest_API_URL = 'https://imdb-api.com/en/API/SearchMovie/k_ucj1yd23/John Wick'
+const Slider_Rest_API_URL = ('https://imdb-api.com/en/API/SearchMovie/k_ucj1yd23/John Wick')
 
 class SliderAPI {
     getSliderApi(){
@@ -15,4 +15,4 @@ class SliderAPI {
 
 
 
-export default new SliderAPI;
+export default new SliderAPI();

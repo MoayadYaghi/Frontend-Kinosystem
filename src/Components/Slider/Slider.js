@@ -8,7 +8,10 @@ import { TransitionGroup, CSSTransition } from "react-transition-group"; */
 
 var ReactCSSTransitionGroup = require("react-transition-group");
 
+
+
 function MoviesSlider({ images, text }) {
+  /* console.log(images) */
   
   const [index, setIndex] = useState(0);
 
