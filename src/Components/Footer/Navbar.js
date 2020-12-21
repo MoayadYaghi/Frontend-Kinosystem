@@ -1,11 +1,11 @@
 import React from "react";
-import logo from "../../assets/LOGO1.png"
+import logo from "../../assets/LOGO1.png";
 
 function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-dark">
       <a className="navbar-brand ml-5" href="#">
-        <img src={logo} alt="logo" style={{ width:'35px'}}/>
+        <img src={logo} alt="logo" style={{ width: "35px" }} />
       </a>
       <button
         className="navbar-toggler"
