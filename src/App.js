@@ -54,7 +54,7 @@ render(){
   const GutscheineLink = "/Shop/Geschenke";
   const WarenkorbLink = "/Warenkorb";
   const ImpressumLink = "/Impressum";
-  const Fehler = "/404";
+  const FehlerLink = "/Fehler404";
   const WunschlisteLink = "/Wunschliste"
   const SitzplatzresLink = "/Sitzplatz"
 
@@ -90,9 +90,9 @@ render(){
 
 
 
-       <Route exact path="/404" component={Fehler}/>
+       <Route exact path={FehlerLink} component={Fehler}/>
        {/*Fehlerseite*/}
-       <Redirect to="/404"/>
+       <Redirect to={FehlerLink}/>
       
        </Switch>
      </Router>
