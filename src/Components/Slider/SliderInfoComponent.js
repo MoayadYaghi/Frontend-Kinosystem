@@ -1,45 +1,72 @@
-import React from 'react'
+import React, { useState } from "react";
 import MoviesSlider from './Slider'
 import SliderAPI from '../../API_Pulls/SliderAPI'
 import axios from 'axios'
 
+
+
+
 class SliderInfoComponent extends React.Component{
     
-
-    constructor(props){
+   
+     constructor(props){
         super(props)
         this.state = {
             informationen:[]
         }
-    }
-    
+    } 
 
+    
+    
+   
     componentDidMount(){
-       
-       
-        SliderAPI.getSliderApi().then((response) => {
-            console.log(response);
-            let movies = response.data.results;
-            console.log(movies.image)
-            
-            this.setState({informationen: movies})
-            console.log(this.state.informationen)
-        })
-    }
+
         
 
+        /* fetch(
+            `https://imdb-api.com/en/API/SearchMovie/k_ucj1yd23/John Wick`
+          )
+          .then((response) => response.json())
+          .then(({ results }) => results.map(({ image }) => image))
+          .then(setImages);
+
+          
+        fetch(
+            `https://imdb-api.com/en/API/SearchMovie/k_ucj1yd23/John Wick`
+          )
+          .then((response) => response.json())
+          .then(({ results }) => results.map(({ id }) => id))
+          .then(setid); */
+        
+       
+
+
+         SliderAPI.getSliderApi().then((response) => {
+             console.log(response)
+            
+            let movies = response.data.results;
+            this.setState({informationen: movies})
+                   console.log(informationen)     
+        })
+    
+        
+    }
     
 render(){
-
+    
+    
     
     
 
 return ( 
     
     
-    
-    
+             
     <div>
+            
+
+
+
                     <h1 className = "text-center"> Namen Liste </h1>
                     <table className = "table table-striped" style={{marginLeft: 18 + '%'}}>
                         <thead>
@@ -65,18 +92,21 @@ return (
 
                         </tbody>
                     </table>
-                    {
-                    this.state.informationen.map( infos =>
+                    
+                            
+                   { this.state.informationen.map( info =>
+                        
                         <div>
-                        <div>
-                            {infos.id}
-                            </div>
+                            <img src={info.image} style={{height: '200px'}}></img>
 
-                            <img src={infos.image} style={{height: '200px'}}></img>
-                    {/* <MoviesSlider key= {infos.id} images={infos.image} text = {infos.id}/> */}
+                   {/*   <MoviesSlider key= {info.id} images={info.image} text = {info.id}/>  */}
                     </div>
-                    )}
+)}
+
+
+<MoviesSlider key= {id} images={images} text = {id}/> 
                 </div>
+                
 
 )
         }

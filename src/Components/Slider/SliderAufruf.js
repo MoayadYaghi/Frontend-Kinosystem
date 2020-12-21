@@ -1,6 +1,7 @@
 import React from 'react'
 import MoviesSlider from './Slider'
 import SliderPicture from '../../API_Pulls/SliderPicture'
+import SliderAPI from '../../API_Pulls/SliderAPI'
 
 
 class SliderAufruf extends React.Component{
@@ -17,33 +18,43 @@ class SliderAufruf extends React.Component{
     componentDidMount(){
        
        
-        SliderPicture.getSliderImage().then((response) => {
-            console.log(response);
-            let BilderAPI = response.data.hits;
-            console.log(BilderAPI)
+        SliderAPI.getSliderApi().then((response) => {
+            console.log(response)
+           
+           let movies = response.data.results;
+           this.setState({Bilder: movies})
+                      
+       })
             
-            this.setState({Bilder: BilderAPI})
-            
-        })
+        
     }
         
 
     
 render(){
 
+    var Bild = []
+    var Name = []
+    this.state.Bilder.forEach(element => {
+        Bild.push(element.image)
+        Name.push(element.id)
+
+    });
+
     
+   
     
 
 return ( 
     <div>
                     
-                    {
-                    this.state.Bilder.map( bi =>
+                    {console.log(this.state.Bilder.image)}
+                     {/* /* this.state.Bilder.map( bi =>  */ }
                         
                         
-                     <MoviesSlider key= {bi.id} images={bi.webformatURL} text = {bi.id}/> 
+      <MoviesSlider key= {Name} images= {Bild} text = {Name}/> 
+                     
                     
-                    )}
                 </div>
 
 )
