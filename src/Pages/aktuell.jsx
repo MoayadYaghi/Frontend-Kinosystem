@@ -15,6 +15,9 @@ const Aktuell = () => {
 
             <h1>Aktuelles Programm Seite</h1>
 
+
+            
+
             <Footer/>        
         </div>
     )

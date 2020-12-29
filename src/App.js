@@ -25,6 +25,7 @@ import Warenkorb from "./Pages/warenkorb";
 import Impressum from "./Pages/impressum";
 import Wunschliste from "./Pages/wunschliste";
 import Sitzplatzreservierung from "./Pages/sitzplatzres";
+import Admin from "./Pages/AdminFilmAuswahl";
 
 
 
@@ -57,6 +58,7 @@ render(){
   const FehlerLink = "/Fehler404";
   const WunschlisteLink = "/Wunschliste"
   const SitzplatzresLink = "/Sitzplatz"
+  const AdminLink ="/Admin"
 
 
   
@@ -82,6 +84,7 @@ render(){
        <Route exact path= {ImpressumLink} component={Impressum}/>
        <Route exact path= {WunschlisteLink} component={Wunschliste}/>
        <Route exact path= {SitzplatzresLink} component={Sitzplatzreservierung}/>
+       <Route exact path= {AdminLink} component={Admin}/>
 
 
 

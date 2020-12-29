@@ -1,14 +1,14 @@
 
 
-
+/* 
 function Verlinkungen(){
     
-    const HomeLink = "/";
-    const ProgrammLink = "/Programm";
-    const InformationsLink = "/Information";
-    const ShopLink = "/Shop";
-    const KontaktLink = "/Kontakt";
-    const SignInLink = "/SignIn";
+    HomeLink = "/";
+     ProgrammLink = "/Programm";
+     InformationsLink = "/Information";
+     ShopLink = "/Shop";
+     KontaktLink = "/Kontakt";
+     SignInLink = "/SignIn";
     const ProfilLink = "/Profil";
     const SnacksLink = "/Shop/Snacks";
     const GetraenkeLink = "/Shop/Getraenk";
@@ -20,8 +20,8 @@ function Verlinkungen(){
     const Wunschliste = "/Wunschliste"
 
     return(
-        HomeLink &
-        ProgrammLink&
+        HomeLink ,
+        ProgrammLink,
         InformationsLink,
         ShopLink,
         KontaktLink,
@@ -38,4 +38,4 @@ function Verlinkungen(){
     )
 }
 
-export default Verlinkungen;
+export default Verlinkungen; */

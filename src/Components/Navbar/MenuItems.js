@@ -1,10 +1,23 @@
-import "../.././Pages/verlinkungen"
 const HomeLink = "/";
-    const ProgrammLink = "/Programm";
-    const InformationsLink = "/Information";
-    const ShopLink = "/Shop";
-    const KontaktLink = "/Kontakt";
-    const SignInLink = "/SignIn";
+  const ProgrammLink = "/Programm";
+  const ProgrammAktuellLink = "/Programm/Aktuell";
+  const ProgrammDemnächstLink = "/Programm/Demnächst";
+  const InformationsLink = "/Information";
+  const ShopLink = "/Shop";
+  const KontaktLink = "/Kontakt";
+  const SignInLink = "/SignIn";
+  const ProfilLink = "/Profil";
+  const SnacksLink = "/Shop/Snacks";
+  const GetraenkeLink = "/Shop/Getraenk";
+  const BekleidungLink = "/Shop/Bekleidung";
+  const GutscheineLink = "/Shop/Geschenke";
+  const WarenkorbLink = "/Warenkorb";
+  const ImpressumLink = "/Impressum";
+  const FehlerLink = "/Fehler404";
+  const WunschlisteLink = "/Wunschliste"
+  const SitzplatzresLink = "/Sitzplatz"
+
+
 
 
 export const MenuItems = [
@@ -12,6 +25,7 @@ export const MenuItems = [
     titel: 'Startseite', 
     url: HomeLink,
     cName:'nav-links'
+    
     },
     {
     titel: 'Programm',
