@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Style from './Smoroll.css';
-
+import JS from "../../assets/Übersicht_Möglichkeiten.jpg";
 class Menue5 extends Component	{
     state = {};
     render(){
@@ -9,10 +9,20 @@ class Menue5 extends Component	{
         <div className = "Informationen" id="menue5">
             
                 <div className="Inf-Box">
-                    Row 5
+                    FSK
                     </div>
                     <div className ="TextS">
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo 
+                         Für jede Vorstellung sind die FSK (Freiwilige Selbstkontrolle der Filmwirtschaft) zu beachten. Wir behalten es uns vor, Sie bei bedarf nach einem amtlichen Ausweisdokument zu fragen. 
+                         <br/>
+                         <br/>
+                         <div className="Inf-Boxsmall">Jugendschutz-Gesetz</div>
+
+                         Durch den Gesetzgeber sind vorgegeben, zu welchen Zeiten welche Filme gespielt werden dürfen: 
+                         <img className = "Logos" alt = "Jugendschutz-Gesetz" key = "Jugendschutz-Gesetz"src = {JS}></img> <br/>
+                         (müssen wir noch selner machen !!!)<br/>
+
+                         Ausnahmen hierzu bestehen, wenn eine Erziehungsbeauftragte Person als Begleitung mitkommt. Dies kann jede Person über 18 Jahren sein. Diese Ausnahmeregel tritt nur in Kraft wenn das Formular für Erziehungsbeauftragte (Mutti-Zettel) unterschrieben vorliegt. Bitte beachten Sie dies, da ansonsten kein Zugang zum Kino möglich ist.     
+
                 </div></div>
                     
         )}

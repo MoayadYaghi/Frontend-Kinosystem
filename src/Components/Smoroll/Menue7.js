@@ -9,10 +9,13 @@ class Menue7 extends Component	{
         <div className = "Informationen" id="menue7">
             
                 <div className="Inf-Box">
-                    Row 7
+                    Online Ticketkauf
                     </div>
                     <div className ="TextS">
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo 
+                    Sollten Sie fragen zum Online Ticketkauf haben, kommen Sie auf uns zu unter der folgenden Telefonnummer:  <br/>
+
+                    0176/58726589
+
                 </div></div>
                     
         )}

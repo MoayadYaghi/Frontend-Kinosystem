@@ -9,10 +9,10 @@ class Menue8 extends Component	{
         <div className = "Informationen" id="menue8">
             
                 <div className="Inf-Box">
-                    Row 8
+                    Barrierefreiheit
                     </div>
                     <div className ="TextS">
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo 
+                    Das gesamte Kino ist Barrierefrei. In jedem unserer Kinosäle gibt es mehrere Plätze für Rollstuhlfahrer. Sollten Sie einen solchen benötigen, beachten Sie dies bitte bei der Buchung.   
                 </div></div>
                     
         )}

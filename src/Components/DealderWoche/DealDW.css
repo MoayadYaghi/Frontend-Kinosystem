@@ -4,8 +4,8 @@
     margin-top: 2vw;
     font-weight: bold;
     font-size: 4.5vw;
-    margin-left: 14%;
-    text-align: center!important;
+    justify-content: center;
+    text-align: center;
     align-items: center; 
     cursor: pointer;
     
@@ -86,4 +86,8 @@
     margin-right: 10%;
     
     
+}
+.Fehler{
+    font-size: 4vw;
+    font-weight: bold;
 }

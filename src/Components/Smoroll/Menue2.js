@@ -106,6 +106,10 @@ class Menue2 extends Component	{
                                         <td> 22.00</td>                   
                                     </tr>
                         </tbody>
+
+                        Für Klassik-Vorstellungen werden für jedes Ticket 3 Euro Rabatt gewährt. <br/>
+                        Das  Familienticket erhält 10 Euro Rabatt!
+            
                     </table>
                     <div>
 

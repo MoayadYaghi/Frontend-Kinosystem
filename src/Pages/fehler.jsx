@@ -3,6 +3,7 @@ import Footer from ".././Components/Footer/Footer";
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ".././App.css";
+import Fehler404 from "../Components/DealderWoche/Fehler404";
 
 //import { Link } from "react-router-dom";
 
@@ -13,7 +14,8 @@ const Fehler = () => {
             
             <Navbar/>
 
-            <h1>Fehler Seite</h1>
+            
+            <Fehler404/>
 
             <Footer/>        
         </div>

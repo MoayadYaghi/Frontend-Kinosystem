@@ -74,7 +74,7 @@ class Smoroll extends Component{
                                 smooth={true}
                                 offset={-70}
                                 duration={2000}
-                            >Öffnungszeiten Anfahrt</Link></div>
+                            >Öffnungszeiten &amp; Anfahrt</Link></div>
                             <div className="SpalteBL">
                             <Link
                                 className="SpalteS"
