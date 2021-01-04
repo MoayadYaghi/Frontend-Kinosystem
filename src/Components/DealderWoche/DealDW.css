@@ -67,22 +67,6 @@
     color:white;
 }
 
-@media screen and (max-width: 820px){
-    .DealDWÜberschrift{
-        font-size: 9vw;
-       margin-left: 1%;
-    }
-    .DealDWText{
-        font-size: 4vw;
-    }
-    .InfoDWÜberschrift{
-        font-size: 9vw;
-       margin-left: 1%;
-    }
-    .InfoDWText{
-        font-size: 4vw;
-    }
-}
 
 .DealDWKomplett{
     width: 80%;
@@ -132,6 +116,14 @@
   .DealDWText {
     font-size: 4vw;
   }
+  .InfoDWÜberschrift{
+    font-size: 9vw;
+   margin-left: 1%;
+}
+.InfoDWText{
+    font-size: 4vw;
+}
+  
 }
 
 .DealDWKomplett {
