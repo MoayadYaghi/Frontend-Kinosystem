@@ -21,39 +21,35 @@ const HomeLink = "/";
 
 
 export const MenuItems = [
-    {
-    titel: 'Startseite', 
+  {
+    titel: "Startseite",
     url: HomeLink,
-    cName:'nav-links'
-    
-    },
-    {
-    titel: 'Programm',
+    cName: "nav-links",
+  },
+  {
+    titel: "Programm",
     url: ProgrammLink,
-    cName:'nav-links'
-    },
-    {
-    titel: 'Informationen',
+    cName: "nav-links",
+  },
+  {
+    titel: "Informationen",
     url: InformationsLink,
-    cName:'nav-links'
-    },
-    {
-    titel: 'Shop',
+    cName: "nav-links",
+  },
+  {
+    titel: "Shop",
     url: ShopLink,
-    cName:'nav-links'
-    },
-    {
-    titel: 'Kontakt',
+    cName: "nav-links",
+  },
+  {
+    titel: "Kontakt",
     url: KontaktLink,
-    cName:'nav-links'
-    },
-    
-    {
-    titel: 'Sign Up',
-    url: SignInLink,
-    cName:'nav-links-mobile'
-    },
-                    
-    
+    cName: "nav-links",
+  },
 
-]
+  {
+    titel: "Sign Up",
+    url: SignInLink,
+    cName: "nav-links-mobile",
+  },
+];

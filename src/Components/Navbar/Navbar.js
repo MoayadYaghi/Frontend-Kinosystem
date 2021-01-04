@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { Button } from '../Button';
-import {MenuItems} from "./MenuItems"
-import'./Navbar.css'
+import React, { Component } from "react";
+import { Button } from "../Button";
+import { MenuItems } from "./MenuItems";
+import "./Navbar.css";
 import logo from "../../assets/LOGO1.png";
 import { Link } from "react-router-dom";
 
-class Navbar extends Component { 
-state = { clicked: false}
+class Navbar extends Component {
+  state = { clicked: false };
 
     handleClick = () => {
         this.setState({clicked: !this.state.clicked})
@@ -25,18 +25,16 @@ state = { clicked: false}
                      </div>
                          
             <nav className="NavbarItems">
-                <div className="navbar-logo">
-                    
+                <div className="navbar-logo"></div>
 
-                </div>
-                <h1 className="navbar-logo">  
-                </h1>
-                
-               
-                <div className="menu-icon" onClick={this.handleClick}>
-                        <i className={this.state.clicked ? 'fas fa-times' : 'fas fa-bars'}>
+                  
+                <h1 className="navbar-logo"></h1>
 
-                        </i>
+            <div className="menu-icon" onClick={this.handleClick}>
+              <i
+                className={this.state.clicked ? "fas fa-times" : "fas fa-bars"}
+              ></i>
+                        
                 </div>
                 <ul className={this.state.clicked ? 'nav-menu active' : 'nav-menu'}>
                     {MenuItems.map((item, index) => {
@@ -60,4 +58,4 @@ state = { clicked: false}
     }
 }
 
-export default Navbar
+export default Navbar;

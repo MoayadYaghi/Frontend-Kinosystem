@@ -7,18 +7,16 @@ import ".././App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 //import { Link } from "react-router-dom";
 
-
 const kontakt = () => {
-    return (
-        <div className = "App">
-            
-            <Navbar/>
+  return (
+    <div className="App">
+      <Navbar />
 
             <SmoImpAuf/>
 
-            <Footer/>        
-        </div>
-    )
-}
+      <Footer />
+    </div>
+  );
+};
 
 export default kontakt;

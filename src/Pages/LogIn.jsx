@@ -16,9 +16,9 @@ const LogIn = () => {
 
             <LoginScreen/>
 
-            <Footer/>        
-        </div>
-    )
-}
+      <Footer />
+    </div>
+  );
+};
 
 export default LogIn;

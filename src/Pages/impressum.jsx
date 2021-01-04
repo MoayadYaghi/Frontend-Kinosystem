@@ -12,17 +12,16 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 
 const Impressum = () => {
-    return (
-        <div className = "App">
-            
-            <Navbar/>
+  return (
+    <div className="App">
+      <Navbar />
 
             <SmoImpAuf/>
            
 
-            <Footer/>        
-        </div>
-    )
-}
+      <Footer />
+    </div>
+  );
+};
 
 export default Impressum;

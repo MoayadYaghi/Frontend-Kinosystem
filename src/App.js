@@ -1,14 +1,18 @@
 //Allgemeines
 import React, { Component } from "react";
 import "./App.css";
-import {BrowserRouter as Router, Route, Switch, Link, Redirect } from "react-router-dom";
-import Verlinkungen from "./Pages/verlinkungen" 
-
-
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Link,
+  Redirect,
+} from "react-router-dom";
+import Verlinkungen from "./Pages/verlinkungen";
 
 //Pages
-import StartSeite	 from "./Pages/startSeite";
-import Fehler from"./Pages/fehler";
+import StartSeite from "./Pages/startSeite";
+import Fehler from "./Pages/fehler";
 import Programm from "./Pages/programm";
 import ProgrammAktuell from "./Pages/aktuell";
 import ProgrammDemnächst from "./Pages/demnächst";
@@ -27,15 +31,6 @@ import Impressum from "./Pages/impressum";
 import Wunschliste from "./Pages/wunschliste";
 import Sitzplatzreservierung from "./Pages/sitzplatzres";
 import Admin from "./Pages/AdminFilmAuswahl";
-
-
-
-
-
-
-
-
-
 
 class App extends Component {
 
