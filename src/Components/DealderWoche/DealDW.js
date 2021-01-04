@@ -1,25 +1,30 @@
 import React, { Component } from "react";
 import "./DealDW.css";
 
+import { Link } from "react-router-dom";
+
 class DealDW extends Component {
   constructor(props) {
     super(props);
-    this.clickhandler = this.clickhandler.bind(this);
+    
   }
   state = {};
 
-  clickhandler(event) {
-    alert("Clicked !!!!!");
-  }
+  
 
   render() {
+    const SnacksLink = "/Shop/Snacks";
     return (
       <div className="DealDWKomplett">
-        <a className="DealDWÜberschrift" href="https://react.school/ui/button">
-          <i class="fas fa-arrow-right"> </i>
-          <div className="DealDWSchrift">Der Deal der Woche </div>
-          <i class="fas fa-arrow-left"> </i>
-        </a>
+        
+        <Link className="DealDWÜberschrift" to = {SnacksLink}>
+        <i class="fas fa-arrow-right">    </i>
+
+        <div className="DealDWSchrift"> &#160; Der Deal der Woche &#160;</div>
+
+          <i class="fas fa-arrow-left">    </i>
+          </Link> 
+        
         <div className="DealDWText">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
           nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
