@@ -1,6 +1,6 @@
 import React from 'react'
 import MoviesSlider from './Slider'
-import SliderPicture from '../../API_Pulls/SliderPicture'
+
 import SliderAPI from '../../API_Pulls/SliderAPI'
 
 
@@ -19,7 +19,7 @@ class SliderAufruf extends React.Component{
        
        
         SliderAPI.getSliderApi().then((response) => {
-            console.log(response)
+            
            
            let movies = response.data.results;
            this.setState({Bilder: movies})
@@ -48,8 +48,8 @@ render(){
 return ( 
     <div>
                     
-                    {console.log(this.state.Bilder.image)}
-                     {/* /* this.state.Bilder.map( bi =>  */ }
+                    
+                     
                         
                         
       <MoviesSlider key= {Name} images= {Bild} text = {Name}/> 

@@ -3,6 +3,7 @@ import { Button } from '../Button';
 import {MenuItems} from "./MenuItems"
 import'./Navbar.css'
 import logo from "../../assets/LOGO1.png";
+import { Link } from "react-router-dom";
 
 class Navbar extends Component { 
 state = { clicked: false}
@@ -12,6 +13,8 @@ state = { clicked: false}
     }
  
     render() {
+
+        const LogInLink = "/Login";
         return( 
             <div>
                 
@@ -45,11 +48,13 @@ state = { clicked: false}
                         </li>
                         )
                     })}
+                    
                 </ul>
-                <Button className="sign-up-button"> Sign Up </Button>
+                <Link className="signIn" to = {LogInLink}> Sign In </Link>
                 
                 
             </nav>
+            
             </div>
         )
     }

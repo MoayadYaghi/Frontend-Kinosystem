@@ -15,7 +15,8 @@ import ProgrammDemnächst from "./Pages/demnächst";
 import Informationen from "./Pages/informationen";
 import Shop from "./Pages/shop";
 import Kontakt from "./Pages/kontakt";
-import SignIn from "./Pages/signIn";
+import LogIn from "./Pages/LogIn";
+import Registrieren from "./Pages/registrieren";
 import Profil from "./Pages/profil";
 import Snacks from "./Pages/snacks";
 import Getraenk from "./Pages/getraenke";
@@ -47,7 +48,8 @@ render(){
   const InformationsLink = "/Information";
   const ShopLink = "/Shop";
   const KontaktLink = "/Kontakt";
-  const SignInLink = "/SignIn";
+  const LogInLink = "/Login";
+  const RegistrierenLink = "/Registrieren";
   const ProfilLink = "/Profil";
   const SnacksLink = "/Shop/Snacks";
   const GetraenkeLink = "/Shop/Getraenk";
@@ -74,7 +76,8 @@ render(){
        <Route exact path= {InformationsLink} component={Informationen}/>
        <Route exact path= {ShopLink} component={Shop}/>
        <Route exact path= {KontaktLink} component={Kontakt}/>
-       <Route exact path= {SignInLink} component={SignIn}/>
+       <Route exact path= {LogInLink} component={LogIn}/>
+       <Route exact path= {RegistrierenLink} component={Registrieren}/>
        <Route exact path= {ProfilLink} component={Profil}/>
        <Route exact path= {SnacksLink} component={Snacks}/>
        <Route exact path= {GetraenkeLink} component={Getraenk}/>

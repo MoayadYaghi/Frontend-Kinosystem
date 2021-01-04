@@ -11,7 +11,7 @@ class FilmSuche extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      value: ' Suchbegriff', 
+      value: ' ', 
       
       filme:[],
       visible: false,
@@ -53,7 +53,7 @@ class FilmSuche extends Component{
        
         console.log(this.state.filme);
        
-
+         /*  await  */
          if(this.state.filme === null){
           this.setState({visible: false})
            this.setState({FehlerAusgabe: true})
@@ -106,7 +106,7 @@ class FilmSuche extends Component{
               
                   <div className="Textfield">
                   <label>
-                  <input className ="InputText" name ="value" type="text" value={this.state.value} onChange={this.handleChange}/>
+                  <input className ="InputText" placeholder ="Suchbegriff" name ="value" type="text" value={this.state.value} onChange={this.handleChange}/>
                   
                   </label>
                   </div>
