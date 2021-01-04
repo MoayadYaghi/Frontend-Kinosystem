@@ -17,15 +17,17 @@ class DealDW extends Component {
     return (
       <div className="DealDWKomplett">
         <div className="InfoDWÜberschrift">
-          
-       
-
-        <div className="InfoDWSchrift"> &#160; Wichtige Informationen &#160;</div>
-
-         
+          <div className="InfoDWSchrift">
+            {" "}
+            &#160; Wichtige Informationen &#160;
+          </div>
         </div>
         <div className="InfoDWText">
-          Aktuell dürfen aufgrund der aktuellen Coronabeschränkungen keine Vorstellung gezeigt werden. Diese Beschränkungen betreffen leider auch unser Autokino. Dennoch stehen wir euch gerne zur Verfügung wenn ihr Fragen zu unserem Kino und dem Programm habt. Wir wünschen Frohe Weihnachten, einen guten Rutsch ins neue Jahr und bleibt Gesund!
+          Aktuell dürfen aufgrund der aktuellen Coronabeschränkungen keine
+          Vorstellung gezeigt werden. Diese Beschränkungen betreffen leider auch
+          unser Autokino. Dennoch stehen wir euch gerne zur Verfügung wenn ihr
+          Fragen zu unserem Kino und dem Programm habt. Wir wünschen Frohe
+          Weihnachten, einen guten Rutsch ins neue Jahr und bleibt Gesund!
         </div>
       </div>
     );

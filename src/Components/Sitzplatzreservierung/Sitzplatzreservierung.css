@@ -1,0 +1,17 @@
+.SitzPlan {
+    display: flex;
+    padding: 20px;
+}
+
+.Sitz {
+    object-fit: contain;
+    width: 100%;
+    max-height: 100px;
+    margin-right: 10px;
+    transition: transform 450ms;
+}
+
+.Sitz:hover {
+    transform: scale(1.08);
+    opacity: 1;
+}
