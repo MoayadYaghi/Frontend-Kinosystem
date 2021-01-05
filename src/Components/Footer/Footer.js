@@ -68,9 +68,7 @@ function Footer() {
             <div className="col-md-3 col-sm-6">
               <h4>Informationen</h4>
               <ul className="list-unstyled">
-                <li>
-                <Link to = {InformationsLink}>Offene Stellen</Link>
-                </li>
+                
                 <li>
                 <Link to = {KontaktLink}>Kontakt</Link>
                 </li>

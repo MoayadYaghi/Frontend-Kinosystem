@@ -1,0 +1,72 @@
+.LogInField{
+    height: 40vw;
+    display: flex;
+}
+
+.FormFenster{
+    
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.InputTextField{
+    width: 60vw;
+    align-items: center;
+    height: 5vw;
+    font-size: 3vw; 
+    border-radius: 0.5vw;
+    font-weight: bold ;
+    text-align: center;
+    
+}
+.SubmitField{
+    display: flex;
+    flex-direction: column;
+    grid-gap: 1vw;
+ 
+    align-items: center;
+
+
+}
+.Registrieren{
+    display: flex;
+    background-color: brown;
+    height: 4vw;
+    width: 25vw;
+    font-size: 2vw;
+    font-weight: bold;
+    color: black;
+    align-items: center;
+    justify-content: center;
+
+}
+.Registrieren:hover{
+    background-color: black;
+    color: white;
+}
+
+.Submitbutton{
+    background-color: darkgreen;
+    height: 5vw;
+    width: 20vw;
+    font-size: 3vw;
+    font-weight: bold;
+}
+.Submitbutton:hover{
+    background-color: darkblue;
+    color: aquamarine;
+}
+.InputField{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    grid-gap: 3vw;
+}
+.Zusammenhängend{
+    display: flex;
+    align-items: center;
+}

@@ -1,5 +1,6 @@
-import Navbar from ".././Components/Navbar/Navbar";
-import Footer from ".././Components/Footer/Footer";
+import Navbar from ".././Components/Navbar/Navbar"; 
+import Footer from ".././Components/Footer/Footer"; 
+import SmoImpAuf from "../Components/SmorollImpres/SmoImpAuf"
 import React from "react";
 import ".././App.css";
 
@@ -11,7 +12,7 @@ const kontakt = () => {
     <div className="App">
       <Navbar />
 
-      <h1>kontakt Seite</h1>
+            <SmoImpAuf/>
 
       <Footer />
     </div>
