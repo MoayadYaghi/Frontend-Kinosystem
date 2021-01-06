@@ -25,6 +25,8 @@ class FilmSuche extends Component{
     /* this.APIaufruf= this.APIaufruf.bind(this) */
     
   }
+
+  
     
     
     handleChange(event) {
@@ -69,17 +71,12 @@ class FilmSuche extends Component{
            this.setState({FehlerAusgabe: false})
          }
 
-
-
-
-          
-           
-         
-           
-        
-       
        }
        )}
+
+       clickHandler(Info){
+        alert("Das ist die ID: "+Info)
+      }
 
 
 
@@ -156,7 +153,7 @@ class FilmSuche extends Component{
           filme => ( 
           
           <div key = {filme.id}> <div className ="ErgebnisDarstellung"><img key ={filme.id} alt= " " className="image" src={filme.image} /></div>
-              <div className="Title"> {filme.title}  {filme.description}</div></div>
+              <div className="Title"> <div onClick={this.clickHandler(filme.title)}>{filme.title}</div>   {filme.description}</div></div>
           )
      )}
      

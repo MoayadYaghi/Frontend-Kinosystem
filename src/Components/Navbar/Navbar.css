@@ -39,7 +39,7 @@
     width: 70vw;
     justify-content:center;
     margin-right: 2rem;
-    margin: 0px 16px 0px 0px;
+    
 
     
     
@@ -103,7 +103,7 @@
         opacity: 1;
         transition: all 0.5s ease;
         z-index: 1;
-        
+        margin-right: 10vw;
 
     }
     .nav-links {
@@ -236,6 +236,9 @@
                 font-size: 12vw;
         
             }
+            .nav-links-mobile {
+                transform: translateY( -320px);
+            }
         
     }  
 @media screen and (min-width: 251px) and (max-width: 350px){
@@ -259,11 +262,15 @@
         transform: translateY( -250px);
          }
         
-        .fa-times {
+    .fa-times {
                 
                 font-size: 10vw;
         
             }
+    .nav-links-mobile {
+        transform: translateY( -300px);
+        
+         }
     
         
 
@@ -294,6 +301,9 @@
                 font-size: 9vw;
         
             }  
+            .nav-links-mobile {
+                transform: translateY( -200px);
+                 }
     
         
 
@@ -305,7 +315,7 @@
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         font-size: 3rem;
         text-align: center;
-        margin-left: -80px;
+        
         align-items: center;
         font-weight: bold;
 
@@ -324,6 +334,9 @@
                 font-size: 8vw;
         
             }
+            .nav-links-mobile {
+                transform: translateY( -150px);
+                 }
 
 }
 @media screen and (min-width: 601px) and ( max-width: 750px){
@@ -333,7 +346,7 @@
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         font-size: 3.5rem;
         text-align: center;
-        margin-left: -80px;
+       
         align-items: center;
         font-weight: bold;
 
@@ -364,7 +377,7 @@
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         font-size: 4.2rem;
         text-align: center;
-        margin-left: -60px;
+       
         align-items: center;
         font-weight: bold;
                
@@ -407,7 +420,7 @@
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         font-size: 6.5rem;
         text-align: center;
-        margin-left: -60px;
+       
         align-items: center;
         font-weight: bold;
                
@@ -422,7 +435,7 @@
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         font-size: 7vw;
         text-align: center;
-        margin-left: -60px;
+      
         align-items: center;
         font-weight: bold;
                
