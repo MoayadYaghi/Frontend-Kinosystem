@@ -11,7 +11,6 @@ const Shop = () => {
     <div className="App">
       <Navbar />
 
-      <h1>Shop Seite</h1>
       <ShopSeite />
 
       <Footer />

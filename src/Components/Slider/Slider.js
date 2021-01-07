@@ -47,24 +47,6 @@ function MoviesSlider({ images, text }) {
       </div>
     )
   );
-
-  /* // Works with local pics
-  //   const [index, setIndex] = useState(0);
-  //   let sliderArr = [<Images src={pic1} />, <Images src={pic2} />, <Images src={pic3} />];
-
-  //   const goLeft = () => { 
-  //     index === 0 ? setIndex(-100 * (sliderArr.length - 1)) : setIndex(index + 100);
-  // };
-  //   const goRight = () => {
-  //     index === -100 * (sliderArr.length - 1) ? setIndex(0) : setIndex(index - 100);
-  // };
-
-  //   return (
-  //     <div className="slider">
-  //       <button id="goLeft" onClick={goLeft}>{"<"}</button>
-  //       <button id="goRight" onClick={goRight}>{">"}</button>
-  //     </div>
-  //   );*/
 }
 
 export default MoviesSlider;
