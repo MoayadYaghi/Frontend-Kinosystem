@@ -2,22 +2,49 @@ import React, { Component } from "react";
 import { Button } from "../Button";
 import "./Shop.css";
 import Fanshop from "./FanShop";
-import Gutscheine from "./FanShop";
+import Gutscheine from "./Gutscheine";
 import { Link } from "react-router-dom";
+import Paper from "@material-ui/core/Paper";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+
+const Value = () => {
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+  return [value, handleChange];
+};
 
 class Shop extends Component {
-  state = {};
-
   render() {
     return (
       <div className="Shop">
-        <Button className="Warenkorb-button"> In den Warenkorb legen </Button>
-        <Button className="Kasse-button"> Zur Kasse gehen </Button>
-        <div className="FanShopTab">
-        <Fanshop/>
+        <Button className="Warenkorb"> In den Warenkorb legen </Button>
+        <Button className="Kasse"> Zur Kasse gehen </Button>
+        <Paper square>
+          <Tabs
+            value={Value.value}
+            indicatorColor="primary"
+            textColor="primary"
+            onChange={Value.handleChange}
+            aria-label="disabled tabs example"
+          >
+            <Tab label="Fanshop">
+              <Fanshop />
+            </Tab>
+            <Tab label="Gutscheine">
+              <Gutscheine />
+            </Tab>
+          </Tabs>
+        </Paper>
+
+        <div className="FanshopTab">
+          <Fanshop />
         </div>
-        <div className="Gutscheine">
-        <Gutscheine/>
+        <div className="GutscheineTab">
+          <Gutscheine />
         </div>
       </div>
     );
