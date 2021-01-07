@@ -20,6 +20,11 @@
   cursor: pointer;
 }
 
+.Logo {
+  float: left;
+  height: inherit;
+}
+
 .LOGO1 {
   margin-left: 0.5rem;
   font-size: 1.6rem;
@@ -348,6 +353,7 @@
   height: 120px;
   width: 100%;
 }
+}
 @media screen and (min-width: 351px) and (max-width: 450px){
     
     .Kreativ{
@@ -380,9 +386,7 @@
     
         
 
-.Logo {
-  float: left;
-  height: inherit;
+
 }
 
 @media screen and (min-width: 451px) and ( max-width: 600px){
