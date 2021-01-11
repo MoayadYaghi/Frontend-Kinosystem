@@ -22,7 +22,7 @@ class DealDW extends Component {
             &#160; Wichtige Informationen &#160;
           </div>
         </div>
-        <div className="InfoDWText">
+        <div className="InfoDWText" onClick={this.clickhandler}>
           Aktuell dürfen aufgrund der aktuellen Coronabeschränkungen keine
           Vorstellung gezeigt werden. Diese Beschränkungen betreffen leider auch
           unser Autokino. Dennoch stehen wir euch gerne zur Verfügung wenn ihr

@@ -1,5 +1,5 @@
 .DealDWÜberschrift{
-    color: red;
+    color: blue;
     display: flex;
     margin-top: 2vw;
     font-weight: bold;
@@ -9,6 +9,7 @@
     align-items: center; 
     cursor: pointer;
     text-decoration: none;
+    
 }
 
 .InfoDWÜberschrift{
@@ -40,7 +41,12 @@
 .InfoDWSchrift {
   text-align: center;
 }
-
+.class{
+  display:none;
+}
+.class:hover{
+  font-size: large;
+}
 
 
 .DealDWText{
