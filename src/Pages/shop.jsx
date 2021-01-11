@@ -1,6 +1,7 @@
 import Navbar from ".././Components/Navbar/Navbar";
 import Footer from ".././Components/Footer/Footer";
 import React from "react";
+import ShopSeite from "../Components/Shop/Shop";
 import ".././App.css";
 //import ShopSeite from "../Components/Shop/Shop";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -11,7 +12,7 @@ const Shop = () => {
     <div className="App">
       <Navbar />
 
-      
+      <ShopSeite />
 
       <Footer />
     </div>

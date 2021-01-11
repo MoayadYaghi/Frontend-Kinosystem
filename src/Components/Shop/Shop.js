@@ -31,7 +31,7 @@ class Shop extends Component {
             onChange={Value.handleChange}
             aria-label="disabled tabs example"
           >
-            <Tab label="Fanshop">
+            <Tab label="Fanshop" onClick={Fanshop} >
               <Fanshop />
             </Tab>
             <Tab label="Gutscheine">

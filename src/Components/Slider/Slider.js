@@ -47,6 +47,7 @@ function MoviesSlider({ images, text }) {
       </div>
     )
   );
+
 }
 
 export default MoviesSlider;
