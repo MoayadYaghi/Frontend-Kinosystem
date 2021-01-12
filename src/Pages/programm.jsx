@@ -12,7 +12,7 @@ const Programm = () => {
     <div className="App">
       <Navbar />
 
-      <ProgrammSeite/>
+      <ProgrammSeite />
 
       <Footer />
     </div>

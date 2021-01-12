@@ -5,7 +5,7 @@
   margin-bottom: 0px;
   padding-right: 1%;
   padding-top: 1%;
-  background-color: #D7DBDD;
+  background-color: #d7dbdd;
   /*box-shadow: 6px 6px 10px hsla(300,15%,25%,0.7) inset;*/
   box-shadow: 10px 10px 15px silver;
 }
@@ -15,14 +15,14 @@
   font-weight: normal;
   border-radius: 8px;
   cursor: pointer;
-  background-color: #D7DBDD;
+  background-color: #d7dbdd;
   font-size: 1.2rem;
   text-align: center;
 }
 
 .SpalteS:hover {
   color: black;
-  background-color: #D7DBDD;
+  background-color: #d7dbdd;
   border-radius: 8px;
   transition: all 0.2s ease-out;
 }
@@ -86,7 +86,7 @@
   margin-bottom: 2rem;
 }
 .Inf-Box {
-  background-color: #D7DBDD;
+  background-color: #d7dbdd;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 2vw;
   padding-top: 5%;
@@ -166,7 +166,7 @@
   }
 }
 .Hintergrund {
-  background-color:#D7DBDD !important;
+  background-color: #d7dbdd !important;
   height: 500px !important;
   width: 100%;
   margin-left: 0px;
@@ -187,17 +187,18 @@
 }
 
 table {
-    background-color: #eaf0f3;
-    border-collapse: separate;
-    border: none;
-  }
+  background-color: #eaf0f3;
+  border-collapse: separate;
+  border: none;
+}
 
 thead {
   background-color: #d7dcdf;
   border: 1px solid;
 }
 
-td, th {
+td,
+th {
   text-align: left;
   padding: 0.5em 1em;
   border: 1px solid;
