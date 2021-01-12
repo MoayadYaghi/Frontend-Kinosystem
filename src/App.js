@@ -31,6 +31,7 @@ import Impressum from "./Pages/impressum";
 import Wunschliste from "./Pages/wunschliste";
 import Sitzplatzreservierung from "./Pages/sitzplatzres";
 import Admin from "./Pages/AdminFilmAuswahl";
+import VorstellungHinzufügen from "./Pages/VorstellungHinzufügen";
 
 class App extends Component {
 
