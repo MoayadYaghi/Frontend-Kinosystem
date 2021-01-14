@@ -1,8 +1,8 @@
-import React, { Component, useEffect, useState } from "react"; 
-import View from 'react-native';
-import Image from '../../assets/LOGO1.png';
-import axios from 'axios';
-import 'Sitzplatzreservierung.css';
+import React, { Component, useEffect, useState } from "react";
+import View from "react-native";
+import Image from "../../assets/LOGO1.png";
+import axios from "axios";
+import "Sitzplatzreservierung.css";
 
 // vom Backend
 const url = "";
@@ -26,15 +26,16 @@ const SitzenPlan = ({ Sitz, UrlHolen }) => {
     <div className="Sitz">
       <div className="SitzPlan">
         {sitz.map((sitz) => (
-          <img className="SitzPlan"
-          key={sitz.id}
-          src={`${url}${sitz.sitz_path}`}
-          alt={sitz} //
+          <img
+            className="SitzPlan"
+            key={sitz.id}
+            src={`${url}${sitz.sitz_path}`}
+            alt={sitz} //
           />
         ))}
       </div>
     </div>
-  )
+  );
 };
 
 export default SitzenPlan;

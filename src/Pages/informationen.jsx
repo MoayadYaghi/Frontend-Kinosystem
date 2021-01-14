@@ -12,9 +12,6 @@ const Informationen = () => {
   return (
     <div className="App">
       <Navbar />
-
-      <h1>Informationen Seite</h1>
-
       <Smoroll />
       <Footer />
     </div>

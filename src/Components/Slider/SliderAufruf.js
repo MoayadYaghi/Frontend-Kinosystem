@@ -1,6 +1,5 @@
 import React from "react";
 import MoviesSlider from "./Slider";
-
 import SliderAPI from "../../API_Pulls/SliderAPI";
 
 class SliderAufruf extends React.Component {

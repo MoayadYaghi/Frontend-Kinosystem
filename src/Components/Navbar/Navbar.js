@@ -20,6 +20,7 @@ class Navbar extends Component {
           <a className="Link" alt="logo" href="/">
             <img alt="Logo" border="0" src={logo} className="Logo"></img>
           </a>
+          <h1 className="Gruppenname">Kreative Gruppe 42</h1>
         </div>
 
         <nav className="NavbarItems">

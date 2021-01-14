@@ -6,14 +6,13 @@ import ".././App.css";
 
 //import { Link } from "react-router-dom";
 
-import ProgrammSeite from ".././Components/ProgrammSeite/ProgrammSeite"
+import ProgrammSeite from ".././Components/ProgrammSeite/ProgrammSeite";
 
 const Aktuell = () => {
   return (
     <div className="App">
       <Navbar />
 
-      
       <Footer />
     </div>
   );
