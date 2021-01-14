@@ -75,7 +75,6 @@ class ProgrammSeite extends Component {
     this.setState({ showAlterFilter: !this.state.showAlterFilter });
   }
 
-
   render() {
     const { showGenreFilter, showAlterFilter } = this.state;
     return (
