@@ -1,5 +1,5 @@
 .DealDWÜberschrift {
-  color: blue;
+  color: #ffa533;
   display: flex;
   margin-top: 2vw;
   font-weight: bold;
@@ -9,23 +9,21 @@
   align-items: center;
   cursor: pointer;
   text-decoration: none;
+  text-shadow: 0 4px 8px 0 rgba(255, 0, 0, 0.527),0 6px 25px 0 rgb(197, 192, 192);
 }
 
 .InfoDWÜberschrift {
-  color: rgb(31, 73, 165);
-
+  color: #ffa533;
   margin-top: 2vw;
   font-weight: bold;
   font-size: 4rem;
-
   margin-top: 2vw;
   font-weight: bold;
   font-size: 4.5vw;
-
   text-align: center !important;
   align-items: center;
-
   text-decoration: none;
+  text-shadow: 0 4px 8px 0 rgba(255, 0, 0, 0.527),0 6px 25px 0 rgb(197, 192, 192);
 }
 
 .DealDWSchrift {
@@ -34,38 +32,38 @@
 
 .DealDWSchrift:hover {
   color: darkred;
-
   border-radius: 10px;
 }
+
 .InfoDWSchrift {
   text-align: center;
 }
+
 .class {
   display: none;
 }
+
 .class:hover {
   font-size: large;
 }
 
 .DealDWText {
-  background-color: grey;
+  background-color: rgb(100, 117, 128);
   font-family: Arial, Helvetica, sans-serif;
-  border: black;
-  border-style: solid;
   font-size: 2vw;
   align-items: center;
   text-align: center;
 }
 
 .InfoDWText {
-  background-color: grey;
+  background-color: rgb(100, 117, 128);
   font-family: Arial, Helvetica, sans-serif;
-  border: black;
-  border-style: solid;
   font-size: 2vw;
   align-items: center;
   text-align: center;
   color: white;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.527),0 6px 25px 0 rgb(197, 192, 192);
 }
 
 .DealDWKomplett {
@@ -75,6 +73,7 @@
   margin-right: 10%;
   margin-bottom: 3vw;
 }
+
 .Fehler {
   font-size: 4vw;
   font-weight: bold;
@@ -85,25 +84,27 @@
   margin-left: 20%;
   margin-right: 20%;
 }
-.DealDWText {
-  background-color: grey;
-  font-family: Arial, Helvetica, sans-serif;
-  border: black;
-  border-style: solid;
-  font-size: 1.8vw;
-  align-items: center;
-  text-align: center;
-}
 
-.InfoDWText {
-  background-color: grey;
+.DealDWText {
+  background-color: rgb(100, 117, 128);
   font-family: Arial, Helvetica, sans-serif;
-  border: black;
-  border-style: solid;
+  border-style: hidden;
   font-size: 1.8vw;
   align-items: center;
   text-align: center;
   color: white;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.527),0 6px 25px 0 rgb(197, 192, 192);
+}
+
+.InfoDWText {
+  background-color: rgb(100, 117, 128);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.8vw;
+  align-items: center;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.527),0 6px 25px 0 rgb(197, 192, 192);
 }
 
 @media screen and (max-width: 820px) {
@@ -129,6 +130,7 @@
   text-align: center;
   margin-right: 10%;
 }
+
 .Fehler {
   font-size: 4vw;
   font-weight: bold;

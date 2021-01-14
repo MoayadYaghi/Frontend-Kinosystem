@@ -22,7 +22,6 @@ class Navbar extends Component {
           </a>
           <h1 className="Gruppenname">Kreative Gruppe 42</h1>
         </div>
-
         <nav className="NavbarItems">
           <div className="navbar-logo"></div>
 

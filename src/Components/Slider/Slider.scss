@@ -1,3 +1,5 @@
+
+
 .slider {
   display: flex;
   position: relative;
@@ -23,6 +25,14 @@
   transition: 0.5s;
   overflow: hidden;
   transform: translateX(1%);
+}
+
+#goLeftMobile {
+  display: none;
+}
+
+#goRightMobile {
+  display: none;
 }
 
 %btn-styles {
@@ -58,13 +68,12 @@
   flex-direction: column;
   text-align: center;
   height: 100px;
-  background-color: gray;
   width: 50%;
   align-items: center;
   position: relative;
   overflow: hidden;
   margin-left: 25%;
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 .image {
@@ -72,4 +81,41 @@
   transition: 2s;
   height: 100%;
   transition: 0.5s;
+}
+
+@media (max-width: 820px) {
+
+  #flexboxContainer {
+    height: 130%;
+    color: white;
+  }
+
+  %btnMobile-styles {
+    display: flex;
+    height: 100%;
+    transform: translateY(-50%);
+    align-items: center;
+    width: 15%;
+    transition: 0.5s;
+    color: white;
+    &:hover {
+      background: rgba(0, 0, 0, 0.438);
+      cursor: pointer;
+      color: rgb(196, 196, 196);
+    }
+  }
+
+  #goLeft {
+    @extend %btnMobile-styles;
+  }
+
+  #goRight {
+    @extend %btnMobile-styles;
+  }
+}
+
+@media (orientation: landscape) and (max-width: 100px) {
+}
+
+@media (orientation: portrait) {
 }
