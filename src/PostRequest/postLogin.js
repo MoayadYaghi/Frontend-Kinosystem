@@ -6,10 +6,11 @@ const REST_API_Post_Login = ""
 
 class PostNewMovie{
     
+    sendnewLogin(data){
 
+    return axios.post('hhtp://localhost:8081/PostLogin')
 
-
-
+    }
 }
 
 

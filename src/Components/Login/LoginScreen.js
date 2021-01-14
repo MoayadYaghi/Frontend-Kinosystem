@@ -26,9 +26,11 @@ class LoginScreen extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    postLogin.sendnewLogin(this.state)
+   /*  postLogin.sendnewLogin(this.state).then(res => {
+      localStorage.setItem('token', res.token)
+    }) */
 
-    axios.post
+    
     console.log("Ergebnisse: ");
     console.log(this.state.Benutzername);
     console.log(this.state.Passwort);
