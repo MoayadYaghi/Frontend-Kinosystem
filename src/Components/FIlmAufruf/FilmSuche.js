@@ -111,13 +111,14 @@ class FilmSuche extends Component {
   render() {
     return (
       <div>
-        <div className="Suche">
+        <div className="Suche" >
           <form className="Form" onSubmit={this.handleSubmit}>
             <div className="Textfield">
+              
               <label>
                 <input
                   className="InputText"
-                  placeholder="Suchbegriff"
+                  placeholder="Suchbegriff"git 
                   name="value"
                   type="text"
                   value={this.state.value}
@@ -203,6 +204,10 @@ class FilmSuche extends Component {
               Das hat Leider nicht geklappt, es wurden keine Ergebnisse gefunden
             </div>
           ) : null}
+
+
+
+          
         </div>
       </div>
     );

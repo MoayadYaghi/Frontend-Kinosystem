@@ -31,6 +31,8 @@ import Impressum from "./Pages/impressum";
 import Wunschliste from "./Pages/wunschliste";
 import Sitzplatzreservierung from "./Pages/sitzplatzres";
 import Admin from "./Pages/AdminFilmAuswahl";
+import Test1 from "./Pages/Test1";
+import Test2 from "./Pages/Test2";
 
 class App extends Component {
   render() {
@@ -55,6 +57,8 @@ class App extends Component {
     const WunschlisteLink = "/Wunschliste";
     const SitzplatzresLink = "/Sitzplatz";
     const AdminLink = "/Admin";
+    const Test1Link = "/Test1"
+    const Test2Link = "/Test2"
 
     return (
       <Router>
@@ -80,6 +84,8 @@ class App extends Component {
           <Route exact path={WarenkorbLink} component={Warenkorb} />
           <Route exact path={ImpressumLink} component={Impressum} />
           <Route exact path={WunschlisteLink} component={Wunschliste} />
+          <Route exact path={Test1Link} component={Test1} />
+          <Route exact path={Test2Link} component={Test2} />
           <Route
             exact
             path={SitzplatzresLink}

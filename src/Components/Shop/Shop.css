@@ -8,15 +8,15 @@
 }
 
 .ProduktName {
-    margin-right: 80%;
+  margin-right: 80%;
 }
 
 .ProduktBild {
-    margin-right: 80%;
+  margin-right: 80%;
 }
 
 .Produktbeschreibung {
-    margin-right: 80%;
+  margin-right: 80%;
 }
 
 .Größe {
@@ -35,16 +35,25 @@
 }
 
 .Warenkorb {
+  position: right;
 }
 
 .Kasse {
 }
 
 .Gutscheine {
-    width: 70%;
-    margin-left: 5%;
-    text-align: center;
-    margin-right: 30%;
-    margin-bottom: 3vw;
-    background-color: rgb(167, 111, 111);
+  width: 70%;
+  margin-left: 5%;
+  text-align: center;
+  margin-right: 30%;
+  margin-bottom: 3vw;
+  background-color: rgb(167, 111, 111);
+}
+
+.Gutscheinbetrag {
+  margin-right: 80%;
+}
+
+.GutscheinBild {
+  margin-right: 80%;
 }
