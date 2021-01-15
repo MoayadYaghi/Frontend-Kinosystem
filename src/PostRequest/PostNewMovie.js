@@ -77,13 +77,13 @@ class PostNewMovie  extends Component{
         console.log(this.state)
             }
 
-        /* axios.post('http://localhost:3000/admin', this.state)
+         axios.post('http://localhost:8081/film/', this.state)
             .then(response =>{
              console.log(response)
             })
             .catch(error => {
                 console.log(error)
-            }) */
+            }) 
 
             return(<div>
                 Der Title: {this.state.title} wurde zu den Filmen hinzugefügt
