@@ -30,6 +30,7 @@ import Warenkorb from "./Pages/warenkorb";
 import Impressum from "./Pages/impressum";
 import Wunschliste from "./Pages/wunschliste";
 import Sitzplatzreservierung from "./Pages/sitzplatzres";
+import filmDetails from "./Pages/filmDetails";
 import Admin from "./Pages/AdminFilmAuswahl";
 
 class App extends Component {
@@ -55,6 +56,7 @@ render(){
   const FehlerLink = "/Fehler404";
   const WunschlisteLink = "/Wunschliste"
   const SitzplatzresLink = "/Sitzplatz"
+  const FilmDetailsLink = "/FilmDetails"
   const AdminLink ="/Admin"
 
 
@@ -82,6 +84,7 @@ render(){
        <Route exact path= {ImpressumLink} component={Impressum}/>
        <Route exact path= {WunschlisteLink} component={Wunschliste}/>
        <Route exact path= {SitzplatzresLink} component={Sitzplatzreservierung}/>
+       <Route exact path= {FilmDetailsLink} component={filmDetails}/>
        <Route exact path= {AdminLink} component={Admin}/>
 
 
