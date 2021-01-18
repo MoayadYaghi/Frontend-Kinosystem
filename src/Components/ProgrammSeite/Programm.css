@@ -27,3 +27,31 @@
     text-decoration: underline;
     width: 20rem;
 }
+.searchBar{
+    margin-top: 1%;
+    margin-bottom: 1% ;
+    margin-left: 1%;
+    margin-right: 1%;
+    width: 30%;
+    display: inline-block;
+}
+.searchField{
+    width: 100%;
+}
+.filter{
+    width: 30%;
+    display: inline-block;
+}
+.wholeFilterSection{
+    width: 100%;
+}
+.genre{
+    margin-left: 1%;
+    margin-right: 1%;
+    display: inline-block;
+}
+.alter{
+    margin-left: 1%;
+    margin-right: 1%;
+    display: inline-block;
+}

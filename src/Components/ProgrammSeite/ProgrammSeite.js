@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Programm.css";
 import { Link } from "react-router-dom";
 import GetAllFilmAPI from "../../API_Pulls/GetAllFilmAPI";
+import { Redirect } from 'react-router-dom';
 
 class ProgrammSeite extends Component {
   constructor(props) {
@@ -9,107 +10,144 @@ class ProgrammSeite extends Component {
     this.state = {
       genre: 'Alle',
       alter: 'Alle',
-      showGenreFilter: false,
-      showAlterFilter: false,
+      filmName:" ",
+      search: "",
+      showFilter: false,
+      redirect: false,
+      alleFilme: [],
       filme: []};
 
     this.handleChange = this.handleChange.bind(this);
     this.hideFilter = this.hideFilter.bind(this);
+    this.setRedirect = this.setRedirect.bind(this);
   }
 
   componentDidMount() {
     GetAllFilmAPI.getAllFilmAPI().then((response) => {
-      //var FilmInfo = response.data;
 
       this.setState({ filme: response.data });
+      this.setState({ alleFilme: response.data });
       console.log(this.state.filme);
     });
   }
 
   handleChange(event) {
-    if(event.target.id == "genreId") {
+    if(event.target.id == "searchId") {
+      this.setState({search: event.target.value})
+    }
+    else if(event.target.id == "genreId") {
       this.setState({genre: event.target.value});
     }
     else if(event.target.id == "alterId") {
       this.setState({alter: event.target.value});
     }
-    GetAllFilmAPI.getAllFilmAPI().then((response) => {
-      let alleFilme = response.data;
-      let genreFilme = [];
-      let alterFilme = [];
-      let genre = document.getElementById("genreId");
-      let alter = document.getElementById("alterId");
+
+    let alleFilme = this.state.alleFilme;
+
+    let genreFilme = [];
+    let alterFilme = [];
+    let suchFilme = [];
+    let genre = document.getElementById("genreId");
+    let alter = document.getElementById("alterId");
+    let search = document.getElementById("searchId")
+
+    for(let film in alleFilme) {
+      if(alleFilme[film].name.includes(search.value)) {
+        suchFilme.push(alleFilme[film]);
+      }
+    }
+    //this.setState({ filme: suchFilme})
+    if(this.state.showFilter === true) {
       if(genre.value == "Alle") {
-        //this.setState({ filme: filterFilme });
-        genreFilme = alleFilme;
+        genreFilme = suchFilme;
       } else {
-        for(let i=0; i<alleFilme.length; i++) {
-          let genreList = alleFilme[i].genre;
+        for(let i=0; i<suchFilme.length; i++) {
+          let genreList = suchFilme[i].genre;
           for(let g in genreList) {
   
             if(genreList[g]== genre.value) {
-              genreFilme.push(alleFilme[i]);
+              genreFilme.push(suchFilme[i]);
               break;
             }
           }
         }
-        //this.setState({ filme: filterFilme });
       }
       if(alter.value == "Alle") {
-        //this.setState({ filme: filterFilme });
         alterFilme = genreFilme;
       } else {
         for(let i=0; i<genreFilme.length; i++) {
           let altersfreigabe = genreFilme[i].mindestAlter;
-          if(altersfreigabe == alter.value) {
+          if(altersfreigabe <= alter.value) {
             alterFilme.push(genreFilme[i]);
           }
         }
       }
       this.setState({ filme: alterFilme });
-    });
+    } else {
+      this.setState({ filme: suchFilme });
+    }
   }
-  
+
   hideFilter() {
-    this.setState({ showGenreFilter: !this.state.showGenreFilter });
-    this.setState({ showAlterFilter: !this.state.showAlterFilter });
+    this.setState({ showFilter: !this.state.showFilter });
+  }
+
+  setRedirect = () => {
+    this.setState({
+      redirect: true
+    })
+  }
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to='/FilmDetails' />
+    }
   }
 
   render() {
-    const { showGenreFilter, showAlterFilter } = this.state;
+    const { showFilter } = this.state;
+
     return (
       <div className = "" >
-        <div className = "filter">
-          <button onClick={() => this.hideFilter()}>
-            Filter
-          </button>
-          {showGenreFilter && <form>
-            <label>
-            Genre
-              <select id="genreId" value={this.state.genre} onChange={this.handleChange}>
-                <option value="Alle">Alle</option>
-                <option value="Action">Action</option>
-                <option value="Drama">Drama</option>
-                <option value="Sci-Fi">Sci-Fi</option>
-                <option value="Fantasy">Fantasy</option>
-                <option value="Horror">Horror</option>
-                <option value="Animation">Animation</option>
-                <option value="Family">Familie</option>
-              </select>
-            </label>
-          </form>}
-          {showAlterFilter && <form>
-            <label>
-            Altersfreigabe
-              <select id="alterId" value={this.state.alter} onChange={this.handleChange}>
-                <option value="Alle">Alle</option>
-                <option value="6">ab 6 Jahren</option>
-                <option value="12">ab 12 Jahren</option>
-                <option value="16">ab 16 Jahren</option>
-                <option value="18">ab 18 Jahren</option>
-              </select>
-            </label>
-          </form>}
+        <div className = "wholeFilterSection">
+          <div className = "searchBar">
+            <input className = "searchField" id="searchId" type="text" placeholder="Search" value={this.state.search} onChange={this.handleChange}/>
+          </div>
+          <div className = "filter">
+            <button onClick={() => this.hideFilter()}>
+              Filter
+            </button>
+            {showFilter && <div className = "genre">
+              <form>
+              <label>
+                Genre
+                <select id="genreId" value={this.state.genre} onChange={this.handleChange}>
+                  <option value="Alle">Alle</option>
+                  <option value="Action">Action</option>
+                  <option value="Drama">Drama</option>
+                  <option value="Sci-Fi">Sci-Fi</option>
+                  <option value="Fantasy">Fantasy</option>
+                  <option value="Horror">Horror</option>
+                  <option value="Animation">Animation</option>
+                  <option value="Family">Familie</option>
+                </select>
+              </label>
+            </form>
+            </div>}
+            {showFilter && <div className = "alter">
+              <form>
+              <label>
+                Altersfreigabe
+                <select id="alterId" value={this.state.alter} onChange={this.handleChange}>
+                  <option value="Alle">Alle</option>
+                  <option value="6">ab 6 Jahren</option>
+                  <option value="12">ab 12 Jahren</option>
+                  <option value="16">ab 16 Jahren</option>
+                  <option value="18">ab 18 Jahren</option>
+                </select>
+              </label>
+            </form>
+            </div>}
+          </div>
         </div>
         <h1 className="text-center"> Ergebnisse </h1>
         <div className="filmListe">
@@ -118,7 +156,8 @@ class ProgrammSeite extends Component {
             <div className="ErgebnisDarstellung">
               <img key={film.id} alt=" " className="image" src={film.bild}/>
             </div>
-            <div className="Title">
+            {this.renderRedirect()}
+            <div className="Title" onClick={this.setRedirect}>
               {" "}
               {film.name}
             </div>
