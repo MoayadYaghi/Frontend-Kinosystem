@@ -1,22 +1,29 @@
 import Navbar from ".././Components/Navbar/Navbar";
 import Footer from ".././Components/Footer/Footer";
-import LoginScreen from ".././Components/Login/LoginScreen";
+import Test1 from ".././Components/Test/Test1";
+
+
 import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import ".././App.css";
 
-import "bootstrap/dist/css/bootstrap.min.css";
 //import { Link } from "react-router-dom";
 
-const LogIn = () => {
+
+
+
+const StartSeite = () => {
   return (
     <div className="App">
       <Navbar />
+      <Test1/>
+            
+            
 
-      <LoginScreen />
 
       <Footer />
     </div>
   );
 };
 
-export default LogIn;
+export default StartSeite;

@@ -15,11 +15,9 @@ const StartSeite = () => {
   return (
     <div className="App">
       <Navbar />
-
       <SliderAufruf />
       <InfoderWoche />
       <DealDW />
-
       <Footer />
     </div>
   );

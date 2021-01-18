@@ -103,7 +103,6 @@ class ProgrammSeite extends Component {
     }
   }
 
-
   render() {
     const { showFilter } = this.state;
 

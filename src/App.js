@@ -32,9 +32,11 @@ import Wunschliste from "./Pages/wunschliste";
 import Sitzplatzreservierung from "./Pages/sitzplatzres";
 import filmDetails from "./Pages/filmDetails";
 import Admin from "./Pages/AdminFilmAuswahl";
+import Test1 from "./Pages/Test1";
+import Test2 from "./Pages/Test2";
 
 class App extends Component {
-
+  
 render(){
   // Links
   const HomeLink = "/";
