@@ -57,6 +57,7 @@ render(){
   const WunschlisteLink = "/Wunschliste"
   const SitzplatzresLink = "/Sitzplatz"
   const AdminLink ="/Admin"
+  const VorstellungHinzufügenLink ="/VorHin"
 
 
   
@@ -84,6 +85,7 @@ render(){
        <Route exact path= {WunschlisteLink} component={Wunschliste}/>
        <Route exact path= {SitzplatzresLink} component={Sitzplatzreservierung}/>
        <Route exact path= {AdminLink} component={Admin}/>
+       <Route exact path= {VorstellungHinzufügenLink} component={VorstellungHinzufügen}/>
 
 
 
