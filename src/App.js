@@ -30,11 +30,14 @@ import Warenkorb from "./Pages/warenkorb";
 import Impressum from "./Pages/impressum";
 import Wunschliste from "./Pages/wunschliste";
 import Sitzplatzreservierung from "./Pages/sitzplatzres";
+import filmDetails from "./Pages/filmDetails";
 import Admin from "./Pages/AdminFilmAuswahl";
 import VorstellungHinzufügen from "./Pages/VorstellungHinzufügen";
+import Test1 from "./Pages/Test1";
+import Test2 from "./Pages/Test2";
 
 class App extends Component {
-
+  
 render(){
   // Links
   const HomeLink = "/";
@@ -56,6 +59,7 @@ render(){
   const FehlerLink = "/Fehler404";
   const WunschlisteLink = "/Wunschliste"
   const SitzplatzresLink = "/Sitzplatz"
+  const FilmDetailsLink = "/FilmDetails"
   const AdminLink ="/Admin"
   const VorstellungHinzufügenLink ="/VorHin"
 
@@ -84,6 +88,7 @@ render(){
        <Route exact path= {ImpressumLink} component={Impressum}/>
        <Route exact path= {WunschlisteLink} component={Wunschliste}/>
        <Route exact path= {SitzplatzresLink} component={Sitzplatzreservierung}/>
+       <Route exact path= {FilmDetailsLink} component={filmDetails}/>
        <Route exact path= {AdminLink} component={Admin}/>
        <Route exact path= {VorstellungHinzufügenLink} component={VorstellungHinzufügen}/>
 

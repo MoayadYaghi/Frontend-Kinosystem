@@ -1,175 +1,155 @@
-.LogInField{
-    
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.LogInField {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.FormFenster{
-    
-    width: 100%;
-    height: 100%;
-    margin-top: 5vw;
-    margin-bottom: 5vw;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+.FormFenster {
+  width: 100%;
+  height: 100%;
+  margin-top: 5vw;
+  margin-bottom: 5vw;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
-.InputTextField{
-    width: 60vw;
-    align-items: center;
-    height: 5vw;
-    font-size: 3vw; 
-    border-radius: 0.5vw;
-    font-weight: bold ;
-    text-align: center;
-    
+.InputTextField {
+  width: 60vw;
+  align-items: center;
+  height: 5vw;
+  font-size: 3vw;
+  border-radius: 0.5vw;
+  font-weight: bold;
+  text-align: center;
 }
-.SubmitField{
-    display: flex;
-    flex-direction: column;
-    
- 
-    align-items: center;
+.SubmitField {
+  display: flex;
+  flex-direction: column;
 
-
+  align-items: center;
 }
-.Registrieren{
-    display: flex;
-    background-color: brown;
-    height: 4vw;
-    width: 25vw;
-    font-size: 2vw;
-    font-weight: bold;
-    color: black;
-    
-    justify-content: center;
+.Registrieren {
+  display: flex;
+  background-color: brown;
+  height: 4vw;
+  width: 25vw;
+  font-size: 2vw;
+  font-weight: bold;
+  color: black;
 
+  justify-content: center;
 }
-.Registrieren:hover{
-    background-color: black;
-    color: white;
+.Registrieren:hover {
+  background-color: black;
+  color: white;
 }
 
-.Submitbutton{
-    background-color: darkgreen;
-    height: 5vw;
-    width: 20vw;
-    font-size: 3vw;
-    font-weight: bold;
-    margin-bottom: 1rem;
+.Submitbutton {
+  background-color: darkgreen;
+  height: 5vw;
+  width: 20vw;
+  font-size: 3vw;
+  font-weight: bold;
+  margin-bottom: 1rem;
 }
-.Submitbutton:hover{
-    background-color: darkblue;
-    color: aquamarine;
+.Submitbutton:hover {
+  background-color: darkblue;
+  color: aquamarine;
 }
-.InputField{
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: 20%;
-    margin-right: 20%;
-    
-    align-items: center;
-    justify-content: center;
+.InputField {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 20%;
+  margin-right: 20%;
+
+  align-items: center;
+  justify-content: center;
 }
-.Zusammenhängend{
-    display: flex;
-    align-items: center;
+.Zusammenhängend {
+  display: flex;
+  align-items: center;
 }
 
-.Textfielde{
-    width: 60vw;
-    height: 4vw;
-    
+.Textfielde {
+  width: 60vw;
+  height: 4vw;
 }
-.Textfieldd{
+.Textfieldd {
+  width: 30vw;
+  height: 4vw;
+}
+.Textfields {
+  width: 15vw;
+  height: 4vw;
+}
+.Textfieldb {
+  width: 45vw;
+  height: 4vw;
+}
+
+@media screen and (max-width: 820px) {
+  .InputField {
+    margin-left: 10vw;
+    margin-right: 10vw;
+  }
+
+  .Textfielde {
+    width: 80vw;
+    height: 7vw;
+  }
+  .Textfieldd {
+    width: 40vw;
+    height: 7vw;
+  }
+
+  .Submitbutton {
+    height: 9vw;
     width: 30vw;
-    height: 4vw;
+  }
+  .InputTextField {
+    width: 80vw;
+    height: 6vw;
+  }
+  .Textfields {
+    width: 25vw;
+    height: 7vw;
+  }
+  .Textfieldb {
+    width: 55vw;
+    height: 7vw;
+  }
 }
-.Textfields{
-    width: 15vw;
-    height: 4vw;
-}
-.Textfieldb{
+
+@media screen and (max-width: 500px) {
+  .InputField {
+    margin-left: 5vw;
+    margin-right: 5vw;
+  }
+
+  .Textfielde {
+    width: 90vw;
+    height: 10vw;
+  }
+  .Textfieldd {
     width: 45vw;
-    height: 4vw;
-}
-
-@media screen and (max-width: 820px){
-
-    
-
-    .InputField{
-        margin-left: 10vw;
-        margin-right: 10vw;
-    }
-
-    .Textfielde{
-        width: 80vw;
-        height: 7vw;
-    }
-    .Textfieldd{
-        width: 40vw;
-        height: 7vw;
-    }
-
-    .Submitbutton{
-        height: 9vw;
-        width: 30vw;
-        
-    }
-    .InputTextField{
-        width: 80vw;
-        height: 6vw;
-    }
-    .Textfields{
-        width: 25vw;
-        height: 7vw;
-    }
-    .Textfieldb{
-        width: 55vw;
-        height: 7vw;
-    }
-
-}
-
-@media screen and (max-width: 500px){
-
-    
-
-    .InputField{
-        margin-left: 5vw;
-        margin-right: 5vw;
-        
-        
-    }
-
-    .Textfielde{
-        width: 90vw;
-        height: 10vw;
-    }
-    .Textfieldd{
-        width: 45vw;
-        height: 10vw;
-    }
-    .Submitbutton{
-        background-color: darkgreen;
-        height: 12vw;
-        width: 40vw;
-        
-    }
-    .InputTextField{
-        width: 90vw;
-        height: 8vw;
-    }
-    .Textfields{
-        width: 30vw;
-        height: 10vw;
-    }
-    .Textfieldb{
-        width: 60vw;
-        height: 10vw;
-    }
-
+    height: 10vw;
+  }
+  .Submitbutton {
+    background-color: darkgreen;
+    height: 12vw;
+    width: 40vw;
+  }
+  .InputTextField {
+    width: 90vw;
+    height: 8vw;
+  }
+  .Textfields {
+    width: 30vw;
+    height: 10vw;
+  }
+  .Textfieldb {
+    width: 60vw;
+    height: 10vw;
+  }
 }

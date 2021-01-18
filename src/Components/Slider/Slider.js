@@ -6,13 +6,9 @@ import pic2 from "../../Pics/pic2.jpg";
 import pic3 from "../../Pics/pic3.jpg";
 import { TransitionGroup, CSSTransition } from "react-transition-group"; */
 
-var ReactCSSTransitionGroup = require("react-transition-group");
-
-
-
 function MoviesSlider({ images, text }) {
   /* console.log(images) */
-  
+
   const [index, setIndex] = useState(0);
 
   const goLeft = () => {
@@ -30,14 +26,16 @@ function MoviesSlider({ images, text }) {
   return (
     images.length > 0 && (
       <div>
-        <div className="slider">
-          <button id="goLeft" onClick={goLeft}>
-            {"<"}
-          </button>
-          <img className="image" alt="" src={images[index]} />
-          <button id="goRight" onClick={goRight}>
-            {">"}
-          </button>
+        <div className="flexboxContainer">
+          <div className="slider">
+            <button id="goLeft" onClick={goLeft}>
+              {"<"}
+            </button>
+            <img className="image" alt="" src={images[index]} />
+            <button id="goRight" onClick={goRight}>
+              {">"}
+            </button>
+          </div>
         </div>
         <div className="TextDisplay">
           <div key={index} className="slide">
@@ -47,7 +45,6 @@ function MoviesSlider({ images, text }) {
       </div>
     )
   );
-
 }
 
 export default MoviesSlider;

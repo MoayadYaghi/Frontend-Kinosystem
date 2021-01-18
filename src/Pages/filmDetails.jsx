@@ -1,22 +1,22 @@
 import Navbar from ".././Components/Navbar/Navbar";
 import Footer from ".././Components/Footer/Footer";
-import LoginScreen from ".././Components/Login/LoginScreen";
+
 import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import ".././App.css";
 
-import "bootstrap/dist/css/bootstrap.min.css";
 //import { Link } from "react-router-dom";
 
-const LogIn = () => {
+const filmDetails = () => {
   return (
     <div className="App">
       <Navbar />
 
-      <LoginScreen />
+      <h1>Film Details</h1>
 
       <Footer />
     </div>
   );
 };
 
-export default LogIn;
+export default filmDetails;
