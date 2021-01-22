@@ -5,10 +5,10 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Link,
+  
   Redirect,
 } from "react-router-dom";
-import Verlinkungen from "./Pages/verlinkungen";
+
 
 //Pages
 import StartSeite from "./Pages/startSeite";

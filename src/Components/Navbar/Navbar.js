@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button } from "../Button";
+
 import { MenuItems } from "./MenuItems";
 import "./Navbar.css";
 import logo from "../../assets/LOGO1.png";
@@ -23,9 +23,9 @@ class Navbar extends Component {
           <h1 className="Gruppenname">Kreative Gruppe 42</h1>
         </div>
         <nav className="NavbarItems">
-          <div className="navbar-logo"></div>
+          
 
-          <h1 className="navbar-logo"></h1>
+        
 
           <div className="menu-icon" onClick={this.handleClick}>
             <i

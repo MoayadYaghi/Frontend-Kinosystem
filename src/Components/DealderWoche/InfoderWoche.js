@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./DealDW.css";
-import Snacks from "../.././Pages/snacks";
+
 
 class DealDW extends Component {
   constructor(props) {
