@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import axios from 'axios'
 import  "./Post.css";
 
 class PostNewMovie  extends Component{
@@ -44,7 +44,7 @@ class PostNewMovie  extends Component{
         image
         
         ){
-            this.setState={Filmid,
+            this.state={Filmid,
                 title,
                 actor0,
                 actor0Cara,
@@ -85,9 +85,7 @@ class PostNewMovie  extends Component{
                 console.log(error)
             }) 
 
-            return(<div>
-                Der Title: {this.state.title} wurde zu den Filmen hinzugefügt
-            </div>)
+            
             
             
     }
