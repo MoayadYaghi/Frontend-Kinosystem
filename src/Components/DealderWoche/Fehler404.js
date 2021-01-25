@@ -3,9 +3,7 @@ import "./DealDW.css";
 import { Link } from "react-router-dom";
 
 class Fehler404 extends Component {
-  constructor(props) {
-    super(props);
-  }
+  
 
   render() {
     const HomeLink = "/";

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Style from "./Smoroll.css";
+import "./Smoroll.css";
 
 class Menue1 extends Component {
   state = {};

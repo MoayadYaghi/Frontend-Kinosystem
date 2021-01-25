@@ -3,9 +3,9 @@ import { Button } from "../Button";
 import "./Shop.css";
 import Fanshop from "./FanShop";
 import Gutscheine from "./Gutscheine";
-import Paper from "@material-ui/core/Paper";
+/* import Paper from "@material-ui/core/Paper";
 import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
+import Tab from "@material-ui/core/Tab"; */
 
 class Shop extends Component {
   constructor(props) {
@@ -31,18 +31,16 @@ class Shop extends Component {
   render() {
     return (
       <div className="Shop">
-          <Button className="Warenkorb"> In den Warenkorb legen </Button>
-          <Button className="Kasse"> Zur Kasse gehen </Button>
-        <div className="Produkte">
-          <Paper>
-            <Tabs>
-              <Tab label="Fanshop" onClick={this.FanshopHandler}></Tab>
-              <Tab label="Gutscheine" onClick={this.GutscheineHandler}></Tab>
-            </Tabs>
-          </Paper>
-          {this.state.Fanshop ? <Fanshop /> : null}
-          {this.state.Gutscheine ? <Gutscheine /> : null}
-        </div>
+        <Button className="Warenkorb"> In den Warenkorb legen </Button>
+        <Button className="Kasse"> Zur Kasse gehen </Button>
+        {/* <Paper>
+          <Tabs>
+            <Tab label="Fanshop" onClick={this.FanshopHandler}></Tab>
+            <Tab label="Gutscheine" onClick={this.GutscheineHandler}></Tab>
+          </Tabs>
+        </Paper> */}
+        {this.state.Fanshop ? <Fanshop /> : null}
+        {this.state.Gutscheine ? <Gutscheine /> : null}
       </div>
     );
   }

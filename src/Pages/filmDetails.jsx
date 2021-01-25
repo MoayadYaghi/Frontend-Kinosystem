@@ -1,23 +1,22 @@
 import Navbar from ".././Components/Navbar/Navbar";
-import SmoImpAuf from "../Components/SmorollImpres/SmoImpAuf";
-
 import Footer from ".././Components/Footer/Footer";
+
 import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import ".././App.css";
 
-import "bootstrap/dist/css/bootstrap.min.css";
 //import { Link } from "react-router-dom";
 
-const Impressum = () => {
+const filmDetails = () => {
   return (
     <div className="App">
       <Navbar />
 
-      <SmoImpAuf />
+      <h1>Film Details</h1>
 
       <Footer />
     </div>
   );
 };
 
-export default Impressum;
+export default filmDetails;

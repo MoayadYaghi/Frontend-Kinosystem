@@ -167,6 +167,10 @@
   .signIn {
     transform: translateX(-1000%);
   }
+  .Gruppenname{
+    padding-top: 2rem;
+  }
+  
 }
 
 .Headline1 {
@@ -177,6 +181,7 @@
   width: 100%;
   background-size: contain;
   background-color: var(--mainDark);
+  
   /*display: flex;
   justify-content: space-between;
   align-content: space-between;*/
@@ -246,6 +251,9 @@
   .fa-times {
     font-size: 10vw;
   }
+  .Gruppenname{
+    padding-top: 4rem;
+  }
 }
 
 @media screen and (min-width: 351px) and (max-width: 450px) {
@@ -267,6 +275,9 @@
   }
   .fa-times {
     font-size: 9vw;
+  }
+  .Gruppenname{
+    padding-top: 3rem;
   }
 }
 

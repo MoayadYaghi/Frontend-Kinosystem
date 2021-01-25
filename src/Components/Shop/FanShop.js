@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Button } from "../Button";
+
 import "./Shop.css";
-import { Link } from "react-router-dom";
+
 
 // const FanShop = () => {}
 class FanShop extends Component {

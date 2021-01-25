@@ -1,23 +1,22 @@
 import Navbar from ".././Components/Navbar/Navbar";
-import SmoImpAuf from "../Components/SmorollImpres/SmoImpAuf";
-
 import Footer from ".././Components/Footer/Footer";
+import Test2 from ".././Components/Test/Test2";
+//import Verlinkungen from "src/Pages/verlinkungen.js"
+
 import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import ".././App.css";
 
-import "bootstrap/dist/css/bootstrap.min.css";
 //import { Link } from "react-router-dom";
 
-const Impressum = () => {
+const StartSeite = () => {
   return (
     <div className="App">
       <Navbar />
-
-      <SmoImpAuf />
-
+      <Test2/>
       <Footer />
     </div>
   );
 };
 
-export default Impressum;
+export default StartSeite;

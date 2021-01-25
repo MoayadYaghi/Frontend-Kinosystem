@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Style from "./Smoroll.css";
+import "./Smoroll.css";
 import JS from "../../assets/Übersicht_Möglichkeiten.jpg";
 class Menue5 extends Component {
   state = {};
