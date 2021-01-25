@@ -1,0 +1,62 @@
+.SitzplanSeite {
+  display: flex;
+  justify-content: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-left: 1%;
+  padding-right: 1%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  border: 3px solid;
+  background-color: none;
+}
+
+.Sitzplan {
+  min-height: 500px;
+  width: 50%;
+  background-color: yellow;
+  order: 1;
+  padding-left: 1%;
+  padding-right: 1%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.Rest {
+  height: 500px;
+  width: 50%;
+  background-color: red;
+  order: 2;
+  margin-left: 10%;
+  padding-left: 1%;
+  padding-right: 1%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.SitzplatzreservierungÜberschrift {
+  align-content: center;
+  justify-content: center;
+  color: #ffa533;
+  font-weight: bold;
+  font-size: 2rem;
+  text-shadow: 0 4px 8px 0 rgba(255, 0, 0, 0.527),
+    0 6px 25px 0 rgb(197, 192, 192);
+}
+
+.Tickets {
+  border: 3px solid;
+  width: 50%;
+  justify-content: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  background-color: rgb(100, 117, 128);
+}
+
+.BezahlMöglichkeiten {
+  color: #ffa533;
+  font-weight: bold;
+  font-size: 2rem;
+  text-shadow: 0 4px 8px 0 rgba(255, 0, 0, 0.527),
+    0 6px 25px 0 rgb(197, 192, 192);
+}
