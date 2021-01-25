@@ -31,16 +31,18 @@ class Shop extends Component {
   render() {
     return (
       <div className="Shop">
-        <Button className="Warenkorb"> In den Warenkorb legen </Button>
-        <Button className="Kasse"> Zur Kasse gehen </Button>
-        <Paper>
-          <Tabs>
-            <Tab label="Fanshop" onClick={this.FanshopHandler}></Tab>
-            <Tab label="Gutscheine" onClick={this.GutscheineHandler}></Tab>
-          </Tabs>
-        </Paper>
-        {this.state.Fanshop ? <Fanshop /> : null}
-        {this.state.Gutscheine ? <Gutscheine /> : null}
+          <Button className="Warenkorb"> In den Warenkorb legen </Button>
+          <Button className="Kasse"> Zur Kasse gehen </Button>
+        <div className="Produkte">
+          <Paper>
+            <Tabs>
+              <Tab label="Fanshop" onClick={this.FanshopHandler}></Tab>
+              <Tab label="Gutscheine" onClick={this.GutscheineHandler}></Tab>
+            </Tabs>
+          </Paper>
+          {this.state.Fanshop ? <Fanshop /> : null}
+          {this.state.Gutscheine ? <Gutscheine /> : null}
+        </div>
       </div>
     );
   }

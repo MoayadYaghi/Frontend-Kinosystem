@@ -1,6 +1,7 @@
 import React, { Component, useEffect, useState } from "react";
 import View from "react-native";
 import Image from "../../assets/LOGO1.png";
+import { Button } from "../Button";
 import axios from "axios";
 import "Sitzplatzreservierung.css";
 
