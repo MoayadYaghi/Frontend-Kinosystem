@@ -1,4 +1,5 @@
 import Navbar from ".././Components/Navbar/Navbar";
+import Sitzplatzreservierung from ".././Components/Sitzplatzreservierung/Sitzplatzreservierung";
 import Footer from ".././Components/Footer/Footer";
 
 import React from "react";
@@ -12,7 +13,7 @@ const SitzplatzRes = () => {
     <div className="App">
       <Navbar />
 
-      <h1>Sitzplatzreservierung</h1>
+      <Sitzplatzreservierung />
 
       <Footer />
     </div>
