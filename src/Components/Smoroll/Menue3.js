@@ -25,6 +25,7 @@ class Menue3 extends Component {
           <div className="Inf-Boxsmall">Anfahrt</div>
           <iframe
             key="Maps"
+            title="Maps"
             width="100%"
             height="600"
             frameborder="0"

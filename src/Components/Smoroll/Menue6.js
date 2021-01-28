@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Style from "./Smoroll.css";
+import "./Smoroll.css";
 import logoP from "../../assets/Logo_PayPal.png";
 import logoM from "../../assets/Logo_mastercard.png";
 import logoK from "../../assets/LOGO1.png";
