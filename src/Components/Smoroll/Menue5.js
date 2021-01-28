@@ -16,14 +16,75 @@ class Menue5 extends Component {
           <div className="Inf-Boxsmall">Jugendschutz-Gesetz</div>
           Durch den Gesetzgeber sind vorgegeben, zu welchen Zeiten welche Filme
           gespielt werden dürfen:
-          <img
-            className="Logos"
-            alt="Jugendschutz-Gesetz"
-            key="Jugendschutz-Gesetz"
-            src={JS}
-          ></img>{" "}
-          <br />
-          (müssen wir noch selner machen !!!)
+          <div>
+          <table className="table table-striped">
+            <thead>
+              <tr>
+                <td></td>
+                <td>Bis 20 Uhr</td>
+                <td>Bis 22 Uhr</td>
+                <td>Bis 24 Uhr</td>
+                <td>Später als 24 Uhr</td>
+                
+              </tr>
+            </thead>
+            
+            <tbody>
+              <tr>
+                
+                <td>bis 6 Jahre</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+            <tbody>
+              <tr>
+                
+                <td>6-13 Jahre</td>
+                <th></th>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+            <tbody>
+              <tr>
+                
+                <td>14-15 Jahre</td>
+                <th></th>
+                <th></th>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+            <tbody>
+              <tr>
+                
+                <td>16-17 Jahre</td>
+                <th></th>
+                <th></th>
+                <th></th>
+                <td></td>
+              </tr>
+            </tbody>
+            <tbody>
+              <tr>
+                
+                <td>Ab 18 Jahre</td>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </tbody>
+            
+            
+          </table>
+          </div>
+         
+          
           <br />
           Ausnahmen hierzu bestehen, wenn eine Erziehungsbeauftragte Person als
           Begleitung mitkommt. Dies kann jede Person über 18 Jahren sein. Diese

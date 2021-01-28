@@ -20,112 +20,109 @@ class Menue2 extends Component {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                {" "}
+              
+               {/* <div className ="TabellenLinie">
                 Aktuelle Blockbuster
-                <td> </td>
-                <td> </td>
-              </tr>
+                </div>
+                {/* <td> </td>
+                <td> </td> */}
+                
             </tbody>
             <tbody>
-              <tr>
-                {" "}
+            <div className ="TabellenLinie">
+
+              
                 Mo-Fr
-                <td> </td>
-                <td> </td>
-              </tr>
+
+                </div>
+              
             </tbody>
             <tbody>
-              <tr>
+              <tr><td>
                 {" "}
-                Regulär
+                Regulär</td>
                 <td> 8.00</td>
                 <td> 7.50</td>
               </tr>
             </tbody>
             <tbody>
-              <tr>
+              <tr><td>
                 {" "}
-                Kind
+                Kind</td>
                 <td> 7.00</td>
                 <td> 6.00</td>
               </tr>
             </tbody>
             <tbody>
-              <tr>
+              <tr><td>
                 {" "}
-                Schüler/Student
+                Schüler/Student</td>
                 <td> 6.00</td>
                 <td> 4.00</td>
               </tr>
             </tbody>
             <tbody>
-              <tr>
+              <tr><td>
                 {" "}
-                Rüstige Rentner
+                Rüstige Rentner</td>
                 <td> 7.00</td>
                 <td> 6.00</td>
               </tr>
             </tbody>
             <tbody>
-              <tr>
+              <tr><td>
                 {" "}
-                Familienticket
+                Familienticket</td>
                 <td> 22.00</td>
                 <td> 20.00</td>
               </tr>
             </tbody>
             <tbody>
-              <tr>
-                {" "}
-                Sa + So
-                <td> </td>
-                <td> </td>
-              </tr>
+            <div className ="TabellenLinie">   
+              Sa + So
+              </div>
             </tbody>
             <tbody>
-              <tr>
+              <tr><td>
                 {" "}
-                Regulär
+                Regulär</td>
                 <td> 9.00</td>
                 <td> 8.00</td>
               </tr>
             </tbody>
             <tbody>
-              <tr>
+              <tr><td>
                 {" "}
-                Kind
+                Kind</td>
                 <td> 8.00</td>
                 <td> 7.00</td>
               </tr>
             </tbody>
             <tbody>
-              <tr>
+              <tr><td>
                 {" "}
-                Schüler/Student
+                Schüler/Student</td>
                 <td> 7.00</td>
                 <td> 5.00</td>
               </tr>
             </tbody>
             <tbody>
-              <tr>
+              <tr><td>
                 {" "}
-                Rüstige Rentner
+                Rüstige Rentner</td>
                 <td> 8.00</td>
                 <td> 7.00</td>
               </tr>
             </tbody>
             <tbody>
-              <tr>
+              <tr><td>
                 {" "}
-                Familienticket
+                Familienticket</td>
                 <td> 24.00</td>
                 <td> 22.00</td>
               </tr>
             </tbody>
-            Für Klassik-Vorstellungen werden für jedes Ticket 3 Euro Rabatt
-            gewährt. <br />
-            Das Familienticket erhält 10 Euro Rabatt!
+            
           </table>
           <div>
             Informationen für Rollstuhlfahrer: <br />

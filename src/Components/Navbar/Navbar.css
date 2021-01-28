@@ -155,7 +155,8 @@
   }
 
   Button {
-    display: none;
+    /*display: none; */
+    
     width: 125.76;
     height: 46.4;
   }

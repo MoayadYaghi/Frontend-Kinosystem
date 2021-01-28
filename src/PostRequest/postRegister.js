@@ -6,9 +6,13 @@ const REST_API_Post_Login = ""
 
 class PostNewMovie{
     
-    sendnewLogin(data){
 
-    return axios.post('http://localhost:8081/PostLogin', data)
+
+    sendnewRegister(data){
+
+        
+
+    return axios.post('http://localhost:8081/benutzer/signup', data)
 
     }
 }

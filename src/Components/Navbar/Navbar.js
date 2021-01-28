@@ -48,6 +48,8 @@ class Navbar extends Component {
             Sign In{" "}
           </Link>
         </nav>
+
+       
       </div>
     );
   }
