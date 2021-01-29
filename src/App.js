@@ -35,6 +35,7 @@ import Admin from "./Pages/AdminFilmAuswahl";
 import VorstellungHinzufügen from "./Pages/VorstellungHinzufügen";
 import Test1 from "./Pages/Test1";
 import Test2 from "./Pages/Test2";
+import AdminÜbersicht from "./Pages/AdminÜbersicht";
 
 class App extends Component {
   
@@ -62,6 +63,7 @@ render(){
   const FilmDetailsLink = "/FilmDetails"
   const AdminLink ="/Admin"
   const VorstellungHinzufügenLink ="/VorHin"
+  const AdminÜbersichtsSeiteLink ="/aÜbersicht"
 
 
   
@@ -91,6 +93,8 @@ render(){
        <Route exact path= {FilmDetailsLink} component={filmDetails}/>
        <Route exact path= {AdminLink} component={Admin}/>
        <Route exact path= {VorstellungHinzufügenLink} component={VorstellungHinzufügen}/>
+       <Route exact path= {AdminÜbersichtsSeiteLink} component={AdminÜbersicht}/>
+
 
 
 

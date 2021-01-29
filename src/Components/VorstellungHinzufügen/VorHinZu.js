@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./VorHinZu.css";
 import getFilme from "../../API_Pulls/getFilmAPI.js"
+import VorstellungHinzufügen from "../../PostRequest/VorstellungHinzufügen"
 /* import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { Link } from "react-router-dom";
 import { Button} from 'react-bootstrap'; */
@@ -30,7 +31,14 @@ class VorHinZu extends Component {
       year:0,
       stunde:0,
       minute:0,
+      startZeit:0,
       minuteCollection:[],
+      preis:0,
+      anzahlWiederholungen:0,
+      wiederholungsRythmus:0,
+      filmId:0,
+      aktiv:0,
+      grundpreis:0,
     }
      this.handleChange = this.handleChange.bind(this);
      this.handleSaal = this.handleSaal.bind(this);
@@ -41,6 +49,9 @@ class VorHinZu extends Component {
       this.handleStunde = this.handleStunde.bind(this);
       this.handleMinute = this.handleMinute.bind(this);
       this.handleButton = this.handleButton.bind(this);
+      this.handlePreis = this.handlePreis.bind(this);
+      this.handleAnzahlWiederholungen = this.handleAnzahlWiederholungen.bind(this);
+      this.handleWiederholungsRythmus= this.handleWiederholungsRythmus.bind(this);
   }//constructor
   state = {};
 
@@ -129,14 +140,29 @@ class VorHinZu extends Component {
   }  
   handleMinute(event){
     this.setState({minute: event.target.value})
+  }   
+  handlePreis(event){
+    this.setState({preis: event.target.value})
+  }   
+  handleAnzahlWiederholungen(event){
+    this.setState({anzahlWiederholungen: event.target.value})
+  }    
+  handleWiederholungsRythmus(event){
+    this.setState({wiederholungsRythmus: event.target.value})
   }  
 
 
 
   handleButton(event){
     //this.setState({minute: event.target.value})
-    alert("film wurde hinzugefügt")
+    alert("film wurde hinzugefügt für "+ this.state.preis)
     event.preventDefault();
+    this.setState({startZeit: this.state.year+"-"+this.state.month+"-"+this.state.day+"T"+this.state.stunde+":"+this.state.minute+":00.000Z",
+    filmId: this.state.choosenMovie.id,
+    grundpreis: this.state.preis,
+    aktiv: "true"}, 
+    ()=> VorstellungHinzufügen.vorhinzu(this.state).then(res=>console.log(res))
+    )
   }
 
 
@@ -155,6 +181,8 @@ class VorHinZu extends Component {
   
   }
 
+
+  
 
   
   render() {
@@ -198,6 +226,7 @@ class VorHinZu extends Component {
                           Saal: <br/>
                           Datum: <br/>
                           Uhrzeit: <br/>
+                          Preis: <br/>
                         
                     </div>
                     <div className= 'antwort'>
@@ -286,15 +315,58 @@ class VorHinZu extends Component {
                             <option value={minute}>{minute}</option> 
                           ))
                           }
-                        </select>
+                        </select>Uhr
                       </label>
                       </form>
                     </div>
 
-                    </div>
+                    <div>{/* div für den Preis */}
+                    
+                    <input type="number"
+                    onInput={this.handlePreis} value={this.state.preis} />
+
+                    
+                    
+                    </div> {/* div für den Preis */}
+
+                    </div> {/* div für den Antwort Block */}
                     
                   
-                </div>
+                </div>{/* div für den VorstellungsBlock */}
+
+                
+                      <div className="wiederholung">{/* div für Wiederholung */}
+                      
+                      
+                      <form className="wiederholungsRythmus">
+                     <label>Vorstellung im  
+                        <select value={this.state.wiederholungsRythmus} onChange={this.handleWiederholungsRythmus}>
+                         {this.state.minuteCollection.slice(0,8).map((wiederholungsRythmus)=> (
+                            <option value={wiederholungsRythmus}>{wiederholungsRythmus}</option> 
+                          ))
+                          }
+                        </select>Tage Rythmus Wiederholen
+                      </label>
+                      </form>
+
+                      
+
+
+                      
+                      <form className="anzahlWiederholungen">
+                     <label>Anzahl Wiederholungen:
+                        <select value={this.state.anzahlWiederholungen} onChange={this.handleAnzahlWiederholungen}>
+                         {this.state.minuteCollection.slice(0,15).map((anzahlWiederholungen)=> (
+                            <option value={anzahlWiederholungen}>{anzahlWiederholungen}</option> 
+                          ))
+                          }
+                        </select>
+                      </label>
+                      </form>
+                      
+                      </div> {/* div für Wiederholung */}
+
+
                 <div className ="hinzufügen">
 
                    <button className="buttonHinzufügen" onClick={this.handleButton}>
