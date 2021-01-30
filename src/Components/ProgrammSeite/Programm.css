@@ -1,15 +1,10 @@
 .ErgebnisDarstellung{
     display: flex;
      flex-wrap: wrap; 
-    /* flex: 1 0 17%; */
     height: 30rem; 
     grid-gap: 4rem;
     justify-content: center;
     flex:1;
-    /* width: 150px;
-    
-    justify-content: center;
-    grid-gap: 30px; */
 }
 .filmListe{
     height: 100%;

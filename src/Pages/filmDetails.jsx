@@ -2,6 +2,7 @@ import Navbar from ".././Components/Navbar/Navbar";
 import Footer from ".././Components/Footer/Footer";
 
 import React from "react";
+import FilmDetails from ".././Components/FilmDetails/FilmDetails";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ".././App.css";
 
@@ -12,7 +13,7 @@ const filmDetails = () => {
     <div className="App">
       <Navbar />
 
-      <h1>Film Details</h1>
+      <FilmDetails/>
 
       <Footer />
     </div>
