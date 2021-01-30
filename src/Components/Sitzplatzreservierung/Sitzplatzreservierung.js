@@ -1,7 +1,9 @@
 import React, { Component} from "react";
+import CreateNewTicket from "../../API_Pulls/CreateNewTicket";
 import SaalByVorstellung from "../../API_Pulls/SaalByVorstellung";
 import SitzByVorstellung from "../../API_Pulls/SitzByVorstellung";
 import "./Sitzplatzreservierung.css";
+import { Redirect } from 'react-router-dom';
 
 class Sitzplatzreservierung extends Component {
   constructor(props) {
@@ -21,10 +23,12 @@ class Sitzplatzreservierung extends Component {
       belegt: [],
       frei: [],
       error: "Es wurden nur 0 Sitze gewählt",
-      errorSichtbar: false
+      errorSichtbar: false,
+      redirect: false
     };
     this.selectSitz = this.selectSitz.bind(this);
     this.addToInput = this.addToInput.bind(this);
+    this.addWarenkorb = this.addWarenkorb.bind(this);
   }
   componentDidMount() {
     let url = window.location.href;
@@ -56,7 +60,7 @@ class Sitzplatzreservierung extends Component {
               belegtSitze.push({reihe: alleSitze[sitz].sitz.reihe, spalte: alleSitze[sitz].sitz.spalte});
             }
             else {
-              freiSitze.push({reihe: alleSitze[sitz].sitz.reihe, spalte: alleSitze[sitz].sitz.spalte});
+              freiSitze.push({reihe: alleSitze[sitz].sitz.reihe, spalte: alleSitze[sitz].sitz.spalte, id: alleSitze[sitz].sitz.id});
             }
           }
           this.setState({frei: freiSitze});
@@ -108,11 +112,6 @@ class Sitzplatzreservierung extends Component {
 
   }
 
-  sitzplanGenerieren() {
-    let sitzplan = this.state.saalStruktur;
-    return sitzplan;
-  }
-
   addToInput(event, addToInput) {
     let btnId = event.target.id;
     let gewaehlt = this.state.normal + this.state.kind + this.state.student + this.state.senior + this.state.behindert + this.state.begleitperson;
@@ -160,6 +159,31 @@ class Sitzplatzreservierung extends Component {
       }
       this.setState({errorSichtbar: false});
     }
+  }
+
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to={`/Warenkorb`} />
+    }
+  }
+
+  addWarenkorb() {
+    let vorstellungId = this.state.vorstellungId;
+    let sitzeGewaehlt = this.state.sitzeGewaehlt;
+    let alleSitze = this.state.frei;
+    let nutzerId = 36; 
+    let sitzIds= [];
+    for(let sitz in sitzeGewaehlt) {
+      for(let frei in alleSitze) {
+        if(sitzeGewaehlt[sitz].reihe == alleSitze[frei].reihe && sitzeGewaehlt[sitz].spalte == alleSitze[frei].spalte) {
+          sitzIds.push(alleSitze[frei].id);
+        }
+      }
+    }
+    for(let i in sitzIds) {
+      CreateNewTicket.createNewTicket(sitzIds[i], vorstellungId, nutzerId);
+    }
+    this.setState({redirect: true});
   }
 
   render() {
@@ -260,7 +284,8 @@ class Sitzplatzreservierung extends Component {
                 </tbody>
             </table>
           </div>
-          <button> Zum Warenkorb hinzufügen </button>
+          {this.renderRedirect()}
+          <button onClick={this.addWarenkorb}> Zum Warenkorb hinzufügen </button>
         </div>
       </div>
     );
