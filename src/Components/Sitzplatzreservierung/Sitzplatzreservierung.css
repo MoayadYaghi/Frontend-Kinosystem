@@ -61,17 +61,12 @@
   text-shadow: 0 4px 8px 0 rgba(255, 0, 0, 0.527),
     0 6px 25px 0 rgb(197, 192, 192);
 }
-
-.BezahlMöglichkeiten {
-  color: #ffa533;
-  font-weight: bold;
-  font-size: 2rem;
-  text-shadow: 0 4px 8px 0 rgba(255, 0, 0, 0.527),
-    0 6px 25px 0 rgb(197, 192, 192);
-}
 .ReactTable {
+  display: table;
+  align-content: center;
+  align-items: center;
   border-collapse: unset;
-  background-color:  rgb(100, 117, 128);
+  background-color:  #e4e4e4;
 }
 .TicketTable {
   border-collapse: unset;

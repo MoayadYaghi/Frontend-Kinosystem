@@ -11,12 +11,15 @@ class FilmDetails extends React.Component {
         let wholeWeek = [];
         let today = new Date();
         let weekDay = today.getDay();
+        let add = 0;
         for(let i=0; i<6; i++) {
             let monat = today.getMonth() + 1;
             if(monat<10){
                 monat = "0" + monat;
             }
-            let date =(today.getDate()+i) + '.' + monat + '.' + today.getFullYear();
+            let date =(today.getDate()) + '.' + monat + '.' + today.getFullYear();
+            add = 1;
+            today.setDate(today.getDate()+add);
             wholeWeek.push(date);
         }
 

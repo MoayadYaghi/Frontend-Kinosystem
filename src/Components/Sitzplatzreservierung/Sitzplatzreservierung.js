@@ -1,5 +1,6 @@
 import React, { Component} from "react";
 import SaalByVorstellung from "../../API_Pulls/SaalByVorstellung";
+import SitzByVorstellung from "../../API_Pulls/SitzByVorstellung";
 import "./Sitzplatzreservierung.css";
 
 class Sitzplatzreservierung extends Component {
@@ -17,7 +18,8 @@ class Sitzplatzreservierung extends Component {
       senior: 0,
       behindert: 0,
       begleitperson: 0,
-      belegt: [{reihe: 3 , spalte: 4},{reihe: 3 , spalte: 5},{reihe: 7, spalte: 5},{reihe: 7, spalte: 6}],
+      belegt: [],
+      frei: [],
       error: "Es wurden nur 0 Sitze gewählt",
       errorSichtbar: false
     };
@@ -39,20 +41,35 @@ class Sitzplatzreservierung extends Component {
           let sitzReihe = String.fromCharCode(97 + j);
           for(let i = 0; i < reihenBreite; i++) {
             let sitzPlatz = "";
-            reihe.push(<button id = {id} clicked = {this.state.btnClicked} onClick={this.selectSitz} style={{borderColor: 'black',borderRadius: "5px", backgroundColor: 'green', width: "1rem", height: "1rem"}}>{sitzPlatz}</button>);
+            reihe.push(<button id = {id} onClick={this.selectSitz} style={{borderColor: 'black',borderRadius: "5px", backgroundColor: 'green', width: "1rem", height: "1rem"}}>{sitzPlatz}</button>);
             id++;
           }
           saalStruktur.push(reihe);
         }
         this.setState({saalStruktur: saalStruktur});
-        for(let belegt in this.state.belegt) {
-          let sitz = this.state.belegt[belegt];
-          let reihe = sitz.reihe;
-          let spalte = sitz.spalte;
-          let sitzId = ((reihe - 1) * this.state.spaltenAnzahl) + spalte - 1;
-          document.getElementById(sitzId).style.backgroundColor = 'red';
-          document.getElementById(sitzId).disabled = true;
-        }
+        SitzByVorstellung.sitzeByVorstellung(vorstellungId).then((response) => {
+          let alleSitze = response.data;
+          let belegtSitze = [];
+          let freiSitze = [];
+          for(let sitz in alleSitze) {
+            if(alleSitze[sitz].isBesetzt == true) {
+              belegtSitze.push({reihe: alleSitze[sitz].sitz.reihe, spalte: alleSitze[sitz].sitz.spalte});
+            }
+            else {
+              freiSitze.push({reihe: alleSitze[sitz].sitz.reihe, spalte: alleSitze[sitz].sitz.spalte});
+            }
+          }
+          this.setState({frei: freiSitze});
+          this.setState({belegt: belegtSitze});
+          for(let belegt in belegtSitze) {
+            let sitz = belegtSitze[belegt];
+            let reihe = sitz.reihe;
+            let spalte = sitz.spalte;
+            let sitzId = ((reihe - 1) * this.state.spaltenAnzahl) + spalte - 1;
+            document.getElementById(sitzId).style.backgroundColor = 'red';
+            document.getElementById(sitzId).disabled = true;
+          }
+        })
     })
   }
 
@@ -76,12 +93,14 @@ class Sitzplatzreservierung extends Component {
       }
       this.setState({sitzeGewaehlt : sitzeBelegt});
       this.setState({normal : 0, kind: 0, student: 0, senior: 0, behindert: 0, begleitperson: 0});
+      this.setState({errorSichtbar: false});
     }
     else {
       event.target.style.backgroundColor = 'blue';
       let sitz = {reihe: reihe, spalte: spalte};
       sitzeBelegt.push(sitz);
       this.setState({sitzeGewaehlt: sitzeBelegt});
+      this.setState({errorSichtbar: false});
     }
     let errorNachricht = "Es wurden nur " + sitzeBelegt.length + " Sitze gewählt";
     this.setState({error: errorNachricht});
@@ -96,7 +115,6 @@ class Sitzplatzreservierung extends Component {
 
   addToInput(event, addToInput) {
     let btnId = event.target.id;
-    let inputId;
     let gewaehlt = this.state.normal + this.state.kind + this.state.student + this.state.senior + this.state.behindert + this.state.begleitperson;
     if(gewaehlt == this.state.sitzeGewaehlt.length && addToInput > 0) {
       this.setState({errorSichtbar: true});
@@ -152,7 +170,7 @@ class Sitzplatzreservierung extends Component {
             Sitzplatzreservierung<br></br>
           </div>
           <div style={{display: "flex", alignContent: "center", justifyContent: "center", marginTop:"1rem"}}>Leinwand</div>
-          <div>
+          <div style={{display: "flex", alignContent: "center", justifyContent: "center"}}>
             <table className="ReactTable">
               <tbody>
                 {this.state.saalStruktur.slice(0, this.state.saalStruktur.length).map((item, index) => {
@@ -181,7 +199,7 @@ class Sitzplatzreservierung extends Component {
                 <tbody>
                   <tr>
                     <td className="ticketElement">
-                      <label className="TicketLabels"> Normal </label>
+                      <label className="TicketLabels"> Erwachsen </label>
                     </td>
                     <td className="ticketElement">
                       <button className="anzahlBtn" id="subtractNormal" type="button" onClick={(e) => {this.addToInput(e,-1)}}>-</button>
@@ -242,12 +260,7 @@ class Sitzplatzreservierung extends Component {
                 </tbody>
             </table>
           </div>
-          <div className="BezahlMöglichkeiten">
-            Bezahlmöglichkeiten wählen<br></br>
-          </div>
-          <button id="Paypal"> Paypal </button>
-          <button id="Kreditkarte"> Kreditkarte </button>
-          <button id="Bankeinzug"> Bankeinzug </button>
+          <button> Zum Warenkorb hinzufügen </button>
         </div>
       </div>
     );
