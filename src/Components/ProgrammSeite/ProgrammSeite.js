@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Programm.css";
+
 import { Link } from "react-router-dom";
 import GetAllFilmAPI from "../../API_Pulls/GetAllFilmAPI";
 import { Redirect } from 'react-router-dom';
@@ -177,5 +178,20 @@ class ProgrammSeite extends Component {
       </div>
     );
   }
+
+  sitzplanGenerieren(reihenAnzahl, spaltenAnzahl) {
+    const Sizsplan = [reihenAnzahl, spaltenAnzahl];
+    var i = 0;
+    for (var r = 0; r < reihenAnzahl; r++) {
+      for (var s = 0; s < spaltenAnzahl; s++) {
+        Sizsplan[(r, s)] = <button>Sitz</button>;
+        i++;
+      }
+    }
+    return Sizsplan;
+  }
+
+  reihenPlanGenerieren() {}
 }
+
 export default ProgrammSeite;
