@@ -1,5 +1,5 @@
 .Tabelle {
-  width: 80%;
+  width: 100%;
   padding-left: 1%;
   margin-top: 0px;
   margin-bottom: 0px;
@@ -19,6 +19,7 @@
   font-size: 1.2rem;
   text-align: center;
   width: 100%;
+  font-family: 'Comfortaa';
 }
 
 .SpalteW {
@@ -28,8 +29,9 @@
 
 
 .SpalteS:hover, .SpalteW:hover {
-  color: black;
-  background-color: #b6babd;
+  
+  text-decoration: none;
+  color: #353b48;
   border-radius: 3px;
   transition: all 0.2s ease-out;
 }
@@ -94,23 +96,27 @@
 }
 .Inf-Box {
   background-color: #d7dbdd;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: 'Comfortaa';
+  text-transform: uppercase;
+  font-weight: bold;
   font-size: 2vw;
   padding-top: 5%;
   padding-bottom: 5%;
   padding-left: 3%;
   width: 111.1%;
-  box-shadow: 10px 10px 15px silver;
-  box-shadow: 10px 10px 15px silver inset;
+  box-shadow: 5px 5px 10px silver;
+  box-shadow: 5px 5px 10px silver inset;
 }
 .Inf-Boxsmall {
   background-color: rgba(128, 128, 128, 0);
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: 'Comfortaa';
+  text-transform: uppercase;
   font-size: 3vw;
 }
 .Inf-Boxsmaller {
   background-color: rgba(128, 128, 128, 0);
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: 'Comfortaa';
+  text-transform: uppercase;
   font-size: 2.5vw;
 }
 
@@ -122,26 +128,21 @@
   margin-left: 0%;
 }
 .Headline3 {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: 'Comfortaa';
   font-size: 5vw;
   margin-bottom: 0.5vw;
+  text-transform: uppercase;
 }
 
-.TextW {
-  font-family: Arial, Helvetica, sans-serif;
+.TextW, .TextS {
+  font-family: 'Nunito';
   font-size: 1rem;
   background-color: rgba(128, 128, 128, 0);
   padding-left: 3%;
   padding-top: 3%;
 }
 
-.TextS {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1rem;
-  background-color: rgba(128, 128, 128, 0);
-  padding-left: 3%;
-  padding-top: 3%;
-}
+
 .Test {
   background-color: yellow;
   width: 100%;
@@ -200,10 +201,11 @@
   font-weight: lighter;
   font-style: italic;
   font-size: 1rem;
-  color: var(--mainLightGrey);
+  color: darken(var(--mainLightGrey));
   cursor: pointer;
   padding-left: 3%;
   padding-bottom: 1%;
+  font-family: 'Nunito';
 }
 
 .Logos {
@@ -224,7 +226,7 @@ thead {
 /* .TabellenLinie, */td,tr{
   text-align: left;
   padding: 0.5em 1em;
-  background-color:  #d8d9da;
+  background-color:  var(--mainWhite);
 }
 .th{
   text-align: left;
@@ -248,3 +250,5 @@ thead {
   text-align: center;
 
 }
+
+

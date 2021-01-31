@@ -41,7 +41,7 @@ function MoviesSlider() {
     all = [mail, vorname, nachname, passwortHash, newsletter, preiskategorie, username, alter, Sitzplatz]
 
 
-
+z
 
 
   return (

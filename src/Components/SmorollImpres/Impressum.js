@@ -7,6 +7,7 @@ class Impressum extends Component {
 
   render() {
     return (
+      <div className="Informationen" id="Impressum">
       <div className="MittelBlock">
         <h1>Impressum</h1>
         <h2>Angaben gem&auml;&szlig; &sect; 5 TMG</h2>
@@ -37,7 +38,7 @@ class Impressum extends Component {
         <p>
           Telefon: +49 (0) 01820550
           <br />
-          E-Mail: contact@KG42.de
+          E-Mail: kreative.gruppe42@gmail.com
         </p>
         <h2>Umsatzsteuer-ID</h2>
         <p>
@@ -130,7 +131,7 @@ class Impressum extends Component {
         <p>
           Quelle: <a href="https://www.e-recht24.de">eRecht24</a>
         </p>
-      </div>
+      </div></div>
     );
   }
 }

@@ -7,6 +7,7 @@ class DealDW extends Component {
 
   render() {
     return (
+      <div className="Informationen" id="Datenschutz">
       <div className="MittelBlock">
         <h1>Datenschutz&shy;erkl&auml;rung</h1>
         <h2>1. Datenschutz auf einen Blick</h2>
@@ -237,7 +238,7 @@ class DealDW extends Component {
         <p>
           Quelle: <a href="https://www.e-recht24.de">e-recht24.de</a>
         </p>
-      </div>
+      </div></div>
     );
   }
 }

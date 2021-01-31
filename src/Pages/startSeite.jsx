@@ -16,7 +16,7 @@ const StartSeite = () => {
   return (
     <div className="App">
       <Navbar />
-      <GeneratorAufruf />
+      {/* <GeneratorAufruf />  */}
       <SliderAufruf />
       <InfoderWoche />
       <DealDW />

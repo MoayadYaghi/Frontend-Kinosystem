@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import postRegister from "../../PostRequest/postRegister";
 
+import postLogin from "../../PostRequest/postLogin";
+
 //import { Link } from "react-router-dom";
 
     var RandomCount1
@@ -13,6 +15,7 @@ import postRegister from "../../PostRequest/postRegister";
     var username1
     var alter1
     var Sitzplatz1
+    var Informationen
     
 
 
@@ -20,7 +23,7 @@ class GeneratorAufruf extends Component {
   constructor(props) {
     super(props);
     this.state = {
-    mail: "",
+    email: "",
     vorname: "",
     nachname: "",
     passwortHash: "",
@@ -28,9 +31,15 @@ class GeneratorAufruf extends Component {
     preiskategorie: "",
     username: "",
     alter: "",
-    Sitzplatz: "",
+    lieblingszone: "",
    
     };
+  
+  }
+  Register(){
+    Informationen = this.state
+    postRegister.sendnewRegister(this.state).then((res) => {
+      console.log(res)})
   }
   
 
@@ -46,20 +55,24 @@ class GeneratorAufruf extends Component {
     passwortHash1 = "abc"
     preiskategorie1 ="ERWACHSENER"
     username1 ="USER"+RandomCount1+RandomCount2
-    alter1 ="2000-01-01"
+    alter1 ="18"
     Sitzplatz1 ="MITTE_MITTE"
 
     this.setState({
-        mail : mail1,
+        email : mail1,
         vorname : vorname1,
         nachname : nachname1,
         passwortHash : passwortHash1,
         preiskategorie : preiskategorie1,
         username : username1,
         alter : alter1,
-        Sitzplatz : Sitzplatz1
-    }, () => (console.log(this.state), postRegister.sendnewRegister(this.state).then((res) => {
-        console.log(res)}) 
+        lieblingszone : Sitzplatz1
+    }, () => (this.Register(), setTimeout(function(){
+      console.log(Informationen)
+      postLogin.sendnewLogin(Informationen)
+      .then((respon) => console.log(respon))
+      
+    },3000) 
     ))
     
 

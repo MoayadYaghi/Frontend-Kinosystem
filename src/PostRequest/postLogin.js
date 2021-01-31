@@ -8,7 +8,7 @@ class PostNewMovie{
     
     sendnewLogin(data){
 
-    return axios.post('http://localhost:8081/PostLogin', data)
+    return axios.post('http://localhost:8081/login', data)
 
     }
 }

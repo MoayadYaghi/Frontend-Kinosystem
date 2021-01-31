@@ -2,6 +2,10 @@ import React from "react";
 import MoviesSlider from "./Slider";
 import SliderAPI from "../../API_Pulls/SliderAPI";
 
+var Bild = [];
+    var Name = [];
+    var id = [];
+
 class SliderAufruf extends React.Component {
   constructor(props) {
     super(props);
@@ -14,20 +18,26 @@ class SliderAufruf extends React.Component {
     SliderAPI.getSliderApi().then((response) => {
       let movies = response.data.results;
       this.setState({ Bilder: movies });
+
+
+      
+    
+    
+    
+    
     });
   }
 
   render() {
-    var Bild = [];
-    var Name = [];
     this.state.Bilder.forEach((element) => {
       Bild.push(element.image);
-      Name.push(element.id);
+      Name.push(element.title);
+      id.push(element.id);
     });
 
     return (
       <div>
-        <MoviesSlider key={Name} images={Bild} text={Name} />
+        <MoviesSlider key={Name} images={Bild} text={Name} id={id}/>
       </div>
     );
   }

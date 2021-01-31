@@ -26,11 +26,17 @@ class LoginScreen extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    console.log(this.state)
 
      postLogin.sendnewLogin(this.state).then(res => {
-      localStorage.setItem('token', res.token)
-    }) 
+      sessionStorage.setItem('token', res.data)
+      sessionStorage.setItem('NutzerName', this.state.username)
 
+      
+
+      console.log(res.data)
+    }) 
+    
     
     /* console.log("Ergebnisse: ");
     console.log(this.state.Benutzername);

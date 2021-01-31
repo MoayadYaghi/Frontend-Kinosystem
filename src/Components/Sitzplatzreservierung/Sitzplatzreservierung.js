@@ -1,41 +1,68 @@
-import React, { Component, useEffect, useState } from "react";
-import View from "react-native";
-import Image from "../../assets/LOGO1.png";
-import axios from "axios";
-import "Sitzplatzreservierung.css";
+import React, { Component } from "react";
+import "./Sitzplatzreservierung.css";
+import { Link } from "react-router-dom";
 
-// vom Backend
-const url = "";
-
-const SitzenPlan = ({ Sitz, UrlHolen }) => {
-  // setSeats
-  const [sitz, sitzSetzen] = useState([]);
-
-  useEffect(() => {
-    async function datenHolen() {
-      const anfragen = await axios.get(UrlHolen);
-      sitzSetzen(anfragen.data.results);
-      return anfragen;
-    }
-    datenHolen();
-  }, [UrlHolen]);
-
-  // console.table(sitz);
-
-  return (
-    <div className="Sitz">
-      <div className="SitzPlan">
-        {sitz.map((sitz) => (
-          <img
-            className="SitzPlan"
-            key={sitz.id}
-            src={`${url}${sitz.sitz_path}`}
-            alt={sitz} //
-          />
-        ))}
+class Sitzplatzreservierung extends Component {
+  render() {
+    return (
+      <div className="SitzplanSeite">
+        <div className="Sitzplan">
+          <div className="SitzplatzreservierungÜberschrift">
+            Sitzplatzreservierung<br></br>
+          </div>
+          {this.sitzplanGenerieren(22, 22)}
+        </div>
+        <div className="Rest">
+          <button id="SnacksButton"> Snacks hinzufügen </button>
+          <div className="Tickets">
+            {" "}
+            Ticket Preise: <br></br>
+            <label> Normal </label>
+            <input type="number" />
+            <br></br>
+            <label> Familie </label>
+            <input type="number" />
+            <br></br>
+            <label> Kind </label>
+            <input type="number" />
+            <br></br>
+            <label> Student </label>
+            <input type="number" />
+            <br></br>
+            <label> Senior </label>
+            <input type="number" />
+            <br></br>
+            <label> Behindert </label>
+            <input type="number" />
+            <br></br>
+            <label> Begleitperson </label>
+            <input type="number" />
+            <br></br>
+          </div>
+          <div className="BezahlMöglichkeiten">
+            Bezahlmöglichkeiten wählen<br></br>
+          </div>
+          <button id="Paypal"> Paypal </button>
+          <button id="Kreditkarte"> Kreditkarte </button>
+          <button id="Bankeinzug"> Bankeinzug </button>
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
 
-export default SitzenPlan;
+  sitzplanGenerieren(reihenAnzahl, spaltenAnzahl) {
+    const Sizsplan = [reihenAnzahl, spaltenAnzahl];
+    var i = 0;
+    for (var r = 0; r < reihenAnzahl; r++) {
+      for (var s = 0; s < spaltenAnzahl; s++) {
+        Sizsplan[(r, s)] = <button id>Sitz</button>;
+        i++;
+      }
+    }
+    return Sizsplan;
+  }
+
+  reihenPlanGenerieren() {}
+}
+
+export default Sitzplatzreservierung;

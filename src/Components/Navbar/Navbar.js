@@ -5,6 +5,8 @@ import "./Navbar.css";
 import logo from "../../assets/LOGO1.png";
 import { Link } from "react-router-dom";
 
+  var Nutzername = sessionStorage.getItem("NutzerName");
+
 class Navbar extends Component {
   state = { clicked: false };
 
@@ -35,7 +37,7 @@ class Navbar extends Component {
           <ul className={this.state.clicked ? "nav-menu active" : "nav-menu"}>
             {MenuItems.map((item, index) => {
               return (
-                <li key={index}>
+                <li key={index} >
                   <a className={item.cName} href={item.url}>
                     {item.titel}
                   </a>
@@ -43,10 +45,15 @@ class Navbar extends Component {
               );
             })}
           </ul>
+          <div>
+            {/* {console.log(Nutzername)} */}
+            
           <Link className="signIn" to={LogInLink}>
-            {" "}
-            Sign In{" "}
-          </Link>
+          {(Nutzername ===null )?(
+            "Sign In" ): Nutzername }        
+             </Link>
+  
+          </div>
         </nav>
 
        

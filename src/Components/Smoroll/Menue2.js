@@ -16,7 +16,7 @@ class Menue2 extends Component {
               <tr>
                 <td></td>
                 <td>Verkauf im Kino</td>
-                <td>Verkauf Online</td>
+                
               </tr>
             </thead>
             <tbody>
@@ -32,7 +32,7 @@ class Menue2 extends Component {
             <div className ="TabellenLinie">
 
               
-                Mo-Fr
+                Mo-So
 
                 </div>
               
@@ -41,90 +41,58 @@ class Menue2 extends Component {
               <tr><td>
                 {" "}
                 Regulär</td>
-                <td> 8.00</td>
-                <td> 7.50</td>
+                <td> 100%</td>
+                
               </tr>
             </tbody>
             <tbody>
               <tr><td>
                 {" "}
                 Kind</td>
-                <td> 7.00</td>
-                <td> 6.00</td>
+                <td>  60%</td>
+                
               </tr>
             </tbody>
             <tbody>
               <tr><td>
                 {" "}
                 Schüler/Student</td>
-                <td> 6.00</td>
-                <td> 4.00</td>
+                <td> 80%</td>
+                
               </tr>
             </tbody>
             <tbody>
               <tr><td>
                 {" "}
                 Rüstige Rentner</td>
-                <td> 7.00</td>
-                <td> 6.00</td>
+                <td> 70%</td>
+                
               </tr>
             </tbody>
             <tbody>
               <tr><td>
                 {" "}
-                Familienticket</td>
-                <td> 22.00</td>
-                <td> 20.00</td>
+                Menschen mit Behinderungen </td>
+                <td> 50%</td>
+                
               </tr>
             </tbody>
-            <tbody>
-            <div className ="TabellenLinie">   
-              Sa + So
-              </div>
-            </tbody>
-            <tbody>
+             <tbody>
               <tr><td>
                 {" "}
-                Regulär</td>
-                <td> 9.00</td>
-                <td> 8.00</td>
-              </tr>
-            </tbody>
-            <tbody>
-              <tr><td>
-                {" "}
-                Kind</td>
-                <td> 8.00</td>
-                <td> 7.00</td>
-              </tr>
-            </tbody>
-            <tbody>
-              <tr><td>
-                {" "}
-                Schüler/Student</td>
-                <td> 7.00</td>
-                <td> 5.00</td>
-              </tr>
-            </tbody>
-            <tbody>
-              <tr><td>
-                {" "}
-                Rüstige Rentner</td>
-                <td> 8.00</td>
-                <td> 7.00</td>
-              </tr>
-            </tbody>
-            <tbody>
-              <tr><td>
-                {" "}
-                Familienticket</td>
-                <td> 24.00</td>
-                <td> 22.00</td>
+                Begleitpersonen</td>
+                <td> 0</td>
+                
               </tr>
             </tbody>
             
+            
+            
+           
+            
           </table>
           <div>
+            Alle Angaben sind in relation zu dem im Programm angegeben Preis zu beachten. <br/><br/><br/>
             Informationen für Rollstuhlfahrer: <br />
             Alle Kinos sind ausgestattet mit extra Plätzen für Rollstuhlfahrer.
             Sollen Sie einen solchen benötigen, bitte wählen sie einen solchen

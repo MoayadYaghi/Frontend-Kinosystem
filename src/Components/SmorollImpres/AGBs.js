@@ -9,8 +9,10 @@ class DealDW extends Component {
     const ShopLink = "/Shop";
 
     return (
+      <div className="Informationen" id="AGB">
+        <div className="Inf-Box">AGBs</div>
       <div className="Gesamtdiv">
-        <div className="Überschrift">AGBs</div>
+      
         <div className="Überschrift2">Allgemeine Verkaufsbedingungen</div>
 
         <div>
@@ -329,7 +331,7 @@ class DealDW extends Component {
         <p>
           Quelle: <a href="https://www.advocado.de/">advocado </a>
         </p>
-      </div>
+      </div></div>
     );
   }
 }

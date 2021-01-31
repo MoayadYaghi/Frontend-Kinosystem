@@ -58,7 +58,7 @@ class Anmeldung extends Component {
   }
 
   BoxAuswahl(Eingabe, Daten) {
-    this.setState({ Sitzplatz: Daten });
+    this.setState({ lieblingszone: Daten });
 
     this.setState({ BG1: "Box" });
     this.setState({ BG2: "Box" });
@@ -147,7 +147,7 @@ class Anmeldung extends Component {
                 className="Textfielde"
                 placeholder="Alter"
                 name="alter"
-                type="date"
+                type="number"
                 value={this.state.alter}
                 onChange={this.handleChange}
               />
@@ -156,7 +156,7 @@ class Anmeldung extends Component {
               <input
                 className="Textfielde"
                 placeholder="E-Mail Adresse"
-                name="mail"
+                name="email"
                 type="text"
                 value={this.state.email}
                 onChange={this.handleChange}
