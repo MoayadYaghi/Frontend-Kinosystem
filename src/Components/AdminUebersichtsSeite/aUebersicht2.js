@@ -14,6 +14,6 @@ class aUebersicht2 extends Component {
     
     
     );
-  };
-};
+  }
+}
 export default aUebersicht2;

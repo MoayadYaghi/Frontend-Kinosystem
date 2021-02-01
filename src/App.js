@@ -62,12 +62,9 @@ render(){
   const SitzplatzresLink = "/Sitzplatz/:vorstellungsId"
   const FilmDetailsLink = "/FilmDetails/:id"
   const AdminLink ="/Admin"
-<<<<<<< HEAD
   const VorstellungHinzufügenLink ="/VorHin"
   const AdminÜbersichtsSeiteLink ="/aÜbersicht"
-=======
   const Test1Link ="/Test1"
->>>>>>> 23f10b2f2a18bc0b33367121b35a1777c8e76f6d
 
 
   
@@ -96,13 +93,10 @@ render(){
        <Route exact path= {SitzplatzresLink} component={Sitzplatzreservierung}/>
        <Route exact path= {FilmDetailsLink} component={filmDetails}/>
        <Route exact path= {AdminLink} component={Admin}/>
-<<<<<<< HEAD
        <Route exact path= {VorstellungHinzufügenLink} component={VorstellungHinzufügen}/>
        <Route exact path= {AdminÜbersichtsSeiteLink} component={AdminÜbersicht}/>
 
-=======
        <Route exact path= {Test1Link} component={Test1}/>
->>>>>>> 23f10b2f2a18bc0b33367121b35a1777c8e76f6d
 
 
 
