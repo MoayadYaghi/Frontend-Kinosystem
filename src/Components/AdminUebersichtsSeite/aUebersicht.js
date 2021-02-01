@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import "./aUebersicht";
 import { Link } from "react-router-dom";
 
 class aÜbersicht extends Component {
@@ -8,26 +8,26 @@ class aÜbersicht extends Component {
     this.state = {
       Eingabe: "",
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+/*     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this); */
   }
 
-  handleChange(event) {
+  /* handleChange(event) {
     const target = event.target;
     const Value = target.value;
 
     this.setState({ Eingabe: Value });
-    /* this.setState({[name]: Pass}); */
-  }
+    /* this.setState({[name]: Pass});
+  } */
 
-  handleSubmit(e) {
+ /*  handleSubmit(e) {
     e.preventDefault();
 
     console.log(this.state.Eingabe);
 
     localStorage.setItem("Text1", this.state.Eingabe);
-  }
-
+  } */
+ 
   render() {
     return (
       <div className ="test">

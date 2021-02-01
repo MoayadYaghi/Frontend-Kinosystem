@@ -35,7 +35,7 @@ import Admin from "./Pages/AdminFilmAuswahl";
 import VorstellungHinzufügen from "./Pages/VorstellungHinzufügen";
 import Test1 from "./Pages/Test1";
 import Test2 from "./Pages/Test2";
-import AdminÜbersicht from "./Pages/AdminÜbersicht";
+import AdminÜbersicht from "./Pages/AdminUebersicht";
 
 class App extends Component {
   
