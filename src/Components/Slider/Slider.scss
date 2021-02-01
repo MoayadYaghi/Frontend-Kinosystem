@@ -1,14 +1,13 @@
 .slider {
   display: flex;
+  flex-wrap:wrap;
   position: relative;
   align-items: center;
   justify-content: center;
-  height: 48vw;
-  width: 30vw;
+  height: 33vw;
+  width: 21vw;
   align-items: center;
   box-sizing: border-box;
-  margin-top: 50px;
-  margin-left: 35vw;
   padding: 0;
   border-radius: 30px;
   overflow: hidden;
@@ -19,11 +18,12 @@
 
 .slide {
   position: relative;
-  min-width: 100%;
+  /* min-width: 100%; */
   height: 80%;
   transition: 0.5s;
   overflow: hidden;
   transform: translateX(1%);
+  width: inherit;
 }
 
 #goLeftMobile {
@@ -62,17 +62,19 @@
   @extend %btn-styles;
 }
 
-.TextDisplay {
+.TextDisplay, .TextDisplayMitte {
   display: flex;
   flex-direction: column;
   text-align: center;
-  height: 100px;
-  width: 50%;
+  
   align-items: center;
   position: relative;
   overflow: hidden;
-  margin-left: 25%;
+
   margin-top: 30px;
+}
+.TextDisplayMitte{
+  width: 21vw;
 }
 
 .image {
@@ -125,4 +127,69 @@
 }
 
 @media (orientation: portrait) {
+}
+.linkeSeiteSliderBild{
+  height: 25vw;
+  border-radius: 30px;
+  opacity: 0.6; 
+  
+}
+.linkeSeiteSliderBild2{
+  height: 20vw;
+  border-radius: 30px;
+  opacity: 0.3;  
+  
+}
+
+.linkeSeitediv{
+  display:flex;
+  
+  
+}
+.rechteSeiteSliderBild{
+  height: 25vw;
+  border-radius: 30px;
+  opacity: 0.6;  
+  
+  
+}
+
+.rechteSeiteSliderBild2{
+  height: 20vw;
+  border-radius: 30px;
+  opacity: 0.3; 
+  
+}
+.rechteSeitediv{
+  display:flex;
+  
+}
+
+.SliderKOmplett{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5rem;
+  grid-gap: 2rem;
+
+
+
+}
+
+.rechteSeitedivBlock{
+  display: block;
+ 
+}
+.rechteSeitedivBlock2{
+  display: block;
+ 
+}
+
+.linkeSeitedivBlock{
+  display: block;
+  
+}
+.linkeSeitedivBlock2{
+  display: block;
+  
 }
