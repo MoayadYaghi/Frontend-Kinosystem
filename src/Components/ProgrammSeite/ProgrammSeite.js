@@ -9,12 +9,14 @@ class ProgrammSeite extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      headline: 'Ergebnisse',
       genre: 'Alle',
       alter: 'Alle',
       filmName:" ",
       search: "",
       showFilter: false,
       redirect: false,
+      filmId: "",
       alleFilme: [],
       filme: []};
 
@@ -45,6 +47,7 @@ class ProgrammSeite extends Component {
 
     let alleFilme = this.state.alleFilme;
 
+    let filmCounter = 0;
     let genreFilme = [];
     let alterFilme = [];
     let suchFilme = [];
@@ -84,8 +87,15 @@ class ProgrammSeite extends Component {
         }
       }
       this.setState({ filme: alterFilme });
+      filmCounter = alterFilme.length;
     } else {
       this.setState({ filme: suchFilme });
+      filmCounter = suchFilme.length;
+    }
+    if(filmCounter > 0) {
+      this.setState({ headline: 'Ergebnisse'});
+    } else {
+      this.setState({ headline: 'Zu diesen Suchkriterien gibt es keine Filme'});
     }
   }
 
@@ -93,14 +103,14 @@ class ProgrammSeite extends Component {
     this.setState({ showFilter: !this.state.showFilter });
   }
 
-  setRedirect = () => {
-    this.setState({
-      redirect: true
-    })
+  setRedirect = (event) => {
+    let id = event.target.id;
+    this.setState({redirect: true});
+    this.setState({filmId: id});
   }
   renderRedirect = () => {
     if (this.state.redirect) {
-      return <Redirect to='/FilmDetails' />
+      return <Redirect to={`/FilmDetails/${this.state.filmId}`} />
     }
   }
 
@@ -137,7 +147,7 @@ class ProgrammSeite extends Component {
             {showFilter && <div className = "alter">
               <form>
               <label>
-                Altersfreigabe
+                Altersfreigabe 
                 <select id="alterId" value={this.state.alter} onChange={this.handleChange}>
                   <option value="Alle">Alle</option>
                   <option value="6">ab 6 Jahren</option>
@@ -150,7 +160,8 @@ class ProgrammSeite extends Component {
             </div>}
           </div>
         </div>
-        <h1 className="text-center"> Ergebnisse </h1>
+        <h1 className="text-center"> {this.state.headline} </h1>
+        <br />
         <div className="filmListe">
           {this.state.filme.map((film) => (
           <div className="" key={film.id}>
@@ -158,7 +169,7 @@ class ProgrammSeite extends Component {
               <img key={film.id} alt=" " className="image" src={film.bild}/>
             </div>
             {this.renderRedirect()}
-            <div className="Title" onClick={this.setRedirect}>
+            <div id={film.id} className="Title" onClick={this.setRedirect}>
               {" "}
               {film.name}
             </div>

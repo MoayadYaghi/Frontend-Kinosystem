@@ -10,23 +10,24 @@
   
 }
 
-.Überschrift2 {
+.Überschrift2, h2 {
   background-color: rgba(128, 128, 128, 0);
   font-family: 'Comfortaa';
   text-transform: uppercase;
   font-size: 3vw;
 }
 
-.unterÜberschrift {
+
+.unterÜberschrift, h3{
   background-color: rgba(128, 128, 128, 0);
   font-family: 'Comfortaa';
   text-transform: uppercase;
   font-size: 2.5vw;
 }
 
-.Text {
+.Text, p {
   font-family: 'Nunito';
-  font-size: 1rem;
+  font-size: 2vw;
   background-color: rgba(128, 128, 128, 0);
   padding-left: 1%;
   padding-top: 1%;
