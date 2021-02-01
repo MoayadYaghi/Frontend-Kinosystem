@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import "./SmorollImpres.css";
 //import { Link } from "react-router-dom";
 
 class Impressum extends Component {
@@ -8,8 +8,9 @@ class Impressum extends Component {
   render() {
     return (
       <div className="Informationen" id="Impressum">
-      <div className="MittelBlock">
-        <h1>Impressum</h1>
+        <div className="Inf-Box">Impressum</div>
+      <div className="Gesamtdiv">
+        <br/>
         <h2>Angaben gem&auml;&szlig; &sect; 5 TMG</h2>
         <p>
           Kreative Gruppe 42

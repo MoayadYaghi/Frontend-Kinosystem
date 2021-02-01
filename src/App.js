@@ -57,8 +57,8 @@ render(){
   const ImpressumLink = "/Impressum";
   const FehlerLink = "/Fehler404";
   const WunschlisteLink = "/Wunschliste"
-  const SitzplatzresLink = "/Sitzplatz"
-  const FilmDetailsLink = "/FilmDetails"
+  const SitzplatzresLink = "/Sitzplatz/:vorstellungsId"
+  const FilmDetailsLink = "/FilmDetails/:id"
   const AdminLink ="/Admin"
   const Test1Link ="/Test1"
 

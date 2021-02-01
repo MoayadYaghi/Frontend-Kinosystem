@@ -10,7 +10,7 @@ class Menue2 extends Component {
         <div className="TextS">
           Die Eintrittspreise für reguläre Filmvorstellungen stellen sich wie
           folgt zusammen:
-          <div>Alle Preise sind in Euro angegeben</div>
+          <div>Alle Preise sind in relation zu dem im Programm angegeben Preis zu betrachten.</div>
           <table className="table table-striped">
             <thead>
               <tr>
@@ -92,7 +92,7 @@ class Menue2 extends Component {
             
           </table>
           <div>
-            Alle Angaben sind in relation zu dem im Programm angegeben Preis zu beachten. <br/><br/><br/>
+            
             Informationen für Rollstuhlfahrer: <br />
             Alle Kinos sind ausgestattet mit extra Plätzen für Rollstuhlfahrer.
             Sollen Sie einen solchen benötigen, bitte wählen sie einen solchen

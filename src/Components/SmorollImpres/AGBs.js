@@ -12,7 +12,7 @@ class DealDW extends Component {
       <div className="Informationen" id="AGB">
         <div className="Inf-Box">AGBs</div>
       <div className="Gesamtdiv">
-      
+      <br/>
         <div className="Überschrift2">Allgemeine Verkaufsbedingungen</div>
 
         <div>

@@ -13,8 +13,10 @@
 
 .Sitzplan {
   min-height: 500px;
-  width: 50%;
-  background-color: yellow;
+  justify-content: center;
+  align-items: center;
+  display: block;
+  background-color: #e4e4e4;
   order: 1;
   padding-left: 1%;
   padding-right: 1%;
@@ -23,9 +25,7 @@
 }
 
 .Rest {
-  height: 500px;
   width: 50%;
-  background-color: red;
   order: 2;
   margin-left: 10%;
   padding-left: 1%;
@@ -35,6 +35,7 @@
 }
 
 .SitzplatzreservierungÜberschrift {
+  display:flex;
   align-content: center;
   justify-content: center;
   color: #ffa533;
@@ -52,11 +53,49 @@
   margin-bottom: 5%;
   background-color: rgb(100, 117, 128);
 }
-
-.BezahlMöglichkeiten {
+.TicketArt {
   color: #ffa533;
   font-weight: bold;
   font-size: 2rem;
+  margin-left: 1rem;
   text-shadow: 0 4px 8px 0 rgba(255, 0, 0, 0.527),
     0 6px 25px 0 rgb(197, 192, 192);
+}
+.ReactTable {
+  display: table;
+  align-content: center;
+  align-items: center;
+  border-collapse: unset;
+  background-color:  #e4e4e4;
+}
+.TicketTable {
+  border-collapse: unset;
+  background-color:  rgb(100, 117, 128);
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+}
+.TableElement {
+  padding: 0%;
+  border: 2px;
+}
+.ticketElement {
+  padding: unset;
+  border: unset;
+}
+.errorNachricht {
+  color: red;
+}
+.anzahlBtn {
+  width: 30px;
+  border-radius: 5px;
+  border-color: black;
+}
+.anzahlInput {
+  border-radius: 5px;
+  border-color: black;
+  width: 50px;
+}
+.TicketLabels {
+  font-weight: bold;
+  font-size: medium;
 }
