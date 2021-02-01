@@ -30,12 +30,12 @@ class PostNewMovie  extends Component{
     sendDatatoBackend(
         Filmid,
         title,
-        actor0,
+        /* actor0,
         actor0Cara,
         actor1,
         actor1Cara,
         actor2,
-        actor2Cara,
+        actor2Cara, */
         awards,
         directors,
         genreList,
@@ -44,14 +44,15 @@ class PostNewMovie  extends Component{
         image
         
         ){
+            var Authorization = sessionStorage.getItem('token')
             this.state={Filmid,
                 title,
-                actor0,
+                /* actor0,
                 actor0Cara,
                 actor1,
                 actor1Cara,
                 actor2,
-                actor2Cara,
+                actor2Cara, */
                 awards,
                 directors,
                 genreList,
@@ -77,7 +78,9 @@ class PostNewMovie  extends Component{
         console.log(this.state)
             }
 
-         axios.post('http://localhost:8081/film/', this.state)
+         axios.post('http://localhost:8081/film/', this.state, {headers: {
+            Authorization
+            }})
             .then(response =>{
              console.log(response)
             })

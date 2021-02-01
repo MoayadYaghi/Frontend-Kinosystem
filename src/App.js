@@ -60,6 +60,7 @@ render(){
   const SitzplatzresLink = "/Sitzplatz/:vorstellungsId"
   const FilmDetailsLink = "/FilmDetails/:id"
   const AdminLink ="/Admin"
+  const Test1Link ="/Test1"
 
 
   
@@ -88,6 +89,7 @@ render(){
        <Route exact path= {SitzplatzresLink} component={Sitzplatzreservierung}/>
        <Route exact path= {FilmDetailsLink} component={filmDetails}/>
        <Route exact path= {AdminLink} component={Admin}/>
+       <Route exact path= {Test1Link} component={Test1}/>
 
 
 

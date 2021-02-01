@@ -14,10 +14,16 @@ class FilmDetails extends React.Component {
         let add = 0;
         for(let i=0; i<6; i++) {
             let monat = today.getMonth() + 1;
+
+            let tag = today.getDate();
+            if(tag<10){
+                tag = "0" + tag;
+            }
             if(monat<10){
                 monat = "0" + monat;
             }
-            let date =(today.getDate()) + '.' + monat + '.' + today.getFullYear();
+            let date = tag + '.' + monat + '.' + today.getFullYear();
+
             add = 1;
             today.setDate(today.getDate()+add);
             wholeWeek.push(date);
@@ -42,6 +48,7 @@ class FilmDetails extends React.Component {
             this.setState({film: response.data});
         })
         VorstellungByFilm.vorstellungByFilm(filmId).then((response) => {
+
             let vorstellungenNaechsteWoche = [];
             let alleVorstellungenAktiv = [];
             let dat;
@@ -53,24 +60,29 @@ class FilmDetails extends React.Component {
                 let tag = split[2].split("T")[0];
                 let uhrzeit = split[2].split("T")[1].split(".")[0];
 
+
                 let datum = tag + "." + monat + "." + jahr;
                 for(dat in this.state.weekDates) {
                     if(this.state.weekDates[dat] == datum) {
                         alleVorstellungenAktiv.push({datum: datum, uhrzeit: uhrzeit, kinosaalId: response.data[vorstellung].saal.id, vorstellungId: response.data[vorstellung].id})
+
                     }
                 }
             } 
             for(dat in this.state.weekDates) {
+
                 let vorst;
                 let vorstellungZuDatum = [];
                 for(vorst in alleVorstellungenAktiv) {
                     if(this.state.weekDates[dat] == alleVorstellungenAktiv[vorst].datum) {
                         vorstellungZuDatum.push({uhrzeit: alleVorstellungenAktiv[vorst].uhrzeit, kinosaalId: alleVorstellungenAktiv[vorst].kinosaalId, vorstellungId: alleVorstellungenAktiv[vorst].vorstellungId});
+
                     }
                 }
                 vorstellungenNaechsteWoche.push({datum: this.state.weekDates[dat], vorstellung: vorstellungZuDatum});
             }
             this.setState({vorstellungen: vorstellungenNaechsteWoche});
+
         })
     }
 

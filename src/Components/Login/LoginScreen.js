@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import "./Login.css";
 import { Link } from "react-router-dom";
+import postLogin from "../../PostRequest/postLogin"
 
 class LoginScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      Benutzername: "",
-      Passwort: "",
+      username: "",
+      passwortHash: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,15 +26,23 @@ class LoginScreen extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    console.log(this.state)
 
-   /*  postLogin.sendnewLogin(this.state).then(res => {
-      localStorage.setItem('token', res.token)
-    }) */
+     postLogin.sendnewLogin(this.state).then(res => {
+      sessionStorage.setItem('token', res.data)
+      sessionStorage.setItem('NutzerName', this.state.username)
 
+      
+      
+      console.log(res.data)
+    }) 
     
-    console.log("Ergebnisse: ");
+    
+    /* console.log("Ergebnisse: ");
     console.log(this.state.Benutzername);
-    console.log(this.state.Passwort);
+    console.log(this.state.Passwort); */
+
+
   }
 
   render() {
@@ -47,9 +56,9 @@ class LoginScreen extends Component {
               <input
                 className="InputTextField"
                 placeholder="Benutzername"
-                name="Benutzername"
+                name="username"
                 type="text"
-                value={this.state.Benutzername}
+                value={this.state.username}
                 onChange={this.handleChange}
               />
             </label>
@@ -57,9 +66,9 @@ class LoginScreen extends Component {
               <input
                 className="InputTextField"
                 placeholder="Passwort"
-                name="Passwort"
+                name="passwortHash"
                 type="password"
-                value={this.state.Passwort}
+                value={this.state.passwortHash}
                 onChange={this.handleChange}
               />
             </label>
@@ -69,7 +78,7 @@ class LoginScreen extends Component {
             <input className="Submitbutton" type="submit" value=" Einloggen" />
 
             <Link className="Registrieren" to={RegistrierenLink}>
-              {" "}
+              
               Neu re­gis­t­rie­ren
             </Link>
           </div>

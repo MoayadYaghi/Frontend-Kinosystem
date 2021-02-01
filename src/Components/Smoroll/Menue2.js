@@ -10,124 +10,89 @@ class Menue2 extends Component {
         <div className="TextS">
           Die Eintrittspreise für reguläre Filmvorstellungen stellen sich wie
           folgt zusammen:
-          <div>Alle Preise sind in Euro angegeben</div>
+          <div>Alle Preise sind in relation zu dem im Programm angegeben Preis zu betrachten.</div>
           <table className="table table-striped">
             <thead>
               <tr>
                 <td></td>
                 <td>Verkauf im Kino</td>
-                <td>Verkauf Online</td>
+                
               </tr>
             </thead>
             <tbody>
-              <tr>
-                {" "}
+              
+               {/* <div className ="TabellenLinie">
                 Aktuelle Blockbuster
-                <td> </td>
-                <td> </td>
+                </div>
+                {/* <td> </td>
+                <td> </td> */}
+                
+            </tbody>
+            <tbody>
+            <div className ="TabellenLinie">
+
+              
+                Mo-So
+
+                </div>
+              
+            </tbody>
+            <tbody>
+              <tr><td>
+                {" "}
+                Regulär</td>
+                <td> 100%</td>
+                
               </tr>
             </tbody>
             <tbody>
-              <tr>
+              <tr><td>
                 {" "}
-                Mo-Fr
-                <td> </td>
-                <td> </td>
+                Kind</td>
+                <td>  60%</td>
+                
               </tr>
             </tbody>
             <tbody>
-              <tr>
+              <tr><td>
                 {" "}
-                Regulär
-                <td> 8.00</td>
-                <td> 7.50</td>
+                Schüler/Student</td>
+                <td> 80%</td>
+                
               </tr>
             </tbody>
             <tbody>
-              <tr>
+              <tr><td>
                 {" "}
-                Kind
-                <td> 7.00</td>
-                <td> 6.00</td>
+                Rüstige Rentner</td>
+                <td> 70%</td>
+                
               </tr>
             </tbody>
             <tbody>
-              <tr>
+              <tr><td>
                 {" "}
-                Schüler/Student
-                <td> 6.00</td>
-                <td> 4.00</td>
+                Menschen mit Behinderungen </td>
+                <td> 50%</td>
+                
               </tr>
             </tbody>
-            <tbody>
-              <tr>
+             <tbody>
+              <tr><td>
                 {" "}
-                Rüstige Rentner
-                <td> 7.00</td>
-                <td> 6.00</td>
+                Begleitpersonen</td>
+                <td> 0</td>
+                
               </tr>
             </tbody>
-            <tbody>
-              <tr>
-                {" "}
-                Familienticket
-                <td> 22.00</td>
-                <td> 20.00</td>
-              </tr>
-            </tbody>
-            <tbody>
-              <tr>
-                {" "}
-                Sa + So
-                <td> </td>
-                <td> </td>
-              </tr>
-            </tbody>
-            <tbody>
-              <tr>
-                {" "}
-                Regulär
-                <td> 9.00</td>
-                <td> 8.00</td>
-              </tr>
-            </tbody>
-            <tbody>
-              <tr>
-                {" "}
-                Kind
-                <td> 8.00</td>
-                <td> 7.00</td>
-              </tr>
-            </tbody>
-            <tbody>
-              <tr>
-                {" "}
-                Schüler/Student
-                <td> 7.00</td>
-                <td> 5.00</td>
-              </tr>
-            </tbody>
-            <tbody>
-              <tr>
-                {" "}
-                Rüstige Rentner
-                <td> 8.00</td>
-                <td> 7.00</td>
-              </tr>
-            </tbody>
-            <tbody>
-              <tr>
-                {" "}
-                Familienticket
-                <td> 24.00</td>
-                <td> 22.00</td>
-              </tr>
-            </tbody>
-            Für Klassik-Vorstellungen werden für jedes Ticket 3 Euro Rabatt
-            gewährt. <br />
-            Das Familienticket erhält 10 Euro Rabatt!
+            
+            
+            
+           
+            
           </table>
           <div>
+            
             Informationen für Rollstuhlfahrer: <br />
             Alle Kinos sind ausgestattet mit extra Plätzen für Rollstuhlfahrer.
             Sollen Sie einen solchen benötigen, bitte wählen sie einen solchen

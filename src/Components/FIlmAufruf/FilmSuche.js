@@ -1,7 +1,9 @@
-import { Component } from "react";
+import { Component, useState } from "react";
 import NewFilmAPI from "../../API_Pulls/NewFilmAPI";
 import PostNewMovie from "../../PostRequest/PostNewMovie";
 import FilmSucheAPI from "../../API_Pulls/FilmSucheAPI";
+import { animateScroll as scroll } from "react-scroll";
+import ModalFilmAdmin from "./ModalFilmAdmin";
 import "./FilmAufruf.css";
 
 var text;
@@ -19,6 +21,7 @@ class FilmSuche extends Component {
       Ergebnis0: false,
       clicked: false,
       newFilme: [],
+      showModal: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -78,8 +81,11 @@ class FilmSuche extends Component {
     id = ID;
   }
 
-  betätigungsHandler(ID) {
-    NewFilmAPI.getnewFilmAPI(ID).then((response) => {
+  betätigungsHandler(Id) {
+    this.setState({ visible: false });
+    scroll.scrollToTop();
+
+    NewFilmAPI.getnewFilmAPI(Id).then((response) => {
       var FilmInfo = response.data;
 
       this.setState({ newFilme: response.data });
@@ -92,12 +98,6 @@ class FilmSuche extends Component {
       PostNewMovie.sendDatatoBackend(
         FilmInfo.id,
         FilmInfo.title,
-        Actors[0].name,
-        Actors[0].asCharacter,
-        Actors[1].name,
-        Actors[1].asCharacter,
-        Actors[2].name,
-        Actors[2].asCharacter,
         FilmInfo.awards,
         FilmInfo.directors,
         FilmInfo.genreList,
@@ -108,17 +108,26 @@ class FilmSuche extends Component {
     });
   }
 
+  openModal = () => {
+    this.setState({ showModal: !this.state.showModal });
+  };
+
   render() {
     return (
       <div>
-        <div className="Suche" >
+        {/* <button onClick ={this.openModal}>I am a Modal</button>
+          <ModalFilmAdmin showModal={this.state.showModal}/> */}
+
+         {/* <ModalFilmAdmin />  */}
+
+        <div className="Suche">
           <form className="Form" onSubmit={this.handleSubmit}>
             <div className="Textfield">
-              
               <label>
                 <input
                   className="InputText"
-                  placeholder="Suchbegriff"git 
+                  placeholder="Suchbegriff"
+                  git
                   name="value"
                   type="text"
                   value={this.state.value}
@@ -138,7 +147,7 @@ class FilmSuche extends Component {
         </div>
 
         <div>
-          {/* (this.state.FehlerAusgabe) ? null: ( */}
+          {/* (this.state.FehlerAusgabe) ? null: */}
           {this.state.visible ? (
             <div>
               <h1 className="text-center"> Ergebnisse </h1>
@@ -175,14 +184,14 @@ class FilmSuche extends Component {
                                 Sie diesen zu Ihrem Programm hinzufügen?
                               </div>
 
-                              <div
+                              <button
                                 className="Bestätigung"
                                 onClick={() =>
                                   this.betätigungsHandler(filme.id)
                                 }
                               >
                                 Bestätigen
-                              </div>
+                              </button>
                               <br />
                             </div>
                           </div>
@@ -204,10 +213,6 @@ class FilmSuche extends Component {
               Das hat Leider nicht geklappt, es wurden keine Ergebnisse gefunden
             </div>
           ) : null}
-
-
-
-          
         </div>
       </div>
     );

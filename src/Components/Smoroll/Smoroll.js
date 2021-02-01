@@ -22,11 +22,7 @@ class Smoroll extends Component {
   render() {
     return (
       <div>
-        <div className="Navigation2">
-          <div className="Start-Ende" onClick={this.scrollToBottom}>
-            An das Ende der Seite
-          </div>
-        </div>
+        
 
         <div className="Flex">
           {/* <StickyContainer>
@@ -42,7 +38,7 @@ class Smoroll extends Component {
                   spy={true}
                   smooth={true}
                   offset={-70}
-                  duration={200}
+                  duration={800}
                 >
                   {" "}
                   Über uns{" "}
@@ -123,7 +119,7 @@ class Smoroll extends Component {
                   spy={true}
                   smooth={true}
                   offset={-70}
-                  duration={2000}
+                  duration={3000}
                 >
                   Online Ticketkauf
                 </Link>
@@ -136,7 +132,7 @@ class Smoroll extends Component {
                   spy={true}
                   smooth={true}
                   offset={-70}
-                  duration={2000}
+                  duration={3000}
                 >
                   Barrierefreiheit
                 </Link>
@@ -193,11 +189,7 @@ class Smoroll extends Component {
           {/* </view> */}
         </div>
 
-        <div className="Navigation2">
-          <div className="Start-Ende" onClick={this.scrollToTop}>
-            An den Start der Seite
-          </div>
-        </div>
+        
       </div>
     );
   }

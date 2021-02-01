@@ -35,6 +35,7 @@
 
 .InfoDWSchrift {
   text-align: center;
+  
 }
 
 .class {
@@ -51,6 +52,7 @@
   font-size: 2vw;
   align-items: center;
   text-align: center;
+  padding: 1rem;
 }
 
 .InfoDWText {
@@ -62,6 +64,7 @@
   color: white;
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.527),0 6px 25px 0 rgb(197, 192, 192);
+  padding: 1rem;
 }
 
 .DealDWKomplett {

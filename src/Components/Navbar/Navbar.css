@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+
 .NavbarItems {
   background: var(
     --mainDark
@@ -43,7 +45,7 @@
 }
 
 .nav-links {
-  color: var(--mainWhite);
+  color: #f5f5f5cc;
   text-decoration: none;
   padding: 0.5rem 1rem;
 }
@@ -84,19 +86,21 @@
     width: 100%;
     height: 1000px;
     position: absolute;
-    transform: translateY(-60px);
+    transform: translateY(-50px);
     top: 170%;
     left: -100%;
     opacity: 1;
     transition: all 0.5s ease;
+    
   }
 
   .nav-menu.active {
-    background: #d11717;
+    background: #bdc3c7;
     left: 0;
     opacity: 1;
     transition: all 0.5s ease;
-    z-index: 1;
+    transform: translateY(0rem);
+    z-index: 2;
   }
 
   .nav-links {
@@ -105,6 +109,7 @@
     width: 100%;
     transform: translateY(-50px);
     display: table;
+    color: #000000cc;
   }
 
   .nav-links:hover {
@@ -125,8 +130,8 @@
     position: absolute;
     top: 0;
     right: 0;
-    transform: translate(-100%, 5%);
-    font-size: 6vw;
+    transform: translate(-110%, -80%);
+    font-size: 4vw;
     cursor: pointer;
   }
 
@@ -144,7 +149,7 @@
     width: 80%;
     background: #297ff0;
     text-decoration: none;
-    color: #fff;
+    color: black;
     font-size: 5vw;
   }
 
@@ -155,9 +160,13 @@
   }
 
   Button {
-    display: none;
+    /*display: none; */
+    
     width: 125.76;
     height: 46.4;
+  }
+  .signIn{
+    display: none
   }
 
   .Headline1 {
@@ -188,10 +197,10 @@
 }
 
 .Gruppenname {
-  font-family: "Bungee Outline", cursive;
+  font-family: 'Monoton';
   font-size: 6vw;
   text-align: center;
-  color: #ffa533;
+  color: #f5f5f5cc;
   height: 120px;
   width: 100%;
 }
@@ -225,10 +234,14 @@
   }
   .nav-links {
     transform: translateY(-300px);
+    color: #000000cc;
   }
   .fa-times {
     font-size: 12vw;
   }
+  .nav-links-mobile {
+    transform: translateY(-300px);
+}
 }
 
 @media screen and (min-width: 251px) and (max-width: 350px) {
@@ -247,6 +260,7 @@
   }
   .nav-links {
     transform: translateY(-250px);
+    color: #000000cc;
   }
   .fa-times {
     font-size: 10vw;
@@ -272,6 +286,7 @@
   }
   .nav-links {
     transform: translateY(-200px);
+    color: #000000cc;
   }
   .fa-times {
     font-size: 9vw;
@@ -297,6 +312,7 @@
   }
   .nav-links {
     transform: translateY(-150px);
+    color: #000000cc;
   }
   .fa-times {
     color: #fff;
@@ -320,6 +336,7 @@
   }
   .nav-links {
     transform: translateY(-50px);
+    color: #000000cc;
   }
   .fa-times {
     font-size: 8vw;
@@ -403,7 +420,7 @@
 }
 
 .signIn {
-  color: gray;
+  color: #f5f5f5cc;
   padding: 1rem 2rem;
   text-align: center;
 }
