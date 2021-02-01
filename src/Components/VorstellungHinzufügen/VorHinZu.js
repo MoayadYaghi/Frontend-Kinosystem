@@ -25,10 +25,10 @@ class VorHinZu extends Component {
       blockVisible:false,
       dayAndMonth : [],
       yearCollection : [],
-      saal: 0,
+      saal: 98,
       day:0,
       month:0,
-      year:0,
+      year:2021,
       stunde:0,
       minute:0,
       startZeit:0,
@@ -154,14 +154,21 @@ class VorHinZu extends Component {
 
 
   handleButton(event){
+    var startZeit = "0"+this.state.month+"0"+this.state.day+this.state.year+this.state.stunde+this.state.minute    
+    var filmId = this.state.choosenMovie.id
+    var grundpreis = this.state.preis
+    var aktiv = 1
+    var saal = this.state.saal
+    console.log(grundpreis, filmId, startZeit)
     //this.setState({minute: event.target.value})
     alert("film wurde hinzugefügt für "+ this.state.preis)
     event.preventDefault();
-    this.setState({startZeit: this.state.year+"-"+this.state.month+"-"+this.state.day+"T"+this.state.stunde+":"+this.state.minute+":00.000Z",
+    this.setState({startZeit: "0"+this.state.month+"0"+this.state.day+this.state.year+this.state.stunde+this.state.minute,
+    /* this.setState({startZeit: this.state.year+"-"+"0"+this.state.month+"0"+this.state.day+"T"+this.state.stunde+":"+this.state.minute+":00.000", */
     filmId: this.state.choosenMovie.id,
     grundpreis: this.state.preis,
-    aktiv: "true"}, 
-    ()=> VorstellungHinzufügen.vorhinzu(this.state).then(res=>console.log(res))
+    aktiv: 1}, 
+    ()=> VorstellungHinzufügen.vorhinzu(startZeit, filmId, saal, grundpreis).then(res=>console.log(res))
     )
   }
 
@@ -239,7 +246,7 @@ class VorHinZu extends Component {
                      <form>
                      <label>
                         <select value={this.state.saal} onChange={this.handleSaal}>
-                        <option value="0">0</option>
+                        <option value="0">98</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
