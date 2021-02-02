@@ -1,6 +1,7 @@
 import React from "react";
 import MoviesSlider from "./Slider";
 import SliderAPI from "../../API_Pulls/SliderAPI";
+import GetAllFilmAPI from "../../API_Pulls/GetAllFilmAPI"
 
 var Bild = [];
     var Name = [];
@@ -15,9 +16,15 @@ class SliderAufruf extends React.Component {
   }
 
   componentDidMount() {
-    SliderAPI.getSliderApi().then((response) => {
+    /* SliderAPI.getSliderApi().then((response) => {
       let movies = response.data.results;
-      this.setState({ Bilder: movies });
+      this.setState({ Bilder: movies }); */
+
+      GetAllFilmAPI.getAllFilmAPI().then((response) => {
+
+        this.setState({ Bilder: response.data });
+       
+        console.log(this.state.Bilder);
 
 
       
@@ -30,8 +37,8 @@ class SliderAufruf extends React.Component {
 
   render() {
     this.state.Bilder.forEach((element) => {
-      Bild.push(element.image);
-      Name.push(element.title);
+      Bild.push(element.bild);
+      Name.push(element.name);
       id.push(element.id);
     });
 
