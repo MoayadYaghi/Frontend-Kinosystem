@@ -4,7 +4,7 @@ import  "./Post.css";
 
 const REST_API_Post_Login = ""
 
-class PostNewMovie{
+class postLogin{
     
     sendnewLogin(data){
 
@@ -14,4 +14,4 @@ class PostNewMovie{
 }
 
 
-export default new PostNewMovie();
+export default new postLogin();
