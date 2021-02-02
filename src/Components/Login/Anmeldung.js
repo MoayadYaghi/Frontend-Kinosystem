@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Login.css";
 //import { Link } from "react-router-dom";
 import postRegister from "../../PostRequest/postRegister";
+import { animateScroll as scroll } from "react-scroll";
 
 class Anmeldung extends Component {
   constructor(props) {
@@ -28,6 +29,7 @@ class Anmeldung extends Component {
       BG7: "Box",
       BG8: "Box",
       BG9: "Box",
+      visible: true,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -45,15 +47,22 @@ class Anmeldung extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    
     if (this.state.passwortHash !== this.state.Passwort2) {
       alert("Das hat nicht geklappt");
     } else {
-      console.log("Ergebnisse: ");
-      console.log(this.state);
+      
 
+        
       postRegister.sendnewRegister(this.state).then((res) => {
         console.log(res);
-      });
+        scroll.scrollToTop();
+    this.setState({visible: false})
+      })
+      .catch(error =>(
+        console.log("hat nicht geklappt")
+      ))
+      ;
     }
   }
 
@@ -102,7 +111,7 @@ class Anmeldung extends Component {
     return (
       <div>
         <br />
-        <form className="FormFenster" onSubmit={this.handleSubmit}>
+        {this.state.visible?(<form className="FormFenster" onSubmit={this.handleSubmit}>
           <div className="InputField">
             {/* <label>
               <select
@@ -141,17 +150,7 @@ class Anmeldung extends Component {
                 />
               </label>
             </div>
-            <label>
-              Geburtsdatum:
-              <input
-                className="Textfielde"
-                placeholder="Alter"
-                name="alter"
-                type="number"
-                value={this.state.alter}
-                onChange={this.handleChange}
-              />
-            </label>
+            
             <label>
               <input
                 className="Textfielde"
@@ -214,12 +213,12 @@ class Anmeldung extends Component {
             </label>
 
             <div className="SitzplatzAuswahl">
-              <div className="TitleField">
+              <div className="DESIGNHeadline2">
                 {" "}
                 Auswahl einer favorisierten Sitzplatz Region
               </div>
 
-              <div className="Leinwand">Kino Leinwand</div>
+              <div className="Leinwand"><div className ="DESIGNHeadline2">Kino Leinwand</div></div>
               <div className="FlexboxDesign">
                 <div
                   className={this.state.BG1}
@@ -296,12 +295,12 @@ class Anmeldung extends Component {
           <br />
           <div className="SubmitField">
             <input
-              className="Submitbutton"
+              className="DESIGNButton"
               type="submit"
               value=" Registrieren"
             />
           </div>
-        </form>
+        </form>):<div>Sie haben sich erfolgreich angemeldet</div>}
       </div>
     );
   }
