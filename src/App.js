@@ -32,8 +32,12 @@ import Wunschliste from "./Pages/wunschliste";
 import Sitzplatzreservierung from "./Pages/sitzplatzres";
 import filmDetails from "./Pages/filmDetails";
 import Admin from "./Pages/AdminFilmAuswahl";
+import VorstellungHinzufügen from "./Pages/VorstellungHinzufügen";
+import AdminÜbersicht from "./Pages/AdminUebersicht";
 import Test1 from "./Pages/Test1";
 import Test2 from "./Pages/Test2";
+import FilmEntfernen from "./Pages/FilmEntfernen"
+
 
 class App extends Component {
   
@@ -60,7 +64,9 @@ render(){
   const SitzplatzresLink = "/Sitzplatz/:vorstellungsId"
   const FilmDetailsLink = "/FilmDetails/:id"
   const AdminLink ="/Admin"
+  const VorstellungHinzufügenLink ="/VorHin"
   const Test1Link ="/Test1"
+  const FilmEntfernenLink = "/FilmEntfernen"
 
 
   
@@ -89,7 +95,9 @@ render(){
        <Route exact path= {SitzplatzresLink} component={Sitzplatzreservierung}/>
        <Route exact path= {FilmDetailsLink} component={filmDetails}/>
        <Route exact path= {AdminLink} component={Admin}/>
+       <Route exact path= {VorstellungHinzufügenLink} component={VorstellungHinzufügen}/>
        <Route exact path= {Test1Link} component={Test1}/>
+       <Route exact path= {FilmEntfernenLink} component={FilmEntfernen}/>
 
 
 

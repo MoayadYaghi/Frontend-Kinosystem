@@ -10,7 +10,7 @@ import { TransitionGroup, CSSTransition } from "react-transition-group"; */
 function MoviesSlider({ images, text, id }) {
   /* console.log(images); */
   const Länge = images.length;
-  const ProgrammLink = "/programm/"
+  const ProgrammLink = "/FilmDetails/"
 
   const [index, setIndex] = useState(0);
 
@@ -136,11 +136,15 @@ function MoviesSlider({ images, text, id }) {
             <Link className="slider"to={ProgrammLink + id[index]}>
             <img className="image" alt="" src={images[index]} />
             </Link>
-            <button id="goLeft" onClick={goLeft}>
+            <button  id="goLeft" onClick={goLeft}>
+              <div className ="leftButton">
               {"<"}
+              </div>
             </button>
             <button id="goRight" onClick={goRight}>
+            <div className ="leftButton">
               {">"}
+              </div>
             </button>
             
           </div>

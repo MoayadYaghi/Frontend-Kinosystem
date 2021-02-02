@@ -14,7 +14,9 @@ class FilmSuche extends Component {
   }
 
   render() {
-    return <div></div>;
+    return <div>
+      jkhkjhkhkh
+    </div>;
   }
 }
 export default FilmSuche;

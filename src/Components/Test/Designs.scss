@@ -17,6 +17,7 @@ $color: #26418f;
     transition: color 150ms ease-in-out;
     border-radius: 3rem;
     padding: 0.3rem 3rem 0.3rem 3rem;
+    text-decoration: none;
     
     &:after {
       content: '';
@@ -31,6 +32,7 @@ $color: #26418f;
       background: #0077c2;
       z-index: -1;
       transition: width 150ms ease-in-out;
+      text-decoration: none;
     }
     
     &:hover {
