@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 import "./VorHinZu.css";
-<<<<<<< HEAD
-import getFilme from "../../API_Pulls/getFilmAPI.js"
-=======
 import getFilme from "../../API_Pulls/GetAllFilmAPI.js"
->>>>>>> master
 import VorstellungHinzufügen from "../../PostRequest/VorstellungHinzufügen"
 /* import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { Link } from "react-router-dom";
@@ -62,11 +58,7 @@ class VorHinZu extends Component {
   componentDidMount () {
     let data2 =[];
     let data3 =[];
-<<<<<<< HEAD
-    getFilme.getFilme().then((response )=> {
-=======
     getFilme.getAllFilmAPI().then((response )=> {
->>>>>>> master
       var data = response.data
       this.setState({filme: response.data})
       console.log(response);
