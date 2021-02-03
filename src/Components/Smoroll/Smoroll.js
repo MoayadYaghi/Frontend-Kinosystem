@@ -22,8 +22,6 @@ class Smoroll extends Component {
   render() {
     return (
       <div>
-        
-
         <div className="Flex">
           {/* <StickyContainer>
                 <Sticky>
@@ -188,8 +186,6 @@ class Smoroll extends Component {
 
           {/* </view> */}
         </div>
-
-        
       </div>
     );
   }

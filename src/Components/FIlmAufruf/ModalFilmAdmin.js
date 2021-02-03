@@ -1,17 +1,17 @@
 import {useState} from "react";
 import Modal from "react-bootstrap/Modal"
 
-function ModalFilmAdmin() {
-    const [show, setShow] = useState(false);
+function ModalFilmAdmin(Anzeigen) {
+    const [show, setShow] = useState(true);
   
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleClose = () => setShow(false)
+    sessionStorage.setItem("ModalFilmAdmin", true)
+    ;
+    
   
     return (
       <>
-        <button variant="primary" onClick={handleShow}>
-          Launch demo modal
-        </button>
+        
   
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
