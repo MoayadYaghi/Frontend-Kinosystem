@@ -26,10 +26,15 @@
   justify-content: center;
   grid-gap: 2rem;
   text-align: center;
+  text-decoration: none;
   font-size: 2rem;
-  text-decoration: underline;
   width: 20rem;
+  transition: transform 450ms;
 }
+.Title:hover {
+    transform: scale(1.05);
+    font-weight: 500;
+  }
 .searchBar {
   margin-top: 1%;
   margin-bottom: 1%;
