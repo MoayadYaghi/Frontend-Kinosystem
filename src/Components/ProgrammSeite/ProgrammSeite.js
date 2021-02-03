@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import "./Programm.css";
-
-import { Link } from "react-router-dom";
 import GetAllFilmAPI from "../../API_Pulls/GetAllFilmAPI";
 import { Redirect } from "react-router-dom";
 
@@ -35,11 +33,11 @@ class ProgrammSeite extends Component {
   }
 
   handleChange(event) {
-    if (event.target.id == "searchId") {
+    if (event.target.id === "searchId") {
       this.setState({ search: event.target.value });
-    } else if (event.target.id == "genreId") {
+    } else if (event.target.id === "genreId") {
       this.setState({ genre: event.target.value });
-    } else if (event.target.id == "alterId") {
+    } else if (event.target.id === "alterId") {
       this.setState({ alter: event.target.value });
     }
 
@@ -60,20 +58,20 @@ class ProgrammSeite extends Component {
     }
     //this.setState({ filme: suchFilme})
     if (this.state.showFilter === true) {
-      if (genre.value == "Alle") {
+      if (genre.value === "Alle") {
         genreFilme = suchFilme;
       } else {
         for (let i = 0; i < suchFilme.length; i++) {
           let genreList = suchFilme[i].genre;
           for (let g in genreList) {
-            if (genreList[g] == genre.value) {
+            if (genreList[g] === genre.value) {
               genreFilme.push(suchFilme[i]);
               break;
             }
           }
         }
       }
-      if (alter.value == "Alle") {
+      if (alter.value === "Alle") {
         alterFilme = genreFilme;
       } else {
         for (let i = 0; i < genreFilme.length; i++) {
@@ -182,7 +180,14 @@ class ProgrammSeite extends Component {
           {this.state.filme.map((film) => (
             <div className="" key={film.id}>
               <div className="ErgebnisDarstellung">
-                <img key={film.id} alt=" " className="image" src={film.bild} />
+                <img
+                  id={film.id}
+                  key={film.id}
+                  alt=" "
+                  className="image"
+                  onClick={this.setRedirect}
+                  src={film.bild}
+                />
               </div>
               {this.renderRedirect()}
               <div id={film.id} className="Title" onClick={this.setRedirect}>
@@ -198,11 +203,9 @@ class ProgrammSeite extends Component {
 
   sitzplanGenerieren(reihenAnzahl, spaltenAnzahl) {
     const Sizsplan = [reihenAnzahl, spaltenAnzahl];
-    var i = 0;
     for (var r = 0; r < reihenAnzahl; r++) {
       for (var s = 0; s < spaltenAnzahl; s++) {
         Sizsplan[(r, s)] = <button>Sitz</button>;
-        i++;
       }
     }
     return Sizsplan;
