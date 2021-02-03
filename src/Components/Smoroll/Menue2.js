@@ -10,89 +10,65 @@ class Menue2 extends Component {
         <div className="TextS">
           Die Eintrittspreise für reguläre Filmvorstellungen stellen sich wie
           folgt zusammen:
-          <div>Alle Preise sind in relation zu dem im Programm angegeben Preis zu betrachten.</div>
+          <div>
+            Alle Preise sind in relation zu dem im Programm angegeben Preis zu
+            betrachten.
+          </div>
           <table className="table table-striped">
             <thead>
               <tr>
                 <td></td>
                 <td>Verkauf im Kino</td>
-                
               </tr>
             </thead>
             <tbody>
-              
-               {/* <div className ="TabellenLinie">
+              {/* <div className ="TabellenLinie">
                 Aktuelle Blockbuster
                 </div>
                 {/* <td> </td>
                 <td> </td> */}
-                
             </tbody>
             <tbody>
-            <div className ="TabellenLinie">
-
-              
-                Mo-So
-
-                </div>
-              
+              <div className="TabellenLinie">Mo-So</div>
             </tbody>
             <tbody>
-              <tr><td>
-                {" "}
-                Regulär</td>
+              <tr>
+                <td> Regulär</td>
                 <td> 100%</td>
-                
               </tr>
             </tbody>
             <tbody>
-              <tr><td>
-                {" "}
-                Kind</td>
-                <td>  60%</td>
-                
+              <tr>
+                <td> Kind</td>
+                <td> 60%</td>
               </tr>
             </tbody>
             <tbody>
-              <tr><td>
-                {" "}
-                Schüler/Student</td>
+              <tr>
+                <td> Schüler/Student</td>
                 <td> 80%</td>
-                
               </tr>
             </tbody>
             <tbody>
-              <tr><td>
-                {" "}
-                Rüstige Rentner</td>
+              <tr>
+                <td> Rüstige Rentner</td>
                 <td> 70%</td>
-                
               </tr>
             </tbody>
             <tbody>
-              <tr><td>
-                {" "}
-                Menschen mit Behinderungen </td>
+              <tr>
+                <td> Menschen mit Behinderungen </td>
                 <td> 50%</td>
-                
               </tr>
             </tbody>
-             <tbody>
-              <tr><td>
-                {" "}
-                Begleitpersonen</td>
+            <tbody>
+              <tr>
+                <td> Begleitpersonen</td>
                 <td> 0</td>
-                
               </tr>
             </tbody>
-            
-            
-            
-           
-            
           </table>
           <div>
-            
             Informationen für Rollstuhlfahrer: <br />
             Alle Kinos sind ausgestattet mit extra Plätzen für Rollstuhlfahrer.
             Sollen Sie einen solchen benötigen, bitte wählen sie einen solchen
