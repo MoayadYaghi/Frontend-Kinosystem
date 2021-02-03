@@ -3,22 +3,23 @@ import "./Programm.css";
 
 import { Link } from "react-router-dom";
 import GetAllFilmAPI from "../../API_Pulls/GetAllFilmAPI";
-import { Redirect } from 'react-router-dom';
+import { Redirect } from "react-router-dom";
 
 class ProgrammSeite extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      headline: 'Ergebnisse',
-      genre: 'Alle',
-      alter: 'Alle',
-      filmName:" ",
+      headline: "Ergebnisse",
+      genre: "Alle",
+      alter: "Alle",
+      filmName: " ",
       search: "",
       showFilter: false,
       redirect: false,
       filmId: "",
       alleFilme: [],
-      filme: []};
+      filme: [],
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.hideFilter = this.hideFilter.bind(this);
@@ -27,7 +28,6 @@ class ProgrammSeite extends Component {
 
   componentDidMount() {
     GetAllFilmAPI.getAllFilmAPI().then((response) => {
-
       this.setState({ filme: response.data });
       this.setState({ alleFilme: response.data });
       console.log(this.state.filme);
@@ -35,14 +35,12 @@ class ProgrammSeite extends Component {
   }
 
   handleChange(event) {
-    if(event.target.id == "searchId") {
-      this.setState({search: event.target.value})
-    }
-    else if(event.target.id == "genreId") {
-      this.setState({genre: event.target.value});
-    }
-    else if(event.target.id == "alterId") {
-      this.setState({alter: event.target.value});
+    if (event.target.id == "searchId") {
+      this.setState({ search: event.target.value });
+    } else if (event.target.id == "genreId") {
+      this.setState({ genre: event.target.value });
+    } else if (event.target.id == "alterId") {
+      this.setState({ alter: event.target.value });
     }
 
     let alleFilme = this.state.alleFilme;
@@ -53,35 +51,34 @@ class ProgrammSeite extends Component {
     let suchFilme = [];
     let genre = document.getElementById("genreId");
     let alter = document.getElementById("alterId");
-    let search = document.getElementById("searchId")
+    let search = document.getElementById("searchId");
 
-    for(let film in alleFilme) {
-      if(alleFilme[film].name.includes(search.value)) {
+    for (let film in alleFilme) {
+      if (alleFilme[film].name.includes(search.value)) {
         suchFilme.push(alleFilme[film]);
       }
     }
     //this.setState({ filme: suchFilme})
-    if(this.state.showFilter === true) {
-      if(genre.value == "Alle") {
+    if (this.state.showFilter === true) {
+      if (genre.value == "Alle") {
         genreFilme = suchFilme;
       } else {
-        for(let i=0; i<suchFilme.length; i++) {
+        for (let i = 0; i < suchFilme.length; i++) {
           let genreList = suchFilme[i].genre;
-          for(let g in genreList) {
-  
-            if(genreList[g]== genre.value) {
+          for (let g in genreList) {
+            if (genreList[g] == genre.value) {
               genreFilme.push(suchFilme[i]);
               break;
             }
           }
         }
       }
-      if(alter.value == "Alle") {
+      if (alter.value == "Alle") {
         alterFilme = genreFilme;
       } else {
-        for(let i=0; i<genreFilme.length; i++) {
+        for (let i = 0; i < genreFilme.length; i++) {
           let altersfreigabe = genreFilme[i].mindestAlter;
-          if(altersfreigabe <= alter.value) {
+          if (altersfreigabe <= alter.value) {
             alterFilme.push(genreFilme[i]);
           }
         }
@@ -92,10 +89,12 @@ class ProgrammSeite extends Component {
       this.setState({ filme: suchFilme });
       filmCounter = suchFilme.length;
     }
-    if(filmCounter > 0) {
-      this.setState({ headline: 'Ergebnisse'});
+    if (filmCounter > 0) {
+      this.setState({ headline: "Ergebnisse" });
     } else {
-      this.setState({ headline: 'Zu diesen Suchkriterien gibt es keine Filme'});
+      this.setState({
+        headline: "Zu diesen Suchkriterien gibt es keine Filme",
+      });
     }
   }
 
@@ -105,75 +104,93 @@ class ProgrammSeite extends Component {
 
   setRedirect = (event) => {
     let id = event.target.id;
-    this.setState({redirect: true});
-    this.setState({filmId: id});
-  }
+    this.setState({ redirect: true });
+    this.setState({ filmId: id });
+  };
   renderRedirect = () => {
     if (this.state.redirect) {
-      return <Redirect to={`/FilmDetails/${this.state.filmId}`} />
+      return <Redirect to={`/FilmDetails/${this.state.filmId}`} />;
     }
-  }
+  };
 
   render() {
     const { showFilter } = this.state;
 
     return (
-      <div className = "" >
-        <div className = "wholeFilterSection">
-          <div className = "searchBar">
-            <input className = "searchField" id="searchId" type="text" placeholder="Search" value={this.state.search} onChange={this.handleChange}/>
+      <div className="">
+        <div className="wholeFilterSection">
+          <div className="searchBar">
+            <input
+              className="searchField"
+              id="searchId"
+              type="text"
+              placeholder="Search"
+              value={this.state.search}
+              onChange={this.handleChange}
+            />
           </div>
-          <div className = "filter">
-            <button onClick={() => this.hideFilter()}>
-              Filter
-            </button>
-            {showFilter && <div className = "genre">
-              <form>
-              <label>
-                Genre
-                <select id="genreId" value={this.state.genre} onChange={this.handleChange}>
-                  <option value="Alle">Alle</option>
-                  <option value="Action">Action</option>
-                  <option value="Drama">Drama</option>
-                  <option value="Sci-Fi">Sci-Fi</option>
-                  <option value="Fantasy">Fantasy</option>
-                  <option value="Horror">Horror</option>
-                  <option value="Animation">Animation</option>
-                  <option value="Family">Familie</option>
-                </select>
-              </label>
-            </form>
-            </div>}
-            {showFilter && <div className = "alter">
-              <form>
-              <label>
-                Altersfreigabe 
-                <select id="alterId" value={this.state.alter} onChange={this.handleChange}>
-                  <option value="Alle">Alle</option>
-                  <option value="6">ab 6 Jahren</option>
-                  <option value="12">ab 12 Jahren</option>
-                  <option value="16">ab 16 Jahren</option>
-                  <option value="18">ab 18 Jahren</option>
-                </select>
-              </label>
-            </form>
-            </div>}
+          <div className="filter">
+            <button onClick={() => this.hideFilter()}>Filter</button>
+            {showFilter && (
+              <div className="genre">
+                <form>
+                  <label>
+                    Genre
+                    <select
+                      id="genreId"
+                      value={this.state.genre}
+                      onChange={this.handleChange}
+                    >
+                      <option value="Alle">Alle</option>
+                      <option value="Action">Action</option>
+                      <option value="Drama">Drama</option>
+                      <option value="Sci-Fi">Sci-Fi</option>
+                      <option value="Fantasy">Fantasy</option>
+                      <option value="Horror">Horror</option>
+                      <option value="Animation">Animation</option>
+                      <option value="Family">Familie</option>
+                    </select>
+                  </label>
+                </form>
+              </div>
+            )}
+            {showFilter && (
+              <div className="alter">
+                <form>
+                  <label>
+                    Altersfreigabe
+                    <select
+                      id="alterId"
+                      value={this.state.alter}
+                      onChange={this.handleChange}
+                    >
+                      <option value="Alle">Alle</option>
+                      <option value="6">ab 6 Jahren</option>
+                      <option value="12">ab 12 Jahren</option>
+                      <option value="16">ab 16 Jahren</option>
+                      <option value="18">ab 18 Jahren</option>
+                    </select>
+                  </label>
+                </form>
+              </div>
+            )}
           </div>
         </div>
         <h1 className="text-center"> {this.state.headline} </h1>
         <br />
         <div className="filmListe">
           {this.state.filme.map((film) => (
-          <div className="" key={film.id}>
-            <div className="ErgebnisDarstellung">
-              <img key={film.id} alt=" " className="image" src={film.bild}/>
+            <div className="" key={film.id}>
+              <div className="ErgebnisDarstellung">
+                <img key={film.id} alt=" " className="image" src={film.bild} />
+              </div>
+              {this.renderRedirect()}
+              <div id={film.id} className="Title" onClick={this.setRedirect}>
+                {" "}
+                {film.name}
+              </div>
             </div>
-            {this.renderRedirect()}
-            <div id={film.id} className="Title" onClick={this.setRedirect}>
-              {" "}
-              {film.name}
-            </div>
-          </div>))}
+          ))}
         </div>
       </div>
     );

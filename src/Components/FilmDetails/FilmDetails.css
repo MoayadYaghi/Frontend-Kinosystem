@@ -1,55 +1,112 @@
 .wrapper {
-    display: flex;
+  display: flex;
 }
 .bild {
-    display: flex;
-    flex-wrap: wrap; 
-    height: 30rem; 
-    grid-gap: 4rem;
-    justify-content: left;
-    flex:1;
+  display: flex;
+  flex-wrap: wrap;
+  height: 30rem;
+  grid-gap: 4rem;
+  justify-content: left;
+  flex: 1;
 }
 .header {
-    margin-top: 1rem;
-    margin-left: 1rem;
-    align-items: flex-start;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  align-items: flex-start;
 }
 .beschreibung {
-    margin-left: 1rem;
-    align-items: flex-start;
+  margin-left: 1rem;
+  align-items: flex-start;
+  background-color: rgb(255, 0, 0);
 }
 .inhalt {
-    margin: 1rem;
-    justify-content: left;
-    display: flex;
-    float: left;
+  margin: 1rem;
+  justify-content: left;
+  float: left;
+  display: flex;
+  background-color: rgb(51, 255, 0);
 }
 .vorstellungen {
-    margin-top: 2rem;
-    margin-left: 1rem;
-    align-items: flex-start;
+  margin-top: 2rem;
+  margin-left: 1rem;
+  align-items: flex-start;
+  background-color: rgb(255, 0, 0);
 }
 .Woche {
-    display: flex;
-    margin: 2rem;
+  display: grid;
+  margin: 2rem;
+  background-color: rgb(255, 0, 0);
 }
 .Datum {
-    margin-left: 1rem;
-    margin-right: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  font-size: 1.5rem;
 }
 .vorstButton {
-    width: fit-content;
-    margin: 1rem;
-    margin-left: 3rem;
+  width: fit-content;
+  position: relative;
+  margin-left: 15rem;
+  margin-top: 0rem;
+  font-size: 1.5rem;
 }
 .vorstWrapper {
-    justify-content: center;
-    align-items: center;
-    display: block;
+  justify-content: center;
+  align-items: center;
+  display: block;
+  background-color: rgb(25, 0, 255);
 }
 .nextButtonWrapper {
-    display:flex;
-    justify-content:flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 .nextButton {
+}
+
+@media (max-width: 779px) {
+  .bild {
+    height: 20rem;
+  }
+  .vorstellungen {
+    margin-left: unset;
+  }
+}
+
+@media (max-width: 771px) {
+  .inhalt {
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+  }
+  .wrapper {
+    display: flex;
+  }
+  .bild {
+    height: 20rem;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  .beschreibung {
+    margin-left: unset;
+    margin-top: 1rem;
+  }
+  .vorstWrapper {
+    justify-content: center;
+    align-items: center;
+    display: contents;
+  }
+  .nextButtonWrapper {
+    justify-content: center;
+  }
+  .Datum {
+    margin-left: unset;
+    margin-right: unset;
+    font-size: 1rem;
+  }
+  .vorstButton {
+    width: fit-content;
+    position: absolute;
+    margin-left: 7rem;
+    font-size: 1rem;
+  }
 }
