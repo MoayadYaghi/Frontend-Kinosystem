@@ -8,11 +8,11 @@ class FilmInaktivSetzen{
     
 
 
-    vorstellungInaktivieren(filmId){
+    vorstellungInaktivieren(filmId, reaktivieren){
         var Authorization = sessionStorage.getItem('token')
 
  
-        return axios.post("http://localhost:8081/film/"+filmId+"/aktiv/0", null,{headers: {
+        return axios.post("http://localhost:8081/film/"+filmId+"/aktiv/"+reaktivieren, null,{headers: {
             Authorization
             }})
 

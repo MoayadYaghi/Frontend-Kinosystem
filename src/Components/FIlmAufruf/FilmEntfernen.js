@@ -24,6 +24,8 @@ class FilmSuche extends Component {
       choosenMovie:[],
       choosenVorstellung:[],
       vorstellungId:0,
+      filmReaktivieren: 0,
+      vorstellungReaktivieren:0,
      
 
 
@@ -36,7 +38,24 @@ class FilmSuche extends Component {
     this.handleFilmEntfernen = this.handleFilmEntfernen.bind(this);
     this.handleFilmSollEntferntWerden = this.handleFilmSollEntferntWerden.bind(this);
     this.handleVorstellungSollEntferntWerden = this.handleVorstellungSollEntferntWerden.bind(this);
+    this.handleReaktivierung = this.handleReaktivierung.bind(this);
+    this.handleErfolgreichEntfernt = this.handleErfolgreichEntfernt.bind(this);
   }//constructor
+
+
+  handleErfolgreichEntfernt(event){
+    
+  }
+
+
+handleReaktivierung(event){
+  if (event.target.id == "vorstellung"){
+    this.setState({vorstellungReaktivieren:1})
+  }  
+  if (event.target.id == "film"){
+    this.setState({filmReaktivieren:1})
+  }
+}
 
   handleFilmSollEntferntWerden(event){
     event.preventDefault();
@@ -48,24 +67,28 @@ class FilmSuche extends Component {
     event.preventDefault();
       this.setState({VorstellungEntfernen:true})
       this.setState({filmEntfernen:false})
+
     }
   
   handleFilmEntfernen(event){
     event.preventDefault();
     let filmId= this.state.choosenMovie.id
-    console.log(filmId)
-    console.log(this.state.choosenMovie)
+    let filmReaktivieren = this.state.filmReaktivieren
+    /* console.log(filmId)
+    console.log(this.state.choosenMovie) */
      alert("Film wurde entfernt") 
-     FilmInaktivSetzenAPI.vorstellungInaktivieren(filmId)
+     FilmInaktivSetzenAPI.vorstellungInaktivieren(filmId, filmReaktivieren)
   }  
   handleVorstellungEntfernen(event){
     let vorstellungId=this.state.value2;
+    let vorstellungReaktivieren = this.state.vorstellungReaktivieren
     event.preventDefault();
 /*     console.log(this.state.choosenVorstellung)
     console.log(this.state.value2)
     console.log(this.state.vorstellungId) */
-    console.log(vorstellungId)
-    VorstellungInaktivSetzenAPI.vorstellungInaktivieren(vorstellungId)/* .then(res=>console.log(res))*/
+   /*  console.log(vorstellungId)
+    console.log(vorstellungReaktivieren) */
+    VorstellungInaktivSetzenAPI.vorstellungInaktivieren(vorstellungId, vorstellungReaktivieren)/* .then(res=>console.log(res))*/
   }
 
 
@@ -116,13 +139,25 @@ class FilmSuche extends Component {
 
         <form onSubmit = {this.handleFilmSollEntferntWerden}>
         <div> {/* Button um die Auswahl zu bestätigen */}
-        <input type="submit" value="Film entfernen" />
+        <input type="submit" value="Film deaktivieren" />
+        </div> 
+        </form> 
+
+        <form onSubmit = {this.handleFilmSollEntferntWerden}>
+        <div> {/* Button um die Auswahl zu bestätigen */}
+        <input id ="film" type="submit" value="Film reaktivieren" onClick={this.handleReaktivierung}/>
         </div> 
         </form>
 
         <form onSubmit = {this.handleVorstellungSollEntferntWerden}>
         <div> {/* Button um die Auswahl zu bestätigen */}
-        <input type="submit" value="Vorstellung entfernen" />
+        <input type="submit" value="Vorstellung deaktivieren" />
+        </div> 
+        </form>        
+        
+        <form onSubmit = {this.handleVorstellungSollEntferntWerden}>
+        <div> {/* Button um die Auswahl zu bestätigen */}
+        <input id ="vorstellung" type="submit" value="Vorstellung reaktivieren" onClick={this.handleReaktivierung} />
         </div> 
         </form>
 

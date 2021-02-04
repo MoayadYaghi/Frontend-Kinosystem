@@ -8,11 +8,11 @@ class VorstellungInaktivSetzen{
     
 
 
-    vorstellungInaktivieren(vorstellungId){
+    vorstellungInaktivieren(vorstellungId, reaktivieren){
         var Authorization = sessionStorage.getItem('token')
 
  
-        return axios.post("http://localhost:8081/vorstellung/"+vorstellungId+"/aktiv/0", null,{headers: {
+        return axios.post("http://localhost:8081/vorstellung/"+vorstellungId+"/aktiv/"+reaktivieren, null,{headers: {
             Authorization
             }})
 
