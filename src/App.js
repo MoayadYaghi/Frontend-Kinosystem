@@ -33,7 +33,11 @@ import Sitzplatzreservierung from "./Pages/sitzplatzres";
 import filmDetails from "./Pages/filmDetails";
 import Admin from "./Pages/AdminFilmAuswahl";
 import VorstellungHinzufügen from "./Pages/VorstellungHinzufügen";
+<<<<<<< HEAD
 import AdminUebersicht from "./Pages/AdminUebersicht";
+=======
+import AdminÜbersicht from "./Pages/AdminUebersicht";
+>>>>>>> 1f542af6bb3b28893057e6d41725ffe0636cc937
 import Test1 from "./Pages/Test1";
 import Test2 from "./Pages/Test2";
 import FilmEntfernen from "./Pages/FilmEntfernen"
