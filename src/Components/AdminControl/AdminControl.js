@@ -19,12 +19,10 @@ class AdminControl extends Component {
 setRedirect = (event) => {
     let id = event.target.id
     this.setState({redirect: true});
-    this.setState({verweisAuf: id})
-    
-    
-
-    
+    this.setState({verweisAuf: id})    
   }
+
+  
   renderRedirect = () => {
     console.log(this.state.verweisAuf)
     if (this.state.redirect) {
