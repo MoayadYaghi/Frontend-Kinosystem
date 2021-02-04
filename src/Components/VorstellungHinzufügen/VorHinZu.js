@@ -63,7 +63,7 @@ class VorHinZu extends Component {
       this.setState({filme: response.data})
       console.log(response);
       this.setState({Filme: data})
-      //console.log(this.state.filme.data)
+      console.log(this.state.filme.data)
       this.setState({visible: true})
       })
 

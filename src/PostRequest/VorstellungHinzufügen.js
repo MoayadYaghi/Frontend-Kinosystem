@@ -15,7 +15,7 @@ class VorstellungHinzufügen{
         parseInt(startZeit,10);
 
  
-        return axios.post("http://localhost:8081/insert/vorstellung/film/"+filmId+"/kinosaal/"+saal +"/startzeit/"+startZeit+"/grundpreis/"+grundpreis+"/aktiv/1" , null,{headers: {
+        return axios.post("http://localhost:8081/vorstellung/insert/film/"+filmId+"/kinosaal/"+saal +"/startzeit/"+startZeit+"/grundpreis/"+grundpreis+"/aktiv/1" , null,{headers: {
             Authorization
             }})
 
