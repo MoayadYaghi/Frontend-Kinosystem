@@ -14,6 +14,8 @@ class Navbar extends Component {
 
   render() {
     const LogInLink = "/Login";
+    const WarenkorbLink = "/Warenkorb";
+    
     var Nutzername = sessionStorage.getItem("NutzerName");
     return (
       <div>
@@ -46,7 +48,15 @@ class Navbar extends Component {
             <Link className="signIn" to={LogInLink}>
               {Nutzername === null ? "Sign In" : Nutzername}
             </Link>
+            
           </div>
+          
+            <Link to={WarenkorbLink}>
+            <div className = "menu-cart">
+            <i className="fas fa-shopping-cart"></i>
+            </div>
+            </Link>
+            
         </nav>
       </div>
     );

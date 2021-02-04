@@ -53,6 +53,9 @@ class Anmeldung extends Component {
     this.setState({ [name]: Value });
     /* this.setState({[name]: Pass}); */
   }
+  componentDidMount(){
+    scroll.scrollToTop()
+  }
 
   handleSubmit(event) {
     event.preventDefault();

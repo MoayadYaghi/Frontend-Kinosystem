@@ -130,8 +130,8 @@
     position: absolute;
     top: 0;
     right: 0;
-    transform: translate(-110%, -80%);
-    font-size: 4vw;
+    transform: translate(-110%, -40%);
+    font-size: 6vw;
     cursor: pointer;
   }
 
@@ -178,6 +178,10 @@
   }
   .Gruppenname{
     padding-top: 2rem;
+  }
+  .menu-cart{
+    transform: translate(30vw, -50%);
+    font-size: 5vw;
   }
   
 }
@@ -242,6 +246,10 @@
   .nav-links-mobile {
     transform: translateY(-300px);
 }
+.menu-cart{
+  transform: translate(15vw, -10%);
+  font-size: 12vw;
+}
 }
 
 @media screen and (min-width: 251px) and (max-width: 350px) {
@@ -267,6 +275,10 @@
   }
   .Gruppenname{
     padding-top: 4rem;
+  }
+  .menu-cart{
+    transform: translate(18vw, -10%);
+    font-size: 10vw;
   }
 }
 
@@ -294,6 +306,10 @@
   .Gruppenname{
     padding-top: 3rem;
   }
+  .menu-cart{
+    transform: translate(23vw, 10%);
+    font-size: 9vw;
+  }
 }
 
 @media screen and (min-width: 451px) and (max-width: 600px) {
@@ -318,6 +334,10 @@
     color: #fff;
     font-size: 8vw;
   }
+  .menu-cart{
+    transform: translate(28vw, 0%);
+    font-size: 7vw;
+  }
 }
 
 @media screen and (min-width: 601px) and (max-width: 750px) {
@@ -340,6 +360,11 @@
   }
   .fa-times {
     font-size: 8vw;
+  }
+  .menu-cart{
+    transform: translate(29vw, -5%);
+    font-size: 7vw;
+    
   }
 }
 
@@ -436,4 +461,7 @@
 .Navbarbottom {
   height: 1vw;
   background: var(--mainDark);
+}
+.menu-cart{
+  color: white
 }
