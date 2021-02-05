@@ -32,6 +32,7 @@ class FilmSuche extends Component {
       wasEntferntWurde:"",
       deOderReAktivierung:"deaktiviert",
       redirect:false,
+      aktiveVorstellungenSchoeneAnzeige:[],
       
      
 
@@ -205,9 +206,46 @@ handleReaktivierung(event){
 
       getAllVorstellungenAPI.getAllVorstellungenAPI().then((response)=>{
         let data = response.data
+        let vorstellungsFilmnameZeitDatum="";
+        let vorstellungsZeitString="";
+        let vorstungsObjekt=[];
+        let vorstellungZeitObjektDay =[];
+        let vorstellungZeitObjektUrhzeit =[];
+        let vorstellungZeitObjektHaelfte =[];
+        let vorstellungZeitObjektDate=[];
+
         console.log(data)
         this.setState({aktiveVorstellungen: data})
 
+        for (let i=0; i<data.length ; i++){
+          vorstellungsFilmnameZeitDatum = data[i].film.name
+          vorstellungsFilmnameZeitDatum +=  " in ";
+          vorstellungsFilmnameZeitDatum += data[i].saal.name
+          vorstellungsFilmnameZeitDatum +=  " am ";
+          vorstellungsZeitString = data[i].startZeit // Die Startzeit in Form von "2021-10-06T16:15:00.000+00:00"
+
+
+          vorstellungZeitObjektHaelfte = vorstellungsZeitString.split("T", 2)
+          vorstellungZeitObjektDate = vorstellungZeitObjektHaelfte[0].split("-", 3)
+          
+
+          vorstellungZeitObjektUrhzeit = vorstellungZeitObjektHaelfte[1].split(":", 3) // meine Uhrzeit ist auf der 0 und 1 gespeichert 
+
+         /*  vorstellungZeitObjektDay= vorstellungZeitObjektYearAndMonth[3].split("T") */
+
+
+
+          vorstellungsFilmnameZeitDatum +=vorstellungZeitObjektDate[2] + "."
+          vorstellungsFilmnameZeitDatum +=vorstellungZeitObjektDate[1] + "."
+          vorstellungsFilmnameZeitDatum +=vorstellungZeitObjektDate[0]  
+          vorstellungsFilmnameZeitDatum += " um "
+          vorstellungsFilmnameZeitDatum += vorstellungZeitObjektUrhzeit[0] +":"
+          vorstellungsFilmnameZeitDatum += vorstellungZeitObjektUrhzeit[1] 
+          
+          
+          vorstungsObjekt.push(vorstellungsFilmnameZeitDatum)
+        }
+        this.setState({aktiveVorstellungenSchoeneAnzeige: vorstungsObjekt })
       })
   }
 
@@ -289,8 +327,8 @@ handleReaktivierung(event){
             <label>
             <select  className ="SelectGröße" value={this.state.value2} onChange={this.handleChoosenVorstellung}>
             <option className ="DESIGNTextField" value="--Select--">--Select--</option>
-            {this.state.aktiveVorstellungen.map((vorstellungen)=>
-              <option value={vorstellungen.id}>{vorstellungen.id}</option>
+            {this.state.aktiveVorstellungenSchoeneAnzeige.map((vorstellungen)=>
+              <option value={vorstellungen}>{vorstellungen}</option>
             )}
             </select>
           </label>

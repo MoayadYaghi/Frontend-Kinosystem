@@ -109,6 +109,14 @@ class VorHinZu extends Component {
 
   handleChange(event) {
     this.setState({value: event.target.value});
+    for(let i=0; i<this.state.filme.length; i++){
+      if (this.state.value == this.state.filme[i].name){
+        //console.log(this.state.value)
+        this.setState({choosenMovie:this.state.filme[i]})
+        console.log(this.state.choosenMovie.bild)
+      }//if
+    }//for
+    
   }
 
   handleSaal(event){
