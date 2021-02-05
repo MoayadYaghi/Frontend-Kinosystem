@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import "./Login.css";
 import { Link } from "react-router-dom";
-import postLogin from "../../PostRequest/postLogin"
-
+import postLogin from "../../PostRequest/postLogin";
 
 class LoginScreen extends Component {
   constructor(props) {
@@ -10,11 +9,14 @@ class LoginScreen extends Component {
     this.state = {
       username: "",
       passwortHash: "",
-       visible: true,
-       Fehler: false,
+      visible: true,
+      Fehler: false,
+      Abgemeldet: false,
+      Eingelogt: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.abmelden = this.abmelden.bind(this);
   }
 
   handleChange(event) {
@@ -29,102 +31,191 @@ class LoginScreen extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    
-    console.log(this.state)
-    var username = this.state.username
-    var passwortHash = this.state.passwortHash
 
-     postLogin.sendnewLogin({username, passwortHash}).then(res => {
-       console.log(res)
-        this.setState({visible: false}) 
-        this.setState({Fehler: false}) 
-      sessionStorage.setItem('token', res.data)
-      sessionStorage.setItem('NutzerName', this.state.username)
-      sessionStorage.setItem('AllgemeinLogin', false)
-      sessionStorage.setItem('LoginFehler', false)
-   
-      
-      sessionStorage.removeItem('LoginFehler')
-      sessionStorage.removeItem('LoginNutzerName')
+    console.log(this.state);
+    var username = this.state.username;
+    var passwortHash = this.state.passwortHash;
 
+    postLogin
+      .sendnewLogin({ username, passwortHash })
+      .then((res) => {
+        console.log(res);
+        this.setState({
+          visible: false,
+          Eingelogt: true,
+          Abgemeldet: false,
+        });
 
-      
-      
-      console.log(res.data)
-    }).catch(error =>(
-      sessionStorage.setItem('LoginFehler', true),
-      sessionStorage.setItem('LoginNutzerName', this.state.username),
-    window.location.reload())
-      ) 
-    
-    
+        this.setState({ Fehler: false });
+        sessionStorage.setItem("token", res.data);
+        sessionStorage.setItem("NutzerName", this.state.username);
+
+        sessionStorage.setItem("AllgemeinLogin", false);
+        sessionStorage.setItem("LoginFehler", false);
+
+        sessionStorage.removeItem("LoginFehler");
+        sessionStorage.removeItem("LoginNutzerName");
+
+        console.log(res.data);
+        window.location.reload();
+      })
+      .catch(
+        (error) => (
+          sessionStorage.setItem("LoginFehler", true),
+          sessionStorage.setItem("LoginNutzerName", this.state.username),
+          window.location.reload()
+        )
+      );
+
     /* console.log("Ergebnisse: ");
     console.log(this.state.Benutzername);
     console.log(this.state.Passwort); */
-
-
   }
 
-    componentDidMount(){
-      var Nutzername
-      var FehlerSession
-      FehlerSession = sessionStorage.getItem('LoginFehler')
-        this.setState({Fehler: FehlerSession })
-        Nutzername = sessionStorage.getItem('LoginNutzerName')
-        this.setState({username: Nutzername})
+  componentDidMount() {
+    var Nutzername;
+    var FehlerSession;
+    FehlerSession = sessionStorage.getItem("LoginFehler");
+    this.setState({ Fehler: FehlerSession });
+    Nutzername = sessionStorage.getItem("LoginNutzerName");
+    this.setState({ username: Nutzername });
+    var Token = sessionStorage.getItem("token");
+    console.log(Token);
+    if (Token !== null) {
+      this.setState({
+        visible: false,
+        Eingelogt: true,
+      });
     }
+    var Abgelemdet;
+    Abgelemdet = sessionStorage.getItem("Abmeldung");
+    console.log(Abgelemdet);
+    if (Abgelemdet !== null) {
+      this.setState({
+        Abgemeldet: true,
+        visible: true,
+        Eingelogt: false,
+        username: "",
+        passwortHash: "",
+      });
+      sessionStorage.removeItem("Abmeldung");
+    }
+  }
 
+  abmelden() {
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("NutzerName");
+
+    this.setState({
+      Abgemeldet: true,
+      visible: true,
+      Eingelogt: false,
+      username: "",
+      passwortHash: "",
+    });
+    sessionStorage.setItem("Abmeldung", true);
+    window.location.reload();
+  }
 
   render() {
     const RegistrierenLink = "/Registrieren";
-    
-
+    const AdminLink = "/Admin";
+    const Startseite = "/";
+    const ProfilLink = "/Profil";
 
     return (
       <div>
-      {
-         this.state.Fehler?
-        <div> Leider gab es einen Fehler bei der Anmeldung, bitte versuchen Sie es erneut</div>:null
-      }
-      {this.state.visible?(<div className="LogInField">
-        
+        {this.state.Abgemeldet ? (
+          <div>
+            <div className="Erfolgreich">
+              {" "}
+              <div className="DESIGNHeadline3">Sie haben sich abgemeldet </div>
+            </div>
 
-        <form className="FormFenster" onSubmit={this.handleSubmit}>
-          <div className="InputField">
-            <label>
-              <input
-                className="InputTextField"
-                placeholder="Benutzername"
-                name="username"
-                type="text"
-                value={this.state.username}
-                onChange={this.handleChange}
-              />
-            </label>
-            <label>
-              <input
-                className="InputTextField"
-                placeholder="Passwort"
-                name="passwortHash"
-                type="password"
-                value={this.state.passwortHash}
-                onChange={this.handleChange}
-              />
-            </label>
+            <div className="LoginLinks">
+              <Link className="DESIGNButton" to={Startseite}>
+                Startseite
+              </Link>
+            </div>
           </div>
-          <br />
-          <div className="SubmitField">
-            
-             <input className="DESIGNButton" type="submit" value=" Einloggen" />
-            <br />
-            <Link className="DESIGNButton" to={RegistrierenLink}>
-              
-              Neu re­gis­t­rie­ren
-            </Link>
+        ) : null}
+        {this.state.Fehler ? (
+          <div className="AnmeldungFehler">
+            {" "}
+            <div className="DESIGNHeadline3">
+              Leider gab es einen Fehler bei der Anmeldung, bitte versuchen Sie
+              es erneut
+            </div>
           </div>
-        </form>
-      </div>):<div>Das Login hat funktioniert</div>
-  }
+        ) : null}
+        {this.state.visible ? (
+          <div className="LogInField">
+            <form className="FormFenster" onSubmit={this.handleSubmit}>
+              <br />
+              <div className="InputField">
+                <label>
+                  <input
+                    className="InputTextField"
+                    placeholder="Benutzername"
+                    name="username"
+                    type="text"
+                    value={this.state.username}
+                    onChange={this.handleChange}
+                  />
+                </label>
+                <label>
+                  <input
+                    className="InputTextField"
+                    placeholder="Passwort"
+                    name="passwortHash"
+                    type="password"
+                    value={this.state.passwortHash}
+                    onChange={this.handleChange}
+                  />
+                </label>
+              </div>
+              <br />
+              <div className="SubmitField">
+                <input
+                  className="DESIGNButton"
+                  type="submit"
+                  value=" Einloggen"
+                />
+                <br />
+                <Link className="DESIGNButton" to={RegistrierenLink}>
+                  Neu re­gis­t­rie­ren
+                </Link>
+              </div>
+            </form>
+          </div>
+        ) : null}
+
+        {this.state.Eingelogt ? (
+          <div>
+            <div className="Erfolgreich">
+              {" "}
+              <div className="DESIGNHeadline3">
+                Sie haben sich erfolgreich angemeldet{" "}
+              </div>
+            </div>
+            <div className="LoginLinks">
+              <Link className="DESIGNButton" to={Startseite}>
+                Startseite
+              </Link>
+
+              <Link className="DESIGNButton" to={AdminLink}>
+                Admin
+              </Link>
+
+              <Link className="DESIGNButton" to={ProfilLink}>
+                Profilübersicht
+              </Link>
+              <button className="DESIGNButton" onClick={this.abmelden}>
+                Abmelden
+              </button>
+            </div>
+          </div>
+        ) : null}
       </div>
     );
   }

@@ -1,3 +1,4 @@
+
 //Allgemeines
 import React, { Component } from "react";
 import "./App.css";
@@ -5,10 +6,8 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  
   Redirect,
 } from "react-router-dom";
-
 
 //Pages
 import StartSeite from "./Pages/startSeite";
@@ -36,6 +35,7 @@ import VorstellungHinzufügen from "./Pages/VorstellungHinzufügen";
 import AdminUebersicht from "./Pages/AdminUebersicht";
 import Test1 from "./Pages/Test1";
 import Test2 from "./Pages/Test2";
+
 import FilmEntfernen from "./Pages/FilmEntfernen"
 import AdminControl from "./Pages/AdminControl"
 
@@ -123,6 +123,7 @@ render(){
   
   
 }
+
 }
 
 export default App;
