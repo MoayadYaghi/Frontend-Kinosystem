@@ -5,6 +5,7 @@ import getAllFilmAPI from "../../API_Pulls/GetAllFilmAPI"
 import getAllVorstellungenAPI from "../../API_Pulls/GetAllVorstellungenAPI"
 import VorstellungInaktivSetzenAPI from "../../PostRequest/VorstellungInaktivSetzen"
 import FilmInaktivSetzenAPI from "../../PostRequest/FilmInaktivSetzen"
+import { Redirect } from 'react-router-dom';
 
 var text;
 var id;
@@ -26,6 +27,12 @@ class FilmSuche extends Component {
       vorstellungId:0,
       filmReaktivieren: 0,
       vorstellungReaktivieren:0,
+      nochNichtEntfernt: true,
+      entfernt: false,
+      wasEntferntWurde:"",
+      deOderReAktivierung:"deaktiviert",
+      redirect:false,
+      
      
 
 
@@ -39,12 +46,60 @@ class FilmSuche extends Component {
     this.handleFilmSollEntferntWerden = this.handleFilmSollEntferntWerden.bind(this);
     this.handleVorstellungSollEntferntWerden = this.handleVorstellungSollEntferntWerden.bind(this);
     this.handleReaktivierung = this.handleReaktivierung.bind(this);
-    this.handleErfolgreichEntfernt = this.handleErfolgreichEntfernt.bind(this);
+    this.setRedirect = this.setRedirect.bind(this);
   }//constructor
 
 
-  handleErfolgreichEntfernt(event){
-    
+
+  setRedirect = (event) => {
+    let id = event.target.id 
+    console.log(id)
+    if (id="1"){
+          this.setState({redirect: true});
+    }
+       
+  }
+  renderRedirect = () => {
+    if (this.state.redirect){
+      return <Redirect to={`/admincontrol`} />
+    }
+   // 
+  }
+
+  erfolgreichEntfernt = (a)=>{
+    this.setState({nochNichtEntfernt: false ,
+      filmEntfernen:false,
+      vorstellungEntfernen: false, 
+      filmBildVisible: false,
+      VorstellungBildVisible:false,
+      entfernt:true})
+      if (a=="vorstellung"){
+        let data = this.state.choosenVorstellung.id
+        this.setState({wasEntferntWurde:data})
+      }
+      if(a=="film"){
+        let data =this.state.choosenMovie.name
+        this.setState({wasEntferntWurde:data})
+      }
+  }
+
+  erfolgreichreaktiviert=(a)=>{
+    this.setState({nochNichtEntfernt: false ,
+      filmEntfernen:false,
+      vorstellungEntfernen: false, 
+      filmBildVisible: false,
+      vorstellungBildVisible:false,
+      entfernt:true,
+      deOderReAktivierung: "reaktiviert"})
+      
+      if (a=="vorstellung"){
+        let data = this.state.choosenVorstellung.id
+        this.setState({wasEntferntWurde:data})
+      }
+      if(a=="film"){
+        let data =this.state.choosenMovie.name
+        this.setState({wasEntferntWurde:data})
+      }
   }
 
 
@@ -60,12 +115,12 @@ handleReaktivierung(event){
   handleFilmSollEntferntWerden(event){
     event.preventDefault();
       this.setState({filmEntfernen:true})
-      this.setState({VorstellungEntfernen:false})
+      this.setState({vorstellungEntfernen:false})
   }
       
   handleVorstellungSollEntferntWerden(event) {
     event.preventDefault();
-      this.setState({VorstellungEntfernen:true})
+      this.setState({vorstellungEntfernen:true})
       this.setState({filmEntfernen:false})
 
     }
@@ -78,6 +133,14 @@ handleReaktivierung(event){
     console.log(this.state.choosenMovie) */
      alert("Film wurde entfernt") 
      FilmInaktivSetzenAPI.vorstellungInaktivieren(filmId, filmReaktivieren)
+     if (filmReaktivieren){
+       this.erfolgreichreaktiviert("film")
+     }else{
+       this.erfolgreichEntfernt("film")
+     }
+     
+
+     
   }  
   handleVorstellungEntfernen(event){
     let vorstellungId=this.state.value2;
@@ -89,6 +152,12 @@ handleReaktivierung(event){
    /*  console.log(vorstellungId)
     console.log(vorstellungReaktivieren) */
     VorstellungInaktivSetzenAPI.vorstellungInaktivieren(vorstellungId, vorstellungReaktivieren)/* .then(res=>console.log(res))*/
+    if (vorstellungReaktivieren){
+      this.erfolgreichreaktiviert("vorstellung")
+    }else{
+      this.erfolgreichEntfernt("vorstellung")
+    }
+    
   }
 
 
@@ -114,7 +183,16 @@ handleReaktivierung(event){
     }
     
     this.setState({VorstellungBildVisible:true})
-    
+  }
+
+  restartProcess=()=>{
+    this.setState({nochNichtEntfernt: true ,
+      filmEntfernen:false,
+      vorstellungEntfernen: false, 
+      filmBildVisible: false,
+      vorstellungBildVisible:false,
+      entfernt:false,
+      deOderReAktivierung: "deaktiviert"})
   }
 
   componentDidMount(){
@@ -136,6 +214,7 @@ handleReaktivierung(event){
   render() {
     return (
      <div className="">
+       {this.state.nochNichtEntfernt?<div>
        
           <div className ="doppelButton">
         
@@ -153,6 +232,8 @@ handleReaktivierung(event){
         
         </div>
       
+
+      </div>:null}
 
       
 
@@ -196,7 +277,7 @@ handleReaktivierung(event){
 
 
 {/* Für den Fall das VorstellungEntfernen ausgewählt wurde: */}
-      {this.state.VorstellungEntfernen ?
+      {this.state.vorstellungEntfernen ?
       <div>
         {/* {console.log("eine Vorstellung wird Entfernt")} */}
         	<div className="TextAlignMitte">
@@ -229,6 +310,22 @@ handleReaktivierung(event){
       :null }
         
         </div>:null}{/* VorstellungEntfernen */}
+
+
+
+        {this.state.entfernt?
+        <div>
+          <h3>{this.state.wasEntferntWurde} wurde erfolgreich {this.state.deOderReAktivierung}</h3>
+          <button className="DESIGNButton" onClick={this.restartProcess}>Weitere Filme/Vorstellungen re/deaktivieren</button>
+          
+          {this.renderRedirect()}
+          <button id =" 1" className="DESIGNButton" onClick={this.setRedirect}>Zur Admin Control Seite</button>
+
+
+        </div>:null}
+        
+      
+      
       
 
     </div>

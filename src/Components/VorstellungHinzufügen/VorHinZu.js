@@ -113,7 +113,8 @@ class VorHinZu extends Component {
 
   handleChange(event) {
     this.setState({value: event.target.value});
-
+    
+    
 
  /*    return(
         <div className = "bild">
@@ -154,16 +155,42 @@ class VorHinZu extends Component {
 
 
   handleButton(event){
-    var startZeit = "0"+this.state.month+"0"+this.state.day+this.state.year+this.state.stunde+this.state.minute    
+    let month=""
+    let day=""
+    let stunde=""
+    let minute=""
+
+    if (this.state.month<10){
+      month = "0"+this.state.month
+    }else{
+      month = this.state.month
+    }
+    if (this.state.day<10){
+      day = "0"+this.state.day
+    }else{
+      day = this.state.day
+    }
+    if (this.state.stunde<10){
+      stunde = "0"+this.state.stunde
+    }else{
+      stunde = this.state.stunde
+    } 
+    if (this.state.minute<10){
+      minute = "0"+this.state.minute
+    }else{
+      minute = this.state.minute
+    }
+    let startZeit = month+day+this.state.year+stunde+minute  
+    console.log(startZeit) 
     var filmId = this.state.choosenMovie.id
     var grundpreis = this.state.preis
     var aktiv = 1
     var saal = this.state.saal
-    console.log(grundpreis, filmId, startZeit)
+/*     console.log(grundpreis, filmId, startZeit) */
     //this.setState({minute: event.target.value})
-    alert("film wurde hinzugefügt für "+ this.state.preis)
+   /*  alert("film wurde hinzugefügt für "+ this.state.preis) */
     event.preventDefault();
-    this.setState({startZeit: "0"+this.state.month+"0"+this.state.day+this.state.year+this.state.stunde+this.state.minute,
+    this.setState({startZeit: this.state.month+this.state.day+this.state.year+this.state.stunde+this.state.minute,
     /* this.setState({startZeit: this.state.year+"-"+"0"+this.state.month+"0"+this.state.day+"T"+this.state.stunde+":"+this.state.minute+":00.000", */
     filmId: this.state.choosenMovie.id,
     grundpreis: this.state.preis,
@@ -174,8 +201,13 @@ class VorHinZu extends Component {
 
 
   handleSubmit(event){
-    this.setState({visible2: true})
-    for(let i=0; i<this.state.filme.length; i++){
+    console.log(this.state.value)
+    if(this.state.value !== "Es wurde noch kein Film ausgewählt"){
+    this.setState({visible2: true,
+      visible3: true
+    })
+        }
+        for(let i=0; i<this.state.filme.length; i++){
       if (this.state.value == this.state.filme[i].name){
         //console.log(this.state.value)
         this.setState({choosenMovie:this.state.filme[i]})
@@ -194,15 +226,21 @@ class VorHinZu extends Component {
   
   render() {
     return (
-    <div className ="gesamterBlock">
+    <div className ="HeightFilmWahl">
 
    
       <div>
-           {this.state.visible? (
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Filmwahl:
-            <select value={this.state.value} onChange={this.handleChange}>
+           {this.state.visible? (<div className="FilmWahlFlex">
+        <form className ="FilmForm" onSubmit={this.handleSubmit}>
+          <label className ="">
+            <div className = "FilmWahlDiv">
+            <div className="DESIGNHeadline2">
+  
+              Filmwahl: 
+              </div></div>
+
+            <select className="SelectFilmVorHin" value={this.state.value} onChange={this.handleChange}>
+           <option value="">--select--</option>
            
 
             {this.state.Filme.map((filme)=> (
@@ -212,40 +250,43 @@ class VorHinZu extends Component {
             </select>
            
           </label>
-          <input type="submit" value="Submit" />
-        </form> 
+          <input className ="DESIGNButton" type="submit" value="Submit" />
+        </form> </div>
      ): null}
-      {this.state.visible2 ? <div>{/* hier könnte ihr Bild auftauchen von {this.state.value} */}
-        <img key={this.state.choosenMovie.id} alt=" " className="image" src={this.state.choosenMovie.bild}/>
+        <div className="VorstellungDivFlex">
+      {this.state.visible2 ? <div className ="ImageHeight">{/* hier könnte ihr Bild auftauchen von {this.state.value} */}
+        <img key={this.state.choosenMovie.id} alt=" " className="imageVorHin" src={this.state.choosenMovie.bild}/>
       </div>:null}
-     </div>
+     
 
 
       {this.state.blockVisible ? 
+      <div className = 'VorstellungsBlockFlex'>
         <div className = 'VorstellungsBlock'>
+          <div className ="VorHinBOXDES">
             <div className='Überschrift'>
-                <h5>Vorstellung Hinzufügen für: {this.state.value}</h5>
+                <div className="DESIGNHeadline3">Vorstellung Hinzufügen für: {this.state.value}</div>
             </div>
                 <div className = 'InformationsEingabe'>
-                    <div className="abfrage">
-                        
-                          Film: <br/>
-                          Saal: <br/>
-                          Datum: <br/>
-                          Uhrzeit: <br/>
-                          Preis: <br/>
-                        
-                    </div>
-                    <div className= 'antwort'>
-                     
-                      {/* Film */}
-                      <div className ="nameDesFilmes">
+                <div className= "BalkenFlex">
+                <div className ="BalkenlinkSeit"><div className="DESIGNTextField">
+                        Film: 
+                        </div> </div>  
+                        <div className ="nameDesFilmes">
+                        <div className ="Balkenrechtseit">
+                        <div className="DESIGNTextField">
                      {this.state.value} 
                       </div>
-                     {/* dropdown für den Saal */}
-                     <form>
+                        </div> </div>
+                        </div> 
+                        <div className= "BalkenFlex">
+                        <div className ="BalkenlinkSeit"><div className="DESIGNTextField">
+                        Saal: 
+                        </div> </div>  
+                        <div className ="Balkenrechtseit">
+                        <form>
                      <label>
-                        <select value={this.state.saal} onChange={this.handleSaal}>
+                        <select className ="selectVorhinzu" value={this.state.saal} onChange={this.handleSaal}>
                         <option value="0">98</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -255,15 +296,20 @@ class VorHinZu extends Component {
                         </select>
                       </label>
                       </form>
-
-                    <div className= "datum">
+                      </div> </div> 
+                      <div className= "BalkenFlex">
+                        <div className ="BalkenlinkSeit"><div className="DESIGNTextField">
+                        Datum: 
+                        </div> </div> 
+                        <div className ="Balkenrechtseit">
+                        <div className= "datum">
                       {/* dropdown für das Datum */}
                       <form className="date">
                      <label>
-                        <select value={this.state.day} onChange={this.handleDay}>
+                        <select className ="selectVorhinzu" value={this.state.day} onChange={this.handleDay}>
                          {this.state.dayAndMonth.map((day)=> (
                             <option value={day}>{day}</option> 
-                          ))
+                           ))
                           }
                         </select>
                       </label>
@@ -274,7 +320,7 @@ class VorHinZu extends Component {
         {/* dropdown für das Monat */}
         <form className="month">
                      <label>
-                        <select value={this.state.month} onChange={this.handleMonth}>
+                        <select className ="selectVorhinzu" value={this.state.month} onChange={this.handleMonth}>
                          {this.state.dayAndMonth.slice(0,12).map((month)=> (
                             <option value={month}>{month}</option> 
                           ))
@@ -288,7 +334,7 @@ class VorHinZu extends Component {
                   {/* dropdown für das Jahr */}
                      <form className="year">
                      <label>
-                        <select value={this.state.year} onChange={this.handleYear}>
+                        <select className ="selectVorhinzu" value={this.state.year} onChange={this.handleYear}>
                          {this.state.yearCollection.map((year)=> (
                             <option value={year}>{year}</option> 
                           ))
@@ -299,11 +345,18 @@ class VorHinZu extends Component {
                 </div> 
 
 
-                <div className = "uhrzeit">
+                      </div>
+                        </div> 
+                        <div className= "BalkenFlex">
+                        <div className ="BalkenlinkSeit"><div className="DESIGNTextField">
+                        Uhrzeit: 
+                        </div> </div> 
+                        <div className ="Balkenrechtseit">
+                        <div className = "uhrzeit">
                   {/* dropdown für die Stunde */}
                   <form className="stunde">
                      <label>
-                        <select value={this.state.stunde} onChange={this.handleStunde}>
+                        <select className ="selectVorhinzu" value={this.state.stunde} onChange={this.handleStunde}>
                          {this.state.minuteCollection.slice(0,24).map((stunde)=> (
                             <option value={stunde}>{stunde}</option> 
                           ))
@@ -317,7 +370,7 @@ class VorHinZu extends Component {
                       {/* dropdown für die minute */}
                      <form className="minute">
                      <label>:
-                        <select value={this.state.minute} onChange={this.handleMinute}>
+                        <select className ="selectVorhinzu" value={this.state.minute} onChange={this.handleMinute}>
                          {this.state.minuteCollection.map((minute)=> (
                             <option value={minute}>{minute}</option> 
                           ))
@@ -327,59 +380,37 @@ class VorHinZu extends Component {
                       </form>
                     </div>
 
-                    <div>{/* div für den Preis */}
+
+
+                      </div>
+                        </div> 
+                        <div className= "BalkenFlex">
+                        <div className ="BalkenlinkSeit"><div className="DESIGNTextField">
+                        Preis: 
+                        </div> </div> 
+                        <div className ="Balkenrechtseit">
+                        <div>{/* div für den Preis */}
                     
-                    <input type="number"
+                    <input className ="inputVorHinZu" type="number"
                     onInput={this.handlePreis} value={this.state.preis} />
 
                     
                     
-                    </div> {/* div für den Preis */}
+                    </div>
 
-                    </div> {/* div für den Antwort Block */}
+
+                      </div>
+                        </div> 
+                       
                     
-                  
-                </div>{/* div für den VorstellungsBlock */}
 
-                
-                      <div className="wiederholung">{/* div für Wiederholung */}
-                      
-                      
-                      <form className="wiederholungsRythmus">
-                     <label>Vorstellung im  
-                        <select value={this.state.wiederholungsRythmus} onChange={this.handleWiederholungsRythmus}>
-                         {this.state.minuteCollection.slice(0,8).map((wiederholungsRythmus)=> (
-                            <option value={wiederholungsRythmus}>{wiederholungsRythmus}</option> 
-                          ))
-                          }
-                        </select>Tage Rythmus Wiederholen
-                      </label>
-                      </form>
-
-                      
-
-
-                      
-                      <form className="anzahlWiederholungen">
-                     <label>Anzahl Wiederholungen:
-                        <select value={this.state.anzahlWiederholungen} onChange={this.handleAnzahlWiederholungen}>
-                         {this.state.minuteCollection.slice(0,15).map((anzahlWiederholungen)=> (
-                            <option value={anzahlWiederholungen}>{anzahlWiederholungen}</option> 
-                          ))
-                          }
-                        </select>
-                      </label>
-                      </form>
-                      
-                      </div> {/* div für Wiederholung */}
-
-
+                        </div></div>
                 <div className ="hinzufügen">
-
-                   <button className="buttonHinzufügen" onClick={this.handleButton}>
+                <div className ="ButtonAnordnungVorhin">
+                   <button className="DESIGNButton" onClick={this.handleButton}>
                             Hinzufügen
                   </button> 
-
+                  </div></div>
 
                 </div>
        </div>:null}     
@@ -392,7 +423,7 @@ class VorHinZu extends Component {
 
 
 
-    </div>
+    </div></div></div>
      
     );
   }

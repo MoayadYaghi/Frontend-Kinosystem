@@ -48,6 +48,7 @@ class FilmDetails extends React.Component {
             this.setState({film: response.data});
         })
         VorstellungByFilm.vorstellungByFilm(filmId).then((response) => {
+            console.log(response)
 
             let vorstellungenNaechsteWoche = [];
             let alleVorstellungenAktiv = [];
