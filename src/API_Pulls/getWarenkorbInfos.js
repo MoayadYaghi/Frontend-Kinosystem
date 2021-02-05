@@ -4,15 +4,27 @@ const Slider_Rest_API_URL =
   "http://localhost:8081/";
 
 class getWarenkorbInfos {
+   
+
   getTickets() {
-    return axios.get(Slider_Rest_API_URL+"warenkorb/");
+    var Authorization = sessionStorage.getItem('token')
+
+    return axios.get(Slider_Rest_API_URL+"warenkorb/", {headers: {
+        Authorization}});
   }
   getSnacks(){
-    return axios.get(Slider_Rest_API_URL+"snacks/warenkorb");
+    var Authorization = sessionStorage.getItem('token')
+
+    return axios.get(Slider_Rest_API_URL+"snacks/warenkorb", {headers: {
+        Authorization}});
   }
   getDrink(){
-    return axios.get(Slider_Rest_API_URL+"getraenk/warenkorb");
+    var Authorization = sessionStorage.getItem('token')
+
+    return axios.get(Slider_Rest_API_URL+"getraenk/warenkorb", {headers: {
+        Authorization}});
   }
 }
 
+         
 export default new getWarenkorbInfos();
