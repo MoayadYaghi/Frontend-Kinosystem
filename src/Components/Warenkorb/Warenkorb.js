@@ -139,7 +139,9 @@ class Warenkorb extends Component {
               <div className="BezahlMethodenText">Bezahlmethode</div>
               <div>
                 {this.state.value === "" ? (
-                  <div className="BezahlMethoden">Bitte Bezahlmöglichkeit Auswählen</div>
+                  <div className="BezahlMethoden">
+                    Bitte Bezahlmöglichkeit Auswählen
+                  </div>
                 ) : null}
                 {this.state.value === "Paypal" ? (
                   <div>

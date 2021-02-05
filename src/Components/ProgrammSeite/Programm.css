@@ -11,6 +11,7 @@
 }
 .ErgebnisDarstellung:hover {
   transform: scale(1.05);
+  cursor: pointer;
 }
 .image {
   border-radius: 30px;
@@ -32,9 +33,10 @@
   transition: transform 450ms;
 }
 .Title:hover {
-    transform: scale(1.05);
-    font-weight: 500;
-  }
+  transform: scale(1.05);
+  font-weight: 500;
+  cursor: pointer;
+}
 .searchBar {
   margin-top: 1%;
   margin-bottom: 1%;
@@ -47,19 +49,43 @@
   width: 100%;
 }
 .filter {
-  width: 30%;
   display: inline-block;
+  font-family: "Nunito";
+  font-size: 1.5rem;
+  color: black;
+  text-decoration: none;
 }
 .wholeFilterSection {
+  display: contents;
   width: 100%;
 }
 .genre {
   margin-left: 1%;
   margin-right: 1%;
   display: inline-block;
+  font-size: 1rem;
 }
 .alter {
   margin-left: 1%;
   margin-right: 1%;
   display: inline-block;
+  font-size: 1rem;
+}
+.Filter {
+  font-size: 1rem;
+}
+.DESIGNHeadline1 {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 1rem;
+}
+@media (max-width: 978px) {
+  .wholeFilterSection {
+    display: grid;
+  }
+}
+@media (max-width: 625px) {
+  .filter {
+    display: block;
+  }
 }

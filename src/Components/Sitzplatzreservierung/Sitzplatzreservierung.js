@@ -2,7 +2,7 @@ import React, { Component} from "react";
 import CreateNewTicket from "../../API_Pulls/CreateNewTicket";
 import SaalByVorstellung from "../../API_Pulls/SaalByVorstellung";
 import SitzByVorstellung from "../../API_Pulls/SitzByVorstellung";
-import "./Sitzplatzreservierung.css";
+import "./Sitzplatzreservierung.scss";
 import { Redirect } from 'react-router-dom';
 
 class Sitzplatzreservierung extends Component {
@@ -211,7 +211,7 @@ class Sitzplatzreservierung extends Component {
           </div>
         </div>
         <div className="Rest">
-          <button id="SnacksButton"> Snacks hinzufügen </button>
+          <button className="RestButton"> Snacks hinzufügen </button>
           <div className="Tickets">
             {" "}
             <div className="TicketArt">Ticketart</div>
@@ -285,7 +285,7 @@ class Sitzplatzreservierung extends Component {
             </table>
           </div>
           {this.renderRedirect()}
-          <button onClick={this.addWarenkorb}> Zum Warenkorb hinzufügen </button>
+          <button className="RestButton" onClick={this.addWarenkorb}> Zum Warenkorb hinzufügen </button>
         </div>
       </div>
     );

@@ -128,9 +128,11 @@ class ProgrammSeite extends Component {
             />
           </div>
           <div className="filter">
-            <button onClick={() => this.hideFilter()}>Filter</button>
+            <button className="DESIGNButton" onClick={() => this.hideFilter()}>
+              <div className="Filter">Filter</div>
+            </button>
             {showFilter && (
-              <div className="genre">
+              <div className="filter">
                 <form>
                   <label>
                     Genre
@@ -153,7 +155,7 @@ class ProgrammSeite extends Component {
               </div>
             )}
             {showFilter && (
-              <div className="alter">
+              <div className="filter">
                 <form>
                   <label>
                     Altersfreigabe
@@ -174,7 +176,7 @@ class ProgrammSeite extends Component {
             )}
           </div>
         </div>
-        <h1 className="text-center"> {this.state.headline} </h1>
+        <h1 className="DESIGNHeadline1"> {this.state.headline} </h1>
         <br />
         <div className="filmListe">
           {this.state.filme.map((film) => (
