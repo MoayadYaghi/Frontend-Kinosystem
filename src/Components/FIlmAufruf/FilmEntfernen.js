@@ -213,34 +213,25 @@ handleReaktivierung(event){
 
   render() {
     return (
-     <div className="gesamterBlock">
-
-        {this.state.nochNichtEntfernt?
-       <div className ="4Buttons">
-
-        <form onSubmit = {this.handleFilmSollEntferntWerden}>
-        <div> {/* Button um die Auswahl zu bestätigen */}
-        <input type="submit" value="Film deaktivieren" />
-        </div> 
-        </form> 
-
-        <form onSubmit = {this.handleFilmSollEntferntWerden}>
-        <div> {/* Button um die Auswahl zu bestätigen */}
-        <input id ="film" type="submit" value="Film reaktivieren" onClick={this.handleReaktivierung}/>
-        </div> 
-        </form>
-
-        <form onSubmit = {this.handleVorstellungSollEntferntWerden}>
-        <div> {/* Button um die Auswahl zu bestätigen */}
-        <input type="submit" value="Vorstellung deaktivieren" />
-        </div> 
-        </form>        
+     <div className="">
+       {this.state.nochNichtEntfernt?<div>
+       
+          <div className ="doppelButton">
         
-        <form onSubmit = {this.handleVorstellungSollEntferntWerden}>
-        <div> {/* Button um die Auswahl zu bestätigen */}
-        <input id ="vorstellung" type="submit" value="Vorstellung reaktivieren" onClick={this.handleReaktivierung} />
-        </div> 
-        </form>
+        
+        <button className ="DESIGNButton" onClick={this.handleFilmSollEntferntWerden}>Film deaktivieren</button>
+        <button className ="DESIGNButton" onClick={this.handleVorstellungSollEntferntWerden}>Vorstellung deaktivieren</button> 
+        
+
+        </div>
+        <div className ="doppelButton">
+        <button className ="DESIGNButton" onClick={this.handleReaktivierung}>Film reaktivieren</button>
+        <button className ="DESIGNButton" onClick={this.handleReaktivierung}>Vorstellung reaktivieren</button>
+              
+       
+        
+        </div>
+      
 
       </div>:null}
 
@@ -250,23 +241,23 @@ handleReaktivierung(event){
       {this.state.filmEntfernen ?
       <div className="filmEntfernen">
       
-
-        <h5>
+      <div className="TextAlignMitte">
+        <div className ="DESIGNHeadline3">
           Wähle den Film aus, der aus dem Programm genommen werden soll
-        </h5>
-        <div> {/* Dropdown für Filmauswahl */}
+        </div></div>
+        <div className="DropDownMitte"> {/* Dropdown für Filmauswahl */}
           <form onSubmit = {this.handleFilmEntfernen}>
             <label>
-            <select value={this.state.value} onChange={this.handleChoosenMovie}>
-            <option value="--Select--">--Select--</option>
+            <select className ="SelectGröße" value={this.state.value} onChange={this.handleChoosenMovie}>
+            <option className ="DESIGNTextField" >--Select--</option>
             {this.state.aktiveFilme.map((filme)=>
               <option value={filme.name}>{filme.name}</option>
             )}
             </select>
           </label>
-            <div> {/* Button um die Auswahl zu bestätigen */}
+            <div className="AuswahlBestätigungSubmit"> {/* Button um die Auswahl zu bestätigen */}
 
-              <input type="submit" value="Auswahl Bestätigen" />
+              <input className ="DESIGNButton" type="submit" value="Auswahl Bestätigen" />
               
             </div> 
           </form>
@@ -289,23 +280,23 @@ handleReaktivierung(event){
       {this.state.vorstellungEntfernen ?
       <div>
         {/* {console.log("eine Vorstellung wird Entfernt")} */}
-
-        <h5>
+        	<div className="TextAlignMitte">
+        <div className ="DESIGNHeadline3">
           Wähle die Vorstellung aus, die aus dem Programm genommen werden soll
-        </h5>
-        <div> {/* Dropdown für Vorstellungsauswahl */}
+        </div></div>
+        <div className="DropDownMitte"> {/* Dropdown für Vorstellungsauswahl */}
           <form onSubmit = {this.handleVorstellungEntfernen}>
             <label>
-            <select value={this.state.value2} onChange={this.handleChoosenVorstellung}>
-            <option value="--Select--">--Select--</option>
+            <select  className ="SelectGröße" value={this.state.value2} onChange={this.handleChoosenVorstellung}>
+            <option className ="DESIGNTextField" value="--Select--">--Select--</option>
             {this.state.aktiveVorstellungen.map((vorstellungen)=>
               <option value={vorstellungen.id}>{vorstellungen.id}</option>
             )}
             </select>
           </label>
-          <div> {/* Button um die Auswahl zu bestätigen */}
+          <div className="AuswahlBestätigungSubmit"> {/* Button um die Auswahl zu bestätigen */}
 
-            <input type="submit" value="Auswahl Bestätigen" />
+            <input className ="DESIGNButton" type="submit" value="Auswahl Bestätigen" />
 
           </div> 
           </form>

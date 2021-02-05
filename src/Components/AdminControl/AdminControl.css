@@ -1,0 +1,27 @@
+.allButton{
+    display: flex;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    grid-gap: 1rem;
+    padding: 2rem 0 2rem 0;
+}
+.allButton:hover{
+    text-decoration: none;
+}
+.HeadlinerAdmin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10rem;
+}
+
+@media screen and (max-width: 500px) {
+
+    .HeadlinerAdmin{
+        
+        padding-top: 5rem;
+    }
+
+}

@@ -56,15 +56,75 @@
   color: #535c68;
 }
 
+
+
+.DESIGNBOX{
+    width: 80%;
+    
+    padding: 1.5rem;
+    margin-left: 10%;
+    border-radius: 40px;
+    background-color:#ecf0f1;
+    
+}
+.DESIGNMindestHöhe{
+    height: 40vw;
+   
+}
+
+@media screen and (max-width: 820px) {
+
+    .DESIGNTextField{
+        font-size: 3vw;
+    }  
+    .DESIGNBOX{
+        width: 90%;
+        margin-left: 5%;
+        padding:0.8rem;
+        border-radius: 15px;
+    }
+    .DESIGNHeadline1, .DESIGNHeadline1MitHover{
+        font-size: 8vw
+    }  
+    .DESIGNHeadline2, .DESIGNHeadline2MitHover{
+        font-size: 6vw
+    } 
+    .DESIGNHeadline3, .DESIGNHeadline3MitHover{
+        font-size: 3vw
+    }
+    .DESIGNMindestHöhe{
+        height: 100%;
+    } 
+}
+@media screen and (max-width: 1220px) {
+    .DESIGNMindestHöhe{
+        height: 70vw;
+    } 
+
+}
+
+@media screen and (max-width: 550px) {
+
+    .DESIGNMindestHöhe{
+        height: 180vw;
+    } 
+
+}
+
 .DESIGNBOX {
   width: 80%;
+
   padding: 1.5rem;
   margin-left: 10%;
   border-radius: 40px;
   background-color: #ecf0f1;
 }
 
+
+
+
 @media screen and (max-width: 820px) {
+
   .DESIGNTextField {
     font-size: 4vw;
   }
@@ -87,3 +147,4 @@
     font-size: 5vw;
   }
 }
+
