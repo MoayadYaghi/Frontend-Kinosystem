@@ -154,16 +154,42 @@ class VorHinZu extends Component {
 
 
   handleButton(event){
-    var startZeit = "0"+this.state.month+"0"+this.state.day+this.state.year+this.state.stunde+this.state.minute    
+    let month=""
+    let day=""
+    let stunde=""
+    let minute=""
+
+    if (this.state.month<10){
+      month = "0"+this.state.month
+    }else{
+      month = this.state.month
+    }
+    if (this.state.day<10){
+      day = "0"+this.state.day
+    }else{
+      day = this.state.day
+    }
+    if (this.state.stunde<10){
+      stunde = "0"+this.state.stunde
+    }else{
+      stunde = this.state.stunde
+    } 
+    if (this.state.minute<10){
+      minute = "0"+this.state.minute
+    }else{
+      minute = this.state.minute
+    }
+    let startZeit = month+day+this.state.year+stunde+minute  
+    console.log(startZeit) 
     var filmId = this.state.choosenMovie.id
     var grundpreis = this.state.preis
     var aktiv = 1
     var saal = this.state.saal
-    console.log(grundpreis, filmId, startZeit)
+/*     console.log(grundpreis, filmId, startZeit) */
     //this.setState({minute: event.target.value})
-    alert("film wurde hinzugefügt für "+ this.state.preis)
+   /*  alert("film wurde hinzugefügt für "+ this.state.preis) */
     event.preventDefault();
-    this.setState({startZeit: "0"+this.state.month+"0"+this.state.day+this.state.year+this.state.stunde+this.state.minute,
+    this.setState({startZeit: this.state.month+this.state.day+this.state.year+this.state.stunde+this.state.minute,
     /* this.setState({startZeit: this.state.year+"-"+"0"+this.state.month+"0"+this.state.day+"T"+this.state.stunde+":"+this.state.minute+":00.000", */
     filmId: this.state.choosenMovie.id,
     grundpreis: this.state.preis,
