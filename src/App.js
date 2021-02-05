@@ -35,6 +35,7 @@ import AdminUebersicht from "./Pages/AdminUebersicht";
 import Test1 from "./Pages/Test1";
 import Test2 from "./Pages/Test2";
 import FilmEntfernen from "./Pages/FilmEntfernen";
+import AdminControl from "./Pages/AdminControl"
 
 class App extends Component {
   render() {
