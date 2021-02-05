@@ -1,0 +1,214 @@
+.ProfilübersichtSeite {
+  display: block;
+}
+.Oben {
+  display: flex;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+.ObenLinks {
+  display: block;
+  width: 70%;
+  margin-left: 10px;
+}
+.AngabenÜberschrift {
+  font-family: "Comfortaa";
+  text-transform: uppercase;
+  font-size: 2rem;
+  color: #353b48;
+}
+.ObenLinksAngaben {
+  display: flex;
+  background-color: #ecf0f1;
+  border: 2px solid;
+  font-family: "Nunito";
+  font-size: 1.5rem;
+  color: black;
+  text-decoration: none;
+}
+.ObenLinksLinks {
+  display: grid;
+  width: 50%;
+  padding-left: 1%;
+  padding-right: 1%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+.AngabenFelderLinks {
+}
+.ObenLinksRechts {
+  display: grid;
+  width: 50%;
+  padding-left: 1%;
+  padding-right: 1%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+.AngabenFelderRechts {
+}
+.ObenRechts {
+  font-family: "Nunito";
+  font-size: 1.5rem;
+  color: black;
+  text-decoration: none;
+}
+.PersZustandÜberschrift {
+  font-family: "Comfortaa";
+  text-transform: uppercase;
+  font-size: 2rem;
+  color: #353b48;
+  padding-left: 3%;
+}
+.PersZustand {
+  margin-left: 3%;
+  margin-right: 10px;
+}
+.Unten {
+  display: flex;
+  margin-bottom: 10px;
+}
+.UntenLinks {
+  width: 46%;
+  font-family: "Nunito";
+  font-size: 1.5rem;
+  color: black;
+  text-decoration: none;
+  margin-left: 10px;
+  margin-right: 3%;
+  align-self: flex-start;
+}
+.MerklisteÜberschrift {
+  font-family: "Comfortaa";
+  text-transform: uppercase;
+  font-size: 2rem;
+  color: #353b48;
+}
+.UntenLinksMerkliste {
+  display: flex;
+  background-color: #ecf0f1;
+  border: 2px solid;
+}
+.UntenLinksMerklisteText {
+  width: 80%;
+  padding-left: 5px;
+}
+.UntenLinksMerklisteButton {
+}
+
+.BearbeitenButton {
+  margin-top: 3px;
+  margin-right: 3px;
+  background-color: #26418f;
+  border-color: #26418f;
+  font-family: "Nunito";
+  font-size: 1rem;
+  // border: 0;
+  color: white;
+  border-radius: 0;
+  /* text-transform: uppercase; */
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: color 150ms ease-in-out;
+  border-radius: 3rem;
+  padding: 0.3rem 3rem 0.3rem 3rem;
+  text-decoration: none;
+  &:after {
+    content: "";
+    position: absolute;
+    display: block;
+    color: white;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 100%;
+    background: #0077c2;
+    z-index: -1;
+    transition: width 150ms ease-in-out;
+    text-decoration: none;
+  }
+  &:hover {
+    color: #fff;
+    &:after {
+      width: 110%;
+    }
+  }
+}
+.UntenRechts {
+  display: flex-end;
+  width: 46%;
+  font-family: "Nunito";
+  font-size: 1.5rem;
+  color: black;
+  text-decoration: none;
+  margin-left: 3%;
+  margin-right: 10px;
+  right: 100;
+}
+.BestellungenÜberschrift {
+  font-family: "Comfortaa";
+  text-transform: uppercase;
+  font-size: 2rem;
+  color: #353b48;
+}
+.UntenRechtsBestellungen {
+  background-color: #ecf0f1;
+  border: 2px solid;
+  padding-left: 5px;
+}
+.ProfilübersichtSeite {
+}
+@media (max-width: 900px) {
+  .ObenLinks {
+    width: 60%;
+  }
+  .ObenLinksAngaben {
+    display: block;
+  }
+  .UntenLinks {
+    width: 48.5%;
+    margin-right: 0.5%;
+  }
+  .UntenRechts {
+    width: 48.5%;
+    margin-left: 0.5%;
+  }
+}
+@media (max-width: 780px) {
+  .Unten {
+    display: block;
+  }
+  .UntenLinks {
+    width: auto;
+    margin-right: 10px;
+  }
+  .UntenRechts {
+    width: auto;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+@media (max-width: 680px) {
+  .Oben {
+    display: block;
+  }
+  .ObenLinks {
+    width: unset;
+    margin-right: 10px;
+  }
+  .AngabenÜberschrift {
+    font-size: 1.5rem;
+  }
+  .PersZustandÜberschrift {
+    font-size: 1.5rem;
+    padding-left: unset;
+    margin-left: 10px;
+  }
+  .MerklisteÜberschrift {
+    font-size: 1.5rem;
+  }
+  .BestellungenÜberschrift {
+    font-size: 1.5rem;
+  }
+}

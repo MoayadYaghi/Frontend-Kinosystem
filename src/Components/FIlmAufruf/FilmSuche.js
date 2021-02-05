@@ -2,12 +2,15 @@ import { Component, useState } from "react";
 import NewFilmAPI from "../../API_Pulls/NewFilmAPI";
 import PostNewMovie from "../../PostRequest/PostNewMovie";
 import FilmSucheAPI from "../../API_Pulls/FilmSucheAPI";
+import GetAllFilmAPI from "../../API_Pulls/GetAllFilmAPI";
 import { animateScroll as scroll } from "react-scroll";
 import ModalFilmAdmin from "./ModalFilmAdmin";
 import "./FilmAufruf.css";
+import Modal from "react-bootstrap/Modal";
 
 var text;
 var id;
+var fehler = false;
 
 class FilmSuche extends Component {
   constructor(props) {
@@ -22,6 +25,11 @@ class FilmSuche extends Component {
       clicked: false,
       newFilme: [],
       showModal: false,
+      Error: false,
+      success: false,
+      Datenbank: [],
+      vorhanden: false,
+      Fehler: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -54,7 +62,7 @@ class FilmSuche extends Component {
 
       this.setState({ filme: movies });
 
-      console.log(this.state.filme);
+      //console.log(this.state.filme);
 
       /*  await  */
       if (this.state.filme === null) {
@@ -76,50 +84,81 @@ class FilmSuche extends Component {
   // axios.post('http://localhost:3000/admin', this.state)
 
   clickHandler(title, ID) {
-    this.setState({ clicked: true });
+    this.setState({ clicked: true, showModal: true });
+
     text = title;
     id = ID;
   }
 
   betätigungsHandler(Id) {
-    this.setState({ visible: false });
+    //console.log(Id)
+    this.setState({ visible: false, showModal: false });
     scroll.scrollToTop();
 
-    NewFilmAPI.getnewFilmAPI(Id).then((response) => {
-      var FilmInfo = response.data;
+    //console.log(this.state.Datenbank)
 
-      this.setState({ newFilme: response.data });
-      console.log(this.state.newFilme);
-
-      var Actors = this.state.newFilme.actorList;
-
-      console.log(Actors);
-
-      PostNewMovie.sendDatatoBackend(
-        FilmInfo.id,
-        FilmInfo.title,
-        FilmInfo.awards,
-        FilmInfo.directors,
-        FilmInfo.genreList,
-        FilmInfo.plotLocal,
-        FilmInfo.runtimeMins,
-        FilmInfo.image
-      );
+    //console.log(DatenbankLänge)
+    this.state.Datenbank.map((Daten) => {
+      if (Daten.name === text) {
+        this.setState({ vorhanden: true, Fehler: true });
+        fehler = true;
+      }
     });
+    if (fehler !== true) {
+      NewFilmAPI.getnewFilmAPI(Id).then((response) => {
+        var FilmInfo = response.data;
+        this.setState({ newFilme: response.data });
+        // console.log(this.state.newFilme);
+        var Actors = this.state.newFilme.actorList;
+        // console.log(Actors);
+        if (FilmInfo.runtimeMins === "") {
+          FilmInfo.runtimeMins = "0";
+        }
+
+        PostNewMovie.sendDatatoBackend(
+          FilmInfo.id,
+          FilmInfo.title,
+          FilmInfo.awards,
+          FilmInfo.directors,
+          FilmInfo.genreList,
+          FilmInfo.plotLocal,
+          FilmInfo.runtimeMins,
+          FilmInfo.image
+        );
+        setTimeout(() => {
+          var RückmeldungFehler;
+          var Rückmeldung = sessionStorage.getItem("Rückmeldung");
+          sessionStorage.removeItem("Rückmeldung");
+          // console.log(Rückmeldung)
+          RückmeldungFehler = Rückmeldung.substring(0, 5);
+          //  console.log(RückmeldungFehler)
+
+          if (RückmeldungFehler === "Error") {
+            if (!this.state.vohanden) {
+              this.setState({ Error: true });
+            }
+          } else {
+            this.setState({ success: true });
+          }
+        }, 2000);
+      });
+    }
   }
 
-  openModal = () => {
-    this.setState({ showModal: !this.state.showModal });
+  handleClose = () => {
+    this.setState({ showModal: false });
   };
+
+  componentDidMount() {
+    GetAllFilmAPI.getAllFilmAPI().then((respo) => {
+      this.setState({ Datenbank: respo.data });
+      // console.log(respo)
+    });
+  }
 
   render() {
     return (
       <div>
-        {/* <button onClick ={this.openModal}>I am a Modal</button>
-          <ModalFilmAdmin showModal={this.state.showModal}/> */}
-
-         {/* <ModalFilmAdmin />  */}
-
         <div className="Suche">
           <form className="Form" onSubmit={this.handleSubmit}>
             <div className="Textfield">
@@ -138,7 +177,7 @@ class FilmSuche extends Component {
             <br />
             <div className="Submit">
               <input
-                className="ButtonSubmit"
+                className="DESIGNButton"
                 type="submit"
                 value=" Film Suchen"
               />
@@ -174,29 +213,6 @@ class FilmSuche extends Component {
                         {filme.title} {filme.description}
                       </div>
                       <br />
-
-                      {this.state.clicked ? (
-                        id === filme.id ? (
-                          <div className="Infomation">
-                            <div className="Bestätigunganfrage">
-                              <div className="Ergebnise">
-                                Sie haben den Title: {text} ausgewählt. Möchten
-                                Sie diesen zu Ihrem Programm hinzufügen?
-                              </div>
-
-                              <button
-                                className="Bestätigung"
-                                onClick={() =>
-                                  this.betätigungsHandler(filme.id)
-                                }
-                              >
-                                Bestätigen
-                              </button>
-                              <br />
-                            </div>
-                          </div>
-                        ) : null
-                      ) : null}
                     </div>
                   ))}
                 </div>
@@ -205,14 +221,67 @@ class FilmSuche extends Component {
           ) : null}
           {this.state.FehlerAusgabe ? (
             <div className="FehlerMeldung">
-              Das hat Leider nicht geklappt, versuchen Sie es bitte erneut
+              <div className="DESIGNHeadline3">
+                {" "}
+                Das hat Leider nicht geklappt, versuchen Sie es bitte erneut
+              </div>
             </div>
           ) : null}
           {this.state.Ergebnis0 ? (
             <div className="FehlerMeldung">
-              Das hat Leider nicht geklappt, es wurden keine Ergebnisse gefunden
+              <div className="DESIGNHeadline3">
+                {" "}
+                Das hat Leider nicht geklappt, es wurden keine Ergebnisse
+                gefunden
+              </div>
             </div>
           ) : null}
+          {this.state.vorhanden ? (
+            <div className="FehlerMeldung">
+              <div className="DESIGNHeadline3">
+                {" "}
+                Das hat Leider nicht geklappt, den Film gibt es bereits
+              </div>
+            </div>
+          ) : null}
+        </div>
+        {this.state.Error ? (
+          <div className="ErfolgreichFilm">
+            {" "}
+            <div className="DESIGNHeadline3">
+              Es gab einen Fehler, bitte versuchen Sie es erneut{" "}
+            </div>
+          </div>
+        ) : null}
+        {this.state.success ? (
+          <div className="ErfolgreichFilm">
+            <div className="DESIGNHeadline3">
+              {" "}
+              Ihr FIlm wurde automatisch zu Ihrem Programm hinzugefügt{" "}
+            </div>
+          </div>
+        ) : null}
+
+        <div>
+          <Modal show={this.state.showModal} onHide={this.handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Der Film: {text} wurde ausgewählt</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              Möchten Sie den Film zu Ihrem Programm hinzufügen?{" "}
+            </Modal.Body>
+            <Modal.Footer>
+              <button variant="secondary" onClick={this.handleClose}>
+                Abbrechen
+              </button>
+              <button
+                variant="primary"
+                onClick={() => this.betätigungsHandler(id)}
+              >
+                Bestätigen
+              </button>
+            </Modal.Footer>
+          </Modal>
         </div>
       </div>
     );

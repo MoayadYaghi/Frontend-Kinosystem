@@ -1,4 +1,5 @@
 import Navbar from ".././Components/Navbar/Navbar";
+import Profilübersicht from ".././Components/Profilübersicht/Profilübersicht";
 import Footer from ".././Components/Footer/Footer";
 import React from "react";
 import ".././App.css";
@@ -10,9 +11,7 @@ const Profil = () => {
   return (
     <div className="App">
       <Navbar />
-
-      <h1>Profil Seite</h1>
-
+      <Profilübersicht />
       <Footer />
     </div>
   );
