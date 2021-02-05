@@ -37,6 +37,7 @@ $color: #26418f;
     
     &:hover {
       color: #fff;
+      text-decoration: none;
       &:after {
         width: 110%;
       }
@@ -46,6 +47,7 @@ $color: #26418f;
   
   .DESIGNButton{
     padding: 1vw 4vw 1vw 4vw;
+    font-size: 1rem;
   }
   
   
