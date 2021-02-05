@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./VorHinZu.css";
 import getFilme from "../../API_Pulls/GetAllFilmAPI.js"
 import VorstellungHinzufügen from "../../PostRequest/VorstellungHinzufügen"
+import getAllSaal from "../../API_Pulls/GetAllSaal.js" 
 /* import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { Link } from "react-router-dom";
 import { Button} from 'react-bootstrap'; */
@@ -25,7 +26,8 @@ class VorHinZu extends Component {
       blockVisible:false,
       dayAndMonth : [],
       yearCollection : [],
-      saal: 98,
+      allSaal: [],
+      choosenSaal: 0,
       day:0,
       month:0,
       year:2021,
@@ -56,14 +58,23 @@ class VorHinZu extends Component {
   state = {};
 
   componentDidMount () {
+
+    let data4 = [];
+    getAllSaal.GetAllSaalAPI().then((res)=>{
+      data4=res.data
+      this.setState({allSaal:data4})
+      console.log(data4)
+    })
+    
+
     let data2 =[];
     let data3 =[];
     getFilme.getAllFilmAPI().then((response )=> {
       var data = response.data
       this.setState({filme: response.data})
-      console.log(response);
+      //console.log(response);
       this.setState({Filme: data})
-      console.log(this.state.filme.data)
+      //console.log(this.state.filme.data)
       this.setState({visible: true})
       })
 
@@ -90,6 +101,8 @@ class VorHinZu extends Component {
       }
       this.setState({minuteCollection:data3})
     }while(false)
+
+
   }
 
 /*    componentDidMount(){
@@ -116,16 +129,13 @@ class VorHinZu extends Component {
     
     
 
- /*    return(
-        <div className = "bild">
-            {console.log(this.state.choosenMovie)}
-        </div>
-    ) */
   
   }
 
   handleSaal(event){
-    this.setState({saal: event.target.value})
+    this.setState({choosenSaal: event.target.value})
+    console.log(event.target.value)
+    console.log(this.state.choosenSaal)
   }
   handleDay(event){
     this.setState({day: event.target.value})
@@ -286,6 +296,7 @@ class VorHinZu extends Component {
                         <div className ="Balkenrechtseit">
                         <form>
                      <label>
+<<<<<<< HEAD
                         <select className ="selectVorhinzu" value={this.state.saal} onChange={this.handleSaal}>
                         <option value="0">98</option>
                         <option value="1">1</option>
@@ -293,6 +304,16 @@ class VorHinZu extends Component {
                         <option value="3">3</option>
                         <option value="4">4</option>
                         <option value="5">5</option>
+=======
+                        <select value={this.state.choosenSaal} onChange={this.handleSaal}>
+                        <option value="--Select--">--Select--</option>
+                        {this.state.allSaal.map((saal)=>(
+                            <option value={saal.id}> {saal.id}</option>
+                        ))
+                        } 
+                        
+                       
+>>>>>>> e12550a246bf801b59100faa5896ee4aa661b67f
                         </select>
                       </label>
                       </form>
