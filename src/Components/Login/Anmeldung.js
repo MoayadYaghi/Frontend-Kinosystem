@@ -53,6 +53,9 @@ class Anmeldung extends Component {
     this.setState({ [name]: Value });
     /* this.setState({[name]: Pass}); */
   }
+  componentDidMount(){
+    scroll.scrollToTop()
+  }
 
   handleSubmit(event) {
     event.preventDefault();
@@ -111,6 +114,7 @@ class Anmeldung extends Component {
           if (this.state.passwortHash.length >= 8 && PassContent) {
             this.setState({ passwortÜberLänge: false });
 
+
             if (this.state.passwortHash !== this.state.Passwort2) {
               this.setState({
                 passwortÜber: true,
@@ -120,6 +124,7 @@ class Anmeldung extends Component {
               });
             } else {
               this.setState({ passwortÜber: false });
+
 
               postRegister
                 .sendnewRegister(this.state)
