@@ -28,6 +28,7 @@ class VorHinZu extends Component {
       yearCollection : [],
       allSaal: [],
       choosenSaal: 0,
+      choosenSaalId:0,
       day:0,
       month:0,
       year:2021,
@@ -105,37 +106,21 @@ class VorHinZu extends Component {
 
   }
 
-/*    componentDidMount(){
-    let data1 =[];
-    let data2 =[]; */
-/*     for (let i=0; i<=1; i++){
-      
-       for(let i=1; i<=31; i++){ 
-              data1.push(i)
-            }
-        this.setState({dayAndMonth: data1})
-     } */
-        
-/*     do{
-      for(let i=2000; i<=2100; i++){
-        data2.push(i)
-      }
-      this.setState({year:data2})
-    }while(false) 
-  } */
 
   handleChange(event) {
     this.setState({value: event.target.value});
-    
-    
-
-  
   }
 
   handleSaal(event){
-    this.setState({choosenSaal: event.target.value})
+    this.setState({choosenSaal : event.target.value})
     console.log(event.target.value)
-    console.log(this.state.choosenSaal)
+    for(let i=0; i<this.state.allSaal.length; i++){
+        if (event.target.value == this.state.allSaal[i].name){
+          let kinosaalId= this.state.allSaal[i].id;
+          this.setState({choosenSaalId:kinosaalId})
+    }
+    }
+  
   }
   handleDay(event){
     this.setState({day: event.target.value})
@@ -191,11 +176,11 @@ class VorHinZu extends Component {
       minute = this.state.minute
     }
     let startZeit = month+day+this.state.year+stunde+minute  
-    console.log(startZeit) 
+    //console.log(startZeit) 
     var filmId = this.state.choosenMovie.id
     var grundpreis = this.state.preis
     var aktiv = 1
-    var saal = this.state.saal
+    var saal = this.state.choosenSaalId
 /*     console.log(grundpreis, filmId, startZeit) */
     //this.setState({minute: event.target.value})
    /*  alert("film wurde hinzugefügt für "+ this.state.preis) */
@@ -299,7 +284,7 @@ class VorHinZu extends Component {
                         <select className ="selectVorhinzu" value={this.state.choosenSaal} onChange={this.handleSaal}>
                           <option value="--Select--">--Select--</option>
                             {this.state.allSaal.map((saal)=>(
-                                <option value={saal.id}> {saal.id}</option>
+                                <option value={saal.name}> {saal.name}</option>
                             ))
                             } 
                         
