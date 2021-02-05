@@ -132,7 +132,7 @@ class VorHinZu extends Component {
   }
 
   handleSaal(event){
-    this.setState({choosenSaal: event.target.value})
+    this.setState({choosenSaal: event.target.value}.then(()=>{console.log(this.state.choosenSaal);}))
     console.log(event.target.value)
     console.log(this.state.choosenSaal)
   }
@@ -190,7 +190,7 @@ class VorHinZu extends Component {
       minute = this.state.minute
     }
     let startZeit = month+day+this.state.year+stunde+minute  
-    console.log(startZeit) 
+    //console.log(startZeit) 
     var filmId = this.state.choosenMovie.id
     var grundpreis = this.state.preis
     var aktiv = 1
@@ -284,7 +284,7 @@ class VorHinZu extends Component {
                         <select value={this.state.choosenSaal} onChange={this.handleSaal}>
                         <option value="--Select--">--Select--</option>
                         {this.state.allSaal.map((saal)=>(
-                            <option value={saal.id}> {saal.id}</option>
+                            <option value={saal.name}> {saal.name}</option>
                         ))
                         } 
                         
