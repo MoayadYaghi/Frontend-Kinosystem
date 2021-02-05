@@ -12,7 +12,7 @@ const AdminUebersicht = () => {
     <div className="App">
       <Navbar />
 
-      <div>hallow</div>
+      
       <aUebersicht2 />
 
       <Footer />

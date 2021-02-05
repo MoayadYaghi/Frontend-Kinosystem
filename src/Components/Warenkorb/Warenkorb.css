@@ -7,7 +7,7 @@
 .ZahlungsdetailsSelect{
     height: 2.5rem!important;
     width: 40vw;
-    background-color: lightgray;
+    background-color: #ecf0f1;
    margin-bottom: 2rem;
 
 } 
@@ -16,12 +16,13 @@
 }
 
 .KinoTicket, .KinoExtras{
-    background-color: lightgray;
+    background-color: #ecf0f1;
     flex-wrap: wrap;
     border-style: solid;
     padding: 1rem;
     row-gap: 5rem;
     width: 70%;
+    border-radius: 30px;
      
 }
 .WarenkorbTicket, .WarenkorbSnacks, .ZahlungsdetailSchrift, .PersonenSchrift, .BezahlMethodenText{
@@ -30,7 +31,11 @@
     flex-wrap: wrap;
     width: 100%;
     font-weight: bold;
-    
+    border-radius: 30px;
+    font-family: 'Comfortaa';
+    text-transform: uppercase;
+    font-size: 2rem;
+    color: #353b48;
 }
 .ZahlungsdetailSchrift{
     
@@ -53,7 +58,8 @@
     
 }
 .Warenkorb{
-    display: flex
+    display: flex;
+    background-color: #bdc3c7;
 }
 .Tickezs{
     width: 100%;
@@ -61,12 +67,12 @@
 }
 .InputTextWarenkorb{
     width: 40vw;
-    background-color: lightgray;
+    background-color: #ecf0f1;
     height: 2.5rem;
     padding-left: 1rem;
 }
 
-.AngabenPerson{
+.AngabenPerson, .BezahlMethodenBox{
     width: 43vw;
     display: flex;
     flex-wrap: wrap;
@@ -76,12 +82,17 @@
     border-style: solid;
     padding: 1rem 1vw 0.5rem 1rem;
     margin-bottom: 2rem;
+    border-radius: 30px;
     
     
 }
+.BezahlMethodenBox{
+    
+    background-color: #ecf0f1;
+}
 
 .PersonenAngabenBox {
-    background-color: lightgray;
+    background-color: #ecf0f1;
     flex-wrap: wrap;
     border-style: solid;
     padding: 1rem;
@@ -94,6 +105,10 @@
     display: flex;
     flex-wrap: wrap;
 
+}
+.ZahlungsdetailText{
+
+    padding: 1rem 3rem 2rem 0
 }
 
 

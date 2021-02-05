@@ -13,7 +13,7 @@ class aUebersicht2 extends Component {
     <div>hallo world</div>
     
     
-    );
+    )
   }
 }
 export default aUebersicht2;

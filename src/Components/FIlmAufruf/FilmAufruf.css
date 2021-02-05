@@ -125,7 +125,41 @@
 @media screen and (max-width: 820px) {
   .Buttons {
   }
+
+  
 }
+.doppelButton{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0 2rem 0;
+  grid-gap: 4rem;
+  flex-wrap: wrap;
+}
+.DropDownMitte{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.SelectGröße{
+  width: 50vw;
+height: 3rem;
+font-size: 2rem;
+}
+.TextAlignMitte{
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.AuswahlBestätigungSubmit{
+  padding: 1rem 0 4rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+
+
 .ErfolgreichFilm {
   display: flex;
   justify-content: center;

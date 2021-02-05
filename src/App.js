@@ -31,85 +31,98 @@ import Sitzplatzreservierung from "./Pages/sitzplatzres";
 import filmDetails from "./Pages/filmDetails";
 import Admin from "./Pages/AdminFilmAuswahl";
 import VorstellungHinzufügen from "./Pages/VorstellungHinzufügen";
-import AdminÜbersicht from "./Pages/AdminUebersicht";
+import AdminUebersicht from "./Pages/AdminUebersicht";
 import Test1 from "./Pages/Test1";
 import Test2 from "./Pages/Test2";
-import FilmEntfernen from "./Pages/FilmEntfernen";
+
+import FilmEntfernen from "./Pages/FilmEntfernen"
+import AdminControl from "./Pages/AdminControl"
+
 
 class App extends Component {
-  render() {
-    // Links
-    const HomeLink = "/";
-    const ProgrammLink = "/Programm";
-    const ProgrammAktuellLink = "/Programm/Aktuell";
-    const ProgrammDemnächstLink = "/Programm/Demnächst";
-    const InformationsLink = "/Information";
-    const ShopLink = "/Shop";
-    const KontaktLink = "/Kontakt";
-    const LogInLink = "/Login";
-    const RegistrierenLink = "/Registrieren";
-    const ProfilLink = "/Profil";
-    const SnacksLink = "/Shop/Snacks";
-    const GetraenkeLink = "/Shop/Getraenk";
-    const BekleidungLink = "/Shop/Bekleidung";
-    const GutscheineLink = "/Shop/Geschenke";
-    const WarenkorbLink = "/Warenkorb";
-    const ImpressumLink = "/Impressum";
-    const FehlerLink = "/Fehler404";
-    const WunschlisteLink = "/Wunschliste";
-    const SitzplatzresLink = "/Sitzplatz/:vorstellungsId";
-    const FilmDetailsLink = "/FilmDetails/:id";
-    const AdminLink = "/Admin";
-    const VorstellungHinzufügenLink = "/VorHin";
-    const Test1Link = "/Test1";
-    const FilmEntfernenLink = "/FilmEntfernen";
+  
+render(){
+  // Links
+  const HomeLink = "/";
+  const ProgrammLink = "/Programm";
+  const ProgrammAktuellLink = "/Programm/Aktuell";
+  const ProgrammDemnächstLink = "/Programm/Demnächst";
+  const InformationsLink = "/Information";
+  const ShopLink = "/Shop";
+  const KontaktLink = "/Kontakt";
+  const LogInLink = "/Login";
+  const RegistrierenLink = "/Registrieren";
+  const ProfilLink = "/Profil";
+  const SnacksLink = "/Shop/Snacks";
+  const GetraenkeLink = "/Shop/Getraenk";
+  const BekleidungLink = "/Shop/Bekleidung";
+  const GutscheineLink = "/Shop/Geschenke";
+  const WarenkorbLink = "/Warenkorb";
+  const ImpressumLink = "/Impressum";
+  const FehlerLink = "/Fehler404";
+  const WunschlisteLink = "/Wunschliste"
+  const SitzplatzresLink = "/Sitzplatz/:vorstellungsId"
+  const FilmDetailsLink = "/FilmDetails/:id"
+  const AdminLink ="/Admin"
+  const VorstellungHinzufügenLink ="/VorHin"
+  const Test1Link ="/Test1"
+  const FilmEntfernenLink = "/FilmEntfernen"
+  const AdminUebersichtLink ="/AdminUebersicht"
+  const AdminControlLink ="/AdminControl"
 
-    return (
-      <Router>
-        <Switch>
-          <Route exact path={HomeLink} component={StartSeite} />
-          <Route exact path={ProgrammLink} component={Programm} />
-          <Route exact path={ProgrammAktuellLink} component={ProgrammAktuell} />
-          <Route
-            exact
-            path={ProgrammDemnächstLink}
-            component={ProgrammDemnächst}
-          />
-          <Route exact path={InformationsLink} component={Informationen} />
-          <Route exact path={ShopLink} component={Shop} />
-          <Route exact path={KontaktLink} component={Kontakt} />
-          <Route exact path={LogInLink} component={LogIn} />
-          <Route exact path={RegistrierenLink} component={Registrieren} />
-          <Route exact path={ProfilLink} component={Profil} />
-          <Route exact path={SnacksLink} component={Snacks} />
-          <Route exact path={GetraenkeLink} component={Getraenk} />
-          <Route exact path={BekleidungLink} component={Bekleidung} />
-          <Route exact path={GutscheineLink} component={Gutscheine} />
-          <Route exact path={WarenkorbLink} component={Warenkorb} />
-          <Route exact path={ImpressumLink} component={Impressum} />
-          <Route exact path={WunschlisteLink} component={Wunschliste} />
-          <Route
-            exact
-            path={SitzplatzresLink}
-            component={Sitzplatzreservierung}
-          />
-          <Route exact path={FilmDetailsLink} component={filmDetails} />
-          <Route exact path={AdminLink} component={Admin} />
-          <Route
-            exact
-            path={VorstellungHinzufügenLink}
-            component={VorstellungHinzufügen}
-          />
-          <Route exact path={Test1Link} component={Test1} />
-          <Route exact path={FilmEntfernenLink} component={FilmEntfernen} />
 
-          <Route exact path={FehlerLink} component={Fehler} />
-          {/*Fehlerseite*/}
-          <Redirect to={FehlerLink} />
-        </Switch>
-      </Router>
-    );
-  }
+  
+  
+
+
+  return<Router>
+    <Switch>
+       <Route exact path= {HomeLink} component={StartSeite}/>
+       <Route exact path= {ProgrammLink} component={Programm}/>
+       <Route exact path= {ProgrammAktuellLink} component={ProgrammAktuell}/>
+       <Route exact path= {ProgrammDemnächstLink} component={ProgrammDemnächst}/>
+       <Route exact path= {InformationsLink} component={Informationen}/>
+       <Route exact path= {ShopLink} component={Shop}/>
+       <Route exact path= {KontaktLink} component={Kontakt}/>
+       <Route exact path= {LogInLink} component={LogIn}/>
+       <Route exact path= {RegistrierenLink} component={Registrieren}/>
+       <Route exact path= {ProfilLink} component={Profil}/>
+       <Route exact path= {SnacksLink} component={Snacks}/>
+       <Route exact path= {GetraenkeLink} component={Getraenk}/>
+       <Route exact path= {BekleidungLink} component={Bekleidung}/>
+       <Route exact path= {GutscheineLink} component={Gutscheine}/>
+       <Route exact path= {WarenkorbLink} component={Warenkorb}/>
+       <Route exact path= {ImpressumLink} component={Impressum}/>
+       <Route exact path= {WunschlisteLink} component={Wunschliste}/>
+       <Route exact path= {SitzplatzresLink} component={Sitzplatzreservierung}/>
+       <Route exact path= {FilmDetailsLink} component={filmDetails}/>
+       <Route exact path= {AdminLink} component={Admin}/>
+       <Route exact path= {VorstellungHinzufügenLink} component={VorstellungHinzufügen}/>
+       <Route exact path= {Test1Link} component={Test1}/>
+       <Route exact path= {FilmEntfernenLink} component={FilmEntfernen}/>
+       <Route exact path= {AdminUebersichtLink} component={AdminUebersicht}/>
+       <Route exact path= {AdminControlLink} component={AdminControl}/>
+
+
+
+
+
+
+
+
+       <Route exact path={FehlerLink} component={Fehler}/>
+       {/*Fehlerseite*/}
+       <Redirect to={FehlerLink}/>
+      
+       </Switch>
+     </Router>
+
+
+
+  
+  
+}
+
 }
 
 export default App;

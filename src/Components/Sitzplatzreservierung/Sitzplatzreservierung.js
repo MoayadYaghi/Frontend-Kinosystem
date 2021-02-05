@@ -181,9 +181,12 @@ class Sitzplatzreservierung extends Component {
       }
     }
     for(let i in sitzIds) {
-      CreateNewTicket.createNewTicket(sitzIds[i], vorstellungId, nutzerId);
+      console.log(sitzIds[i], vorstellungId)
+      CreateNewTicket.createNewTicket(sitzIds[i], vorstellungId);
     }
     this.setState({redirect: true});
+
+    
   }
 
   render() {
@@ -284,7 +287,7 @@ class Sitzplatzreservierung extends Component {
                 </tbody>
             </table>
           </div>
-          {this.renderRedirect()}
+          
           <button onClick={this.addWarenkorb}> Zum Warenkorb hinzufügen </button>
         </div>
       </div>
