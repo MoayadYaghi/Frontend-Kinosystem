@@ -114,6 +114,7 @@ class Anmeldung extends Component {
           if (this.state.passwortHash.length >= 8 && PassContent) {
             this.setState({ passwortÜberLänge: false });
 
+
             if (this.state.passwortHash !== this.state.Passwort2) {
               this.setState({
                 passwortÜber: true,
@@ -123,6 +124,7 @@ class Anmeldung extends Component {
               });
             } else {
               this.setState({ passwortÜber: false });
+
 
               postRegister
                 .sendnewRegister(this.state)

@@ -136,6 +136,7 @@
   grid-gap: 4rem;
   flex-wrap: wrap;
 }
+
 .DropDownMitte{
   display: flex;
   justify-content: center;
@@ -160,9 +161,10 @@ font-size: 2rem;
 
 
 
+
 .ErfolgreichFilm {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 2rem 0 2rem 0;
-}
+

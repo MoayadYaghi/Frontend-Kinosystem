@@ -8,23 +8,18 @@ class Warenkorb extends Component {
     super(props);
 
     this.state = {
-        ticket: [],
-        value: "",
-        vorname: "",
-        nachname: "",
-        mail:"",
+      ticket: [],
+      value: "",
+      vorname: "",
+      nachname: "",
+      mail: "",
     };
     this.handleChange = this.handleChange.bind(this);
   }
   handleSubmit(event) {
     event.preventDefault();
-    this.setState({ZahlungsDetails: event.target.value})
-      
-      
-      
-      
-    }
-  
+    this.setState({ ZahlungsDetails: event.target.value });
+  }
 
   handleChange(event) {
     const target = event.target;
@@ -54,13 +49,36 @@ class Warenkorb extends Component {
     
   }
   
+
   render() {
-    return( <div className ="Warenkorb">
-        
-            {
-                //this.state.ticket.map( (tickets) => (
-                  <div className ="Links" ><div className="LinkeSeite"><div className ="Tickezs"><div className="WarenkorbTicket" > 
-                    Ihr Warenkorb: <br/>
+    return (
+      <div className="Warenkorb">
+        {
+          //this.state.ticket.map( (tickets) => (
+          <div className="Links">
+            <div className="LinkeSeite">
+              <div className="Tickezs">
+                <div className="WarenkorbTicket">
+                  Ihr Warenkorb: <br />
+                </div>
+                <div className="KinoTicket">
+                  Ticket: {/* tickets.amount */} <br />
+                  Sitzplatz: {/* tickets.seats */}
+                  <br />
+                  Datum: {/* {tickets.date} */}
+                  <br />
+                  Zeit: {/* {tickets.vorstellung} */}
+                  <br />
+                  Preis: {/* {tickets.preis} */}
+                  <br />
+                </div>
+                <div className="FilmÄndern">
+                  <Link className="FilmNeu" to={"/programm"}>
+                    Film ändern
+                  </Link>
+                </div>
+              </div>
+
 
                       </div >
                     <div className="KinoTicket"> <div className ="DESIGNTextField">
@@ -89,15 +107,8 @@ class Warenkorb extends Component {
                     <Link  className ="SnackNeu" to={"/programm"}>Snack hinzufügen</Link>
                       </div>
 
-                        </div> </div> 
-                          
-                    
-                //))
-            }
-            
-            <div className ="Rechts">
-            <div className="rechteSeite">
-              
+
+              <div className="PersonenSchrift">Angaben zur Person</div>
 
              <div className ="ZahlungsdetailSchrift">
               
@@ -161,8 +172,11 @@ class Warenkorb extends Component {
             <div className="BezahlMethodenBox">
             <div className="BezahlMethodenText">
               Bezahlmethode
+
               </div>
+              <div className="BezahlMethodenText">Bezahlmethode</div>
               <div>
+
                 {
                   (this.state.value === "")?(<div className="ZahlungsdetailText"><div className="DESIGNTextField">Bitte Bezahlmöglichkeit Auswählen</div></div>):null     
                 }
@@ -181,41 +195,45 @@ class Warenkorb extends Component {
 
 
 
-                      <div>
+                    <div>
                       <label>
-              <input
-                className="InputTextWarenkorb"
-                placeholder="Kreditkartentyp"
-                name="mail"
-                type="text"
-                value={this.state.mail}
-                onChange={this.handleChange}
-              />
-            </label></div>
-                      <div>
+                        <input
+                          className="InputTextWarenkorb"
+                          placeholder="Kreditkartentyp"
+                          name="mail"
+                          type="text"
+                          value={this.state.mail}
+                          onChange={this.handleChange}
+                        />
+                      </label>
+                    </div>
+                    <div>
                       <label>
-              <input
-                className="InputTextWarenkorb"
-                placeholder="Karteninhaber"
-                name="mail"
-                type="text"
-                value={this.state.mail}
-                onChange={this.handleChange}
-              />
-            </label></div>
-                      <div>
+                        <input
+                          className="InputTextWarenkorb"
+                          placeholder="Karteninhaber"
+                          name="mail"
+                          type="text"
+                          value={this.state.mail}
+                          onChange={this.handleChange}
+                        />
+                      </label>
+                    </div>
+                    <div>
                       <label>
-              <input
-                className="InputTextWarenkorb"
-                placeholder="Kartennummer"
-                name="mail"
-                type="text"
-                value={this.state.mail}
-                onChange={this.handleChange}
-              />
-            </label></div>
-                      <div>
+                        <input
+                          className="InputTextWarenkorb"
+                          placeholder="Kartennummer"
+                          name="mail"
+                          type="text"
+                          value={this.state.mail}
+                          onChange={this.handleChange}
+                        />
+                      </label>
+                    </div>
+                    <div>
                       <label>
+
               <input
                 className="InputTextWarenkorb"
                 placeholder="Gültig bis"
@@ -256,5 +274,6 @@ class Warenkorb extends Component {
         
     
     )}
+
 }
 export default Warenkorb;

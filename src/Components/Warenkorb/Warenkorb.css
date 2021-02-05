@@ -1,9 +1,10 @@
-.LinkeSeite, .rechteSeite{
-    
-    width: 100%;
-    padding-left: 5%;
-    margin-top: 1rem;
+.LinkeSeite,
+.rechteSeite {
+  width: 100%;
+  padding-left: 5%;
+  margin-top: 1rem;
 }
+
 .ZahlungsdetailsSelect{
     height: 2.5rem!important;
     width: 40vw;
@@ -36,34 +37,47 @@
     text-transform: uppercase;
     font-size: 2rem;
     color: #353b48;
+
 }
-.ZahlungsdetailSchrift{
-    
+.WarenkorbTicket,
+.WarenkorbSnacks,
+.ZahlungsdetailSchrift,
+.PersonenSchrift,
+.BezahlMethodenText {
+  font-size: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  font-weight: bold;
 }
 
-.FilmÄndern, .SnackHinzufügen{
-    color:wheat;
-    cursor: pointer;
-    width: 100%;
-    margin-bottom: 2rem;
+.FilmÄndern,
+.SnackHinzufügen {
+  color: wheat;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 2rem;
 }
-.FilmNeu, .SnackNeu{
-    color: darkblue;
-    font-size: 1.2rem;
+.FilmNeu,
+.SnackNeu {
+  color: darkblue;
+  font-size: 1.2rem;
 }
 
-.Links, .Rechts{
-    display: flex;
-    width: 50%;
-    
+.Links,
+.Rechts {
+  display: flex;
+  width: 50%;
 }
+
 .Warenkorb{
     display: flex;
     background-color: #bdc3c7;
+
 }
-.Tickezs{
-    width: 100%;
-    height: auto;
+.Tickezs {
+  width: 100%;
+  height: auto;
 }
 .InputTextWarenkorb{
     width: 40vw;
@@ -85,6 +99,7 @@
     border-radius: 30px;
     
     
+
 }
 .BezahlMethodenBox{
     
@@ -92,6 +107,7 @@
 }
 
 .PersonenAngabenBox {
+
     background-color: #ecf0f1;
     flex-wrap: wrap;
     border-style: solid;
@@ -100,12 +116,38 @@
     width: 190%;
     
      
-}
-.KreditKarteText{
-    display: flex;
-    flex-wrap: wrap;
 
 }
+.KreditKarteText {
+  display: flex;
+  flex-wrap: wrap;
+}
+@media (max-width: 800px) {
+  .Warenkorb {
+    display: contents;
+  }
+  .Links {
+    width: 100%;
+  }
+  .Rechts {
+    width: 90%;
+    margin-bottom: 20vw;
+  }
+  .ZahlungsdetailsSelect {
+    width: unset;
+  }
+  .AngabenPerson {
+    width: auto;
+    display: grid;
+  }
+  .BezahlMethodenText {
+    margin-bottom: 5vw;
+  }
+  .InputTextWarenkorb {
+    width: unset;
+  }
+}
+
 .ZahlungsdetailText{
 
     padding: 1rem 3rem 2rem 0
