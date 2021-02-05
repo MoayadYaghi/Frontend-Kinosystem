@@ -40,10 +40,10 @@
   text-align: center;
 }
 .InputText:hover {
-  background-color: aqua;
+  background-color: rgb(233, 233, 233);
 }
 .InputText:focus {
-  background-color: blanchedalmond;
+  background-color: rgb(233, 233, 233);
 }
 
 .ErgebnisDarstellung {
@@ -82,7 +82,6 @@
 .FehlerMeldung {
   font-size: 3vw;
   font-weight: bold;
-  color: red;
   display: flex;
   justify-content: center;
   text-align: center;
@@ -116,7 +115,6 @@
   margin-top: 0.5rem;
 }
 .Ablehnen {
-  background-color: red;
   width: 80%;
   margin-left: 10%;
 }
@@ -153,6 +151,7 @@ font-size: 2rem;
   justify-content: center;
   margin-top: 2rem;
 }
+
 .AuswahlBestätigungSubmit{
   padding: 1rem 0 4rem 0;
   display: flex;
@@ -160,3 +159,10 @@ font-size: 2rem;
 }
 
 
+
+.ErfolgreichFilm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0 2rem 0;
+}

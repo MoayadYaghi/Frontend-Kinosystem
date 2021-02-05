@@ -5,8 +5,6 @@ import "./Navbar.css";
 import logo from "../../assets/LOGO1.png";
 import { Link } from "react-router-dom";
 
-  var Nutzername = sessionStorage.getItem("NutzerName");
-
 class Navbar extends Component {
   state = { clicked: false };
 
@@ -16,6 +14,9 @@ class Navbar extends Component {
 
   render() {
     const LogInLink = "/Login";
+    const WarenkorbLink = "/Warenkorb";
+    
+    var Nutzername = sessionStorage.getItem("NutzerName");
     return (
       <div>
         <div className="Headline1">
@@ -25,10 +26,6 @@ class Navbar extends Component {
           <h1 className="Gruppenname">Kreative Gruppe 42</h1>
         </div>
         <nav className="NavbarItems">
-          
-
-        
-
           <div className="menu-icon" onClick={this.handleClick}>
             <i
               className={this.state.clicked ? "fas fa-times" : "fas fa-bars"}
@@ -37,7 +34,7 @@ class Navbar extends Component {
           <ul className={this.state.clicked ? "nav-menu active" : "nav-menu"}>
             {MenuItems.map((item, index) => {
               return (
-                <li key={index} >
+                <li key={index}>
                   <a className={item.cName} href={item.url}>
                     {item.titel}
                   </a>
@@ -47,16 +44,20 @@ class Navbar extends Component {
           </ul>
           <div>
             {/* {console.log(Nutzername)} */}
-            
-          <Link className="signIn" to={LogInLink}>
-          {(Nutzername ===null )?(
-            "Sign In" ): Nutzername }        
-             </Link>
-  
-          </div>
-        </nav>
 
-       
+            <Link className="signIn" to={LogInLink}>
+              {Nutzername === null ? "Sign In" : Nutzername}
+            </Link>
+            
+          </div>
+          
+            <Link to={WarenkorbLink}>
+            <div className = "menu-cart">
+            <i className="fas fa-shopping-cart"></i>
+            </div>
+            </Link>
+            
+        </nav>
       </div>
     );
   }

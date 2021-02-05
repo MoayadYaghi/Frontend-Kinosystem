@@ -3,25 +3,21 @@ import "./VorHinZu.css";
 import getFilme from "../../API_Pulls/GetAllFilmAPI.js"
 import VorstellungHinzufügen from "../../PostRequest/VorstellungHinzufügen"
 import getAllSaal from "../../API_Pulls/GetAllSaal.js" 
+
 /* import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { Link } from "react-router-dom";
 import { Button} from 'react-bootstrap'; */
 
 let FilmListe = [];
 
-
-
-
-
-
 class VorHinZu extends Component {
   constructor(props) {
     super(props);
-    this.state= {
-      filme:[],
-      choosenMovie:[],
-      value: 'Es wurde noch kein Film ausgewählt',
-      visible :false,
+    this.state = {
+      filme: [],
+      choosenMovie: [],
+      value: "Es wurde noch kein Film ausgewählt",
+      visible: false,
       visible2: false,
       blockVisible:false,
       dayAndMonth : [],
@@ -74,49 +70,50 @@ class VorHinZu extends Component {
       this.setState({filme: response.data})
       //console.log(response);
       this.setState({Filme: data})
+
       //console.log(this.state.filme.data)
-      this.setState({visible: true})
-      })
+      this.setState({ visible: true });
+    });
 
-      for (let i=0; i<=1; i++){
-        let data1 =[];
-        for(let i=1; i<=31; i++){ 
-               data1.push(i)
-             }
-         this.setState({dayAndMonth: data1})
+    for (let i = 0; i <= 1; i++) {
+      let data1 = [];
+      for (let i = 1; i <= 31; i++) {
+        data1.push(i);
+      }
+      this.setState({ dayAndMonth: data1 });
+    }
+
+    do {
+      for (let i = 2021; i <= 2100; i++) {
+        data2.push(i);
+      }
+      this.setState({ yearCollection: data2 });
+    } while (false);
+
+    do {
+      for (let i = 0; i <= 59; i++) {
+        data3.push(i);
       }
 
-
-        do{
-      for(let i=2021; i<=2100; i++){
-        data2.push(i)
-      }
-      this.setState({yearCollection:data2})
-    }while(false)
-     
-
-    do{
-      for(let i=0; i<=59; i++){
-        data3.push(i)
-      }
       this.setState({minuteCollection:data3})
     }while(false)
 
 
+
   }
 
-/*    componentDidMount(){
+  /*    componentDidMount(){
     let data1 =[];
     let data2 =[]; */
-/*     for (let i=0; i<=1; i++){
+  /*     for (let i=0; i<=1; i++){
       
        for(let i=1; i<=31; i++){ 
               data1.push(i)
             }
         this.setState({dayAndMonth: data1})
      } */
-        
-/*     do{
+
+  /*     do{
       for(let i=2000; i<=2100; i++){
         data2.push(i)
       }
@@ -125,6 +122,7 @@ class VorHinZu extends Component {
   } */
 
   handleChange(event) {
+
     this.setState({value: event.target.value});
     
     
@@ -136,32 +134,32 @@ class VorHinZu extends Component {
     this.setState({choosenSaal: event.target.value})
     console.log(event.target.value)
     console.log(this.state.choosenSaal)
-  }
-  handleDay(event){
-    this.setState({day: event.target.value})
-  }
-  handleMonth(event){
-    this.setState({month: event.target.value})
-  }
-  handleYear(event){
-    this.setState({year: event.target.value})
-  }  
-  handleStunde(event){
-    this.setState({stunde: event.target.value})
-  }  
-  handleMinute(event){
-    this.setState({minute: event.target.value})
-  }   
-  handlePreis(event){
-    this.setState({preis: event.target.value})
-  }   
-  handleAnzahlWiederholungen(event){
-    this.setState({anzahlWiederholungen: event.target.value})
-  }    
-  handleWiederholungsRythmus(event){
-    this.setState({wiederholungsRythmus: event.target.value})
-  }  
 
+  }
+  handleDay(event) {
+    this.setState({ day: event.target.value });
+  }
+  handleMonth(event) {
+    this.setState({ month: event.target.value });
+  }
+  handleYear(event) {
+    this.setState({ year: event.target.value });
+  }
+  handleStunde(event) {
+    this.setState({ stunde: event.target.value });
+  }
+  handleMinute(event) {
+    this.setState({ minute: event.target.value });
+  }
+  handlePreis(event) {
+    this.setState({ preis: event.target.value });
+  }
+  handleAnzahlWiederholungen(event) {
+    this.setState({ anzahlWiederholungen: event.target.value });
+  }
+  handleWiederholungsRythmus(event) {
+    this.setState({ wiederholungsRythmus: event.target.value });
+  }
 
 
   handleButton(event){
@@ -219,23 +217,20 @@ class VorHinZu extends Component {
         }
         for(let i=0; i<this.state.filme.length; i++){
       if (this.state.value == this.state.filme[i].name){
+
         //console.log(this.state.value)
-        this.setState({choosenMovie:this.state.filme[i]})
-        console.log(this.state.choosenMovie.bild)
-      }//if
-    }//for
-    this.setState({blockVisible: true})
+        this.setState({ choosenMovie: this.state.filme[i] });
+        console.log(this.state.choosenMovie.bild);
+      } //if
+    } //for
+    this.setState({ blockVisible: true });
 
     event.preventDefault();
-  
   }
 
-
-  
-
-  
   render() {
     return (
+
     <div className ="HeightFilmWahl">
 
    
@@ -296,7 +291,7 @@ class VorHinZu extends Component {
                         <div className ="Balkenrechtseit">
                         <form>
                      <label>
-<<<<<<< HEAD
+
                         <select className ="selectVorhinzu" value={this.state.saal} onChange={this.handleSaal}>
                         <option value="0">98</option>
                         <option value="1">1</option>
@@ -304,7 +299,7 @@ class VorHinZu extends Component {
                         <option value="3">3</option>
                         <option value="4">4</option>
                         <option value="5">5</option>
-=======
+
                         <select value={this.state.choosenSaal} onChange={this.handleSaal}>
                         <option value="--Select--">--Select--</option>
                         {this.state.allSaal.map((saal)=>(
@@ -313,7 +308,7 @@ class VorHinZu extends Component {
                         } 
                         
                        
->>>>>>> e12550a246bf801b59100faa5896ee4aa661b67f
+
                         </select>
                       </label>
                       </form>
@@ -350,9 +345,92 @@ class VorHinZu extends Component {
                       </label>
                       </form>
 
+      <div className="gesamterBlock">
+        <div>
+          {this.state.visible ? (
+            <form onSubmit={this.handleSubmit}>
+              <label>
+                Filmwahl:
+                <select value={this.state.value} onChange={this.handleChange}>
+                  {this.state.Filme.map((filme) => (
+                    <option value={filme.name}>{filme.name}</option>
+                  ))}
+                </select>
+              </label>
+              <input type="submit" value="Submit" />
+            </form>
+          ) : null}
+          {this.state.visible2 ? (
+            <div>
+              {/* hier könnte ihr Bild auftauchen von {this.state.value} */}
+              <img
+                key={this.state.choosenMovie.id}
+                alt=" "
+                className="image"
+                src={this.state.choosenMovie.bild}
+              />
+            </div>
+          ) : null}
+        </div>
 
+
+        {this.state.blockVisible ? (
+          <div className="VorstellungsBlock">
+            <div className="Überschrift">
+              <h5>Vorstellung Hinzufügen für: {this.state.value}</h5>
+            </div>
+            <div className="InformationsEingabe">
+              <div className="abfrage">
+                Film: <br />
+                Saal: <br />
+                Datum: <br />
+                Uhrzeit: <br />
+                Preis: <br />
+              </div>
+              <div className="antwort">
+                {/* Film */}
+                <div className="nameDesFilmes">{this.state.value}</div>
+                {/* dropdown für den Saal */}
+                <form>
+                  <label>
+                    <select value={this.state.saal} onChange={this.handleSaal}>
+                      <option value="0">98</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                  </label>
+                </form>
+                <div className="datum">
+                  {/* dropdown für das Datum */}
+                  <form className="date">
+                    <label>
+                      <select value={this.state.day} onChange={this.handleDay}>
+                        {this.state.dayAndMonth.map((day) => (
+                          <option value={day}>{day}</option>
+                        ))}
+                      </select>
+                    </label>
+                  </form>
+
+                  {/* dropdown für das Monat */}
+                  <form className="month">
+                    <label>
+                      <select
+                        value={this.state.month}
+                        onChange={this.handleMonth}
+                      >
+                        {this.state.dayAndMonth.slice(0, 12).map((month) => (
+                          <option value={month}>{month}</option>
+                        ))}
+                      </select>
+                    </label>
+                  </form>
 
                   {/* dropdown für das Jahr */}
+
                      <form className="year">
                      <label>
                         <select className ="selectVorhinzu" value={this.state.year} onChange={this.handleYear}>
@@ -446,9 +524,8 @@ class VorHinZu extends Component {
 
     </div></div></div>
      
+
     );
   }
-
 } //class
 export default VorHinZu;
-

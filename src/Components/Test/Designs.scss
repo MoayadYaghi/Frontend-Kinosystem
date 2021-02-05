@@ -1,25 +1,43 @@
 $color: #26418f;
 
-
 //BUTTON 5
 .DESIGNButton {
-    background-color: #26418f;
-    border-color: $color;
-    font-family: 'Nunito';
-    font-size: 2rem;
-    // border: 0;
+  background-color: #26418f;
+  border-color: $color;
+  font-family: "Nunito";
+  font-size: 2rem;
+  // border: 0;
+  color: white;
+  border-radius: 0;
+  /* text-transform: uppercase; */
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: color 150ms ease-in-out;
+  border-radius: 3rem;
+  padding: 0.3rem 3rem 0.3rem 3rem;
+  text-decoration: none;
+
+  &:after {
+    content: "";
+    position: absolute;
+    display: block;
     color: white;
-    border-radius: 0;
-    /* text-transform: uppercase; */
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-    transition: color 150ms ease-in-out;
-    border-radius: 3rem;
-    padding: 0.3rem 3rem 0.3rem 3rem;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 100%;
+    background: #0077c2;
+    z-index: -1;
+    transition: width 150ms ease-in-out;
     text-decoration: none;
-    
+  }
+
+  &:hover {
+    color: #fff;
     &:after {
+
       content: '';
       position: absolute;
       display: block;
@@ -41,15 +59,14 @@ $color: #26418f;
       &:after {
         width: 110%;
       }
-    }
+
+      width: 110%;
+}
   }
-  @media screen and (max-width: 820px) {
-  
-  .DESIGNButton{
+}
+@media screen and (max-width: 820px) {
+  .DESIGNButton {
     padding: 1vw 4vw 1vw 4vw;
     font-size: 1rem;
   }
-  
-  
-  }
- 
+}
