@@ -60,7 +60,7 @@ class FilmSuche extends Component {
 
   setRedirect = (event) => {
     let id = event.target.id 
-    console.log(id)
+   /*  console.log(id) */
     if (id="1"){
           this.setState({redirect: true});
     }
@@ -234,8 +234,8 @@ handleReaktivierung(event){
       getAllFilmAPI.getAllFilmAPI().then((response)=>{
         let aktiveFilme =response.data[0];
         let inaktiveFilme =response.data[1];
-         console.log(aktiveFilme);
-         console.log(inaktiveFilme);
+    /*      console.log(aktiveFilme);
+         console.log(inaktiveFilme); */
         this.setState({aktiveFilme:aktiveFilme,
         inaktiveFilme:inaktiveFilme})
       })
@@ -252,7 +252,7 @@ handleReaktivierung(event){
         let IdDerSchönenVorstellungsanzeige=[];
         let IdDerSchönenVorstellungsanzeigeString="";
         
-        console.log(data)
+       /*  console.log(data) */
         this.setState({aktiveVorstellungen: data})
 
           for (let i=0; i<data.length ; i++){
@@ -306,7 +306,7 @@ handleReaktivierung(event){
          IdDerSchönenVorstellungsanzeige=[];
          IdDerSchönenVorstellungsanzeigeString="";
         
-        console.log(data)
+        /* console.log(data) */
         this.setState({aktiveVorstellungen: data})
 
           for (let i=0; i<data.length ; i++){
