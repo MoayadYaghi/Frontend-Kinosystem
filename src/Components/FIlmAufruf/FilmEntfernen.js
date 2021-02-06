@@ -37,6 +37,8 @@ class FilmSuche extends Component {
       IdDerInaktivenSchönenVorstellungsanzeige:[],
       inaktiveVorstellungenSchoeneAnzeige:[],
       vorstellungenImDropdown:[],
+      filmImDropdown:[],
+      inaktiveFilme:[],
       
      
 
@@ -117,13 +119,15 @@ handleReaktivierung(event){
   if (event.target.id == "film"){
     this.setState({filmReaktivieren:1})
     this.handleFilmSollEntferntWerden()
+    this.setState({filmImDropdown:this.state.inaktiveFilme})
   }
 }
 
   handleFilmSollEntferntWerden(event){
      try{ 
       if (event.target.id =="deaktivieren"){
-      this.setState({filmReaktivieren:0})
+      this.setState({filmReaktivieren:0,
+        filmImDropdown:this.state.aktiveFilme})/////////////////////////////////////////////
     } 
    
       event.preventDefault();
@@ -138,9 +142,7 @@ handleReaktivierung(event){
       this.setState({vorstellungReaktivieren:0,
       vorstellungenImDropdown:this.state.aktiveVorstellungenSchoeneAnzeige})
       
-    } else{
-     
-    }
+    } 
     event.preventDefault();
   }catch(e){}
       this.setState({vorstellungEntfernen:true})
@@ -155,7 +157,7 @@ handleReaktivierung(event){
     let filmReaktivieren = this.state.filmReaktivieren
     /* console.log(filmId)
     console.log(this.state.choosenMovie) */
-     alert("Film wurde entfernt") 
+    /*  alert("Film wurde entfernt")  */
      FilmInaktivSetzenAPI.vorstellungInaktivieren(filmId, filmReaktivieren)
      if (filmReaktivieren){
        this.erfolgreichreaktiviert("film")
@@ -191,8 +193,16 @@ handleReaktivierung(event){
         //console.log(this.state.value)
         this.setState({choosenMovie:this.state.aktiveFilme[i]})
         /* console.log(this.state.choosenMovie) */
-      }//if
+      }//if 
     }//for
+
+    for (let k=0; k<this.state.inaktiveFilme.length; k++){
+      if (event.target.value == this.state.inaktiveFilme[k].name){
+        //console.log(this.state.value)
+        this.setState({choosenMovie:this.state.inaktiveFilme[k]})
+        /* console.log(this.state.choosenMovie) */
+      }//if
+    }//for  
   
     this.setState({filmBildVisible:true})
   }  
@@ -222,9 +232,12 @@ handleReaktivierung(event){
   componentDidMount(){
 
       getAllFilmAPI.getAllFilmAPI().then((response)=>{
-        let data =response.data;
-         console.log(data);
-        this.setState({aktiveFilme:data})
+        let aktiveFilme =response.data[0];
+        let inaktiveFilme =response.data[1];
+         console.log(aktiveFilme);
+         console.log(inaktiveFilme);
+        this.setState({aktiveFilme:aktiveFilme,
+        inaktiveFilme:inaktiveFilme})
       })
 
       getAllVorstellungenAPI.getAllVorstellungenAPI().then((response)=>{
@@ -400,7 +413,7 @@ handleReaktivierung(event){
             <label>
             <select className ="SelectGröße" value={this.state.value} onChange={this.handleChoosenMovie}>
             <option className ="DESIGNTextField" >--Select--</option>
-            {this.state.aktiveFilme.map((filme)=>
+            {this.state.filmImDropdown.map((filme)=>
               <option value={filme.name}>{filme.name}</option>
             )}
             </select>
