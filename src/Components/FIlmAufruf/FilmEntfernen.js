@@ -33,6 +33,7 @@ class FilmSuche extends Component {
       deOderReAktivierung:"deaktiviert",
       redirect:false,
       aktiveVorstellungenSchoeneAnzeige:[],
+      IdDerSchönenVorstellungsanzeige:[],
       
      
 
@@ -159,17 +160,13 @@ handleReaktivierung(event){
   }  
   handleVorstellungEntfernen(event){
     let vorstellungId=this.state.value2;
-    let vorstellungReaktivieren = this.state.vorstellungReaktivieren
-    
+    vorstellungId= vorstellungId.split("(",2)
+    vorstellungId[1]=vorstellungId[1].replace(")", "")
+    let vorstellungReaktivieren = this.state.vorstellungReaktivieren 
       event.preventDefault();
-   
-    
-/*     console.log(this.state.choosenVorstellung)
-    console.log(this.state.value2)
-    console.log(this.state.vorstellungId) */
-   /*  console.log(vorstellungId)
-    console.log(vorstellungReaktivieren) */
-    VorstellungInaktivSetzenAPI.vorstellungInaktivieren(vorstellungId, vorstellungReaktivieren)/* .then(res=>console.log(res))*/
+
+
+    VorstellungInaktivSetzenAPI.vorstellungInaktivieren(vorstellungId[1], vorstellungReaktivieren)/* .then(res=>console.log(res))*/
     if (vorstellungReaktivieren){
       this.erfolgreichreaktiviert("vorstellung")
     }else{
@@ -211,6 +208,7 @@ handleReaktivierung(event){
       vorstellungBildVisible:false,
       entfernt:false,
       deOderReAktivierung: "deaktiviert"})
+      window.location.href="/filmentfernen"
   }
 
   componentDidMount(){
@@ -230,6 +228,9 @@ handleReaktivierung(event){
         let vorstellungZeitObjektUrhzeit =[];
         let vorstellungZeitObjektHaelfte =[];
         let vorstellungZeitObjektDate=[];
+        let IdDerSchönenVorstellungsanzeige=[];
+        let IdDerSchönenVorstellungsanzeigeString="";
+        
 
         console.log(data)
         this.setState({aktiveVorstellungen: data})
@@ -257,12 +258,18 @@ handleReaktivierung(event){
           vorstellungsFilmnameZeitDatum +=vorstellungZeitObjektDate[0]  
           vorstellungsFilmnameZeitDatum += " um "
           vorstellungsFilmnameZeitDatum += vorstellungZeitObjektUrhzeit[0] +":"
-          vorstellungsFilmnameZeitDatum += vorstellungZeitObjektUrhzeit[1] 
+          vorstellungsFilmnameZeitDatum += vorstellungZeitObjektUrhzeit[1] +" ("
+          vorstellungsFilmnameZeitDatum += data[i].id +")"
           
-          
+          IdDerSchönenVorstellungsanzeigeString= data[i].id;
+
+          IdDerSchönenVorstellungsanzeige.push(IdDerSchönenVorstellungsanzeigeString)
           vorstungsObjekt.push(vorstellungsFilmnameZeitDatum)
         }
-        this.setState({aktiveVorstellungenSchoeneAnzeige: vorstungsObjekt })
+
+        this.setState({aktiveVorstellungenSchoeneAnzeige: vorstungsObjekt,
+          IdDerSchönenVorstellungsanzeige:IdDerSchönenVorstellungsanzeige})
+          
       })
   }
 
@@ -365,11 +372,13 @@ handleReaktivierung(event){
         <div className="DropDownMitte"> {/* Dropdown für Vorstellungsauswahl */}
           <form onSubmit = {this.handleVorstellungEntfernen}>
             <label>
-            <select  className ="SelectGröße" value={this.state.value2} onChange={this.handleChoosenVorstellung}>
-            <option className ="DESIGNTextField" value="--Select--">--Select--</option>
-            {this.state.aktiveVorstellungenSchoeneAnzeige.map((vorstellungen)=>
-              <option value={vorstellungen}>{vorstellungen}</option>
-            )}
+            <select className ="SelectGröße" value={this.state.value2} onChange={this.handleChoosenVorstellung}>
+            <option className ="DESIGNTextField" /* value="--Select--" */>--Select--</option>
+            {this.state.aktiveVorstellungenSchoeneAnzeige.map((vorstellungen)=>  
+                  <option  value={vorstellungen}>{vorstellungen}</option>
+            
+            )}   {/* )}   */}
+          
             </select>
           </label>
           <div className="AuswahlBestätigungSubmit"> {/* Button um die Auswahl zu bestätigen */}
