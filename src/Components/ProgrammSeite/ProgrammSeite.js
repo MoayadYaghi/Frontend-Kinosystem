@@ -11,6 +11,7 @@ class ProgrammSeite extends Component {
     this.state = {
       headline: 'Ergebnisse',
       genre: 'Alle',
+      alleGenre: ["Alle"],
       alter: 'Alle',
       filmName:" ",
       search: "",
@@ -28,9 +29,34 @@ class ProgrammSeite extends Component {
   componentDidMount() {
     GetAllFilmAPI.getAllFilmAPI().then((response) => {
 
-      this.setState({ filme: response.data });
-      this.setState({ alleFilme: response.data });
-      console.log(this.state.filme);
+      let genreList = ["Alle"];
+      for(let i in response.data) {
+        let checker1 = true;
+        let checker2 = true;
+        for(let j=0; j<genreList.length; j++) {
+          if(genreList[j] == response.data[i].genre1) {
+            checker1 = false;
+          }
+          if(genreList[j] == response.data[i].genre2) {
+            checker2 = false;
+          }
+        }
+        if(checker1) {
+          genreList.push(response.data[i].genre1);
+        }
+        if(checker2) {
+          genreList.push(response.data[i].genre2);
+        }
+      }
+      let aktiveFilme = [];
+      for(let film in response.data) {
+        if(response.data[film].aktiv == true) {
+          aktiveFilme.push(response.data[film]);
+        }
+      }
+      this.setState({ alleGenre: genreList});
+      this.setState({ filme: aktiveFilme });
+      this.setState({ alleFilme: aktiveFilme });
     });
   }
 
@@ -66,7 +92,9 @@ class ProgrammSeite extends Component {
         genreFilme = suchFilme;
       } else {
         for(let i=0; i<suchFilme.length; i++) {
-          let genreList = suchFilme[i].genre;
+          let genreList = [];
+          genreList.push(suchFilme[i].genre1);
+          genreList.push(suchFilme[i].genre2);
           for(let g in genreList) {
   
             if(genreList[g]== genre.value) {
@@ -132,14 +160,9 @@ class ProgrammSeite extends Component {
               <label>
                 Genre
                 <select id="genreId" value={this.state.genre} onChange={this.handleChange}>
-                  <option value="Alle">Alle</option>
-                  <option value="Action">Action</option>
-                  <option value="Drama">Drama</option>
-                  <option value="Sci-Fi">Sci-Fi</option>
-                  <option value="Fantasy">Fantasy</option>
-                  <option value="Horror">Horror</option>
-                  <option value="Animation">Animation</option>
-                  <option value="Family">Familie</option>
+                  {this.state.alleGenre.map((genre) => (
+                      <option value={genre}>{genre}</option>
+                    ))}
                 </select>
               </label>
             </form>
