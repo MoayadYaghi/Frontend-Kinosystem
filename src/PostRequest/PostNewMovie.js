@@ -1,6 +1,7 @@
-import React, { Component } from "react";
-import axios from "axios";
-import "./Post.css";
+import React, { Component } from 'react';
+import axios from 'axios'
+import  "./Post.css";
+import LocalURL from '../constants';
 
 var Rückmeldung;
 
@@ -80,7 +81,7 @@ class PostNewMovie extends Component {
     }
 
     axios
-      .post("http://localhost:8081/film/", this.state, {
+      .post(LocalURL + "film/", this.state, {
         headers: {
           Authorization,
         },
