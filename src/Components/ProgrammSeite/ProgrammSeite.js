@@ -7,10 +7,11 @@ class ProgrammSeite extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      headline: "Ergebnisse",
-      genre: "Alle",
-      alter: "Alle",
-      filmName: " ",
+      headline: 'Ergebnisse',
+      genre: 'Alle',
+      alleGenre: ["Alle"],
+      alter: 'Alle',
+      filmName:" ",
       search: "",
       showFilter: false,
       redirect: false,
@@ -26,9 +27,35 @@ class ProgrammSeite extends Component {
 
   componentDidMount() {
     GetAllFilmAPI.getAllFilmAPI().then((response) => {
-      this.setState({ filme: response.data });
-      this.setState({ alleFilme: response.data });
-      console.log(this.state.filme);
+
+      let genreList = ["Alle"];
+      for(let i in response.data) {
+        let checker1 = true;
+        let checker2 = true;
+        for(let j=0; j<genreList.length; j++) {
+          if(genreList[j] == response.data[i].genre1) {
+            checker1 = false;
+          }
+          if(genreList[j] == response.data[i].genre2) {
+            checker2 = false;
+          }
+        }
+        if(checker1) {
+          genreList.push(response.data[i].genre1);
+        }
+        if(checker2) {
+          genreList.push(response.data[i].genre2);
+        }
+      }
+      let aktiveFilme = [];
+      for(let film in response.data) {
+        if(response.data[film].aktiv == true) {
+          aktiveFilme.push(response.data[film]);
+        }
+      }
+      this.setState({ alleGenre: genreList});
+      this.setState({ filme: aktiveFilme });
+      this.setState({ alleFilme: aktiveFilme });
     });
   }
 
@@ -61,10 +88,13 @@ class ProgrammSeite extends Component {
       if (genre.value === "Alle") {
         genreFilme = suchFilme;
       } else {
-        for (let i = 0; i < suchFilme.length; i++) {
-          let genreList = suchFilme[i].genre;
-          for (let g in genreList) {
-            if (genreList[g] === genre.value) {
+        for(let i=0; i<suchFilme.length; i++) {
+          let genreList = [];
+          genreList.push(suchFilme[i].genre1);
+          genreList.push(suchFilme[i].genre2);
+          for(let g in genreList) {
+  
+            if(genreList[g]== genre.value) {
               genreFilme.push(suchFilme[i]);
               break;
             }
@@ -131,49 +161,32 @@ class ProgrammSeite extends Component {
             <button className="DESIGNButton" onClick={() => this.hideFilter()}>
               <div className="Filter">Filter</div>
             </button>
-            {showFilter && (
-              <div className="filter">
-                <form>
-                  <label>
-                    Genre
-                    <select
-                      id="genreId"
-                      value={this.state.genre}
-                      onChange={this.handleChange}
-                    >
-                      <option value="Alle">Alle</option>
-                      <option value="Action">Action</option>
-                      <option value="Drama">Drama</option>
-                      <option value="Sci-Fi">Sci-Fi</option>
-                      <option value="Fantasy">Fantasy</option>
-                      <option value="Horror">Horror</option>
-                      <option value="Animation">Animation</option>
-                      <option value="Family">Familie</option>
-                    </select>
-                  </label>
-                </form>
-              </div>
-            )}
-            {showFilter && (
-              <div className="filter">
-                <form>
-                  <label>
-                    Altersfreigabe
-                    <select
-                      id="alterId"
-                      value={this.state.alter}
-                      onChange={this.handleChange}
-                    >
-                      <option value="Alle">Alle</option>
-                      <option value="6">ab 6 Jahren</option>
-                      <option value="12">ab 12 Jahren</option>
-                      <option value="16">ab 16 Jahren</option>
-                      <option value="18">ab 18 Jahren</option>
-                    </select>
-                  </label>
-                </form>
-              </div>
-            )}
+            {showFilter && <div className = "genre">
+              <form>
+              <label>
+                Genre
+                <select id="genreId" value={this.state.genre} onChange={this.handleChange}>
+                  {this.state.alleGenre.map((genre) => (
+                      <option value={genre}>{genre}</option>
+                    ))}
+                </select>
+              </label>
+            </form>
+            </div>}
+            {showFilter && <div className = "alter">
+              <form>
+              <label>
+                Altersfreigabe 
+                <select id="alterId" value={this.state.alter} onChange={this.handleChange}>
+                  <option value="Alle">Alle</option>
+                  <option value="6">ab 6 Jahren</option>
+                  <option value="12">ab 12 Jahren</option>
+                  <option value="16">ab 16 Jahren</option>
+                  <option value="18">ab 18 Jahren</option>
+                </select>
+              </label>
+            </form>
+            </div>}
           </div>
         </div>
         <h1 className="DESIGNHeadline1"> {this.state.headline} </h1>
