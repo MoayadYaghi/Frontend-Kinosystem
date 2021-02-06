@@ -15,7 +15,7 @@ class getWarenkorbInfos {
   getSnacks(){
     var Authorization = sessionStorage.getItem('token')
 
-    return axios.get(Slider_Rest_API_URL+"snacks/warenkorb", {headers: {
+    return axios.get(Slider_Rest_API_URL+"snack/warenkorb", {headers: {
         Authorization}});
   }
   getDrink(){

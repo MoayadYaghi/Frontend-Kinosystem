@@ -38,13 +38,15 @@ class GeneratorAufruf extends Component {
   }
   Register(){
     Informationen = this.state
-    postRegister.sendnewRegister(this.state).then((res) => {
-      console.log(res)})
+    postRegister.sendnewRegister(this.state)
+    //.then((res) => {
+      //console.log(res)})
   }
   
 
   componentDidMount(){
-
+    var token = sessionStorage.getItem('token')
+    if(token === null){
     RandomCount1 = Math.random()*10000000000000000
     RandomCount2 = Math.random()*10000000000000000
 
@@ -68,14 +70,17 @@ class GeneratorAufruf extends Component {
         alter : alter1,
         lieblingszone : Sitzplatz1
     }, () => (this.Register(), setTimeout(function(){
-      console.log(Informationen)
+     // console.log(Informationen)
       postLogin.sendnewLogin(Informationen)
-      .then((respon) => console.log(respon))
-      
+      .then((respon) => {
+      sessionStorage.setItem('token', respon.data)
+      //console.log(sessionStorage.getItem('token'))
+      })
     },3000) 
     ))
     
-
+  }
+  
   
 }
 

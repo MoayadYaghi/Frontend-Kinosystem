@@ -89,7 +89,7 @@ class LoginScreen extends Component {
     }
     var Abgelemdet;
     Abgelemdet = sessionStorage.getItem("Abmeldung");
-    console.log(Abgelemdet);
+   
     if (Abgelemdet !== null) {
       this.setState({
         Abgemeldet: true,
@@ -119,7 +119,7 @@ class LoginScreen extends Component {
 
   render() {
     const RegistrierenLink = "/Registrieren";
-    const AdminLink = "/Admin";
+    const AdminLink = "/AdminControl";
     const Startseite = "/";
     const ProfilLink = "/Profil";
 

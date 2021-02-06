@@ -152,5 +152,12 @@
 
     padding: 1rem 3rem 2rem 0
 }
-
+.SonderMeldung{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  height: 40vw;
+  min-height: 100%;
+  flex-wrap: wrap;
+}
 

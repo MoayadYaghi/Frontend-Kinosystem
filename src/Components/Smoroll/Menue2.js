@@ -15,12 +15,7 @@ class Menue2 extends Component {
             betrachten.
           </div>
           <table className="table table-striped">
-            <thead>
-              <tr>
-                <td></td>
-                <td>Verkauf im Kino</td>
-              </tr>
-            </thead>
+            
             <tbody>
               {/* <div className ="TabellenLinie">
                 Aktuelle Blockbuster
@@ -34,37 +29,37 @@ class Menue2 extends Component {
             <tbody>
               <tr>
                 <td> Regulär</td>
-                <td> 100%</td>
+                <td> Voller Preis</td>
               </tr>
             </tbody>
             <tbody>
               <tr>
                 <td> Kind</td>
-                <td> 60%</td>
+                <td> 40% Rabatt</td>
               </tr>
             </tbody>
             <tbody>
               <tr>
                 <td> Schüler/Student</td>
-                <td> 80%</td>
+                <td> 20% Rabatt</td>
               </tr>
             </tbody>
             <tbody>
               <tr>
                 <td> Rüstige Rentner</td>
-                <td> 70%</td>
+                <td> 30% Rabatt</td>
               </tr>
             </tbody>
             <tbody>
               <tr>
                 <td> Menschen mit Behinderungen </td>
-                <td> 50%</td>
+                <td> 50% Rabatt</td>
               </tr>
             </tbody>
             <tbody>
               <tr>
                 <td> Begleitpersonen</td>
-                <td> 0</td>
+                <td> Kostenlos</td>
               </tr>
             </tbody>
           </table>

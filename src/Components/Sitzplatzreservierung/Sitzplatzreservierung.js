@@ -4,6 +4,7 @@ import SaalByVorstellung from "../../API_Pulls/SaalByVorstellung";
 import SitzByVorstellung from "../../API_Pulls/SitzByVorstellung";
 import "./Sitzplatzreservierung.scss";
 import { Redirect } from 'react-router-dom';
+import GeneratorAufruf from "../ZahlenGenerator/GeneratorAufruf";
 
 class Sitzplatzreservierung extends Component {
   constructor(props) {
@@ -31,10 +32,13 @@ class Sitzplatzreservierung extends Component {
     this.addWarenkorb = this.addWarenkorb.bind(this);
   }
   componentDidMount() {
+
+    
     let url = window.location.href;
     let vorstellungId = url.split("http://localhost:3000/Sitzplatz/")[1];
     this.setState({vorstellungId: vorstellungId});
     SaalByVorstellung.saalByVorstellung(vorstellungId).then((response) => {
+      console.log(response)
         let reihenAnzahl = response.data.reihe;
         let saalStruktur = []; 
         let reihenBreite = response.data.spalte;
@@ -52,6 +56,7 @@ class Sitzplatzreservierung extends Component {
         }
         this.setState({saalStruktur: saalStruktur});
         SitzByVorstellung.sitzeByVorstellung(vorstellungId).then((response) => {
+          console.log(response)
           let alleSitze = response.data;
           let belegtSitze = [];
           let freiSitze = [];
@@ -161,25 +166,24 @@ class Sitzplatzreservierung extends Component {
     }
   }
 
-  renderRedirect = () => {
-    if (this.state.redirect) {
-      return <Redirect to={`/Warenkorb`} />
-    }
-  }
+  
 
   addWarenkorb() {
     let vorstellungId = this.state.vorstellungId;
     let sitzeGewaehlt = this.state.sitzeGewaehlt;
+    console.log(sitzeGewaehlt)
     let alleSitze = this.state.frei;
-    let nutzerId = 36; 
     let sitzIds= [];
+
     for(let sitz in sitzeGewaehlt) {
       for(let frei in alleSitze) {
         if(sitzeGewaehlt[sitz].reihe == alleSitze[frei].reihe && sitzeGewaehlt[sitz].spalte == alleSitze[frei].spalte) {
           sitzIds.push(alleSitze[frei].id);
+          console.log(sitzIds)
         }
       }
     }
+    console.log(sitzIds, vorstellungId)
     for(let i in sitzIds) {
       console.log(sitzIds[i], vorstellungId)
       CreateNewTicket.createNewTicket(sitzIds[i], vorstellungId);
@@ -191,6 +195,8 @@ class Sitzplatzreservierung extends Component {
 
   render() {
     return (
+
+      
       <div className="SitzplanSeite">
         <div className="Sitzplan">
           <div className="SitzplatzreservierungÜberschrift">
@@ -288,7 +294,7 @@ class Sitzplatzreservierung extends Component {
             </table>
           </div>
 
-          {this.renderRedirect()}
+         {/*  {this.renderRedirect()} */}
           <button className="RestButton" onClick={this.addWarenkorb}> Zum Warenkorb hinzufügen </button>
 
         </div>
