@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import FilmById from "../../API_Pulls/FilmById";
 import VorstellungByFilm from "../../API_Pulls/VorstellungByFilm";
-import "./FilmDetails.css";
+import "./FilmDetails.scss";
 import { Redirect } from 'react-router-dom';
 
 class FilmDetails extends React.Component {
@@ -48,6 +48,7 @@ class FilmDetails extends React.Component {
             this.setState({film: response.data});
         })
         VorstellungByFilm.vorstellungByFilm(filmId).then((response) => {
+            console.log(response)
 
             let vorstellungenNaechsteWoche = [];
             let alleVorstellungenAktiv = [];

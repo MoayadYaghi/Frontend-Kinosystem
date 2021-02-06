@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./DealDW.css";
-
+import { Link } from "react-router-dom";
 
 class DealDW extends Component {
   constructor(props) {
@@ -17,18 +17,17 @@ class DealDW extends Component {
     return (
       <div className="" style={{marginTop:"10rem"}}>
         <div className="InfoDWÜberschrift">
-          <div className="DESIGNHeadline2" onClick={this.clickhandler}>
+          <div className="DESIGNHeadline2" >
             {" "}
             &#160; Wichtige Informationen &#160;
           </div>
         </div>
-        <div className="DESIGNBOX" onClick={this.clickhandler} style={{cursor: "default"}}>
+        <div className="DESIGNBOX"  style={{cursor: "default"}}>
           <div className ="DESIGNTextField">
-          Aktuell dürfen aufgrund der aktuellen Coronabeschränkungen keine
-          Vorstellung gezeigt werden. Diese Beschränkungen betreffen leider auch
-          unser Autokino. Dennoch stehen wir euch gerne zur Verfügung wenn ihr
-          Fragen zu unserem Kino und dem Programm habt. Wir wünschen Frohe
-          Weihnachten, einen guten Rutsch ins neue Jahr und bleibt Gesund!
+            Aufgrund der aktuellen Maßnahmen gegen das Coronavirus dürfen wir Sie momentan nicht im Kino begrüßen. Wir hoffen, dass sich diese Maßnahmen bald ändern und unser Kino bald wieder öffnen darf. Unser Autokino, welches zwischendurch angeboten wurde, haben wir leider einstellen müssen, aufgrund der geringen Nachfrage. Bis zur Öffnung unseres Kinos wünschen wir Ihnen alles gut, bleiben Sie gesund und wir sehen uns hoffentlich bald wieder.<br/>
+            Für weitere Informationen zu den Maßnahmen gegen das Coronavirus: <br/>
+            <Link to ={"https://www.bundesregierung.de/breg-de/themen/coronavirus/corona-massnahmen-1734724"}>Infoseite der Bundesregierung Deutschland</Link>
+         
         </div></div>
       </div>
     );

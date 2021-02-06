@@ -3,16 +3,12 @@ import axios from 'axios';
 import  "./Post.css";
 import LocalURL from '../constants';
 
-const REST_API_Post_Login = ""
+const REST_API_Post_Login = "";
 
-class PostNewMovie{
-    
-    sendnewLogin(data){
-
-    return axios.post(LocalURL + 'login', data)
-
-    }
+class postLogin {
+  sendnewLogin(data) {
+    return axios.post(LocalURL + "login", data);
+  }
 }
 
-
-export default new PostNewMovie();
+export default new postLogin();

@@ -3,64 +3,65 @@ import axios from 'axios'
 import  "./Post.css";
 import LocalURL from '../constants';
 
-class PostNewMovie  extends Component{
-    constructor(props){
-       super(props);
+var Rückmeldung;
 
-        this.state = {
-            Filmid:'',
-            title:'',
-            actor0:'',
-            actor0Cara:'',
-            actor1:'',
-            actor1Cara:'',
-            actor2:'',
-            actor2Cara:'',
-            awards:'',
-            directors:'',
-            genreList:'',
-            plotLocal:'',
-            runtimeMins:'',
-            image:null,
-            geladen: false,
+class PostNewMovie extends Component {
+  constructor(props) {
+    super(props);
 
-        }
-        
-    }
+    this.state = {
+      Filmid: "",
+      title: "",
+      actor0: "",
+      actor0Cara: "",
+      actor1: "",
+      actor1Cara: "",
+      actor2: "",
+      actor2Cara: "",
+      awards: "",
+      directors: "",
+      genreList: "",
+      plotLocal: "",
+      runtimeMins: "",
+      image: null,
+      geladen: false,
+    };
+  }
 
-    sendDatatoBackend(
-        Filmid,
-        title,
-        /* actor0,
+  sendDatatoBackend(
+    Filmid,
+    title,
+    /* actor0,
         actor0Cara,
         actor1,
         actor1Cara,
         actor2,
         actor2Cara, */
-        awards,
-        directors,
-        genreList,
-        plotLocal,
-        runTime,
-        image
-        
-        ){
-            var Authorization = sessionStorage.getItem('token')
-            this.state={Filmid,
-                title,
-                /* actor0,
+    awards,
+    directors,
+    genreList,
+    plotLocal,
+    runTime,
+    image
+  ) {
+    var Authorization = sessionStorage.getItem("token");
+    this.state = {
+      Filmid,
+      title,
+      /* actor0,
                 actor0Cara,
                 actor1,
                 actor1Cara,
                 actor2,
                 actor2Cara, */
-                awards,
-                directors,
-                genreList,
-                plotLocal,
-                runTime,
-                image}
-        /* this.setState({Filmid: Filmid})
+      awards,
+      directors,
+      genreList,
+      plotLocal,
+      runTime,
+      image,
+    };
+    /* this.setState({Filmid: Filmid})
         this.setState({title: title	})
         this.setState({actor0: actor0})
         this.setState({actor0Cara: actor0Cara})
@@ -74,36 +75,28 @@ class PostNewMovie  extends Component{
         this.setState({plotLocal : plotLocal})
         this.setState({runtimeMins : runTime})
         this.setState({image : image}) */
-        
-            if(image !== null){
-        console.log(this.state)
-            }
 
-         axios.post(LocalURL + 'film/', this.state, {headers: {
-            Authorization
-            }})
-            .then(response =>{
-             console.log(response)
-            })
-            .catch(error => {
-                console.log(error)
-            }) 
-
-            
-            
-            
+    if (image !== null) {
+      console.log(this.state);
     }
 
-    render(){
-        return null
-    }
-   
+    axios
+      .post(LocalURL + "film/", this.state, {
+        headers: {
+          Authorization,
+        },
+      })
+      .then((response) => {
+        sessionStorage.setItem("Rückmeldung", response);
+      })
+      .catch((error) => {
+        sessionStorage.setItem("Rückmeldung", error);
+      });
+  }
+
+  render() {
+    return null;
+  }
 }
-
-
-
-
-
-
 
 export default new PostNewMovie();

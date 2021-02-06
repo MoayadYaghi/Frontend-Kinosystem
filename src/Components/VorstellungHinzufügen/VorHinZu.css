@@ -1,0 +1,316 @@
+
+
+.VorstellungsBlock{
+  display: block; 
+   /*   */
+   
+   width: 100%;
+}
+
+
+.Überschrift{
+    text-align: center;
+
+}
+
+
+.InformationsEingabe{
+    height: 12rem; 
+    margin: 0 10% 0 10%
+    
+
+}
+/* .abfrage{
+    float: left; 
+    border-color: aqua;
+    border-style: solid;
+    border-width: 2px;
+    width: fit-content;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+} */
+
+/* .antwort{
+    float: inline-start; 
+    border-color: blueviolet;
+    border-style: solid;
+    border-width: 2px;
+    display: flex;
+    align-items: right;
+    justify-content: right;
+} */
+
+/* .image{
+    width: 20%;
+    height: 25%;
+} */
+
+.antwort, .abfrage {
+
+    border-color: blueviolet;
+    border-style: solid;
+    border-width: 2px;
+    float: left;
+    width: 25%;
+    margin-right: 2%;
+    padding: 10px;
+    box-sizing: border-box;
+/*     grid-gap: 10px;
+ */    display:flex;
+    flex-wrap: wrap;
+} 
+
+.abfrage{
+    line-height: 1.9rem;
+}
+
+.antwort{
+    width: 70%;
+}
+
+
+.datum{
+    float: left;
+    width: 100%;
+}
+
+
+.date, .month, .year{
+    float: left;
+}
+
+.uhrzeit{
+   
+   
+    
+    justify-content: left;
+    width: 100%;
+    height: 40px;
+}
+
+.stunde, .minute {
+    justify-content: left;
+    float:left;
+}
+
+.hinzufügen{
+    float: right;
+    
+    
+    margin-right: 20%;
+    margin-left: 60%;
+    height: 40px;
+  
+}
+
+
+.wiederholung{
+    border-color: blueviolet;
+    border-style: solid;
+    border-width: 2px;
+  
+    margin-right: 20%;
+    margin-left: 25%;
+
+}
+
+.buttonHinzufügen{
+float: right;
+}
+
+.wiederholungsRythmus{
+    float: left;
+}
+
+.FilmWahlFlex{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.FilmForm{
+    text-align: center;
+}
+.FilmWahlDiv{
+    width: 100vw;
+    padding: 2rem 0 1rem 0
+}
+.SelectFilmVorHin{
+    height: 3rem;
+    width: 50%;
+}
+@media screen and (max-width: 820px) {
+    .SelectFilmVorHin{
+        width: 90%
+    } 
+}
+.imageVorHin{
+    height: 20vw;
+    border-radius: 2rem;
+}
+.VorstellungDivFlex{
+    /* display: flex; */
+    padding: 1rem 0 1rem 2rem;
+    justify-content: left;
+
+}
+.HeightFilmWahl{
+    min-height: 500px;
+}
+.VorstellungsBlockFlex{
+    display: flex;
+    justify-content: center;
+}
+.ImageHeight{
+    height: 0rem;
+    padding-top: 2rem;
+    transform: translateY(5rem);
+    
+}
+.VorHinBOXDES{
+    width: 60%;
+    height: 100%;
+    padding: 1.5rem 1.5rem 7rem 1.5rem;
+    margin-left: 20%;
+    border-radius: 40px;
+    background-color:#ecf0f1;
+}
+.BalkenFlex{
+    display: flex;
+    
+    /* border-style: solid; */
+    border-top: 4px solid black;
+    
+    
+}
+
+.BalkenlinkSeit{
+    width: 14rem;
+    height: 100%;
+}
+.Balkenrechtseit{
+    display: flex;
+    justify-content: left;
+    align-items: baseline;
+}
+.selectVorhinzu, .inputVorHinZu{
+    font-size: 1.5rem;
+}
+.inputVorHinZu{
+    width: 8rem;
+}
+.ButtonAnordnungVorhin{
+    transform: translate( -1rem, -4.5rem);
+}
+@media screen and (min-width: 701px) and (max-width: 900px) {
+    .ButtonAnordnungVorhin{
+
+    }
+    .imageVorHin{
+        height: 40vw
+    }
+    .ImageHeight{
+        display: flex;
+        height: 60vw;
+        transform: 0;
+        justify-content: center;
+        align-items: top;
+        padding: 0 0 2rem 0;
+
+    }
+    .BalkenlinkSeit{
+        width: 8rem;
+    }
+    .VorHinBOXDES{
+        margin-right: 10%;
+        margin-left: 10%;
+        width: 80%;
+        padding-bottom: 8rem; 
+    }
+}
+
+@media screen and(min-width: 1015px) and (max-width: 1200px) {
+    .VorHinBOXDES{
+        padding-bottom: 7rem;
+    }
+}
+
+
+
+@media screen and (min-width: 901px) and (max-width: 1014px) {
+    .VorHinBOXDES{
+        padding-bottom: 10rem;
+        
+    }
+    .BalkenlinkSeit{
+        width: 8rem;
+    }
+}
+@media screen and (min-width: 451px) and (max-width: 700px) {
+    .imageVorHin{
+        height: 40vw
+    }
+    .ImageHeight{
+        display: flex;
+        height: 60vw;
+        transform: 0;
+        justify-content: center;
+        align-items: top;
+        padding: 0 0 2rem 0;
+
+    }
+    
+    .selectVorhinzu, .inputVorHinZu{
+        font-size: 1rem;
+    }
+    .BalkenlinkSeit{
+        width: 3rem;
+        font-size: 1rem;
+    }
+    .VorHinBOXDES{
+        margin-right: 5%;
+        margin-left: 5%;
+        width: 90%;
+        padding-bottom: 8rem; 
+    }
+    .VorstellungDivFlex	{
+        padding:  0;
+    }
+}
+@media screen and (max-width: 450px) {
+    .imageVorHin{
+        height: 40vw
+    }
+    .ImageHeight{
+        display: flex;
+        height: 60vw;
+        transform: 0;
+        justify-content: center;
+        align-items: top;
+        padding: 0 0 2rem 0;
+
+    }
+    
+    .selectVorhinzu, .inputVorHinZu{
+        font-size: 0.8rem;
+    }
+    .BalkenlinkSeit{
+        width: 4rem;
+        font-size: 1rem;
+    }
+    
+    .VorHinBOXDES{
+        margin-right: 5%;
+        margin-left: 5%;
+        width: 90%;
+        padding-bottom: 8rem; 
+    }
+    .VorstellungDivFlex	{
+        padding:  0;
+    }
+}
+@media screen and (min-width: 1500px){
+    .imageVorHin{
+        height: 20rem;
+    }
+}
