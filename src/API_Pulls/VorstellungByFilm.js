@@ -1,9 +1,10 @@
 import axios from "axios";
+import LocalURL from '../constants';
 
 class VorstellungByFilm {
   vorstellungByFilm(filmId) {
     const Get_Vorstellung_By_FilmId =
-      ("http://localhost:8081/vorstellung/film/" + filmId);
+      (LocalURL + "vorstellung/film/" + filmId);
 
     return axios.get(Get_Vorstellung_By_FilmId);
   }

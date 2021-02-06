@@ -53,8 +53,8 @@ class Warenkorb extends Component {
   render() {
     return (
       <div className="Warenkorb">
-        {
-          //this.state.ticket.map( (tickets) => (
+        
+          {/* //this.state.ticket.map( (tickets) => ( */}
           <div className="Links">
             <div className="LinkeSeite">
               <div className="Tickezs">
@@ -267,7 +267,7 @@ class Warenkorb extends Component {
             
             
             
-            </div> </div>
+            
 
 
             </div>

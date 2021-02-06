@@ -32,6 +32,7 @@ class FilmSuche extends Component {
       wasEntferntWurde:"",
       deOderReAktivierung:"deaktiviert",
       redirect:false,
+      aktiveVorstellungenSchoeneAnzeige:[],
       
      
 
@@ -106,20 +107,34 @@ class FilmSuche extends Component {
 handleReaktivierung(event){
   if (event.target.id == "vorstellung"){
     this.setState({vorstellungReaktivieren:1})
+    this.handleVorstellungSollEntferntWerden()
   }  
   if (event.target.id == "film"){
     this.setState({filmReaktivieren:1})
+    this.handleFilmSollEntferntWerden()
   }
 }
 
   handleFilmSollEntferntWerden(event){
-    event.preventDefault();
+     try{ 
+      if (event.target.id =="deaktivieren"){
+      this.setState({filmReaktivieren:0})
+    } 
+   
+      event.preventDefault();
+    }catch(e){}
       this.setState({filmEntfernen:true})
       this.setState({vorstellungEntfernen:false})
   }
       
   handleVorstellungSollEntferntWerden(event) {
+    try{
+       if (event.target.id =="deaktivieren"){
+      this.setState({vorstellungReaktivieren:0})
+    } 
+  
     event.preventDefault();
+  }catch(e){}
       this.setState({vorstellungEntfernen:true})
       this.setState({filmEntfernen:false})
 
@@ -145,7 +160,10 @@ handleReaktivierung(event){
   handleVorstellungEntfernen(event){
     let vorstellungId=this.state.value2;
     let vorstellungReaktivieren = this.state.vorstellungReaktivieren
-    event.preventDefault();
+    
+      event.preventDefault();
+   
+    
 /*     console.log(this.state.choosenVorstellung)
     console.log(this.state.value2)
     console.log(this.state.vorstellungId) */
@@ -205,11 +223,70 @@ handleReaktivierung(event){
 
       getAllVorstellungenAPI.getAllVorstellungenAPI().then((response)=>{
         let data = response.data
+        let vorstellungsFilmnameZeitDatum="";
+        let vorstellungsZeitString="";
+        let vorstungsObjekt=[];
+        let vorstellungZeitObjektDay =[];
+        let vorstellungZeitObjektUrhzeit =[];
+        let vorstellungZeitObjektHaelfte =[];
+        let vorstellungZeitObjektDate=[];
+
         console.log(data)
         this.setState({aktiveVorstellungen: data})
 
+        for (let i=0; i<data.length ; i++){
+          vorstellungsFilmnameZeitDatum = data[i].film.name
+          vorstellungsFilmnameZeitDatum +=  " in ";
+          vorstellungsFilmnameZeitDatum += data[i].saal.name
+          vorstellungsFilmnameZeitDatum +=  " am ";
+          vorstellungsZeitString = data[i].startZeit // Die Startzeit in Form von "2021-10-06T16:15:00.000+00:00"
+
+
+          vorstellungZeitObjektHaelfte = vorstellungsZeitString.split("T", 2)
+          vorstellungZeitObjektDate = vorstellungZeitObjektHaelfte[0].split("-", 3)
+          
+
+          vorstellungZeitObjektUrhzeit = vorstellungZeitObjektHaelfte[1].split(":", 3) // meine Uhrzeit ist auf der 0 und 1 gespeichert 
+
+         /*  vorstellungZeitObjektDay= vorstellungZeitObjektYearAndMonth[3].split("T") */
+
+
+
+          vorstellungsFilmnameZeitDatum +=vorstellungZeitObjektDate[2] + "."
+          vorstellungsFilmnameZeitDatum +=vorstellungZeitObjektDate[1] + "."
+          vorstellungsFilmnameZeitDatum +=vorstellungZeitObjektDate[0]  
+          vorstellungsFilmnameZeitDatum += " um "
+          vorstellungsFilmnameZeitDatum += vorstellungZeitObjektUrhzeit[0] +":"
+          vorstellungsFilmnameZeitDatum += vorstellungZeitObjektUrhzeit[1] 
+          
+          
+          vorstungsObjekt.push(vorstellungsFilmnameZeitDatum)
+        }
+        this.setState({aktiveVorstellungenSchoeneAnzeige: vorstungsObjekt })
       })
   }
+
+
+  anzeigeTextWasEntfertWerdenSoll=()=>{
+    if (this.state.vorstellungEntfernen==true){
+      if(this.state.vorstellungReaktivieren==1){
+          return "Wähle die Vorstellung aus, die wieder ins Programm genommen werden soll"
+      }    
+      if(this.state.vorstellungReaktivieren==0){
+          return "Wähle die Vorstellung aus, die aus dem Programm genommen werden soll"
+      }
+    }
+    if (this.state.filmEntfernen==true){
+      if(this.state.filmReaktivieren==1){
+          return "Wähle den Film aus, der wieder ins Programm genommen werden soll"
+      }    
+      if(this.state.filmReaktivieren==0){
+          return "Wähle den Film aus, der aus dem Programm genommen werden soll"
+      }
+    } 
+      
+}
+ 
 
   render() {
     return (
@@ -219,14 +296,14 @@ handleReaktivierung(event){
           <div className ="doppelButton">
         
         
-        <button className ="DESIGNButton" onClick={this.handleFilmSollEntferntWerden}>Film deaktivieren</button>
-        <button className ="DESIGNButton" onClick={this.handleVorstellungSollEntferntWerden}>Vorstellung deaktivieren</button> 
+        <button id ="deaktivieren" className ="DESIGNButton" onClick={this.handleFilmSollEntferntWerden}>Film deaktivieren</button>
+        <button id ="deaktivieren" className ="DESIGNButton" onClick={this.handleVorstellungSollEntferntWerden}>Vorstellung deaktivieren</button> 
         
 
         </div>
         <div className ="doppelButton">
-        <button className ="DESIGNButton" onClick={this.handleReaktivierung}>Film reaktivieren</button>
-        <button className ="DESIGNButton" onClick={this.handleReaktivierung}>Vorstellung reaktivieren</button>
+        <button id="film" className ="DESIGNButton" onClick={this.handleReaktivierung}>Film reaktivieren</button>
+        <button id ="vorstellung" className ="DESIGNButton" onClick={this.handleReaktivierung}>Vorstellung reaktivieren</button>
               
        
         
@@ -243,7 +320,7 @@ handleReaktivierung(event){
       
       <div className="TextAlignMitte">
         <div className ="DESIGNHeadline3">
-          Wähle den Film aus, der aus dem Programm genommen werden soll
+        {this.anzeigeTextWasEntfertWerdenSoll()}{/* Wähle den Film aus, der aus dem Programm genommen werden soll */}
         </div></div>
         <div className="DropDownMitte"> {/* Dropdown für Filmauswahl */}
           <form onSubmit = {this.handleFilmEntfernen}>
@@ -282,15 +359,16 @@ handleReaktivierung(event){
         {/* {console.log("eine Vorstellung wird Entfernt")} */}
         	<div className="TextAlignMitte">
         <div className ="DESIGNHeadline3">
-          Wähle die Vorstellung aus, die aus dem Programm genommen werden soll
+    
+         {this.anzeigeTextWasEntfertWerdenSoll()} {/* Wähle die Vorstellung aus, die aus dem Programm genommen werden soll */}
         </div></div>
         <div className="DropDownMitte"> {/* Dropdown für Vorstellungsauswahl */}
           <form onSubmit = {this.handleVorstellungEntfernen}>
             <label>
             <select  className ="SelectGröße" value={this.state.value2} onChange={this.handleChoosenVorstellung}>
             <option className ="DESIGNTextField" value="--Select--">--Select--</option>
-            {this.state.aktiveVorstellungen.map((vorstellungen)=>
-              <option value={vorstellungen.id}>{vorstellungen.id}</option>
+            {this.state.aktiveVorstellungenSchoeneAnzeige.map((vorstellungen)=>
+              <option value={vorstellungen}>{vorstellungen}</option>
             )}
             </select>
           </label>
