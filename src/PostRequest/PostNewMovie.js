@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import axios from 'axios'
 import  "./Post.css";
 
@@ -45,6 +45,7 @@ class PostNewMovie  extends Component{
         
         ){
             var Authorization = sessionStorage.getItem('token')
+            // eslint-disable-next-line
             this.state={Filmid,
                 title,
                 /* actor0,

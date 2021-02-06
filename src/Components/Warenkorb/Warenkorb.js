@@ -49,23 +49,23 @@ class Warenkorb extends Component {
     var ticket
     if(tokenInfo != null){
       
-    getWarenkorbInfos.getTickets().then( (response) =>{
+    getWarenkorbInfos.getTickets().then((response) =>{
     console.log(response)
     ticket = response
     }
     )
 
-    getWarenkorbInfos.getSnacks().then( (response) => 
+    getWarenkorbInfos.getSnacks().then((response) => 
     console.log(response)
     )
 
 
-    getWarenkorbInfos.getDrink().then( (response) => 
+    getWarenkorbInfos.getDrink().then((response) => 
     console.log(response)
     )
     this.setState({angemeldet: true}) //TESTING
-    /* if(ticket === null){
-    this.setState({angemeldet: true})
+    // if(ticket === null){
+    /* this.setState({angemeldet: true})
     }else{
       this.setState({tokenLeer: true})
     } */

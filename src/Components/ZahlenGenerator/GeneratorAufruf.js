@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import postRegister from "../../PostRequest/postRegister";
 
 import postLogin from "../../PostRequest/postLogin";
@@ -86,11 +86,7 @@ class GeneratorAufruf extends Component {
 
   render() {
     return(null)
-        {/* <div>
-            {RandomCount1}<br/>
-            {RandomCount2}<br/>
-            {this.state.mail}<br/>
-        </div> */}
+        
     
   }
 }

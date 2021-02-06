@@ -5,6 +5,7 @@ import SitzByVorstellung from "../../API_Pulls/SitzByVorstellung";
 import "./Sitzplatzreservierung.scss";
 import { Redirect } from 'react-router-dom';
 import GeneratorAufruf from "../ZahlenGenerator/GeneratorAufruf";
+import PostWarenKorbTicket from "../../PostRequest/PostWarenKorbTicket";
 
 class Sitzplatzreservierung extends Component {
   constructor(props) {
@@ -188,6 +189,14 @@ class Sitzplatzreservierung extends Component {
       console.log(sitzIds[i], vorstellungId)
       CreateNewTicket.createNewTicket(sitzIds[i], vorstellungId);
     }
+
+
+   // GetTicketID...
+
+    var TicketID = 173
+
+    PostWarenKorbTicket.postwWarenKorbTicketID(TicketID).then(res => console.log(res))
+
     this.setState({redirect: true});
 
     
