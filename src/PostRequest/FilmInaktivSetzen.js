@@ -3,7 +3,6 @@ import axios from 'axios'
 import LocalURL from "../constants";
 
 
-
 class FilmInaktivSetzen{
     
 

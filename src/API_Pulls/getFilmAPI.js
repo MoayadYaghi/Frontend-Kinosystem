@@ -1,7 +1,8 @@
 import axios from "axios";
+import LocalURL from '../constants';
 
 const Slider_Rest_API_URL =
-  "http://localhost:8081/film/all";
+  LocalURL + "film/all";
 
 class getFilmAPI {
   getFilme() {
