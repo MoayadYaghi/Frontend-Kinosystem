@@ -1,6 +1,8 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios'
 import  "./Post.css";
+import LocalURL from '../constants';
+
 
 class PostNewMovie  extends Component{
     constructor(props){
@@ -79,7 +81,7 @@ class PostNewMovie  extends Component{
         console.log(this.state)
             }
 
-         axios.post('http://localhost:8081/film/', this.state, {headers: {
+        /* axios.post('http://localhost:8081/film/', this.state, {headers: {
             Authorization
             }})
             .then(response =>{
@@ -87,12 +89,22 @@ class PostNewMovie  extends Component{
             })
             .catch(error => {
                 console.log(error)
-            }) 
+            }) */
 
-            
-            
-            
-    }
+
+    axios.post(LocalURL + "film/", this.state, {
+        headers: {
+          Authorization,
+        },
+      })
+      .then((response) => {
+        sessionStorage.setItem("Rückmeldung", response);
+      })
+      .catch((error) => {
+        sessionStorage.setItem("Rückmeldung", error);
+      });
+  }
+
 
     render(){
         return null

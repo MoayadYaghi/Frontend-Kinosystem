@@ -128,6 +128,7 @@ class Warenkorb extends Component {
   }
 
   render() {
+
    var ProfilLink = "/programm"
     return( <div >
       {
@@ -138,6 +139,7 @@ class Warenkorb extends Component {
              
                  <div><div className ="Tickezs"><div className="WarenkorbTicket" > 
                     Ihr Warenkorb: <br/>
+
 
                       </div >
                       {   this.state.Ticket.map( (tickets) => (
@@ -361,6 +363,7 @@ class Warenkorb extends Component {
             </div>
             
             
+
 
 
     )}
