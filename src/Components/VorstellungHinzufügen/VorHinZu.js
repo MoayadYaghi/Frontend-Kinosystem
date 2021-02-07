@@ -21,7 +21,7 @@ class VorHinZu extends Component {
       filme:[],
       choosenMovie:[],
       value: 'Es wurde noch kein Film ausgewählt',
-      visible :false,
+      visible :true,
       visible2: false,
       blockVisible:false,
       dayAndMonth : [],
@@ -29,8 +29,8 @@ class VorHinZu extends Component {
       allSaal: [],
       choosenSaal: 0,
       choosenSaalId:0,
-      day:0,
-      month:0,
+      day:1,
+      month:1,
       year:2021,
       stunde:0,
       minute:0,
@@ -42,6 +42,8 @@ class VorHinZu extends Component {
       filmId:0,
       aktiv:0,
       grundpreis:0,
+      aktiveFilme:[],
+      inaktiveFilme:[],
     }
      this.handleChange = this.handleChange.bind(this);
      this.handleSaal = this.handleSaal.bind(this);
@@ -70,14 +72,14 @@ class VorHinZu extends Component {
 
     let data2 =[];
     let data3 =[];
-    getFilme.getAllFilmAPI().then((response )=> {
-      var data = response.data
-      this.setState({filme: response.data})
-      //console.log(response);
-      this.setState({Filme: data})
-      //console.log(this.state.filme.data)
-      this.setState({visible: true})
-      })
+    getFilme.getAllFilmAPI().then((response)=>{
+      let aktiveFilme =response.data[0];
+      let inaktiveFilme =response.data[1];
+  /*      console.log(aktiveFilme);
+       console.log(inaktiveFilme); */
+      this.setState({aktiveFilme:aktiveFilme,
+      inaktiveFilme:inaktiveFilme})
+    })
 
       for (let i=0; i<=1; i++){
         let data1 =[];
@@ -109,11 +111,11 @@ class VorHinZu extends Component {
 
   handleChange(event) {
     this.setState({value: event.target.value});
-    for(let i=0; i<this.state.filme.length; i++){
-      if (this.state.value == this.state.filme[i].name){
+    for(let i=0; i<this.state.aktiveFilme.length; i++){
+      if (event.target.value == this.state.aktiveFilme[i].name){
         //console.log(this.state.value)
-        this.setState({choosenMovie:this.state.filme[i]})
-        console.log(this.state.choosenMovie.bild)
+        this.setState({choosenMovie:this.state.aktiveFilme[i]})
+        /* console.log(this.state.choosenMovie.bild) */
       }//if
     }//for
     
@@ -214,7 +216,7 @@ class VorHinZu extends Component {
       if (this.state.value == this.state.filme[i].name){
         //console.log(this.state.value)
         this.setState({choosenMovie:this.state.filme[i]})
-        console.log(this.state.choosenMovie.bild)
+       /*  console.log(this.state.choosenMovie.bild) */
       }//if
     }//for
     this.setState({blockVisible: true})
@@ -246,7 +248,7 @@ class VorHinZu extends Component {
            <option value="">--select--</option>
            
 
-            {this.state.Filme.map((filme)=> (
+            {this.state.aktiveFilme.map((filme)=> (
               <option value={filme.name}>{filme.name}</option>
             ))
             }
