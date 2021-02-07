@@ -2,10 +2,13 @@ import React, { Component} from "react";
 import CreateNewTicket from "../../API_Pulls/CreateNewTicket";
 import SaalByVorstellung from "../../API_Pulls/SaalByVorstellung";
 import SitzByVorstellung from "../../API_Pulls/SitzByVorstellung";
+import GetWarenKorbTicket from "../../API_Pulls/GetWarenKorbTicket";
 import "./Sitzplatzreservierung.scss";
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import GeneratorAufruf from "../ZahlenGenerator/GeneratorAufruf";
 import PostWarenKorbTicket from "../../PostRequest/PostWarenKorbTicket";
+
+var TicketID
 
 class Sitzplatzreservierung extends Component {
   constructor(props) {
@@ -26,7 +29,8 @@ class Sitzplatzreservierung extends Component {
       frei: [],
       error: "Es wurden nur 0 Sitze gewählt",
       errorSichtbar: false,
-      redirect: false
+      redirect: false,
+      TicketID: "",
     };
     this.selectSitz = this.selectSitz.bind(this);
     this.addToInput = this.addToInput.bind(this);
@@ -166,6 +170,11 @@ class Sitzplatzreservierung extends Component {
       this.setState({errorSichtbar: false});
     }
   }
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to={`/Warenkorb`} />
+    }
+  }
 
   
 
@@ -187,17 +196,29 @@ class Sitzplatzreservierung extends Component {
     console.log(sitzIds, vorstellungId)
     for(let i in sitzIds) {
       console.log(sitzIds[i], vorstellungId)
-      CreateNewTicket.createNewTicket(sitzIds[i], vorstellungId);
-    }
+      CreateNewTicket.createNewTicket(sitzIds[i], vorstellungId).then(res => console.log(res))
+      GetWarenKorbTicket.getWarenKorbTicketID(sitzIds[i], vorstellungId).then(res => {console.log(res)
+        this.setState({TicketID: res.data})
+         TicketID = res.data
+       console.log(TicketID)
+            
 
+      } )
+    }
+    setTimeout(() => {
+      
+    for(let i = 0; i<this.state.TicketID.length; i++	){
+      PostWarenKorbTicket.postwWarenKorbTicketID(this.state.TicketID[i].id).then(res => console.log(res))
+    }}, 500);
 
    // GetTicketID...
 
-    var TicketID = 173
+   // var TicketID = 173
 
-    PostWarenKorbTicket.postwWarenKorbTicketID(TicketID).then(res => console.log(res))
+    //PostWarenKorbTicket.postwWarenKorbTicketID(this.state.TicketID).then(res => console.log(res))
 
-    this.setState({redirect: true});
+    //this.setState({redirect: true});
+
 
     
   }
@@ -229,7 +250,9 @@ class Sitzplatzreservierung extends Component {
           </div>
         </div>
         <div className="Rest">
-          <button className="RestButton"> Snacks hinzufügen </button>
+          <div className="LinksSitzÜbersicht">
+          <Link className="DESIGNButton" to={"/Shop"}> Snacks hinzufügen </Link>
+          </div>
           <div className="Tickets">
             {" "}
             <div className="TicketArt">Ticketart</div>
@@ -303,7 +326,7 @@ class Sitzplatzreservierung extends Component {
             </table>
           </div>
 
-         {/*  {this.renderRedirect()} */}
+           {this.renderRedirect()} 
           <button className="RestButton" onClick={this.addWarenkorb}> Zum Warenkorb hinzufügen </button>
 
         </div>

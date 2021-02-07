@@ -2,13 +2,17 @@ import React, { Component } from "react";
 import "./Warenkorb.css";
 import getWarenkorbInfos from "../../API_Pulls/getWarenkorbInfos"  
 import { Link, Redirect } from "react-router-dom";
+import PostSepa from "../../PostRequest/PostSepa";
+import PostBenutzerupdate from"../../PostRequest/PostBenutzerupdate";
+
+
 
 class Warenkorb extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-        ticket: [],
+        Ticket: [],
         value: "",
         vorname: "",
         nachname: "",
@@ -20,9 +24,13 @@ class Warenkorb extends Component {
         Kartennummer: "",
         Kreditkartentyp: "", 
         Gültig:"",
+        Datum: "",
+        Zeit:"",
+        IBAN:"",
     };
     this.handleChange = this.handleChange.bind(this);
     this.WarenkorbCheck = this.WarenkorbCheck.bind(this);
+    this.componentDidMount  = this.componentDidMount.bind(this);
   }
   handleSubmit(event) {
     event.preventDefault();
@@ -46,14 +54,28 @@ class Warenkorb extends Component {
 
   componentDidMount(){
     var  tokenInfo = sessionStorage.getItem('token')
-    var ticket
+    var tickets
     if(tokenInfo != null){
       
-    getWarenkorbInfos.getTickets().then((response) =>{
-    console.log(response)
-    ticket = response
+    getWarenkorbInfos.getTickets().then((respon) => {
+      this.setState({Ticket: respon.data}, () =>{
+      //console.log(sessionStorage.getItem('token'))
+      console.log(this.state.Ticket)})
+      
+        
+      
+      })
+    
+    /* .
+    
+    then((response) =>{
+     this.setState({Ticket: response.data}) */
+    /* console.log(response)
+    tickets = response.data 
+
+    
     }
-    )
+    )*/
 
     getWarenkorbInfos.getSnacks().then((response) => 
     console.log(response)
@@ -63,12 +85,12 @@ class Warenkorb extends Component {
     getWarenkorbInfos.getDrink().then((response) => 
     console.log(response)
     )
-    this.setState({angemeldet: true}) //TESTING
-    // if(ticket === null){
-    /* this.setState({angemeldet: true})
+    //this.setState({angemeldet: true}) //TESTING
+    if(this.state.Ticket !== []){
+     this.setState({angemeldet: true})
     }else{
       this.setState({tokenLeer: true})
-    } */
+    } 
     }else{
       this.setState({tokenLeer: true})
     }
@@ -86,33 +108,56 @@ class Warenkorb extends Component {
         angemeldet: false,
         ErrorMessage: true
       })
-      this.renderRedirect()
+      
 
 
     }
-   
+    if(this.state.value === "SePa" && this.state.mail !== "" && this.state.IBAN !== ""){
+      PostSepa.sendnewSepa(this.state.mail, this.state.IBAN).then(res =>{
+        console.log(res)
+      })
+    }
+    var Generiert = sessionStorage.getItem('Generiert')
+    if(Generiert === true){
+    if(this.state.nachname !== "" || this.state.vorname !== "" || this.state.mail !==""){
+      PostBenutzerupdate.Postuserupdate(this.state.vorname, this.state.nachname, this.state.mail)
+
+
+    }
+  }
   }
 
   render() {
    var ProfilLink = "/programm"
     return( <div >
       {
-          this.state.angemeldet?(<div ><div className ="Warenkorb">
+          this.state.angemeldet?
+          (<div ><div className ="Warenkorb"><div className ="Links" > <div className="LinkeSeite">
             
               
-             {   //this.state.ticket.map( (tickets) => (
-                  <div className ="Links" ><div className="LinkeSeite"><div className ="Tickezs"><div className="WarenkorbTicket" > 
+             
+                 <div><div className ="Tickezs"><div className="WarenkorbTicket" > 
                     Ihr Warenkorb: <br/>
 
                       </div >
-                    <div className="KinoTicket"> 
-                        Ticket: {/* tickets.amount */} <br/>
-                        Sitzplatz: {/* tickets.seats */}<br/>
-                        Datum: {/* {tickets.date} */}<br/>
-                        Zeit: {/* {tickets.vorstellung} */}<br/>
-                        Preis: {/* {tickets.preis} */}<br/>
-
-                    </div> 
+                      {   this.state.Ticket.map( (tickets) => (
+                        <div className="DESIGNTextField">
+                    <div className="KinoTicket"> <div className ="WarenkorbTicketReihe"><div className="BeschreibungQWarenkorb">
+                        Ticket: </div>{tickets.vorstellung.film.name
+                        } </div> 
+                        <div className ="WarenkorbTicketReihe"><div className="BeschreibungQWarenkorb">
+                        Sitzplatz:</div> Reihe {tickets.vorstellung.saal.reihe}, Sitzplatz {tickets.vorstellung.saal.spalte
+                        } </div> <div className ="WarenkorbTicketReihe"><div className="BeschreibungQWarenkorb">
+                        Datum: </div>{ ((tickets.vorstellung.startZeit).substring(0,10).split("-"))[2]+"."+
+                        ((tickets.vorstellung.startZeit).substring(0,10).split("-"))[1]+"."+((tickets.vorstellung.startZeit).substring(0,10).split("-"))[0]
+                        //this.state.Datum
+                        } </div> <div className ="WarenkorbTicketReihe"><div className="BeschreibungQWarenkorb">
+                        Zeit:</div> {(tickets.vorstellung.startZeit).substring(11,16)+" Uhr"
+                        } </div> <div className ="WarenkorbTicketReihe"><div className="BeschreibungQWarenkorb">
+                        Preis: </div>{tickets.vorstellung.grundpreis +" Euro"
+                        } </div> 
+</div> <br/></div>
+                      ))}       </div> 
                     <div className="FilmÄndern">
                     <Link  className ="FilmNeu" to={"/programm"}>Film ändern</Link>
                       </div></div>
@@ -130,11 +175,11 @@ class Warenkorb extends Component {
                     <Link  className ="SnackNeu" to={"/programm"}>Snack hinzufügen</Link>
                       </div>
 
-                        </div> </div> 
+                        </div>  
 
-             }
+             
                 
-            
+                </div>
 
             <div className ="Rechts">
             <div className="rechteSeite">
@@ -155,6 +200,7 @@ class Warenkorb extends Component {
               >
                 <option value="PreisKategorie">Zahlungsmöglichkeit Auswählen</option>
                 <option value="Paypal">Paypal</option>
+                <option value="SePa">Lastschriftverfahren</option>
                 <option value="Überweisung"> Auf Rechnung</option>
                 <option value="Kreditkarte">Kreditkarte</option>
                 <option value="KassenZahler">Nur Reservieren</option>
@@ -208,6 +254,21 @@ class Warenkorb extends Component {
                 }
                 {
                   (this.state.value ==="Paypal")?(<div>Sie werden nach der Bestellung an die Paypal Seite weitergeleitet</div>):null     
+                }
+                {
+                  (this.state.value ==="SePa")?(<div> Wir buchen Ihnen im laufe der nöächsten Tage das Geld vom Konto
+
+            <label>
+              <input
+                className="InputTextWarenkorb"
+                placeholder="Iban-Nummer"
+                name="IBAN"
+                type="text"
+                value={this.state.IBAN}
+                onChange={this.handleChange}
+              />
+            </label>
+                  </div>):null     
                 }
                 {
                   (this.state.value ==="Überweisung")?(<div>Sie erhalten im Anschluss eine E-Mail mit der Rechnung, das Ticket wird erst gültig wenn die Bezahlung bei uns eingegangen ist </div>):null     
@@ -277,13 +338,14 @@ class Warenkorb extends Component {
             </div>
              </div>
 
-            </div><button onClick ={this.WarenkorbCheck} >Daten Bestätigen</button>
+            </div><button className="DESIGNButton" onClick ={this.WarenkorbCheck} >Daten Bestätigen</button>
             
             
             
-            </div>):null
-  }
-
+            </div>
+            //):null}
+  
+          ):null})
 {
               this.state.ErrorMessage? <div> Fehler bei der Anmeldung, überprüfen Sie Ihre Eingaben </div>: null
             }

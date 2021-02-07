@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./Smoroll.css";
 import logoP from "../../assets/Logo_PayPal.png";
 import logoM from "../../assets/Logo_mastercard.png";
-import logoK from "../../assets/LOGO1.png";
+import logoK from "../../assets/BIld_Sepa.jpg"
 
 class Menue6 extends Component {
   state = {};
@@ -44,14 +44,13 @@ class Menue6 extends Component {
           <img
             className="Logos"
             alt="Paypal Logo"
-            key="Paypal"
+            key="Sepa"
             src={logoK}
           ></img>{" "}
           <br />
-          Gutschein
+          Sepa Lastschriftverfahren
           <br />
-          Mit bereits gekauften Gutscheinen kannst du deine Ticket, Online wie
-          vor Ort, natürlich auch bezahlen.
+          Nachdem die Bestellung bei uns eingegangen ist, bearbeiten wir diese und buchen das Geld innerhalb von 3 Tagen ab.
           <br />
         </div>
       </div>

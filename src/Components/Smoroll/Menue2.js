@@ -24,6 +24,7 @@ class Menue2 extends Component {
                 <td> </td> */}
             </tbody>
             <tbody>
+            {/* eslint-disable-next-line*/  }
               <div className="TabellenLinie">Mo-So</div>
             </tbody>
             <tbody>

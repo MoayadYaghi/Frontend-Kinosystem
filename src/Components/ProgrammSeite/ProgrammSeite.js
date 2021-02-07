@@ -26,7 +26,7 @@ class ProgrammSeite extends Component {
 
   componentDidMount() {
     GetAllFilmAPI.getAllFilmAPI().then((response) => {
-      this.setState({ filme: response.data });
+      this.setState({ filme: response.data[0] });
       this.setState({ alleFilme: response.data });
       console.log(this.state.filme);
     });

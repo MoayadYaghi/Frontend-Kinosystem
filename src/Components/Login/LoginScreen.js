@@ -49,7 +49,7 @@ class LoginScreen extends Component {
         this.setState({ Fehler: false });
         sessionStorage.setItem("token", res.data);
         sessionStorage.setItem("NutzerName", this.state.username);
-
+        sessionStorage.setItem("NutzerEingabe", true)
         sessionStorage.setItem("AllgemeinLogin", false);
         sessionStorage.setItem("LoginFehler", false);
 
@@ -80,13 +80,35 @@ class LoginScreen extends Component {
     Nutzername = sessionStorage.getItem("LoginNutzerName");
     this.setState({ username: Nutzername });
     var Token = sessionStorage.getItem("token");
-    console.log(Token);
-    if (Token !== null) {
+    var generiert = sessionStorage.getItem('Generiert')
+    var NutzerEingabe = sessionStorage.getItem("NutzerEingabe")
+    console.log(NutzerEingabe);
+    if(generiert !== null){
+    if(Token === null || generiert){
+      this.setState({
+        visible: true,
+        Eingelogt: false
+      })
+    }}
+    if(NutzerEingabe !== null){
+    if(Token !== null && NutzerEingabe){this.setState({
+      visible: false,
+      Eingelogt: true,
+    })}}
+    
+    /* if (Token !== null) {
+      if(generiert == true){
+      this.setState({
+        visible: true,
+        Eingelogt: false,
+      });
+    }else{
       this.setState({
         visible: false,
         Eingelogt: true,
-      });
+      })
     }
+  } */
     var Abgelemdet;
     Abgelemdet = sessionStorage.getItem("Abmeldung");
    
@@ -105,6 +127,7 @@ class LoginScreen extends Component {
   abmelden() {
     sessionStorage.removeItem("token");
     sessionStorage.removeItem("NutzerName");
+    sessionStorage.removeItem("NutzerEingabe");
 
     this.setState({
       Abgemeldet: true,

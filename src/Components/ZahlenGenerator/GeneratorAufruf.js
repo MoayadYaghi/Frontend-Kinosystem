@@ -74,12 +74,14 @@ class GeneratorAufruf extends Component {
       postLogin.sendnewLogin(Informationen)
       .then((respon) => {
       sessionStorage.setItem('token', respon.data)
+      sessionStorage.setItem('Generiert', true)
       //console.log(sessionStorage.getItem('token'))
       })
-    },3000) 
+    },1000) 
     ))
     
   }
+  
   
   
 }

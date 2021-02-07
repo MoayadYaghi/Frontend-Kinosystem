@@ -10,8 +10,8 @@ class PostWarenKorb{
     postwWarenKorbTicketID(TicketID){
         var Authorization = sessionStorage.getItem('token')
 
- 
-        return axios.post("http://localhost:8081/warenkorb/ticket/"+TicketID, null,{headers: {
+        	console.log(TicketID)
+        return axios.get("http://localhost:8081/warenkorb/ticket/"+TicketID, {headers: {
             Authorization
             }})
 
