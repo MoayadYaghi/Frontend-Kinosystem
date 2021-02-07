@@ -198,13 +198,15 @@ class Sitzplatzreservierung extends Component {
       console.log(sitzIds[i], vorstellungId)
       CreateNewTicket.createNewTicket(sitzIds[i], vorstellungId).then(res => console.log(res))
       GetWarenKorbTicket.getWarenKorbTicketID(sitzIds[i], vorstellungId).then(res => {console.log(res)
+        
         this.setState({TicketID: res.data})
          TicketID = res.data
        console.log(TicketID)
-            
+        
 
       } )
     }
+    
     setTimeout(() => {
       
     for(let i = 0; i<this.state.TicketID.length; i++	){
@@ -218,11 +220,11 @@ class Sitzplatzreservierung extends Component {
     //PostWarenKorbTicket.postwWarenKorbTicketID(this.state.TicketID).then(res => console.log(res))
 
     //this.setState({redirect: true});
+    sessionStorage.setItem('TicketID', this.state.TicketID)
 
 
     
   }
-
   render() {
     return (
 
@@ -327,8 +329,9 @@ class Sitzplatzreservierung extends Component {
           </div>
 
            {this.renderRedirect()} 
+           <div className ="ButtonAlign">
           <button className="RestButton" onClick={this.addWarenkorb}> Zum Warenkorb hinzufügen </button>
-
+          </div>
         </div>
       </div>
     );
