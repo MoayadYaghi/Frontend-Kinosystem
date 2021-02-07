@@ -16,9 +16,9 @@ class CreateNewTicket {
       //k_59na12he
       //k_cju0xk83
 
-    return axios.post((Post_Ticket_In_Warenkorb, null,{headers:{
+    return axios.post(Post_Ticket_In_Warenkorb, null,{headers:{
       Authorization
-    }});
+    }})
   }
 }
 
