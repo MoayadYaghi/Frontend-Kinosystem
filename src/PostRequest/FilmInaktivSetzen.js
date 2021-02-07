@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
-import axios from 'axios';
 import  "./Post.css";
+import axios from 'axios'
 
-const REST_API_Post_Login = ""
+
 
 class FilmInaktivSetzen{
     

@@ -28,6 +28,7 @@ class ProgrammSeite extends Component {
   componentDidMount() {
     GetAllFilmAPI.getAllFilmAPI().then((response) => {
 
+
       let genreList = ["Alle"];
       for(let i in response.data) {
         let checker1 = true;
@@ -56,6 +57,7 @@ class ProgrammSeite extends Component {
       this.setState({ alleGenre: genreList});
       this.setState({ filme: aktiveFilme });
       this.setState({ alleFilme: aktiveFilme });
+
     });
   }
 

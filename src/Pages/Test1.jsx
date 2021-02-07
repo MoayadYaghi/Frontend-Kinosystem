@@ -1,6 +1,6 @@
 import Navbar from ".././Components/Navbar/Navbar";
 import Footer from ".././Components/Footer/Footer";
-import Test1 from ".././Components/Test/Test1";
+
 
 
 import React from "react";

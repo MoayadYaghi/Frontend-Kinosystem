@@ -3,7 +3,6 @@ $color: #26418f;
 //BUTTON 5
 .DESIGNButton {
   background-color: #26418f;
-  border-color: $color;
   font-family: "Nunito";
   font-size: 2rem;
   // border: 0;
@@ -40,6 +39,7 @@ $color: #26418f;
     text-decoration: none;
     &:after {
       width: 110%;
+      text-decoration: none !important;
     }
 
       

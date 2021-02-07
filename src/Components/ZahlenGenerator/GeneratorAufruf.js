@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import postRegister from "../../PostRequest/postRegister";
 
 import postLogin from "../../PostRequest/postLogin";
@@ -38,13 +38,15 @@ class GeneratorAufruf extends Component {
   }
   Register(){
     Informationen = this.state
-    postRegister.sendnewRegister(this.state).then((res) => {
-      console.log(res)})
+    postRegister.sendnewRegister(this.state)
+    //.then((res) => {
+      //console.log(res)})
   }
   
 
   componentDidMount(){
-
+    var token = sessionStorage.getItem('token')
+    if(token === null){
     RandomCount1 = Math.random()*10000000000000000
     RandomCount2 = Math.random()*10000000000000000
 
@@ -68,24 +70,25 @@ class GeneratorAufruf extends Component {
         alter : alter1,
         lieblingszone : Sitzplatz1
     }, () => (this.Register(), setTimeout(function(){
-      console.log(Informationen)
+     // console.log(Informationen)
       postLogin.sendnewLogin(Informationen)
-      .then((respon) => console.log(respon))
-      
-    },3000) 
+      .then((respon) => {
+      sessionStorage.setItem('token', respon.data)
+      sessionStorage.setItem('Generiert', true)
+      //console.log(sessionStorage.getItem('token'))
+      })
+    },1000) 
     ))
     
-
+  }
+  
+  
   
 }
 
   render() {
     return(null)
-        {/* <div>
-            {RandomCount1}<br/>
-            {RandomCount2}<br/>
-            {this.state.mail}<br/>
-        </div> */}
+        
     
   }
 }

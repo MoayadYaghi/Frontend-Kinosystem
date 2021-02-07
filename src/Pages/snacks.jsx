@@ -1,5 +1,6 @@
 import Navbar from ".././Components/Navbar/Navbar";
 import Footer from ".././Components/Footer/Footer";
+import Snack from "../Components/SnaGet/ShopSnacks";
 import React from "react";
 import ".././App.css";
 
@@ -11,7 +12,8 @@ const Snacks = () => {
     <div className="App">
       <Navbar />
 
-      <h1>Snacks Seite</h1>
+      
+      <Snack/>
 
       <Footer />
     </div>

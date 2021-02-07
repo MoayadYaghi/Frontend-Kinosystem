@@ -26,7 +26,7 @@ class Smoroll extends Component {
           {/* <StickyContainer>
                 <Sticky>
                  */}
-          <view className="Tabelle">
+          <div className="Tabelle">
             <div className="Hintergrund">
               <div className="SpalteBL">
                 <Link
@@ -136,7 +136,7 @@ class Smoroll extends Component {
                 </Link>
               </div>
             </div>
-          </view>
+          </div>
           {/* </Sticky>
                 </StickyContainer> */}
 

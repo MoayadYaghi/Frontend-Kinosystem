@@ -3,13 +3,12 @@ import styled from "styled-components";
 // import "./Footer.css";
 import { Link } from "react-router-dom";
 
-const ProgrammAktuellLink = "/Programm/Aktuell";
+const ProgrammAktuellLink = "/Programm";
 const ProgrammDemnächstLink = "/Programm/Demnächst";
 const InformationsLink = "/Information";
 const KontaktLink = "/Kontakt";
 const SnacksLink = "/Shop/Snacks";
-const BekleidungLink = "/Shop/Bekleidung";
-const GutscheineLink = "/Shop/Geschenke";
+const GetraenkeLink ="/Shop/Getraenk"
 const ImpressumLink = "/Impressum";
 const WunschlisteLink = "/Wunschliste";
 
@@ -36,9 +35,7 @@ function Footer() {
                 <li>
                   <Link to={ProgrammAktuellLink}>Aktuelles</Link>
                 </li>
-                <li>
-                  <Link to={ProgrammDemnächstLink}>Demnächst</Link>
-                </li>
+                
                 <li>
                   <Link to={WunschlisteLink}>Wunschliste</Link>
                 </li>
@@ -51,13 +48,10 @@ function Footer() {
               </h4>
               <ul className="list-unstyled">
                 <li>
-                  <Link to={BekleidungLink}>Bekleidung</Link>
-                </li>
-                <li>
                   <Link to={SnacksLink}>Snacks</Link>
                 </li>
                 <li>
-                  <Link to={GutscheineLink}>Gutscheine</Link>
+                <Link to={GetraenkeLink}>Getränke</Link>
                 </li>
               </ul>
             </div>

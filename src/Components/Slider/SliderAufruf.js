@@ -22,7 +22,7 @@ class SliderAufruf extends React.Component {
 
       GetAllFilmAPI.getAllFilmAPI().then((response) => {
 
-        this.setState({ Bilder: response.data });
+        this.setState({ Bilder: response.data[0] });
        
         console.log(this.state.Bilder);
 
