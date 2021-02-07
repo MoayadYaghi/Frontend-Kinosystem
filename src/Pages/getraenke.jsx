@@ -4,6 +4,7 @@ import React from "react";
 import ".././App.css";
 
 import "bootstrap/dist/css/bootstrap.min.css";
+import ShopGetraenke from "../Components/SnaGet/ShopGetraenke";
 //import { Link } from "react-router-dom";
 
 const Getraenke = () => {
@@ -11,7 +12,7 @@ const Getraenke = () => {
     <div className="App">
       <Navbar />
 
-      <h1>Getraenke Seite</h1>
+      <ShopGetraenke/>
 
       <Footer />
     </div>

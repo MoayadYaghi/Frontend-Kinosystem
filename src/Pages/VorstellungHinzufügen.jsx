@@ -4,7 +4,7 @@ import VorHinZu from ".././Components/VorstellungHinzufügen/VorHinZu";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ".././App.css";
 
-import FilmSuche from "../Components/FIlmAufruf/FilmSuche";
+//import FilmSuche from "../Components/FIlmAufruf/FilmSuche";
 
 //import { Link } from "react-router-dom";
 
