@@ -22,7 +22,7 @@ class SliderAufruf extends React.Component {
 
       GetAllFilmAPI.getAllFilmAPI().then((response) => {
 
-        this.setState({ Bilder: response.data[0] });
+        this.setState({Bilder: response.data});
        
         console.log(this.state.Bilder);
 
@@ -32,7 +32,7 @@ class SliderAufruf extends React.Component {
     
     
     
-    });
+    })
   }
 
   render() {
@@ -40,6 +40,7 @@ class SliderAufruf extends React.Component {
       Bild.push(element.bild);
       Name.push(element.name);
       id.push(element.id);
+      
     });
 
     return (
