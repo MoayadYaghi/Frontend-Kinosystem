@@ -212,7 +212,7 @@ class Sitzplatzreservierung extends Component {
         }
       }
       for(let i in sitzIds) {
-        CreateNewTicket.createNewTicket(sitzIds[i], vorstellungId, nutzerId);
+        CreateNewTicket.createNewTicket(sitzIds[i], vorstellungId);
       }
       //this.setState({redirect: true});
     }
