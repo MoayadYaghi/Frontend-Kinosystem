@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import  "./Post.css";
+import LocalURL from '../constants';
 
 const REST_API_Post_Login = ""
 
@@ -12,7 +13,7 @@ class FilmInaktivSetzen{
         var Authorization = sessionStorage.getItem('token')
 
  
-        return axios.post("http://localhost:8081/film/"+filmId+"/aktiv/"+reaktivieren, null,{headers: {
+        return axios.post(LocalURL + "film/"+filmId+"/aktiv/"+reaktivieren, null,{headers: {
             Authorization
             }})
 

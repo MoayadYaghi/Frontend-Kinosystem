@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import  "./Post.css";
+import LocalURL from '../constants';
 
 const REST_API_Post_Login = ""
 
@@ -15,7 +16,7 @@ class VorstellungHinzufügen{
         parseInt(startZeit,10);
 
  
-        return axios.post("http://localhost:8081/vorstellung/insert/film/"+filmId+"/kinosaal/"+saal +"/startzeit/"+startZeit+"/grundpreis/"+grundpreis+"/aktiv/1" , null,{headers: {
+        return axios.post(LocalURL + "vorstellung/insert/film/"+filmId+"/kinosaal/"+saal +"/startzeit/"+startZeit+"/grundpreis/"+grundpreis+"/aktiv/1" , null,{headers: {
             Authorization
             }})
 

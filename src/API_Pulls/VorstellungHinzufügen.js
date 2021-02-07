@@ -1,9 +1,10 @@
 import axios from "axios";
+import LocalURL from '../constants';
 
 class VorstellungHinzufügenAPI {
   vorstellungHinzufügenAPI() {
     const fügeVorstellungHinzu =
-      ("http://localhost:8081/vorstellung/vorstellung");
+      (LocalURL + "vorstellung/vorstellung");
 
     return axios.get(fügeVorstellungHinzu);
   }

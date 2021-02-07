@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import {animateScroll as scroll } from "react-scroll";
 import { MenuItems } from "./MenuItems";
 import "./Navbar.css";
 import logo from "../../assets/LOGO1.png";
@@ -8,6 +8,9 @@ import { Link } from "react-router-dom";
 class Navbar extends Component {
   state = { clicked: false };
 
+  componentDidMount() {
+    scroll.scrollToTop();
+  }
   handleClick = () => {
     this.setState({ clicked: !this.state.clicked });
   };

@@ -1,7 +1,7 @@
 import axios from "axios";
+import LocalURL from '../constants';
 
-const Slider_Rest_API_URL =
-  "http://localhost:8081/";
+const Slider_Rest_API_URL = LocalURL;
 
 class getWarenkorbInfos {
    
