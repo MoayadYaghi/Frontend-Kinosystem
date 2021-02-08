@@ -1,3 +1,4 @@
+
 import React, { Component } from "react";
 import "./Profilübersicht.scss";
 import GetProfil from "../../API_Pulls/GetProfil";
@@ -120,12 +121,12 @@ class Profilübersicht extends Component {
 
   render() {
     return (
-      <div className="ProfilübersichtSeite">
+      <div className="ProfilÃ¼bersichtSeite">
         {this.state.geladen ? (
           <div>
             <div className="Oben">
               <div className="ObenLinks">
-                <div className="AngabenÜberschrift">
+                <div className="AngabenÃœberschrift">
                   Ihre Angaben: <br></br>
                 </div>
                 <div className="ObenLinksAngaben">
@@ -190,7 +191,7 @@ class Profilübersicht extends Component {
                 </div>
               </div>
               <div className="ObenRechts">
-                <div className="PersZustandÜberschrift">
+                <div className="PersZustandÃœberschrift">
                   Ihr Zustand: <br></br>
                 </div>
                 <form>
@@ -202,7 +203,7 @@ class Profilübersicht extends Component {
                       onChange={this.handleChange}
                       name="value"
                     >
-                      <option value="PersZustand">Zustand Auswählen</option>
+                      <option value="PersZustand">Zustand AuswÃ¤hlen</option>
                       <option value="ERWACHSENER">Erwachsen</option>
                       <option value="KIND">Kind</option>
                       <option value="STUDIEREND">Student</option>
@@ -232,7 +233,7 @@ class Profilübersicht extends Component {
             <div className="Unten">
               {/** 
               <div className="UntenLinks">
-                <div className="MerklisteÜberschrift">
+                <div className="MerklisteÃœberschrift">
                   Ihre Merkliste: <br></br>
                 </div>
                 <div className="UntenLinksMerkliste">
@@ -255,7 +256,7 @@ class Profilübersicht extends Component {
                 </div>
               </div> */}
               <div className="UntenRechts">
-                <div className="BestellungenÜberschrift">
+                <div className="BestellungenÃœberschrift">
                   Ihre Bestellungen: <br></br>
                 </div>
                 <div className="UntenRechtsBestellungen">
