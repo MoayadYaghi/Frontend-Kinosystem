@@ -135,7 +135,7 @@ class Warenkorb extends Component {
     console.log(response)
     )
     //this.setState({angemeldet: true}) //TESTING
-    if(this.state.Ticket !== []){
+    if(this.state.Ticket === "Warenkorb leer" ){
      this.setState({angemeldet: true})
     }else{
       this.setState({tokenLeer: true})
