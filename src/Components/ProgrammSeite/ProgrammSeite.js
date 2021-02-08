@@ -30,32 +30,35 @@ class ProgrammSeite extends Component {
 
 
       let genreList = ["Alle"];
-      
-      for(let i in response.data) {
+
+      let aktiveFilme = response.data[0];
+      for(let i in aktiveFilme) {
+
         let checker1 = true;
         let checker2 = true;
         for(let j=0; j<genreList.length; j++) {
-          if(genreList[j] == response.data[i].genre1) {
+          if(genreList[j] == aktiveFilme[i].genre1) {
             checker1 = false;
           }
-          if(genreList[j] == response.data[i].genre2) {
+          if(genreList[j] == aktiveFilme[i].genre2) {
             checker2 = false;
           }
         }
         if(checker1) {
-          genreList.push(response.data[i].genre1);
+          genreList.push(aktiveFilme[i].genre1);
         }
         if(checker2) {
-          genreList.push(response.data[i].genre2);
+          genreList.push(aktiveFilme[i].genre2);
         }
       }
-      let aktiveFilme = [];
+      /*let aktiveFilme = [];
       for(let film in response.data) {
         if(response.data[film].aktiv == true) {
           aktiveFilme.push(response.data[film]);
         }
-      }
-      //response.data[0]
+
+      }*/
+
       this.setState({ alleGenre: genreList});
       this.setState({ filme: aktiveFilme });
       this.setState({ alleFilme: aktiveFilme });
@@ -68,18 +71,18 @@ class ProgrammSeite extends Component {
       this.setState({ search: event.target.value });
     } else if (event.target.id === "genreId") {
       this.setState({ genre: event.target.value });
-    } else if (event.target.id === "alterId") {
+    }/* else if (event.target.id === "alterId") {
       this.setState({ alter: event.target.value });
-    }
+    }*/
 
     let alleFilme = this.state.alleFilme;
 
     let filmCounter = 0;
     let genreFilme = [];
-    let alterFilme = [];
+    //let alterFilme = [];
     let suchFilme = [];
     let genre = document.getElementById("genreId");
-    let alter = document.getElementById("alterId");
+    //let alter = document.getElementById("alterId");
     let search = document.getElementById("searchId");
 
     for (let film in alleFilme) {
@@ -105,7 +108,9 @@ class ProgrammSeite extends Component {
           }
         }
       }
-      if (alter.value === "Alle") {
+      this.setState({filme: genreFilme});
+      filmCounter = genreFilme.length;
+      /*if (alter.value === "Alle") {
         alterFilme = genreFilme;
       } else {
         for (let i = 0; i < genreFilme.length; i++) {
@@ -115,8 +120,8 @@ class ProgrammSeite extends Component {
           }
         }
       }
-      this.setState({ filme: alterFilme });
-      filmCounter = alterFilme.length;
+      this.setState({ filme: alterFilme });*/
+      //filmCounter = alterFilme.length;
     } else {
       this.setState({ filme: suchFilme });
       filmCounter = suchFilme.length;
@@ -173,20 +178,6 @@ class ProgrammSeite extends Component {
                   {this.state.alleGenre.map((genre) => (
                       <option value={genre}>{genre}</option>
                     ))}
-                </select>
-              </label>
-            </form>
-            </div>}
-            {showFilter && <div className = "alter">
-              <form>
-              <label>
-                Altersfreigabe 
-                <select id="alterId" value={this.state.alter} onChange={this.handleChange}>
-                  <option value="Alle">Alle</option>
-                  <option value="6">ab 6 Jahren</option>
-                  <option value="12">ab 12 Jahren</option>
-                  <option value="16">ab 16 Jahren</option>
-                  <option value="18">ab 18 Jahren</option>
                 </select>
               </label>
             </form>

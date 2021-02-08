@@ -43,7 +43,7 @@ class FilmDetails extends React.Component {
     }
     componentDidMount() {
         let url = window.location.href;
-        let filmId = url.split("http://localhost:3000/FilmDetails/")[1];
+        let filmId = url.split("/")[4];
         FilmById.filmById(filmId).then((response) => {
             this.setState({film: response.data});
         })

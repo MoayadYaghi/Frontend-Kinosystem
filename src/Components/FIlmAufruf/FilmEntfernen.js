@@ -499,8 +499,8 @@ handleReaktivierung(event){
 
 
         {this.state.entfernt?
-        <div>
-          <h3>{this.state.wasEntferntWurde} wurde erfolgreich {this.state.deOderReAktivierung}</h3>
+        <div className="ErfolgreichFilm"><div className="LangeWIdth">
+          <h3>{this.state.wasEntferntWurde} wurde erfolgreich {this.state.deOderReAktivierung}</h3></div>
           <button className="DESIGNButton" onClick={this.restartProcess}>Weitere Filme/Vorstellungen re/deaktivieren</button>
           
           {this.renderRedirect()}
