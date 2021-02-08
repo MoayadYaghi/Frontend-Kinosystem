@@ -1,0 +1,50 @@
+.CheckBOxShop{
+    height: 2rem;
+    width: 2rem;
+    cursor: pointer;
+}
+.CheckBoxReihe{
+    display: flex;
+}
+.SnackName{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 5%;
+}
+.EineItem{
+    width: 100%;
+    /*padding: 2rem 20% 1rem 20%;*/
+    margin: 2rem 10% 1rem 10%;
+    
+}
+.EineItemReihe{
+    border: solid 2px ;
+    
+    padding: 1rem 2rem 1rem 2rem;
+    margin: 1rem 0 1rem 0;
+}
+.NameundMenge{
+    display: block;
+
+}
+.ÜberschriftSHOP{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0 0 0;
+}
+.LinksShopÜbersicht{
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  grid-gap: 1rem;
+  padding-top: 1rem;
+  
+}
+.TitleShopMitte{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

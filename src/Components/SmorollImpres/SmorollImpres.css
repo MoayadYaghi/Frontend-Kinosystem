@@ -10,7 +10,7 @@
   
 }
 
-.Überschrift2, h2 {
+.Überschrift2 {
   background-color: rgba(128, 128, 128, 0);
   font-family: 'Comfortaa';
   text-transform: uppercase;
@@ -18,19 +18,24 @@
 }
 
 
-.unterÜberschrift, h3{
+.unterÜberschrift, h2{
   background-color: rgba(128, 128, 128, 0);
   font-family: 'Comfortaa';
   text-transform: uppercase;
   font-size: 2.5vw;
 }
-
-.Text, p {
-  font-family: 'Nunito';
-  font-size: 2vw;
+h3{
   background-color: rgba(128, 128, 128, 0);
-  padding-left: 1%;
-  padding-top: 1%;
+  font-family: 'Comfortaa';
+  text-transform: uppercase;
+  font-size: 2vw;
+}
+
+.Text, p{
+  font-family: "Nunito";
+  font-size: 1rem;
+  color: black;
+  text-decoration: none;
 }
 
 .ButtonsBack {

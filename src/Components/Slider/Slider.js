@@ -82,9 +82,9 @@ function MoviesSlider({ images, text, id }) {
                 <div key={index + 2} className="slide">
                   {index === 0 || index === 1
                     ? index === 0
-                      ? text[Länge - 2]
-                      : text[Länge - 1]
-                    : text[index - 2]}
+                      ? text[Länge - 2].substring(0,12)+"..."
+                      : text[Länge - 1].substring(0,12)+"..."
+                    : text[index - 2].substring(0,12)+"..."}
                 </div>
               </div>
             }
@@ -121,9 +121,9 @@ function MoviesSlider({ images, text, id }) {
                   {
                   index === 0
                   ? Länge !== 0
-                    ? text[Länge - 1]
+                    ? (text[Länge - 1]).substring(0,15)+"..."
                     : null
-                  : text[index - 1]
+                  : (text[index - 1].substring(0,15))+"..."
                   }
                 </div>
               </div>
@@ -159,6 +159,7 @@ function MoviesSlider({ images, text, id }) {
         <div className="rechteSeitediv">
         {/* <Link className="rechteSeitedivBlock" to={ProgrammLink + id[(index+1)%Länge]}> */}
         <div className="rechteSeitedivBlock">
+          
             {
               <img
                 className="rechteSeiteSliderBild"
@@ -169,7 +170,7 @@ function MoviesSlider({ images, text, id }) {
             }
             <div className="TextDisplay">
               <div key={index + 1} className="slide">
-                {text[index + 1]}
+                {text[(index + 1) %Länge].substring(0,15)+"..."}
               </div>
             </div>
           </div>
@@ -190,7 +191,7 @@ function MoviesSlider({ images, text, id }) {
             }
             <div className="TextDisplay">
               <div key={index + 2} className="slide">
-                {text[index + 2]}
+                {text[(index + 2)%Länge].substring(0,12)+"..."}
               </div>
             </div>
             </div>

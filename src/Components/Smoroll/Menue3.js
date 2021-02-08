@@ -28,10 +28,10 @@ class Menue3 extends Component {
             title="Maps"
             width="100%"
             height="600"
-            frameborder="0"
+            frameBorder="0"
             src="https://www.google.com/maps/embed/v1/place?key=AIzaSyChCzVT4n_S7YW3JmBWS5YRImn_4bL9TIs
                             &q=Coblitzallee+9,Mannheim&zoom=13"
-            allowfullscreen
+            allowFullScreen
           ></iframe>
           <div className="Inf-Boxsmaller">Öffentliche Verkehrsmittel</div>
           Das Kino ist mit Öffentlichen Verkehrsmitteln zu erreichen. <br />

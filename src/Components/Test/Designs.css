@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa&display=swap");
 
-.DESIGNTextField {
+.DESIGNTextField{
   font-family: "Nunito";
   font-size: 1.5rem;
   color: black;
@@ -108,6 +108,9 @@
     .DESIGNMindestHöhe{
         height: 180vw;
     } 
+    .DESIGNHeadline3{
+      font-size: 5vw;
+    }
 
 }
 
