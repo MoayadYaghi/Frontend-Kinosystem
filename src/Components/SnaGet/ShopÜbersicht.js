@@ -14,7 +14,7 @@ class ShopÜbersicht extends Component {
     const GetraenkLink="/Shop/Getraenk"
     const ProgrammLink="/programm"
     return <div>
-//<GeneratorAufruf/>
+
 
 <div className="TitleShopMitte">
         <div className="DESIGNHeadline2">
