@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import {animateScroll as scroll } from "react-scroll";
 import { MenuItems } from "./MenuItems";
 import "./Navbar.css";
 import logo from "../../assets/LOGO1.png";
@@ -8,6 +8,9 @@ import { Link } from "react-router-dom";
 class Navbar extends Component {
   state = { clicked: false };
 
+  componentDidMount() {
+    scroll.scrollToTop();
+  }
   handleClick = () => {
     this.setState({ clicked: !this.state.clicked });
   };
@@ -17,6 +20,7 @@ class Navbar extends Component {
     const WarenkorbLink = "/Warenkorb";
 
     var Nutzername = sessionStorage.getItem("NutzerName");
+    var Angemeldet = sessionStorage.getItem('token')
     return (
       <div>
         <div className="Headline1">
@@ -46,7 +50,10 @@ class Navbar extends Component {
             {/* {console.log(Nutzername)} */}
 
             <Link className="signIn" to={LogInLink}>
-              {Nutzername === null ? "Sign In" : Nutzername}
+              { Angemeldet !== null ?(
+              Nutzername === null ? "Sign In" : Nutzername): "Resign In"
+            
+            }
             </Link>
 
           </div>

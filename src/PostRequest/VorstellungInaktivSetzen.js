@@ -1,4 +1,6 @@
 import axios from 'axios';
+import  "./Post.css";
+import LocalURL from '../constants';
 
 
 
@@ -10,7 +12,7 @@ class VorstellungInaktivSetzen{
         var Authorization = sessionStorage.getItem('token')
 
  
-        return axios.post("http://localhost:8081/vorstellung/"+vorstellungId+"/aktiv/"+reaktivieren, null,{headers: {
+        return axios.post(LocalURL + "vorstellung/"+vorstellungId+"/aktiv/"+reaktivieren, null,{headers: {
             Authorization
             }})
 

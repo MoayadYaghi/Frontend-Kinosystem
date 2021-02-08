@@ -82,6 +82,7 @@
 .TableElement {
   padding: 0%;
   border: 2px;
+  background-color:#e4e4e4 ;
 }
 .ticketElement {
   padding: unset;
@@ -105,6 +106,7 @@
   font-size: medium;
 }
 .RestButton {
+  
   background-color: #26418f;
   border-color: #26418f;
   font-family: "Nunito";
@@ -212,3 +214,8 @@
   grid-gap: 1rem;
   padding-top: 1rem;
 }
+.ButtonAlign{
+  display: flex;
+  justify-content: flex-end;
+}
+

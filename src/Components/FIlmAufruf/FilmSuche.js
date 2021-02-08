@@ -153,7 +153,29 @@ class FilmSuche extends Component {
     GetAllFilmAPI.getAllFilmAPI().then((respo) => {
       this.setState({ Datenbank: respo.data });
       // console.log(respo)
-    });
+    }).catch(err => {
+      var Fehler = err.toString()
+      var Fehlerausgabe = Fehler.substring(39,42)
+      if(Fehlerausgabe === "403"){
+        console.log("Bitte neu anmelden")
+        this.setState({Fehler403: true})
+ sessionStorage.removeItem('token')
+
+      }
+      this.setState({
+        visible: false,
+      FehlerAusgabe: false,
+      Ergebnis0: false,
+      clicked: false,
+      showModal: false,
+      Error: false,
+      success: false,
+      vorhanden: false,
+      Fehler: false,
+      })
+     
+      
+    })
   }
 
   render() {

@@ -215,7 +215,7 @@ handleDropdown(event){
        onChange ={this.Anklicked}
        
         /> */}
-      </div></div>
+      </div> <div className ="ButtonAlign"><button className="RestButton" onClick={this.addWarenkorb}> Zum Warenkorb hinzufügen </button></div></div>
       
 
 

@@ -5,7 +5,7 @@ import getAllFilmAPI from "../../API_Pulls/GetAllFilmAPI"
 import getAllVorstellungenAPI from "../../API_Pulls/GetAllVorstellungenAPI"
 import VorstellungInaktivSetzenAPI from "../../PostRequest/VorstellungInaktivSetzen"
 import FilmInaktivSetzenAPI from "../../PostRequest/FilmInaktivSetzen"
-import { Redirect } from 'react-router-dom';
+import { Redirect , Link} from 'react-router-dom';
 
 var text;
 var id;
@@ -39,7 +39,7 @@ class FilmSuche extends Component {
       vorstellungenImDropdown:[],
       filmImDropdown:[],
       inaktiveFilme:[],
-      
+      Fehler403: false,
      
 
 
@@ -238,7 +238,26 @@ handleReaktivierung(event){
          console.log(inaktiveFilme); */
         this.setState({aktiveFilme:aktiveFilme,
         inaktiveFilme:inaktiveFilme})
+      }).catch(err => {console.log(err)
+        var Fehler = err.toString()
+        var Fehlerausgabe = Fehler.substring(39,42)
+        if(Fehlerausgabe === "403"){
+          console.log("Bitte neu anmelden")
+          this.setState({Fehler403: true})
+          sessionStorage.removeItem('token')
+        }
+        this.setState({
+          filmEntfernen:false,
+          vorstellungEntfernen: false, 
+          filmBildVisible: false,
+          vorstellungBildVisible:false,
+          nochNichtEntfernt: false,
+          entfernt: false,
+        })
+       console.log(Fehlerausgabe) 
+        
       })
+
 
       getAllVorstellungenAPI.getAllVorstellungenAPI().then((response)=>{
         let data = response.data[1]
@@ -480,8 +499,8 @@ handleReaktivierung(event){
 
 
         {this.state.entfernt?
-        <div>
-          <h3>{this.state.wasEntferntWurde} wurde erfolgreich {this.state.deOderReAktivierung}</h3>
+        <div className="ErfolgreichFilm"><div className="LangeWIdth">
+          <h3>{this.state.wasEntferntWurde} wurde erfolgreich {this.state.deOderReAktivierung}</h3></div>
           <button className="DESIGNButton" onClick={this.restartProcess}>Weitere Filme/Vorstellungen re/deaktivieren</button>
           
           {this.renderRedirect()}
@@ -489,6 +508,15 @@ handleReaktivierung(event){
 
 
         </div>:null}
+        {
+              this.state.Fehler403? <div className ="SonderMeldung"><div className ="DESIGNHeadline3"> Bitte Logen Sie sich erneut an&emsp; 
+                            
+              </div><br/>
+              <Link className="DESIGNButton" to={"/login"}>
+                Zum Login
+              </Link>
+              </div>: null
+            }
         
       
       

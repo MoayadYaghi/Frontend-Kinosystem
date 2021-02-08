@@ -5,24 +5,87 @@ import "./FilmDetails.scss";
 import { Redirect } from "react-router-dom";
 
 class FilmDetails extends React.Component {
-  constructor(props) {
-    super(props);
+    constructor(props) {
+        super(props);
 
-    let wholeWeek = [];
-    let today = new Date();
-    let weekDay = today.getDay();
-    let add = 0;
-    for (let i = 0; i < 6; i++) {
-      let monat = today.getMonth() + 1;
+        let wholeWeek = [];
+        let today = new Date();
+        let weekDay = today.getDay();
+        let add = 0;
+        for(let i=0; i<6; i++) {
+            let monat = today.getMonth() + 1;
 
-      let tag = today.getDate();
-      if (tag < 10) {
-        tag = "0" + tag;
-      }
-      if (monat < 10) {
-        monat = "0" + monat;
-      }
-      let date = tag + "." + monat + "." + today.getFullYear();
+            let tag = today.getDate();
+            if(tag<10){
+                tag = "0" + tag;
+            }
+            if(monat<10){
+                monat = "0" + monat;
+            }
+            let date = tag + '.' + monat + '.' + today.getFullYear();
+
+            add = 1;
+            today.setDate(today.getDate()+add);
+            wholeWeek.push(date);
+        }
+
+        this.state = {
+            film: "",
+            vorstellungen: [],
+            weekDates: wholeWeek,
+            weekDay: weekDay,
+            clickedVorstellung: null,
+            nextButton: "",
+            redirect: false
+        };
+        this.showNext = this.showNext.bind(this);
+        this.setRedirect = this.setRedirect.bind(this);
+    }
+    componentDidMount() {
+        let url = window.location.href;
+        let filmId = url.split("/")[4];
+        FilmById.filmById(filmId).then((response) => {
+            this.setState({film: response.data});
+        })
+        VorstellungByFilm.vorstellungByFilm(filmId).then((response) => {
+            console.log(response)
+
+            let vorstellungenNaechsteWoche = [];
+            let alleVorstellungenAktiv = [];
+            let dat;
+            for(let vorstellung in response.data) {
+                let startZeit = response.data[vorstellung].startZeit;
+                let split = startZeit.split("-");
+                let jahr = split[0];
+                let monat = split[1];
+                let tag = split[2].split("T")[0];
+                let uhrzeit = split[2].split("T")[1].split(".")[0];
+
+
+                let datum = tag + "." + monat + "." + jahr;
+                for(dat in this.state.weekDates) {
+                    if(this.state.weekDates[dat] == datum) {
+                        alleVorstellungenAktiv.push({datum: datum, uhrzeit: uhrzeit, kinosaalId: response.data[vorstellung].saal.id, vorstellungId: response.data[vorstellung].id})
+
+                    }
+                }
+            } 
+            for(dat in this.state.weekDates) {
+
+                let vorst;
+                let vorstellungZuDatum = [];
+                for(vorst in alleVorstellungenAktiv) {
+                    if(this.state.weekDates[dat] == alleVorstellungenAktiv[vorst].datum) {
+                        vorstellungZuDatum.push({uhrzeit: alleVorstellungenAktiv[vorst].uhrzeit, kinosaalId: alleVorstellungenAktiv[vorst].kinosaalId, vorstellungId: alleVorstellungenAktiv[vorst].vorstellungId});
+
+                    }
+                }
+                vorstellungenNaechsteWoche.push({datum: this.state.weekDates[dat], vorstellung: vorstellungZuDatum});
+            }
+            this.setState({vorstellungen: vorstellungenNaechsteWoche});
+
+        })
+    }
 
       add = 1;
       today.setDate(today.getDate() + add);

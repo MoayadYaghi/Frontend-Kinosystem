@@ -33,6 +33,8 @@ class Sitzplatzreservierung extends Component {
       redirect: false,
       TicketID: "",
       snacksSichtbar: false,
+      Fehler403: false
+
     };
     this.selectSitz = this.selectSitz.bind(this);
     this.addToInput = this.addToInput.bind(this);
@@ -72,26 +74,38 @@ class Sitzplatzreservierung extends Component {
           );
           id++;
         }
-        saalStruktur.push(reihe);
-      }
-      this.setState({ saalStruktur: saalStruktur });
-      SitzByVorstellung.sitzeByVorstellung(vorstellungId).then((response) => {
-        console.log(response);
-        let alleSitze = response.data;
-        let belegtSitze = [];
-        let freiSitze = [];
-        for (let sitz in alleSitze) {
-          if (alleSitze[sitz].isBesetzt === true) {
-            belegtSitze.push({
-              reihe: alleSitze[sitz].sitz.reihe,
-              spalte: alleSitze[sitz].sitz.spalte,
-            });
-          } else {
-            freiSitze.push({
-              reihe: alleSitze[sitz].sitz.reihe,
-              spalte: alleSitze[sitz].sitz.spalte,
-              id: alleSitze[sitz].sitz.id,
-            });
+        this.setState({saalStruktur: saalStruktur});
+        SitzByVorstellung.sitzeByVorstellung(vorstellungId).then((response) => {
+          console.log(response)
+          let alleSitze = response.data;
+          let belegtSitze = [];
+          let freiSitze = [];
+          for(let sitz in alleSitze) {
+            if(alleSitze[sitz].isBesetzt == true) {
+              belegtSitze.push({reihe: alleSitze[sitz].sitz.reihe, spalte: alleSitze[sitz].sitz.spalte});
+            }
+            else {
+              freiSitze.push({reihe: alleSitze[sitz].sitz.reihe, spalte: alleSitze[sitz].sitz.spalte, id: alleSitze[sitz].sitz.id, barriereFrei: alleSitze[sitz].sitz.barriereFrei});
+            }
+          }
+          this.setState({frei: freiSitze});
+          this.setState({belegt: belegtSitze});
+          for(let barriere in freiSitze) {
+            if(freiSitze[barriere].barriereFrei == true) {
+              let sitz = freiSitze[barriere];
+              let reihe = sitz.reihe;
+              let spalte = sitz.spalte;
+              let sitzId = ((reihe - 1) * this.state.spaltenAnzahl) + spalte - 1;
+              document.getElementById(sitzId).style.backgroundColor = '#adfa79';
+            }
+          }
+          for(let belegt in belegtSitze) {
+            let sitz = belegtSitze[belegt];
+            let reihe = sitz.reihe;
+            let spalte = sitz.spalte;
+            let sitzId = ((reihe - 1) * this.state.spaltenAnzahl) + spalte - 1;
+            document.getElementById(sitzId).style.backgroundColor = 'red';
+            document.getElementById(sitzId).disabled = true;
           }
         }
         this.setState({ frei: freiSitze });
@@ -118,31 +132,33 @@ class Sitzplatzreservierung extends Component {
     }
     let spalte = id;
     let sitzeBelegt = this.state.sitzeGewaehlt;
-    if (event.target.style.backgroundColor === "blue") {
-      event.target.style.backgroundColor = "green";
-      for (let sitz in sitzeBelegt) {
-        if (
-          sitzeBelegt[sitz].reihe === reihe &&
-          sitzeBelegt[sitz].spalte === spalte
-        ) {
+    let alleFreiSitze = this.state.frei;
+    if(event.target.style.backgroundColor == 'blue' || event.target.style.backgroundColor == 'rgb(101, 219, 255)') {
+      event.target.style.backgroundColor = 'green';
+      for(let barriere in alleFreiSitze) {
+        if(alleFreiSitze[barriere].reihe == reihe && alleFreiSitze[barriere].spalte == spalte && alleFreiSitze[barriere].barriereFrei == true) {
+          event.target.style.backgroundColor = '#adfa79';
+        }
+      }
+      for(let sitz in sitzeBelegt) {
+        if(sitzeBelegt[sitz].reihe == reihe && sitzeBelegt[sitz].spalte == spalte) {
           sitzeBelegt.splice(parseInt(sitz, 10), 1);
           break;
         }
       }
-      this.setState({ sitzeGewaehlt: sitzeBelegt });
-      this.setState({
-        normal: 0,
-        kind: 0,
-        student: 0,
-        senior: 0,
-        behindert: 0,
-        begleitperson: 0,
-      });
-      this.setState({ errorSichtbar: false });
-      this.setState({ warenkorbSichtbar: false });
-    } else {
-      event.target.style.backgroundColor = "blue";
-      let sitz = { reihe: reihe, spalte: spalte };
+      this.setState({sitzeGewaehlt : sitzeBelegt});
+      this.setState({normal : 0, kind: 0, student: 0, senior: 0, behindert: 0, begleitperson: 0});
+      this.setState({errorSichtbar: false});
+      this.setState({warenkorbSichtbar: false});
+    }
+    else {
+      event.target.style.backgroundColor = 'blue';
+      for(let barriere in alleFreiSitze) {
+        if(alleFreiSitze[barriere].reihe == reihe && alleFreiSitze[barriere].spalte == spalte && alleFreiSitze[barriere].barriereFrei == true) {
+          event.target.style.backgroundColor = '#65dbff';
+        }
+      }
+      let sitz = {reihe: reihe, spalte: spalte};
       sitzeBelegt.push(sitz);
       this.setState({ sitzeGewaehlt: sitzeBelegt });
       this.setState({ errorSichtbar: false });
@@ -252,27 +268,41 @@ class Sitzplatzreservierung extends Component {
           }
         }
       }
-      for (let i in sitzIds) {
+      for(let i in sitzIds) {
         CreateNewTicket.createNewTicket(sitzIds[i], vorstellungId);
       }
       //this.setState({redirect: true});
     }
 
-    console.log(sitzIds, vorstellungId);
-    for (let i in sitzIds) {
-      console.log(sitzIds[i], vorstellungId);
-      CreateNewTicket.createNewTicket(sitzIds[i], vorstellungId).then((res) =>
-        console.log(res)
-      );
-      GetWarenKorbTicket.getWarenKorbTicketID(sitzIds[i], vorstellungId).then(
-        (res) => {
-          console.log(res);
-          this.setState({ TicketID: res.data });
-          TicketID = res.data;
-          console.log(TicketID);
+    console.log(sitzIds, vorstellungId)
+    for(let i in sitzIds) {
+      console.log(sitzIds[i], vorstellungId)
+      CreateNewTicket.createNewTicket(sitzIds[i], vorstellungId).then(res => console.log(res))
+      GetWarenKorbTicket.getWarenKorbTicketID(sitzIds[i], vorstellungId).then(res => {console.log(res)
+        
+        this.setState({TicketID: res.data})
+         TicketID = res.data
+       console.log(TicketID)
+        
+
+      } )
+      .catch(err => {console.log(err)
+        var Fehler = err.toString()
+        var Fehlerausgabe = Fehler.substring(39,42)
+        if(Fehlerausgabe === "403"){
+          console.log("Bitte neu anmelden")
+          this.setState({Fehler403: true})
+          sessionStorage.removeItem('token')
         }
-      );
-    }
+        this.setState({
+          warenkorbSichtbar: false,
+          errorSichtbar: false,
+          redirect: false,
+          snacksSichtbar: false,
+        })
+    })
+  }
+    
     setTimeout(() => {
       for (let i = 0; i < this.state.TicketID.length; i++) {
         PostWarenKorbTicket.postwWarenKorbTicketID(
@@ -285,11 +315,16 @@ class Sitzplatzreservierung extends Component {
     // var TicketID = 173
     //PostWarenKorbTicket.postwWarenKorbTicketID(this.state.TicketID).then(res => console.log(res))
 
-    this.setState({ redirect: true });
-  }
 
+ 
+    sessionStorage.setItem('TicketID', this.state.TicketID)
+
+
+
+       //this.setState({redirect: true});
+
+  }
   render() {
-    const { snacksSichtbar } = this.state;
     return (
       <div className="SitzplanSeite">
         <div className="Sitzplan">
@@ -326,6 +361,32 @@ class Sitzplatzreservierung extends Component {
                       </tr>
                     );
                   })}
+              </tbody>
+            </table>
+          </div>
+          <div  style={{display: "flex", alignContent: "center", justifyContent: "center", marginTop:"2rem"}}>
+            <table className="ReactTable">
+              <tbody>
+                <tr>
+                  <td className="TableElement"><button id = "frei" disabled="true" style={{borderColor: 'black',borderRadius: "5px", backgroundColor: 'green', width: "1rem", height: "1rem"}}></button></td>
+                  <td className="TableElement">freie Sitze</td>
+                </tr>
+                <tr>
+                  <td className="TableElement"><button id = "rollstuhl" disabled="true" style={{borderColor: 'black',borderRadius: "5px", backgroundColor: '#adfa79', width: "1rem", height: "1rem"}}></button></td>
+                  <td className="TableElement">Rollstuhl gerechter Sitz</td>
+                </tr>
+                <tr>
+                  <td className="TableElement"><button id = "belegt" disabled="true" style={{borderColor: 'black',borderRadius: "5px", backgroundColor: 'red', width: "1rem", height: "1rem"}}></button></td>
+                  <td className="TableElement">belegte Sitze</td>
+                </tr>
+                <tr>
+                  <td className="TableElement"><button id = "gewaehlt" disabled="true" style={{borderColor: 'black',borderRadius: "5px", backgroundColor: 'blue', width: "1rem", height: "1rem"}}></button></td>
+                  <td className="TableElement">gewählter Sitz</td>
+                </tr>
+                <tr>
+                  <td className="TableElement"><button id = "gewaehltRollstuhl" disabled="true" style={{borderColor: 'black',borderRadius: "5px", backgroundColor: '#65dbff', width: "1rem", height: "1rem"}}></button></td>
+                  <td className="TableElement">gewählter Rollstuhl gerechter Sitz</td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -555,17 +616,32 @@ class Sitzplatzreservierung extends Component {
             </table>
           </div>
 
-          {this.state.warenkorbSichtbar ? (
-            <div className="errorNachricht">{this.state.errorWarenkorb}</div>
-          ) : (
-            <br></br>
-          )}
-          {this.renderRedirect()}
-          <button onClick={this.addWarenkorb}>
-            {" "}
-            Zum Warenkorb hinzufügen{" "}
-          </button>
-        </div>
+          { this.state.warenkorbSichtbar 
+                    ? <div className="errorNachricht">{this.state.errorWarenkorb}</div>
+                    : <br></br>
+                }
+
+{
+              this.state.Fehler403? <div className ="SonderMeldung"><div className ="DESIGNHeadline3"> Bitte Logen Sie sich erneut an&emsp; 
+                            
+              </div><br/>
+              <Link className="DESIGNButton" to="/login">
+                Zum Login
+              </Link>
+              </div>:(
+
+
+
+           this.renderRedirect(),
+           <div className ="ButtonAlign">
+          <button className="RestButton" onClick={this.addWarenkorb}> Zum Warenkorb hinzufügen </button>
+          </div>
+
+          
+              )}
+
+
+        </div> 
       </div>
     );
   }
