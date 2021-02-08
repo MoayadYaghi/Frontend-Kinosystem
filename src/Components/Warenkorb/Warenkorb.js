@@ -56,6 +56,8 @@ class Warenkorb extends Component {
     /* this.setState({[name]: Pass}); */
   }
 
+  
+
   componentDidMount(){
     var  tokenInfo = sessionStorage.getItem('token')
     var tickets
@@ -197,7 +199,7 @@ class Warenkorb extends Component {
 
 
                       </div >
-                      {   this.state.Ticket.map( (tickets) => (
+                      {   this.state.Ticket.map((tickets)=>(
                         <div className="DESIGNTextField"><br/>
                     <div className="KinoTicket"> <div className ="WarenkorbTicketReihe"><div className="BeschreibungQWarenkorb">
                         Ticket: </div>{tickets.vorstellung.film.name
@@ -392,7 +394,7 @@ class Warenkorb extends Component {
             </div>
             //):null}
   
-          ):null})
+          ):null}
 {
               this.state.ErrorMessage? <div> Fehler bei der Anmeldung, überprüfen Sie Ihre Eingaben </div>: null
             }
