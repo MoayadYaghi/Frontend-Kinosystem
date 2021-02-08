@@ -1,9 +1,10 @@
 import axios from "axios";
+import LocalURL from '../constants';
 
 class GetAllVorstellungenAPI {
   getAllVorstellungenAPI() {
     const Get_All_Vorstellungen_API_URL =
-      ("http://localhost:8081/vorstellung");
+      (LocalURL + "vorstellung");
 
     return axios.get(Get_All_Vorstellungen_API_URL);
   }

@@ -76,11 +76,20 @@ class Sitzplatzreservierung extends Component {
               belegtSitze.push({reihe: alleSitze[sitz].sitz.reihe, spalte: alleSitze[sitz].sitz.spalte});
             }
             else {
-              freiSitze.push({reihe: alleSitze[sitz].sitz.reihe, spalte: alleSitze[sitz].sitz.spalte, id: alleSitze[sitz].sitz.id});
+              freiSitze.push({reihe: alleSitze[sitz].sitz.reihe, spalte: alleSitze[sitz].sitz.spalte, id: alleSitze[sitz].sitz.id, barriereFrei: alleSitze[sitz].sitz.barriereFrei});
             }
           }
           this.setState({frei: freiSitze});
           this.setState({belegt: belegtSitze});
+          for(let barriere in freiSitze) {
+            if(freiSitze[barriere].barriereFrei == true) {
+              let sitz = freiSitze[barriere];
+              let reihe = sitz.reihe;
+              let spalte = sitz.spalte;
+              let sitzId = ((reihe - 1) * this.state.spaltenAnzahl) + spalte - 1;
+              document.getElementById(sitzId).style.backgroundColor = '#adfa79';
+            }
+          }
           for(let belegt in belegtSitze) {
             let sitz = belegtSitze[belegt];
             let reihe = sitz.reihe;
@@ -103,8 +112,14 @@ class Sitzplatzreservierung extends Component {
     }
     let spalte = id;
     let sitzeBelegt = this.state.sitzeGewaehlt;
-    if(event.target.style.backgroundColor == 'blue') {
+    let alleFreiSitze = this.state.frei;
+    if(event.target.style.backgroundColor == 'blue' || event.target.style.backgroundColor == 'rgb(101, 219, 255)') {
       event.target.style.backgroundColor = 'green';
+      for(let barriere in alleFreiSitze) {
+        if(alleFreiSitze[barriere].reihe == reihe && alleFreiSitze[barriere].spalte == spalte && alleFreiSitze[barriere].barriereFrei == true) {
+          event.target.style.backgroundColor = '#adfa79';
+        }
+      }
       for(let sitz in sitzeBelegt) {
         if(sitzeBelegt[sitz].reihe == reihe && sitzeBelegt[sitz].spalte == spalte) {
           sitzeBelegt.splice(parseInt(sitz, 10), 1);
@@ -118,6 +133,11 @@ class Sitzplatzreservierung extends Component {
     }
     else {
       event.target.style.backgroundColor = 'blue';
+      for(let barriere in alleFreiSitze) {
+        if(alleFreiSitze[barriere].reihe == reihe && alleFreiSitze[barriere].spalte == spalte && alleFreiSitze[barriere].barriereFrei == true) {
+          event.target.style.backgroundColor = '#65dbff';
+        }
+      }
       let sitz = {reihe: reihe, spalte: spalte};
       sitzeBelegt.push(sitz);
       this.setState({sitzeGewaehlt: sitzeBelegt});
@@ -269,7 +289,6 @@ class Sitzplatzreservierung extends Component {
 
   }
   render() {
-    const { snacksSichtbar } = this.state;
     return (
 
       
@@ -291,6 +310,32 @@ class Sitzplatzreservierung extends Component {
                     </tr>
                   );
                 })}
+              </tbody>
+            </table>
+          </div>
+          <div  style={{display: "flex", alignContent: "center", justifyContent: "center", marginTop:"2rem"}}>
+            <table className="ReactTable">
+              <tbody>
+                <tr>
+                  <td className="TableElement"><button id = "frei" disabled="true" style={{borderColor: 'black',borderRadius: "5px", backgroundColor: 'green', width: "1rem", height: "1rem"}}></button></td>
+                  <td className="TableElement">freie Sitze</td>
+                </tr>
+                <tr>
+                  <td className="TableElement"><button id = "rollstuhl" disabled="true" style={{borderColor: 'black',borderRadius: "5px", backgroundColor: '#adfa79', width: "1rem", height: "1rem"}}></button></td>
+                  <td className="TableElement">Rollstuhl gerechter Sitz</td>
+                </tr>
+                <tr>
+                  <td className="TableElement"><button id = "belegt" disabled="true" style={{borderColor: 'black',borderRadius: "5px", backgroundColor: 'red', width: "1rem", height: "1rem"}}></button></td>
+                  <td className="TableElement">belegte Sitze</td>
+                </tr>
+                <tr>
+                  <td className="TableElement"><button id = "gewaehlt" disabled="true" style={{borderColor: 'black',borderRadius: "5px", backgroundColor: 'blue', width: "1rem", height: "1rem"}}></button></td>
+                  <td className="TableElement">gewählter Sitz</td>
+                </tr>
+                <tr>
+                  <td className="TableElement"><button id = "gewaehltRollstuhl" disabled="true" style={{borderColor: 'black',borderRadius: "5px", backgroundColor: '#65dbff', width: "1rem", height: "1rem"}}></button></td>
+                  <td className="TableElement">gewählter Rollstuhl gerechter Sitz</td>
+                </tr>
               </tbody>
             </table>
           </div>
