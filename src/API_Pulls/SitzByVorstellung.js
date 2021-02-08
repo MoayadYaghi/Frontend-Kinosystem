@@ -7,7 +7,7 @@ class sitzeByVorstellung {
 
      // ("http://localhost:8081/sitz/vorstellung/" + vorstellungId);
 
-      (LocalURL + "sitze/vorstellung/" + vorstellungId);
+      (LocalURL + "sitz/vorstellung/" + vorstellungId);
 
 
     return axios.get(Get_Sitze_By_Vorstellung);

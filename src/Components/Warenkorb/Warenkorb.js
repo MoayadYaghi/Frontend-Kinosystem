@@ -123,7 +123,7 @@ class Warenkorb extends Component {
     }
     )*/
 
-    getWarenkorbInfos.getSnacks().then((response) => {
+    /* getWarenkorbInfos.getSnacks().then((response) => {
     console.log(response)
     this.setState({
       SnackListe: response.data
@@ -133,7 +133,7 @@ class Warenkorb extends Component {
 
     getWarenkorbInfos.getDrink().then((response) => 
     console.log(response)
-    )
+    ) */
     //this.setState({angemeldet: true}) //TESTING
     if(this.state.Ticket === "Warenkorb leer" ){
      this.setState({angemeldet: true})

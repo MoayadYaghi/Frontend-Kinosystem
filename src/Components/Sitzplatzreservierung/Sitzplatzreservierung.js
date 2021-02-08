@@ -433,7 +433,7 @@ class Sitzplatzreservierung extends Component {
 
 
 
-           this.renderRedirect(),
+          this.renderRedirect(),
            <div className ="ButtonAlign">
           <button className="RestButton" onClick={this.addWarenkorb}> Zum Warenkorb hinzufügen </button>
           </div>
