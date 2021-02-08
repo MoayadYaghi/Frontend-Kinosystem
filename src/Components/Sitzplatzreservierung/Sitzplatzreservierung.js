@@ -28,13 +28,18 @@ class Sitzplatzreservierung extends Component {
       belegt: [],
       frei: [],
       error: "Es wurden nur 0 Sitze gewählt",
+      errorWarenkorb: "Bitte wähle für jeden gewählten Platz eine Ticketart",
+      warenkorbSichtbar: false,
       errorSichtbar: false,
       redirect: false,
       TicketID: "",
+      snacksSichtbar: false
+
     };
     this.selectSitz = this.selectSitz.bind(this);
     this.addToInput = this.addToInput.bind(this);
     this.addWarenkorb = this.addWarenkorb.bind(this);
+    this.addSnacks = this.addSnacks.bind(this);
   }
   componentDidMount() {
 
@@ -108,6 +113,7 @@ class Sitzplatzreservierung extends Component {
       this.setState({sitzeGewaehlt : sitzeBelegt});
       this.setState({normal : 0, kind: 0, student: 0, senior: 0, behindert: 0, begleitperson: 0});
       this.setState({errorSichtbar: false});
+      this.setState({warenkorbSichtbar: false});
     }
     else {
       event.target.style.backgroundColor = 'blue';
@@ -115,6 +121,7 @@ class Sitzplatzreservierung extends Component {
       sitzeBelegt.push(sitz);
       this.setState({sitzeGewaehlt: sitzeBelegt});
       this.setState({errorSichtbar: false});
+      this.setState({warenkorbSichtbar: false});
     }
     let errorNachricht = "Es wurden nur " + sitzeBelegt.length + " Sitze gewählt";
     this.setState({error: errorNachricht});
@@ -168,6 +175,7 @@ class Sitzplatzreservierung extends Component {
           break;
       }
       this.setState({errorSichtbar: false});
+      this.setState({warenkorbSichtbar: false});
     }
   }
   renderRedirect = () => {
@@ -176,23 +184,39 @@ class Sitzplatzreservierung extends Component {
     }
   }
 
-  
+
+  addSnacks() {
+    this.setState({snacksSichtbar: true});
+  }
+
 
   addWarenkorb() {
     let vorstellungId = this.state.vorstellungId;
     let sitzeGewaehlt = this.state.sitzeGewaehlt;
-    console.log(sitzeGewaehlt)
+
+    let alleTicket = this.state.normal + this.state.kind + this.state.student + this.state.senior + this.state.behindert + this.state.begleitperson;
+
     let alleSitze = this.state.frei;
     let sitzIds= [];
 
-    for(let sitz in sitzeGewaehlt) {
-      for(let frei in alleSitze) {
-        if(sitzeGewaehlt[sitz].reihe == alleSitze[frei].reihe && sitzeGewaehlt[sitz].spalte == alleSitze[frei].spalte) {
-          sitzIds.push(alleSitze[frei].id);
-          console.log(sitzIds)
+
+   
+
+    if(alleTicket == sitzeGewaehlt.length) {
+      for(let sitz in sitzeGewaehlt) {
+        for(let frei in alleSitze) {
+          if(sitzeGewaehlt[sitz].reihe == alleSitze[frei].reihe && sitzeGewaehlt[sitz].spalte == alleSitze[frei].spalte) {
+            sitzIds.push(alleSitze[frei].id);
+          }
+
         }
       }
+      for(let i in sitzIds) {
+        CreateNewTicket.createNewTicket(sitzIds[i], vorstellungId);
+      }
+      //this.setState({redirect: true});
     }
+
     console.log(sitzIds, vorstellungId)
     for(let i in sitzIds) {
       console.log(sitzIds[i], vorstellungId)
@@ -219,13 +243,17 @@ class Sitzplatzreservierung extends Component {
 
     //PostWarenKorbTicket.postwWarenKorbTicketID(this.state.TicketID).then(res => console.log(res))
 
-    //this.setState({redirect: true});
+
+ 
     sessionStorage.setItem('TicketID', this.state.TicketID)
 
 
-    
+
+       //this.setState({redirect: true});
+
   }
   render() {
+    const { snacksSichtbar } = this.state;
     return (
 
       
@@ -328,10 +356,21 @@ class Sitzplatzreservierung extends Component {
             </table>
           </div>
 
+          { this.state.warenkorbSichtbar 
+                    ? <div className="errorNachricht">{this.state.errorWarenkorb}</div>
+                    : <br></br>
+                }
+
+
            {this.renderRedirect()} 
            <div className ="ButtonAlign">
           <button className="RestButton" onClick={this.addWarenkorb}> Zum Warenkorb hinzufügen </button>
           </div>
+
+          
+          
+
+
         </div>
       </div>
     );

@@ -32,6 +32,13 @@ class FilmSuche extends Component {
       wasEntferntWurde:"",
       deOderReAktivierung:"deaktiviert",
       redirect:false,
+      aktiveVorstellungenSchoeneAnzeige:[],
+      IdDerSchönenVorstellungsanzeige:[],
+      IdDerInaktivenSchönenVorstellungsanzeige:[],
+      inaktiveVorstellungenSchoeneAnzeige:[],
+      vorstellungenImDropdown:[],
+      filmImDropdown:[],
+      inaktiveFilme:[],
       
      
 
@@ -53,7 +60,7 @@ class FilmSuche extends Component {
 
   setRedirect = (event) => {
     let id = event.target.id 
-    console.log(id)
+   /*  console.log(id) */
     if (id="1"){
           this.setState({redirect: true});
     }
@@ -106,22 +113,41 @@ class FilmSuche extends Component {
 handleReaktivierung(event){
   if (event.target.id == "vorstellung"){
     this.setState({vorstellungReaktivieren:1})
+    this.handleVorstellungSollEntferntWerden() 
+    this.setState({vorstellungenImDropdown:this.state.inaktiveVorstellungenSchoeneAnzeige})
   }  
   if (event.target.id == "film"){
     this.setState({filmReaktivieren:1})
+    this.handleFilmSollEntferntWerden()
+    this.setState({filmImDropdown:this.state.inaktiveFilme})
   }
 }
 
   handleFilmSollEntferntWerden(event){
-    event.preventDefault();
+     try{ 
+      if (event.target.id =="deaktivieren"){
+      this.setState({filmReaktivieren:0,
+        filmImDropdown:this.state.aktiveFilme})/////////////////////////////////////////////
+    } 
+   
+      event.preventDefault();
+    }catch(e){}
       this.setState({filmEntfernen:true})
       this.setState({vorstellungEntfernen:false})
   }
       
   handleVorstellungSollEntferntWerden(event) {
+    try{
+       if (event.target.id =="deaktivieren"){
+      this.setState({vorstellungReaktivieren:0,
+      vorstellungenImDropdown:this.state.aktiveVorstellungenSchoeneAnzeige})
+      
+    } 
     event.preventDefault();
+  }catch(e){}
       this.setState({vorstellungEntfernen:true})
       this.setState({filmEntfernen:false})
+  
 
     }
   
@@ -131,7 +157,7 @@ handleReaktivierung(event){
     let filmReaktivieren = this.state.filmReaktivieren
     /* console.log(filmId)
     console.log(this.state.choosenMovie) */
-     alert("Film wurde entfernt") 
+    /*  alert("Film wurde entfernt")  */
      FilmInaktivSetzenAPI.vorstellungInaktivieren(filmId, filmReaktivieren)
      if (filmReaktivieren){
        this.erfolgreichreaktiviert("film")
@@ -144,14 +170,13 @@ handleReaktivierung(event){
   }  
   handleVorstellungEntfernen(event){
     let vorstellungId=this.state.value2;
-    let vorstellungReaktivieren = this.state.vorstellungReaktivieren
-    event.preventDefault();
-/*     console.log(this.state.choosenVorstellung)
-    console.log(this.state.value2)
-    console.log(this.state.vorstellungId) */
-   /*  console.log(vorstellungId)
-    console.log(vorstellungReaktivieren) */
-    VorstellungInaktivSetzenAPI.vorstellungInaktivieren(vorstellungId, vorstellungReaktivieren)/* .then(res=>console.log(res))*/
+    vorstellungId= vorstellungId.split("(",2)
+    vorstellungId[1]=vorstellungId[1].replace(")", "")
+    let vorstellungReaktivieren = this.state.vorstellungReaktivieren 
+      event.preventDefault();
+
+
+    VorstellungInaktivSetzenAPI.vorstellungInaktivieren(vorstellungId[1], vorstellungReaktivieren)/* .then(res=>console.log(res))*/
     if (vorstellungReaktivieren){
       this.erfolgreichreaktiviert("vorstellung")
     }else{
@@ -168,8 +193,16 @@ handleReaktivierung(event){
         //console.log(this.state.value)
         this.setState({choosenMovie:this.state.aktiveFilme[i]})
         /* console.log(this.state.choosenMovie) */
-      }//if
+      }//if 
     }//for
+
+    for (let k=0; k<this.state.inaktiveFilme.length; k++){
+      if (event.target.value == this.state.inaktiveFilme[k].name){
+        //console.log(this.state.value)
+        this.setState({choosenMovie:this.state.inaktiveFilme[k]})
+        /* console.log(this.state.choosenMovie) */
+      }//if
+    }//for  
   
     this.setState({filmBildVisible:true})
   }  
@@ -193,23 +226,153 @@ handleReaktivierung(event){
       vorstellungBildVisible:false,
       entfernt:false,
       deOderReAktivierung: "deaktiviert"})
+      window.location.href="/filmentfernen"
   }
 
   componentDidMount(){
+
       getAllFilmAPI.getAllFilmAPI().then((response)=>{
-        let data =response.data;
-         console.log(data);
-        this.setState({aktiveFilme:data})
-        /* console.log(this.state.aktiveFilme) */
+        let aktiveFilme =response.data[0];
+        let inaktiveFilme =response.data[1];
+    /*      console.log(aktiveFilme);
+         console.log(inaktiveFilme); */
+        this.setState({aktiveFilme:aktiveFilme,
+        inaktiveFilme:inaktiveFilme})
       })
 
       getAllVorstellungenAPI.getAllVorstellungenAPI().then((response)=>{
-        let data = response.data
-        console.log(data)
+        let data = response.data[1]
+        let vorstellungsFilmnameZeitDatum="";
+        let vorstellungsZeitString="";
+        let vorstungsObjekt=[];
+        let vorstellungZeitObjektDay =[];
+        let vorstellungZeitObjektUrhzeit =[];
+        let vorstellungZeitObjektHaelfte =[];
+        let vorstellungZeitObjektDate=[];
+        let IdDerSchönenVorstellungsanzeige=[];
+        let IdDerSchönenVorstellungsanzeigeString="";
+        
+       /*  console.log(data) */
         this.setState({aktiveVorstellungen: data})
 
-      })
-  }
+          for (let i=0; i<data.length ; i++){
+          vorstellungsFilmnameZeitDatum = data[i].film.name
+          vorstellungsFilmnameZeitDatum +=  " in ";
+          vorstellungsFilmnameZeitDatum += data[i].saal.name
+          vorstellungsFilmnameZeitDatum +=  " am ";
+          vorstellungsZeitString = data[i].startZeit // Die Startzeit in Form von "2021-10-06T16:15:00.000+00:00"
+
+
+          vorstellungZeitObjektHaelfte = vorstellungsZeitString.split("T", 2)
+          vorstellungZeitObjektDate = vorstellungZeitObjektHaelfte[0].split("-", 3)
+          
+
+          vorstellungZeitObjektUrhzeit = vorstellungZeitObjektHaelfte[1].split(":", 3) // meine Uhrzeit ist auf der 0 und 1 gespeichert 
+
+         /*  vorstellungZeitObjektDay= vorstellungZeitObjektYearAndMonth[3].split("T") */
+
+          vorstellungsFilmnameZeitDatum +=vorstellungZeitObjektDate[2] + "."
+          vorstellungsFilmnameZeitDatum +=vorstellungZeitObjektDate[1] + "."
+          vorstellungsFilmnameZeitDatum +=vorstellungZeitObjektDate[0]  
+          vorstellungsFilmnameZeitDatum += " um "
+          vorstellungsFilmnameZeitDatum += vorstellungZeitObjektUrhzeit[0] +":"
+          vorstellungsFilmnameZeitDatum += vorstellungZeitObjektUrhzeit[1] +" ("
+          vorstellungsFilmnameZeitDatum += data[i].id +")"
+          
+          IdDerSchönenVorstellungsanzeigeString= data[i].id;
+
+          IdDerSchönenVorstellungsanzeige.push(IdDerSchönenVorstellungsanzeigeString)
+          vorstungsObjekt.push(vorstellungsFilmnameZeitDatum)
+        }
+
+        this.setState({inaktiveVorstellungenSchoeneAnzeige: vorstungsObjekt,
+          IdDerInaktivenSchönenVorstellungsanzeige:IdDerSchönenVorstellungsanzeige})
+
+        //=============================================================================
+        //
+        //             Jetzt das selbe noch mal für die aktiven vorstellungen
+        //
+        //===========================================================================
+
+
+         data = response.data[0]
+         vorstellungsFilmnameZeitDatum="";
+         vorstellungsZeitString="";
+         vorstungsObjekt=[];
+         vorstellungZeitObjektDay =[];
+         vorstellungZeitObjektUrhzeit =[];
+         vorstellungZeitObjektHaelfte =[];
+         vorstellungZeitObjektDate=[];
+         IdDerSchönenVorstellungsanzeige=[];
+         IdDerSchönenVorstellungsanzeigeString="";
+        
+        /* console.log(data) */
+        this.setState({aktiveVorstellungen: data})
+
+          for (let i=0; i<data.length ; i++){
+          vorstellungsFilmnameZeitDatum = data[i].film.name
+          vorstellungsFilmnameZeitDatum +=  " in ";
+          vorstellungsFilmnameZeitDatum += data[i].saal.name
+          vorstellungsFilmnameZeitDatum +=  " am ";
+          vorstellungsZeitString = data[i].startZeit // Die Startzeit in Form von "2021-10-06T16:15:00.000+00:00"
+
+
+          vorstellungZeitObjektHaelfte = vorstellungsZeitString.split("T", 2)
+          vorstellungZeitObjektDate = vorstellungZeitObjektHaelfte[0].split("-", 3)
+          
+
+          vorstellungZeitObjektUrhzeit = vorstellungZeitObjektHaelfte[1].split(":", 3) // meine Uhrzeit ist auf der 0 und 1 gespeichert 
+
+         /*  vorstellungZeitObjektDay= vorstellungZeitObjektYearAndMonth[3].split("T") */
+
+          vorstellungsFilmnameZeitDatum +=vorstellungZeitObjektDate[2] + "."
+          vorstellungsFilmnameZeitDatum +=vorstellungZeitObjektDate[1] + "."
+          vorstellungsFilmnameZeitDatum +=vorstellungZeitObjektDate[0]  
+          vorstellungsFilmnameZeitDatum += " um "
+          vorstellungsFilmnameZeitDatum += vorstellungZeitObjektUrhzeit[0] +":"
+          vorstellungsFilmnameZeitDatum += vorstellungZeitObjektUrhzeit[1] +" ("
+          vorstellungsFilmnameZeitDatum += data[i].id +")"
+          
+          IdDerSchönenVorstellungsanzeigeString= data[i].id;
+
+          IdDerSchönenVorstellungsanzeige.push(IdDerSchönenVorstellungsanzeigeString)
+          vorstungsObjekt.push(vorstellungsFilmnameZeitDatum)
+        }
+
+        this.setState({aktiveVorstellungenSchoeneAnzeige: vorstungsObjekt,
+          IdDerSchönenVorstellungsanzeige:IdDerSchönenVorstellungsanzeige})
+
+
+
+        }//=> arrow function      
+      )//.then
+    
+    
+    
+    }//component did mount
+  
+
+
+  anzeigeTextWasEntfertWerdenSoll=()=>{
+    if (this.state.vorstellungEntfernen==true){
+      if(this.state.vorstellungReaktivieren==1){
+          return "Wähle die Vorstellung aus, die wieder ins Programm genommen werden soll"
+      }    
+      if(this.state.vorstellungReaktivieren==0){
+          return "Wähle die Vorstellung aus, die aus dem Programm genommen werden soll"
+      }
+    }
+    if (this.state.filmEntfernen==true){
+      if(this.state.filmReaktivieren==1){
+          return "Wähle den Film aus, der wieder ins Programm genommen werden soll"
+      }    
+      if(this.state.filmReaktivieren==0){
+          return "Wähle den Film aus, der aus dem Programm genommen werden soll"
+      }
+    } 
+      
+}
+ 
 
   render() {
     return (
@@ -219,14 +382,14 @@ handleReaktivierung(event){
           <div className ="doppelButton">
         
         
-        <button className ="DESIGNButton" onClick={this.handleFilmSollEntferntWerden}>Film deaktivieren</button>
-        <button className ="DESIGNButton" onClick={this.handleVorstellungSollEntferntWerden}>Vorstellung deaktivieren</button> 
+        <button id ="deaktivieren" className ="DESIGNButton" onClick={this.handleFilmSollEntferntWerden}>Film deaktivieren</button>
+        <button id ="deaktivieren" className ="DESIGNButton" onClick={this.handleVorstellungSollEntferntWerden}>Vorstellung deaktivieren</button> 
         
 
         </div>
         <div className ="doppelButton">
-        <button className ="DESIGNButton" onClick={this.handleReaktivierung}>Film reaktivieren</button>
-        <button className ="DESIGNButton" onClick={this.handleReaktivierung}>Vorstellung reaktivieren</button>
+        <button id="film" className ="DESIGNButton" onClick={this.handleReaktivierung}>Film reaktivieren</button>
+        <button id ="vorstellung" className ="DESIGNButton" onClick={this.handleReaktivierung}>Vorstellung reaktivieren</button>
               
        
         
@@ -243,14 +406,14 @@ handleReaktivierung(event){
       
       <div className="TextAlignMitte">
         <div className ="DESIGNHeadline3">
-          Wähle den Film aus, der aus dem Programm genommen werden soll
+        {this.anzeigeTextWasEntfertWerdenSoll()}{/* Wähle den Film aus, der aus dem Programm genommen werden soll */}
         </div></div>
         <div className="DropDownMitte"> {/* Dropdown für Filmauswahl */}
           <form onSubmit = {this.handleFilmEntfernen}>
             <label>
             <select className ="SelectGröße" value={this.state.value} onChange={this.handleChoosenMovie}>
             <option className ="DESIGNTextField" >--Select--</option>
-            {this.state.aktiveFilme.map((filme)=>
+            {this.state.filmImDropdown.map((filme)=>
               <option value={filme.name}>{filme.name}</option>
             )}
             </select>
@@ -282,16 +445,19 @@ handleReaktivierung(event){
         {/* {console.log("eine Vorstellung wird Entfernt")} */}
         	<div className="TextAlignMitte">
         <div className ="DESIGNHeadline3">
-          Wähle die Vorstellung aus, die aus dem Programm genommen werden soll
+    
+         {this.anzeigeTextWasEntfertWerdenSoll()} {/* Wähle die Vorstellung aus, die aus dem Programm genommen werden soll */}
         </div></div>
         <div className="DropDownMitte"> {/* Dropdown für Vorstellungsauswahl */}
           <form onSubmit = {this.handleVorstellungEntfernen}>
             <label>
-            <select  className ="SelectGröße" value={this.state.value2} onChange={this.handleChoosenVorstellung}>
-            <option className ="DESIGNTextField" value="--Select--">--Select--</option>
-            {this.state.aktiveVorstellungen.map((vorstellungen)=>
-              <option value={vorstellungen.id}>{vorstellungen.id}</option>
-            )}
+            <select className ="SelectGröße" value={this.state.value2} onChange={this.handleChoosenVorstellung}>
+            <option className ="DESIGNTextField" /* value="--Select--" */>--Select--</option>
+            {this.state.vorstellungenImDropdown.map((vorstellungen)=>  
+                  <option  value={vorstellungen}>{vorstellungen}</option>
+            
+            )}   {/* )}   */}
+          
             </select>
           </label>
           <div className="AuswahlBestätigungSubmit"> {/* Button um die Auswahl zu bestätigen */}

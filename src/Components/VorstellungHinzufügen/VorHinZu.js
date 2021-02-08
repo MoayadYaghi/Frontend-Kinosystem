@@ -21,15 +21,16 @@ class VorHinZu extends Component {
       filme:[],
       choosenMovie:[],
       value: 'Es wurde noch kein Film ausgewählt',
-      visible :false,
+      visible :true,
       visible2: false,
       blockVisible:false,
       dayAndMonth : [],
       yearCollection : [],
       allSaal: [],
       choosenSaal: 0,
-      day:0,
-      month:0,
+      choosenSaalId:0,
+      day:1,
+      month:1,
       year:2021,
       stunde:0,
       minute:0,
@@ -41,6 +42,8 @@ class VorHinZu extends Component {
       filmId:0,
       aktiv:0,
       grundpreis:0,
+      aktiveFilme:[],
+      inaktiveFilme:[],
     }
      this.handleChange = this.handleChange.bind(this);
      this.handleSaal = this.handleSaal.bind(this);
@@ -69,14 +72,14 @@ class VorHinZu extends Component {
 
     let data2 =[];
     let data3 =[];
-    getFilme.getAllFilmAPI().then((response )=> {
-      var data = response.data
-      this.setState({filme: response.data})
-      //console.log(response);
-      this.setState({Filme: data})
-      //console.log(this.state.filme.data)
-      this.setState({visible: true})
-      })
+    getFilme.getAllFilmAPI().then((response)=>{
+      let aktiveFilme =response.data[0];
+      let inaktiveFilme =response.data[1];
+  /*      console.log(aktiveFilme);
+       console.log(inaktiveFilme); */
+      this.setState({aktiveFilme:aktiveFilme,
+      inaktiveFilme:inaktiveFilme})
+    })
 
       for (let i=0; i<=1; i++){
         let data1 =[];
@@ -105,37 +108,29 @@ class VorHinZu extends Component {
 
   }
 
-/*    componentDidMount(){
-    let data1 =[];
-    let data2 =[]; */
-/*     for (let i=0; i<=1; i++){
-      
-       for(let i=1; i<=31; i++){ 
-              data1.push(i)
-            }
-        this.setState({dayAndMonth: data1})
-     } */
-        
-/*     do{
-      for(let i=2000; i<=2100; i++){
-        data2.push(i)
-      }
-      this.setState({year:data2})
-    }while(false) 
-  } */
 
   handleChange(event) {
     this.setState({value: event.target.value});
+    for(let i=0; i<this.state.aktiveFilme.length; i++){
+      if (event.target.value == this.state.aktiveFilme[i].name){
+        //console.log(this.state.value)
+        this.setState({choosenMovie:this.state.aktiveFilme[i]})
+        /* console.log(this.state.choosenMovie.bild) */
+      }//if
+    }//for
     
-    
-
-  
   }
 
   handleSaal(event){
-    this.setState({choosenSaal: event.target.value})
+    this.setState({choosenSaal : event.target.value})
     console.log(event.target.value)
-    console.log(this.state.choosenSaal)
+    for(let i=0; i<this.state.allSaal.length; i++){
+        if (event.target.value == this.state.allSaal[i].name){
+          let kinosaalId= this.state.allSaal[i].id;
+          this.setState({choosenSaalId:kinosaalId})
+    }
+    }
+  
   }
   handleDay(event){
     this.setState({day: event.target.value})
@@ -191,11 +186,11 @@ class VorHinZu extends Component {
       minute = this.state.minute
     }
     let startZeit = month+day+this.state.year+stunde+minute  
-    console.log(startZeit) 
+    //console.log(startZeit) 
     var filmId = this.state.choosenMovie.id
     var grundpreis = this.state.preis
     var aktiv = 1
-    var saal = this.state.saal
+    var saal = this.state.choosenSaalId
 /*     console.log(grundpreis, filmId, startZeit) */
     //this.setState({minute: event.target.value})
    /*  alert("film wurde hinzugefügt für "+ this.state.preis) */
@@ -221,7 +216,7 @@ class VorHinZu extends Component {
       if (this.state.value == this.state.filme[i].name){
         //console.log(this.state.value)
         this.setState({choosenMovie:this.state.filme[i]})
-        console.log(this.state.choosenMovie.bild)
+       /*  console.log(this.state.choosenMovie.bild) */
       }//if
     }//for
     this.setState({blockVisible: true})
@@ -253,7 +248,7 @@ class VorHinZu extends Component {
            <option value="">--select--</option>
            
 
-            {this.state.Filme.map((filme)=> (
+            {this.state.aktiveFilme.map((filme)=> (
               <option value={filme.name}>{filme.name}</option>
             ))
             }
@@ -299,7 +294,7 @@ class VorHinZu extends Component {
                         <select className ="selectVorhinzu" value={this.state.choosenSaal} onChange={this.handleSaal}>
                           <option value="--Select--">--Select--</option>
                             {this.state.allSaal.map((saal)=>(
-                                <option value={saal.id}> {saal.id}</option>
+                                <option value={saal.name}> {saal.name}</option>
                             ))
                             } 
                         
