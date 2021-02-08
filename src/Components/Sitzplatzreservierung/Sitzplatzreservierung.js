@@ -285,7 +285,7 @@ class Sitzplatzreservierung extends Component {
 
 
 
-       //this.setState({redirect: true});
+       this.setState({redirect: true});
 
   }
   render() {
