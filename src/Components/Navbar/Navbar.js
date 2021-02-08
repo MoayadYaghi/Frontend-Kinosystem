@@ -17,6 +17,7 @@ class Navbar extends Component {
     const WarenkorbLink = "/Warenkorb";
 
     var Nutzername = sessionStorage.getItem("NutzerName");
+    var Angemeldet = sessionStorage.getItem('token')
     return (
       <div>
         <div className="Headline1">
@@ -46,7 +47,10 @@ class Navbar extends Component {
             {/* {console.log(Nutzername)} */}
 
             <Link className="signIn" to={LogInLink}>
-              {Nutzername === null ? "Sign In" : Nutzername}
+              { Angemeldet !== null ?(
+              Nutzername === null ? "Sign In" : Nutzername): "Resign In"
+            
+            }
             </Link>
 
           </div>

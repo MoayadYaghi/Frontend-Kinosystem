@@ -6,7 +6,7 @@ class PostSnacks{
     
 
 
-    sendSnacks(){
+    sendSnacks(TicketID, SnackID){
         var Authorization = sessionStorage.getItem('token')
         
 

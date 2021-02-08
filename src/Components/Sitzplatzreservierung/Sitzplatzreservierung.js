@@ -33,7 +33,8 @@ class Sitzplatzreservierung extends Component {
       errorSichtbar: false,
       redirect: false,
       TicketID: "",
-      snacksSichtbar: false
+      snacksSichtbar: false,
+      Fehler403: false
 
     };
     this.selectSitz = this.selectSitz.bind(this);
@@ -229,7 +230,22 @@ class Sitzplatzreservierung extends Component {
         
 
       } )
-    }
+      .catch(err => {console.log(err)
+        var Fehler = err.toString()
+        var Fehlerausgabe = Fehler.substring(39,42)
+        if(Fehlerausgabe === "403"){
+          console.log("Bitte neu anmelden")
+          this.setState({Fehler403: true})
+          sessionStorage.removeItem('token')
+        }
+        this.setState({
+          warenkorbSichtbar: false,
+          errorSichtbar: false,
+          redirect: false,
+          snacksSichtbar: false,
+        })
+    })
+  }
     
     setTimeout(() => {
       
@@ -361,17 +377,27 @@ class Sitzplatzreservierung extends Component {
                     : <br></br>
                 }
 
+{
+              this.state.Fehler403? <div className ="SonderMeldung"><div className ="DESIGNHeadline3"> Bitte Logen Sie sich erneut an&emsp; 
+                            
+              </div><br/>
+              <Link className="DESIGNButton" to="/login">
+                Zum Login
+              </Link>
+              </div>:(
 
-           {this.renderRedirect()} 
+
+
+           this.renderRedirect(),
            <div className ="ButtonAlign">
           <button className="RestButton" onClick={this.addWarenkorb}> Zum Warenkorb hinzufügen </button>
           </div>
 
           
-          
+              )}
 
 
-        </div>
+        </div> 
       </div>
     );
   }

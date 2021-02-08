@@ -146,6 +146,9 @@
   .InputTextWarenkorb {
     width: unset;
   }
+  .TicketremoveButton{
+    font-size: 0.7rem;
+  }
 }
 
 .ZahlungsdetailText{
@@ -166,4 +169,11 @@
 .WarenkorbTicketReihe{
   display: flex;
 }
-
+.TicketremoveButton{
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+.TicketremoveButton:hover{
+  color: darkgray
+}
