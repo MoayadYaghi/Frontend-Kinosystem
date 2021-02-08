@@ -45,7 +45,7 @@ class Sitzplatzreservierung extends Component {
 
     
     let url = window.location.href;
-    let vorstellungId = url.split("http://localhost:3000/Sitzplatz/")[1];
+    let vorstellungId = url.split("/")[4];
     this.setState({vorstellungId: vorstellungId});
     SaalByVorstellung.saalByVorstellung(vorstellungId).then((response) => {
       console.log(response)
