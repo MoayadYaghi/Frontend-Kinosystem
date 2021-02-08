@@ -203,7 +203,7 @@ class Profilübersicht extends Component {
                       onChange={this.handleChange}
                       name="value"
                     >
-                      <option value="PersZustand">Zustand AuswÃ¤hlen</option>
+                      <option value="PersZustand">Zustand Auswählen</option>
                       <option value="ERWACHSENER">Erwachsen</option>
                       <option value="KIND">Kind</option>
                       <option value="STUDIEREND">Student</option>
