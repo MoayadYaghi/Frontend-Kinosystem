@@ -30,6 +30,7 @@ class ProgrammSeite extends Component {
 
 
       let genreList = ["Alle"];
+      
       for(let i in response.data) {
         let checker1 = true;
         let checker2 = true;
@@ -54,10 +55,11 @@ class ProgrammSeite extends Component {
           aktiveFilme.push(response.data[film]);
         }
       }
+      //response.data[0]
       this.setState({ alleGenre: genreList});
       this.setState({ filme: aktiveFilme });
       this.setState({ alleFilme: aktiveFilme });
-      console.log(this.state.filme)
+      
     });
   }
 
