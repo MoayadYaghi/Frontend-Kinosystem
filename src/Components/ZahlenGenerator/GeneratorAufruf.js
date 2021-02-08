@@ -36,13 +36,7 @@ class GeneratorAufruf extends Component {
     };
   
   }
-  Register(){
-    Informationen = this.state
-    postRegister.sendnewRegister(this.state)
-    //.then((res) => {
-      //console.log(res)})
-  }
-  
+
 
   componentDidMount(){
     var token = sessionStorage.getItem('token')
@@ -71,7 +65,7 @@ class GeneratorAufruf extends Component {
         lieblingszone : Sitzplatz1
     }, () => (this.Register(), setTimeout(function(){
      // console.log(Informationen)
-      postLogin.sendnewLogin(Informationen)
+      postLogin.sendnewLogin(this.state)
       .then((respon) => {
       sessionStorage.setItem('token', respon.data)
       sessionStorage.setItem('Generiert', true)
