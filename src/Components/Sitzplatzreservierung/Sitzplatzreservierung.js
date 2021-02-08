@@ -33,7 +33,8 @@ class Sitzplatzreservierung extends Component {
       errorSichtbar: false,
       redirect: false,
       TicketID: "",
-      snacksSichtbar: false
+      snacksSichtbar: false,
+      Fehler403: false
 
     };
     this.selectSitz = this.selectSitz.bind(this);
@@ -242,13 +243,30 @@ class Sitzplatzreservierung extends Component {
       console.log(sitzIds[i], vorstellungId)
       CreateNewTicket.createNewTicket(sitzIds[i], vorstellungId).then(res => console.log(res))
       GetWarenKorbTicket.getWarenKorbTicketID(sitzIds[i], vorstellungId).then(res => {console.log(res)
+        
         this.setState({TicketID: res.data})
          TicketID = res.data
        console.log(TicketID)
-            
+        
 
       } )
-    }
+      .catch(err => {console.log(err)
+        var Fehler = err.toString()
+        var Fehlerausgabe = Fehler.substring(39,42)
+        if(Fehlerausgabe === "403"){
+          console.log("Bitte neu anmelden")
+          this.setState({Fehler403: true})
+          sessionStorage.removeItem('token')
+        }
+        this.setState({
+          warenkorbSichtbar: false,
+          errorSichtbar: false,
+          redirect: false,
+          snacksSichtbar: false,
+        })
+    })
+  }
+    
     setTimeout(() => {
       
     for(let i = 0; i<this.state.TicketID.length; i++	){
@@ -261,13 +279,15 @@ class Sitzplatzreservierung extends Component {
 
     //PostWarenKorbTicket.postwWarenKorbTicketID(this.state.TicketID).then(res => console.log(res))
 
-    this.setState({redirect: true});
+
+ 
+    sessionStorage.setItem('TicketID', this.state.TicketID)
 
 
-    
+
+       //this.setState({redirect: true});
 
   }
-
   render() {
     return (
 
@@ -401,10 +421,28 @@ class Sitzplatzreservierung extends Component {
                     ? <div className="errorNachricht">{this.state.errorWarenkorb}</div>
                     : <br></br>
                 }
-          {this.renderRedirect()}
-          <button onClick={this.addWarenkorb}> Zum Warenkorb hinzufügen </button>
 
-        </div>
+{
+              this.state.Fehler403? <div className ="SonderMeldung"><div className ="DESIGNHeadline3"> Bitte Logen Sie sich erneut an&emsp; 
+                            
+              </div><br/>
+              <Link className="DESIGNButton" to="/login">
+                Zum Login
+              </Link>
+              </div>:(
+
+
+
+           this.renderRedirect(),
+           <div className ="ButtonAlign">
+          <button className="RestButton" onClick={this.addWarenkorb}> Zum Warenkorb hinzufügen </button>
+          </div>
+
+          
+              )}
+
+
+        </div> 
       </div>
     );
   }

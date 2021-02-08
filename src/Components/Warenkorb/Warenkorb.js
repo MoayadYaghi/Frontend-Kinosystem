@@ -4,8 +4,10 @@ import getWarenkorbInfos from "../../API_Pulls/getWarenkorbInfos"
 import { Link, Redirect } from "react-router-dom";
 import PostSepa from "../../PostRequest/PostSepa";
 import PostBenutzerupdate from"../../PostRequest/PostBenutzerupdate";
+import PostTicketentfernen from"../../PostRequest/PostTicketentfernen";
 
-
+var ArraySnacks = []
+var SnacksID
 
 class Warenkorb extends Component {
   constructor(props) {
@@ -27,6 +29,8 @@ class Warenkorb extends Component {
         Datum: "",
         Zeit:"",
         IBAN:"",
+        Fehler403: false,
+        SnackListe: [],
     };
     this.handleChange = this.handleChange.bind(this);
     this.WarenkorbCheck = this.WarenkorbCheck.bind(this);
@@ -62,9 +66,48 @@ class Warenkorb extends Component {
       this.setState({Ticket: respon.data}, () =>{
       //console.log(sessionStorage.getItem('token'))
       console.log(this.state.Ticket)})
+
+        
+      /* var SnacklisteLocal
+      for(let Tickets in respon.data){
+        for( let snacks in respon.data[Tickets].snacks){
+          SnacklisteLocal.push(respon.data[Tickets].snacks[snacks])
+        }
+      }
+      console.log(SnacklisteLocal)
+      this.setState({
+        SnackListe: SnacklisteLocal
+      })
+      
+
+ 
+      respon.data.map( (Info) =>{
+        if(Info.snacks.length !== 0){
+          ArraySnacks.push(Info.snacks)
+        
+        
+      }}) */
+      
+      console.log(ArraySnacks)
+
       
         
       
+      }).catch(err => {console.log(err)
+        var Fehler = err.toString()
+        var Fehlerausgabe = Fehler.substring(39,42)
+        if(Fehlerausgabe === "403"){
+          console.log("Bitte neu anmelden")
+          this.setState({Fehler403: true})
+          sessionStorage.removeItem('token')
+        }
+        this.setState({
+          angemeldet: false,
+        ErrorMessage: false,
+        tokenLeer: false,
+        })
+       console.log(Fehlerausgabe) 
+        
       })
     
     /* .
@@ -78,8 +121,11 @@ class Warenkorb extends Component {
     }
     )*/
 
-    getWarenkorbInfos.getSnacks().then((response) => 
+    getWarenkorbInfos.getSnacks().then((response) => {
     console.log(response)
+    this.setState({
+      SnackListe: response.data
+    })}
     )
 
 
@@ -129,6 +175,13 @@ class Warenkorb extends Component {
   }
   }
 
+  Ticketenfernen(id){
+    PostTicketentfernen.sendTicketenfernen(id).then(()=>{
+      console.log("Ticket wurde removed")
+      window.location.reload();
+    })
+  }
+
   render() {
 
    var ProfilLink = "/programm"
@@ -145,7 +198,7 @@ class Warenkorb extends Component {
 
                       </div >
                       {   this.state.Ticket.map( (tickets) => (
-                        <div className="DESIGNTextField">
+                        <div className="DESIGNTextField"><br/>
                     <div className="KinoTicket"> <div className ="WarenkorbTicketReihe"><div className="BeschreibungQWarenkorb">
                         Ticket: </div>{tickets.vorstellung.film.name
                         } </div> 
@@ -159,39 +212,28 @@ class Warenkorb extends Component {
                         Zeit:</div> {(tickets.vorstellung.startZeit).substring(11,16)+" Uhr"
                         } </div> <div className ="WarenkorbTicketReihe"><div className="BeschreibungQWarenkorb">
                         Preis: </div>{tickets.vorstellung.grundpreis +" Euro"
-                        } </div> <div>Film entfernen</div>
-</div> <br/></div>
+
+                        } </div> <div className="" onClick={()=> this.Ticketenfernen(tickets.id)}> <div className="TicketremoveButton">Ticket entfernen</div></div>
+</div> 
+</div>
+
+
                       ))}       </div> 
                     <div className="FilmÄndern">
                     <Link  className ="FilmNeu" to={"/programm"}>Film ändern</Link>
                       </div></div>
 
-                    <div className ="WarenkorbSnacks">
-                        Weitere Artikel in ihrem Warenkorb:
-                        </div> 
-                        <div className = "KinoExtras">
-                          Snacks: <br/>
-                          Getränke: <br/>
-                          Gutscheine: <br/>
-                        {/*tickets.snacks*/}
-                        </div> 
-                        <div className="SnackHinzufügen">
-                    <Link  className ="SnackNeu" to={"/programm"}>Snack hinzufügen</Link>
-                      </div>
-
-                        </div>  
-
-             
-                
-                </div>
-
+                      
+                        
+                        </div>  </div>
+                     
             <div className ="Rechts">
             <div className="rechteSeite">
 
 
              <div className ="ZahlungsdetailSchrift">
 
-                Zahlungsdetails:
+                Details der Bezahlung:
               </div>
                 <div>
             	 <form on onSubmit={this.handleSubmit}>
@@ -250,7 +292,7 @@ class Warenkorb extends Component {
             </label>
             </div>
             <div className="BezahlMethodenText">
-              Bezahlmethode
+              Methode des Bezahlens
               </div>
               <div>
                 {
@@ -259,6 +301,7 @@ class Warenkorb extends Component {
                 {
                   (this.state.value ==="Paypal")?(<div>Sie werden nach der Bestellung an die Paypal Seite weitergeleitet</div>):null     
                 }
+                
                 {
                   (this.state.value ==="SePa")?(<div> Wir buchen Ihnen im laufe der nöächsten Tage das Geld vom Konto
 
@@ -359,6 +402,15 @@ class Warenkorb extends Component {
               </div><br/>
               <Link className="DESIGNButton" to={ProfilLink}>
                  Zur Filmauswahl
+              </Link>
+              </div>: null
+            }
+            {
+              this.state.Fehler403? <div className ="SonderMeldung"><div className ="DESIGNHeadline3"> Bitte Logen Sie sich erneut an&emsp; 
+                            
+              </div><br/>
+              <Link className="DESIGNButton" to={"/login"}>
+                Zum Login
               </Link>
               </div>: null
             }

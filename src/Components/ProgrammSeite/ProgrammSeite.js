@@ -30,8 +30,10 @@ class ProgrammSeite extends Component {
 
 
       let genreList = ["Alle"];
+
       let aktiveFilme = response.data[0];
       for(let i in aktiveFilme) {
+
         let checker1 = true;
         let checker2 = true;
         for(let j=0; j<genreList.length; j++) {
@@ -54,11 +56,13 @@ class ProgrammSeite extends Component {
         if(response.data[film].aktiv == true) {
           aktiveFilme.push(response.data[film]);
         }
+
       }*/
+
       this.setState({ alleGenre: genreList});
       this.setState({ filme: aktiveFilme });
       this.setState({ alleFilme: aktiveFilme });
-
+      
     });
   }
 
