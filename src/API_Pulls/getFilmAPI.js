@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const Slider_Rest_API_URL =
-  "http://localhost:8081/film/all";
+const Slider_Rest_API_URL = "http://localhost:8081/film/all";
 
 class getFilmAPI {
   getFilme() {
