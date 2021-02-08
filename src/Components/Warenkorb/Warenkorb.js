@@ -6,7 +6,8 @@ import PostSepa from "../../PostRequest/PostSepa";
 import PostBenutzerupdate from"../../PostRequest/PostBenutzerupdate";
 import PostTicketentfernen from"../../PostRequest/PostTicketentfernen";
 
-
+var ArraySnacks = []
+var SnacksID
 
 class Warenkorb extends Component {
   constructor(props) {
@@ -29,6 +30,7 @@ class Warenkorb extends Component {
         Zeit:"",
         IBAN:"",
         Fehler403: false,
+        SnackListe: [],
     };
     this.handleChange = this.handleChange.bind(this);
     this.WarenkorbCheck = this.WarenkorbCheck.bind(this);
@@ -60,10 +62,34 @@ class Warenkorb extends Component {
     if(tokenInfo != null){
       
     getWarenkorbInfos.getTickets().then((respon) => {
+      console.log(respon)
       this.setState({Ticket: respon.data}, () =>{
       //console.log(sessionStorage.getItem('token'))
       console.log(this.state.Ticket)})
-      console.log(respon)
+
+        
+      /* var SnacklisteLocal
+      for(let Tickets in respon.data){
+        for( let snacks in respon.data[Tickets].snacks){
+          SnacklisteLocal.push(respon.data[Tickets].snacks[snacks])
+        }
+      }
+      console.log(SnacklisteLocal)
+      this.setState({
+        SnackListe: SnacklisteLocal
+      })
+      
+
+ 
+      respon.data.map( (Info) =>{
+        if(Info.snacks.length !== 0){
+          ArraySnacks.push(Info.snacks)
+        
+        
+      }}) */
+      
+      console.log(ArraySnacks)
+
       
         
       
@@ -95,8 +121,11 @@ class Warenkorb extends Component {
     }
     )*/
 
-    getWarenkorbInfos.getSnacks().then((response) => 
+    getWarenkorbInfos.getSnacks().then((response) => {
     console.log(response)
+    this.setState({
+      SnackListe: response.data
+    })}
     )
 
 
@@ -109,9 +138,10 @@ class Warenkorb extends Component {
     }else{
       this.setState({tokenLeer: true})
     } 
-    }else{
-      this.setState({tokenLeer: true})
     }
+     else{
+      this.setState({tokenLeer: true})
+    } 
     
   }
   renderRedirect = () => {
@@ -182,33 +212,21 @@ class Warenkorb extends Component {
                         Zeit:</div> {(tickets.vorstellung.startZeit).substring(11,16)+" Uhr"
                         } </div> <div className ="WarenkorbTicketReihe"><div className="BeschreibungQWarenkorb">
                         Preis: </div>{tickets.vorstellung.grundpreis +" Euro"
+
                         } </div> <div className="" onClick={()=> this.Ticketenfernen(tickets.id)}> <div className="TicketremoveButton">Ticket entfernen</div></div>
 </div> 
 </div>
+
+
                       ))}       </div> 
                     <div className="FilmÄndern">
                     <Link  className ="FilmNeu" to={"/programm"}>Film ändern</Link>
                       </div></div>
 
-                    <div className ="WarenkorbSnacks">
-                        Weitere Artikel in ihrem Warenkorb:
-                        </div> 
-                        <div className = "KinoExtras">
-                          Snacks: <br/>
-                          Getränke: <br/>
-                          Gutscheine: <br/>
-                        {/*tickets.snacks*/}
-                        </div> 
-                        <div className="SnackHinzufügen">
-                    <Link  className ="SnackNeu" to={"/programm"}>Snack hinzufügen</Link>
-                      </div>
-
-                        </div>  
-
-             
-                
-                </div>
-
+                      
+                        
+                        </div>  </div>
+                     
             <div className ="Rechts">
             <div className="rechteSeite">
 
@@ -367,7 +385,7 @@ class Warenkorb extends Component {
             </div>
              </div>
 
-            </div><button className="DESIGNButton" onClick ={this.WarenkorbCheck} >Daten Bestätigen</button>
+            </div><div className ="ButtonAlign"><button className="DESIGNButton" onClick ={this.WarenkorbCheck} >Daten Bestätigen</button></div>
             
             
             
