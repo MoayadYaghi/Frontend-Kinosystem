@@ -58,6 +58,7 @@ class Warenkorb extends Component {
     if(tokenInfo != null){
       
     getWarenkorbInfos.getTickets().then((respon) => {
+      console.log(respon)
       this.setState({Ticket: respon.data}, () =>{
       //console.log(sessionStorage.getItem('token'))
       console.log(this.state.Ticket)})
@@ -91,9 +92,10 @@ class Warenkorb extends Component {
     }else{
       this.setState({tokenLeer: true})
     } 
-    }else{
-      this.setState({tokenLeer: true})
     }
+     else{
+      this.setState({tokenLeer: true})
+    } 
     
   }
   renderRedirect = () => {
@@ -157,7 +159,7 @@ class Warenkorb extends Component {
                         Zeit:</div> {(tickets.vorstellung.startZeit).substring(11,16)+" Uhr"
                         } </div> <div className ="WarenkorbTicketReihe"><div className="BeschreibungQWarenkorb">
                         Preis: </div>{tickets.vorstellung.grundpreis +" Euro"
-                        } </div> 
+                        } </div> <div>Film entfernen</div>
 </div> <br/></div>
                       ))}       </div> 
                     <div className="FilmÄndern">
@@ -340,7 +342,7 @@ class Warenkorb extends Component {
             </div>
              </div>
 
-            </div><button className="DESIGNButton" onClick ={this.WarenkorbCheck} >Daten Bestätigen</button>
+            </div><div className ="ButtonAlign"><button className="DESIGNButton" onClick ={this.WarenkorbCheck} >Daten Bestätigen</button></div>
             
             
             
