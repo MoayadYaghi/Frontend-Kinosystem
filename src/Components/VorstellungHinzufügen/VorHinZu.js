@@ -67,7 +67,24 @@ class VorHinZu extends Component {
       data4=res.data
       this.setState({allSaal:data4})
       console.log(data4)
+    }).catch(err => {console.log(err)
+      var Fehler = err.toString()
+      var Fehlerausgabe = Fehler.substring(39,42)
+      if(Fehlerausgabe === "403"){
+        console.log("Bitte neu anmelden")
+        this.setState({Fehler403: true})
+ sessionStorage.removeItem('token')
+
+      }
+      this.setState({
+        visible :false,
+        visible2: false,
+        blockVisible:false,
+      })
+    
+      
     })
+
     
 
     let data2 =[];
