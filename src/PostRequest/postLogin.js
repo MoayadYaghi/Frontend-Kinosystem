@@ -1,10 +1,5 @@
-
 import axios from "axios";
-import LocalURL from '../constants';
-
-
-
-
+import LocalURL from "../constants";
 
 class postLogin {
   sendnewLogin(data) {

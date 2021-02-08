@@ -3,7 +3,7 @@ import LocalURL from '../constants';
 
 class GetAllSaal {
   GetAllSaalAPI() {
-   var Authorization = sessionStorage.getItem('token') 
+    var Authorization = sessionStorage.getItem("token");
     /* const Get_All_Saal_API_URL = */
       return axios.get(LocalURL + "kinosaal/all" , {headers: {
         Authorization}})
@@ -12,4 +12,4 @@ class GetAllSaal {
   }
 }
 
-export default new GetAllSaal(); 
+export default new GetAllSaal();

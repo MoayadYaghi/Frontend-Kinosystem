@@ -26,7 +26,7 @@ class DealDW extends Component {
           <div className ="DESIGNTextField">
             Aufgrund der aktuellen Maßnahmen gegen das Coronavirus dürfen wir Sie momentan nicht im Kino begrüßen. Wir hoffen, dass sich diese Maßnahmen bald ändern und unser Kino bald wieder öffnen darf. Unser Autokino, welches zwischendurch angeboten wurde, haben wir leider einstellen müssen, aufgrund der geringen Nachfrage. Bis zur Öffnung unseres Kinos wünschen wir Ihnen alles gut, bleiben Sie gesund und wir sehen uns hoffentlich bald wieder.<br/>
             Für weitere Informationen zu den Maßnahmen gegen das Coronavirus: <br/>
-            <Link to ={"https://www.bundesregierung.de/breg-de/themen/coronavirus/corona-massnahmen-1734724"}>Infoseite der Bundesregierung Deutschland</Link>
+            <a href ={"https://www.bundesregierung.de/breg-de/themen/coronavirus/corona-massnahmen-1734724"}>Infoseite der Bundesregierung Deutschland</a>
          
         </div></div>
       </div>

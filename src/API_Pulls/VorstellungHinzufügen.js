@@ -10,4 +10,4 @@ class VorstellungHinzufügenAPI {
   }
 }
 
-export default new VorstellungHinzufügenAPI(); 
+export default new VorstellungHinzufügenAPI();

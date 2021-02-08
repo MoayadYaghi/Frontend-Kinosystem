@@ -10,4 +10,4 @@ class GetAllVorstellungenAPI {
   }
 }
 
-export default new GetAllVorstellungenAPI(); 
+export default new GetAllVorstellungenAPI();

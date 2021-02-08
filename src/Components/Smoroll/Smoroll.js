@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Smoroll.css";
-import { Link, animateScroll as scroll } from "react-scroll";
+import {Link, animateScroll as scroll } from "react-scroll";
 import Menue1 from "./Menue1";
 import Menue2 from "./Menue2";
 import Menue3 from "./Menue3";

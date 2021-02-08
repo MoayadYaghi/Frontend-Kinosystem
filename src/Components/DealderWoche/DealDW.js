@@ -20,7 +20,7 @@ class DealDW extends Component {
         <div className="DESIGNBOX" style={{cursor: "pointer"}} >
         <Link className="DESIGNTextField" onClick={this.clicked()} to={SnacksLink}>
           
-          Leider haben wir momentan keine Angebote. Sobald unser Kino jedoch wieder öffnet, erhalten Sie wie gewohnt wöchentlich neue Angebot. Sollten Sie immer auf dem Laufenden über unser Kino und die Deals der Woche bleiben wollen, erstellen Sie sich gerne einen Account und aktivieren den Newsletter.
+          Leider haben wir momentan keine Angebote. Sobald unser Kino jedoch wieder öffnet, planen wir wieder wöchentlich neue Aktionen. Sollten Sie immer auf dem Laufenden über unser Kino und die Deals der Woche bleiben wollen, erstellen Sie sich gerne einen Account und aktivieren den Newsletter.
             
           
         </Link></div><br/><br/>
