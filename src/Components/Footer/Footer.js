@@ -35,10 +35,6 @@ function Footer() {
                 <li>
                   <Link to={ProgrammAktuellLink}>Aktuelles</Link>
                 </li>
-                
-                <li>
-                  <Link to={WunschlisteLink}>Wunschliste</Link>
-                </li>
               </ul>
             </div>
             {/* Column 3 */}
